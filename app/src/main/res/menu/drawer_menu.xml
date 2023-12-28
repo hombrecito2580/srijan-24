@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    tools:ignore="hardcodedText">
+
+    <item android:title="Main Section">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item android:id="@+id/homeFragment"
+                    android:icon="@drawable/ic_home"
+                    android:title="Home" />
+
+                <item android:id="@+id/eventsFragment"
+                    android:icon="@drawable/ic_events"
+                    android:title="Events" />
+
+                <item android:id="@+id/merchandiseFragment"
+                    android:icon="@drawable/ic_merchandise"
+                    android:title="Merchandise" />
+
+                <item android:id="@+id/sponsorsFragment"
+                    android:icon="@drawable/ic_sponsors"
+                    android:title="Sponsors" />
+
+            </group>
+
+        </menu>
+
+    </item>
+
+    <item android:title="Support Section">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item android:id="@+id/coreTeamFragment"
+                    android:icon="@drawable/ic_team"
+                    android:title="Core Team" />
+
+                <item android:id="@+id/contactFragment"
+                    android:icon="@drawable/ic_contact"
+                    android:title="Contact Us" />
+
+            </group>
+
+        </menu>
+
+    </item>
+
+</menu>

@@ -1,9 +1,40 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Srijan24" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/action_bar</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="colorAccent">@color/text</item>
+        <item name="android:navigationBarColor">@color/bgAlternate</item>
     </style>
 
     <style name="Theme.Srijan24" parent="Base.Theme.Srijan24" />
+
+    <style name="h1">
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">@font/roboto_extra_bold</item>
+    </style>
+
+    <style name="h2">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="h3">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="h4">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="h5">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="navDrawer">
+
+    </style>
 </resources>

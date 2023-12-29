@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:textSize="20sp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/light_text"
                     android:fontFamily="@font/roboto_bold"
                     android:textStyle="bold" />
 

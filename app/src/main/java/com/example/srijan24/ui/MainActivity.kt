@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> "Home"
                 R.id.eventsFragment -> "Events"
                 R.id.merchandiseFragment -> "Merchandise"
-                R.id.sponsorsFragment -> "Sponsors"
+                R.id.sponsorsFragment -> "Past Sponsors"
                 R.id.coreTeamFragment -> "Core Team"
                 R.id.contactFragment -> "Contact Us"
                 else -> "Srijan 24"

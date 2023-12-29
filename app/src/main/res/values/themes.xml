@@ -35,6 +35,11 @@
         <item name="android:fontFamily">@font/roboto_regular</item>
     </style>
 
+    <style name="h6">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
     <style name="navDrawer">
 
     </style>

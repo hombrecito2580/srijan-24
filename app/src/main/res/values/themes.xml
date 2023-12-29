@@ -5,6 +5,7 @@
         <item name="android:windowContentTransitions">true</item>
         <item name="colorAccent">@color/text</item>
         <item name="android:navigationBarColor">@color/bgAlternate</item>
+        <item name="colorPrimaryDark">@color/bgAlternate</item>
     </style>
 
     <style name="Theme.Srijan24" parent="Base.Theme.Srijan24" />
@@ -41,5 +42,9 @@
 
     <style name="navDrawer">
 
+    </style>
+
+    <style name="ProgressBarTheme">
+        <item name="colorSecondary">@color/primary</item>
     </style>
 </resources>

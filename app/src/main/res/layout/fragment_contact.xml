@@ -42,7 +42,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="The Annual\n Cultural Fest of IIT(ISM) Dhanbad"
+                android:text="The Annual\n Socio-Cultural Fest of\n IIT(ISM) Dhanbad"
                 android:textColor="@color/text"
                 style="@style/h2">
 
@@ -80,7 +80,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="2dp"
                         android:gravity="center"
-                        android:text="+91 76809 09881"
+                        android:text="+91 96371 11550"
                         android:textColor="@color/text"
                         style="@style/h6" />
 

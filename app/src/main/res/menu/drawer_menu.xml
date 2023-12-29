@@ -24,7 +24,7 @@
 
                 <item android:id="@+id/sponsorsFragment"
                     android:icon="@drawable/ic_sponsors"
-                    android:title="Sponsors" />
+                    android:title="Past Sponsors" />
 
             </group>
 

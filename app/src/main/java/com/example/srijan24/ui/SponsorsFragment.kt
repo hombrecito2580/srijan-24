@@ -1,60 +1,97 @@
 package com.example.srijan24.ui
 
+import android.app.Dialog
+import android.content.Intent
+import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.srijan24.R
+import com.example.srijan24.adapter.SponsorRVAdapter
+import com.example.srijan24.data.SponsorData
+import com.example.srijan24.databinding.FragmentSponsorsBinding
+import com.example.srijan24.view_model.SponsorViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SponsorsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SponsorsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentSponsorsBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var viewModel: SponsorViewModel
+    private lateinit var adapter: SponsorRVAdapter
+    private lateinit var dialog: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sponsors, container, false)
+    ): View {
+        _binding = FragmentSponsorsBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(
+            requireActivity(),
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+        )[SponsorViewModel::class.java]
+
+        dialog = Dialog(requireActivity())
+        dialog.setContentView(R.layout.progress_bar)
+        dialog.setCancelable(false)
+        val layoutParams = WindowManager.LayoutParams().apply {
+            width = WindowManager.LayoutParams.MATCH_PARENT
+            height = WindowManager.LayoutParams.MATCH_PARENT
+        }
+        dialog.window?.attributes = layoutParams
+        if (dialog.window != null) {
+            dialog.window!!.setBackgroundDrawable(
+                ColorDrawable(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.bg
+                    )
+                )
+            )
+        }
+
+        binding.rvSponsors.layoutManager = LinearLayoutManager(context)
+        binding.rvSponsors.setHasFixedSize(true)
+
+        // Initialize the adapter with an empty list
+        adapter = SponsorRVAdapter(emptyList()) { redirectURL ->
+            openUrlInBrowser(redirectURL)
+        }
+        // Set the adapter to the RecyclerView
+        binding.rvSponsors.adapter = adapter
+
+        viewModel.showLoading.observe(viewLifecycleOwner) { showLoading ->
+            if (showLoading) {
+                dialog.show()
+            } else {
+                dialog.dismiss()
+            }
+        }
+
+        viewModel.sponsorData.observe(viewLifecycleOwner) { data ->
+            // Update the adapter data and notify the changes
+            adapter.setData(data)
+        }
+
+        // Trigger the data fetching when the fragment is created
+        viewModel.fetchSponsorData()
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SponsorsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SponsorsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun openUrlInBrowser(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

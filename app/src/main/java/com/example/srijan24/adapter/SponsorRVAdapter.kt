@@ -10,7 +10,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.srijan24.R
 import com.example.srijan24.data.SponsorData
-import com.squareup.picasso.Picasso
 import kotlin.math.max
 import kotlin.math.min
 
@@ -35,9 +34,9 @@ class SponsorRVAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentData = dataList[position]
 
-        if (currentData.image != "") {
+        if (currentData.img != "") {
             Glide.with(holder.ivSponsor.context)
-                .load(currentData.image)
+                .load(currentData.img)
                 .apply(
                     RequestOptions()
                         .placeholder(R.drawable.iv_srijan_light)
@@ -48,8 +47,8 @@ class SponsorRVAdapter(
         }
 
         holder.ivSponsor.setOnClickListener {
-            if (currentData.redirectURL != "") {
-                onItemClick.invoke(currentData.redirectURL)
+            if (currentData.link != "") {
+                onItemClick.invoke(currentData.link)
             }
         }
     }

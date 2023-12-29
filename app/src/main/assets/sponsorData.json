@@ -1,164 +1,86 @@
 [
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/JCSTI-title-cropped.webp",
-    "is_title": true,
-    "link": "https://dst.gov.in/jharkhand",
-    "cat": "Title Sponsors"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/central_coalfields_dji3gq.jpg",
+    "link": "https://centralcoalfields.in/ind/index_h.php"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/LTConstructionWET.png",
-    "is_title": false,
-    "link": "https://www.larsentoubro.com/corporate/products-and-services/construction/water-effluent-treatment/",
-    "cat": "Major Sponsors"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/adani_fkjiw1.jpg",
+    "link": "https://www.adani.com/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/NTFC-bronze+sponsor.webp",
-    "is_title": false,
-    "link": "https://www.ntpc.co.in/",
-    "cat": "Major Sponsors"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995308/bccl_w30lbh.jpg",
+    "link": "https://www.bcclweb.in/?page_id=3678&lang=en"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/99Group.jpg",
-    "is_title": false,
-    "link": "http://99group.in/",
-    "cat": "General Sponsors"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995310/jh_tourism_kshayx.jpg",
+    "link": "https://tourism.jharkhand.gov.in/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/Home-Central.jpg",
-    "is_title": false,
-    "link": "https://home-central.business.site/",
-    "cat": "General Sponsors"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/sbi_ord5zl.png",
+    "link": "https://sbi.co.in/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/Techno-Scientific.jpg",
-    "is_title": false,
-    "link": "https://www.techno-scientific.com/",
-    "cat": "General Sponsors"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/secl_r1vmoe.png",
+    "link": "https://www.secl-cil.in/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/ONGC.jpg",
-    "is_title": false,
-    "link": "https://www.ongcindia.com/",
-    "cat": "Event Sponsors"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/essar_oil_xok7pz.png",
+    "link": "https://www.essar.com/essar-oil-gas-exploration-production-eogepl-achieves-highest-ever-revenue-and-ebidta/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/POONAM-Emporium.jpeg",
-    "is_title": false,
-    "link": "",
-    "cat": "Event Sponsors"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/tata_steel_s8nw20.png",
+    "link": "https://www.tatasteel.com/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/rapido.jpg",
-    "is_title": false,
-    "link": "https://rapido.bike/",
-    "cat": "Travel Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995310/ongc_lcwi8k.png",
+    "link": "https://ongcindia.com/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/IES+MASTER.jpg",
-    "is_title": false,
-    "link": "https://iesmaster.org/",
-    "cat": "Education Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/coal_india_eucoix.png",
+    "link": "https://www.coalindia.in/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/vistara+airlines.jpg",
-    "is_title": false,
-    "link": "https://www.airvistara.com/",
-    "cat": "Airlines Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/skoda_p0wqmu.png",
+    "link": "https://www.skoda-auto.com/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/99News.webp",
-    "is_title": false,
-    "link": "http://99news.co/",
-    "cat": "Media Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/canara_sye86r.png",
+    "link": "https://canarabank.com/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/cocacola.webp",
-    "is_title": false,
-    "link": "https://www.coca-colacompany.com/",
-    "cat": "Beverage Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995311/sail_rzbrgs.png",
+    "link": "https://sail.co.in/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/Bhamas.jpg",
-    "is_title": false,
-    "link": "",
-    "cat": "Food Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995310/powergrid_ysetpi.png",
+    "link": "https://www.powergrid.in/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/Champaran.jpg",
-    "is_title": false,
-    "link": "",
-    "cat": "Food Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995310/mg_xuoimg.png",
+    "link": "https://www.mgmotor.co.in/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/Pabrai-s.jpg",
-    "is_title": false,
-    "link": "",
-    "cat": "Food Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995310/dehaat_io8otn.png",
+    "link": "https://agrevolution.in/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/BINGO-comedy.jpg",
-    "is_title": false,
-    "link": "http://bingosnacks.com/comedy-adda/",
-    "cat": "Entertainment Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1703006562/parklane_n7rljx.jpg",
+    "link": "https://parklaneresort.in/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/DiscountBazaar.png",
-    "is_title": false,
-    "link": "",
-    "cat": "Coupon Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995310/lazzy_frog_wjwudq.jpg",
+    "link": "https://parklaneresort.in/lazzy-frog-lounge-bar"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/Baithak.jpg",
-    "is_title": false,
-    "link": "",
-    "cat": "Coupon Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1703006562/coal_capital_jf6juf.png",
+    "link": "https://www.facebook.com/Hotelcoalcapitaldhanbad/"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/R-Launch.jpeg",
-    "is_title": false,
-    "link": "",
-    "cat": "Coupon Partner"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995309/eng_parcel_zdfb7v.png",
+    "link": "https://www.facebook.com/engineersparcel"
   },
   {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/Coding+Blocks.webp",
-    "is_title": false,
-    "link": "https://codingblocks.com/",
-    "cat": "Build-a-bit Sponsors"
-  },
-  {
-    "img": "https://static.startuptalky.com/2021/03/coding-ninjas-startuptalky.jpg",
-    "is_title": false,
-    "link": "https://www.codingninjas.in/",
-    "cat": "Build-a-bit Sponsors"
-  },
-  {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/kanjoos.jpg",
-    "is_title": false,
-    "link": "",
-    "cat": "Build-a-bit Sponsors"
-  },
-  {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/codechef.webp",
-    "is_title": false,
-    "link": "https://www.codechef.com/",
-    "cat": "Build-a-bit Sponsors"
-  },
-  {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/skillenza.webp",
-    "is_title": false,
-    "link": "https://skillenza.com/",
-    "cat": "Build-a-bit Sponsors"
-  },
-  {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/geeksforgeeks.png",
-    "is_title": false,
-    "link": "https://www.geeksforgeeks.org/",
-    "cat": "Build-a-bit Sponsors"
-  },
-  {
-    "img": "https://concetto-front.s3.ap-south-1.amazonaws.com/Sponsors/foxmula.jpg",
-    "is_title": false,
-    "link": "https://foxmula.com/",
-    "cat": "Build-a-bit Sponsors"
+    "img": "https://res.cloudinary.com/dfr1kvie3/image/upload/v1702995311/realme_cgy4n5.png",
+    "link": "https://www.realme.com/in/"
   }
 ]

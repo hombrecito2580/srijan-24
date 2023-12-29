@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -87,7 +88,13 @@ class SponsorsFragment : Fragment() {
 
     private fun openUrlInBrowser(url: String) {
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(browserIntent)
+        if (browserIntent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(browserIntent)
+        } else {
+            // Handle the case where no activity can handle the intent
+            // For example, display a message to the user or log a warning
+            Toast.makeText(context, url, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {

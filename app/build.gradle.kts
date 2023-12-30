@@ -57,8 +57,13 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.squareup.picasso:picasso:2.8")
 
+    //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    
+
+    //youtubeplayer
     implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
+
+    //gif drawable
+    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
 }

@@ -4,30 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/white"
     android:fillViewport="true"
     android:orientation="vertical"
     tools:context=".ui.HomeFragment">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!--        <VideoView-->
-        <!--            android:id="@+id/videoview"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            app:layout_constraintDimensionRatio="9:5"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            />-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="80dp"
+
             android:gravity="center_horizontal"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -36,48 +21,56 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="190dp"
-                android:backgroundTint="@color/bgAlternate"
-                app:cardCornerRadius="20dp">
-
-                <ImageView
-                    android:layout_gravity="center"
-                    android:layout_width="200dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/iv_srijan_light" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="70dp"
-                android:layout_marginEnd="18dp"
-                android:layout_weight="0"
-                android:background="@drawable/border">
+                android:backgroundTint="@color/transparent"
+                app:cardElevation="0dp">
 
-                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                    android:id="@+id/youtube_player"
+                <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:background="@drawable/bg_logo_background"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_marginTop="120dp"
+                        android:layout_width="300dp"
+                        android:layout_height="210dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/home_logo" />
+
+                </LinearLayout>
+              
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="3dp"
-                    app:autoPlay="false"
-                    app:enableAutomaticInitialization="true"
-                    app:handleNetworkEvents="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:videoId="PZrTRhAXPWY"
-                    tools:ignore="MissingClass" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0"
+                    android:layout_marginTop="370dp"
+                    android:layout_marginStart="38dp"
+                    android:layout_marginEnd="38dp"
+                    android:background="@drawable/border">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+                    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                        android:id="@+id/youtube_player"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="3dp"
+                        app:autoPlay="false"
+                        app:enableAutomaticInitialization="true"
+                        app:handleNetworkEvents="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:videoId="PZrTRhAXPWY" />
+                    <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/textcounterdown"
@@ -88,6 +81,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="10dp"
                 android:text="Days Left" />
+
 
             <TextView
                 android:id="@+id/finished_id"
@@ -124,7 +118,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textColor="@color/light_text"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
 
                     <TextView
@@ -134,7 +128,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:text="Days"
-                        android:textColor="@color/light_text"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -154,7 +148,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textColor="@color/light_text"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
 
                     <TextView
@@ -165,7 +159,7 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:text="Hours"
-                        android:textColor="@color/light_text"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -187,7 +181,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textColor="@color/light_text"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
 
                     <TextView
@@ -197,7 +191,7 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:text="Minutes"
-                        android:textColor="@color/light_text"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -218,7 +212,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textColor="@color/light_text"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
 
                     <TextView
@@ -229,16 +223,12 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:text="Seconds"
-                        android:textColor="@color/light_text"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
 
         </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </ScrollView>

@@ -8,6 +8,7 @@
     tools:context=".ui.SponsorsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="80dp"
         android:id="@+id/rvSponsors"
         android:layout_width="0dp"
         android:layout_height="0dp"

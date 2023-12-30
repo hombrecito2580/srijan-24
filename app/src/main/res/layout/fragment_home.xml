@@ -73,7 +73,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:videoId="PZrTRhAXPWY" />
+                    app:videoId="PZrTRhAXPWY"
+                    tools:ignore="MissingClass" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

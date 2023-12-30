@@ -1,4 +1,4 @@
-package com.example.srijan24.ui.merchandiseFragment
+package com.example.srijan24.ui
 
 import android.content.res.Resources
 import android.net.Uri
@@ -16,8 +16,10 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.srijan24.R
 import com.example.srijan24.databinding.FragmentMerchandiseBinding
-import com.example.srijan24.ui.merchandiseFragment.retrofit.DetailsDataModel
-import com.example.srijan24.ui.merchandiseFragment.retrofit.NetworkService
+import com.example.srijan24.adapter.MerchandiseCarouselAdapter
+import com.example.srijan24.view_model.MerchandiseViewModel
+import com.example.srijan24.data.DetailsDataModel
+import com.example.srijan24.retrofit.NetworkService
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlin.math.abs
@@ -28,8 +30,8 @@ class MerchandiseFragment : Fragment() {
         const val REQUEST_CODE_IMAGE = 101
     }
 
-    var isSizeSelected = 0
-    var isImageUploaded = 0
+    private var isSizeSelected = 0
+    private var isImageUploaded = 0
     private var selectedImageUri: Uri? = null
     private lateinit var viewModel: MerchandiseViewModel
     private lateinit var dataModel: DetailsDataModel
@@ -47,7 +49,7 @@ class MerchandiseFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMerchandiseBinding.inflate(inflater,container,false)
         val view = binding.root
         viewPager = binding.viewPagerCorousel
@@ -56,7 +58,7 @@ class MerchandiseFragment : Fragment() {
             R.drawable.ic_merchandise , R.drawable.ic_merchandise,
             R.drawable.ic_merchandise, R.drawable.ic_merchandise,
             R.drawable.ic_merchandise,R.drawable.ic_merchandise,R.drawable.ic_merchandise)
-        viewPager.adapter = CorouselAdapter(merchandise_images_data)
+        viewPager.adapter = MerchandiseCarouselAdapter(merchandise_images_data)
 
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(MarginPageTransformer((40 * Resources.getSystem().displayMetrics.density).toInt()))

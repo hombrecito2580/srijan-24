@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_events" />
     <fragment
         android:id="@+id/merchandiseFragment"
-        android:name="com.example.srijan24.ui.merchandiseFragment.MerchandiseFragment"
+        android:name="com.example.srijan24.ui.MerchandiseFragment"
         android:label="Merchandise"
         tools:layout="@layout/fragment_merchandise" />
     <fragment

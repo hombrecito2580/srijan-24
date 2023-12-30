@@ -24,6 +24,7 @@
         android:backgroundTint="@color/bg"
         app:headerLayout="@layout/layout_nav_drawer_header"
         app:itemRippleColor="@color/primary"
+        app:itemBackground="@drawable/nav_item_background"
         app:itemTextAppearance="@style/h4"
         app:menu="@menu/drawer_menu" />
 

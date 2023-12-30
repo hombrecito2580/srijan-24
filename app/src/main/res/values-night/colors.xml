@@ -9,6 +9,7 @@
 
     <color name="primary">#FBE10E</color>
     <color name="secondary">#FFFFFFFF</color>
+    <color name="primaryTranslucent">#90FBE10E</color>
 
     <color name="text">#FFFFFFFF</color>
 

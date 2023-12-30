@@ -1,4 +1,4 @@
-package com.example.srijan24.ui.merchandiseFragment.retrofit
+package com.example.srijan24.data
 
 data class DetailsDataModel(
     var orderID:String,
@@ -7,7 +7,7 @@ data class DetailsDataModel(
     var admissionNumber: String,
     var mobileNumber: String,
     var branch: String,
-    var tshirtSize: String,
+    var tShirtSize: String,
     var roomNumber: String,
     var transactionID: String,
     var hostel:String

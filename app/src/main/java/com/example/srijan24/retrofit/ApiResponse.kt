@@ -1,4 +1,4 @@
-package com.example.srijan24.ui.merchandiseFragment.retrofit
+package com.example.srijan24.retrofit
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package com.example.srijan24.ui.merchandiseFragment.retrofit
+package com.example.srijan24.retrofit
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call

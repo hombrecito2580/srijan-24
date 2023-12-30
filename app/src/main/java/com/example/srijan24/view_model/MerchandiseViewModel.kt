@@ -1,4 +1,4 @@
-package com.example.srijan24.ui.merchandiseFragment
+package com.example.srijan24.view_model
 
 import androidx.lifecycle.ViewModel
 

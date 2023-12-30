@@ -21,7 +21,7 @@ class ContactFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentContactBinding.inflate(inflater)
 
         binding.number.setOnClickListener(this)

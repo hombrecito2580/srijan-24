@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/bgAlternate"
     android:fillViewport="true"
     android:orientation="vertical"
     tools:context=".ui.HomeFragment">
@@ -14,20 +14,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--        <VideoView-->
-        <!--            android:id="@+id/videoview"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            app:layout_constraintDimensionRatio="9:5"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            />-->
+<!--                <VideoView-->
+<!--                    android:id="@+id/videoview"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:layout_constraintDimensionRatio="9:5"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    />-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="40dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -35,18 +35,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="190dp"
-                android:backgroundTint="@color/bgAlternate"
-                app:cardCornerRadius="20dp">
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="190dp"-->
+<!--                android:backgroundTint="@color/bgAlternate"-->
+<!--                app:cardCornerRadius="20dp">-->
 
                 <ImageView
                     android:layout_gravity="center"
                     android:layout_width="200dp"
                     android:layout_height="150dp"
                     android:src="@drawable/iv_srijan_light" />
-            </androidx.cardview.widget.CardView>
+<!--            </androidx.cardview.widget.CardView>-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"

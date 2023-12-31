@@ -100,22 +100,22 @@
                             android:paddingLeft="10dp"
                             android:textSize="15sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:padding="5dp"
-                            android:text="Personal Email*"
-                            android:textStyle="bold" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="left"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:text="Personal Email*"-->
+<!--                            android:textStyle="bold" />-->
 
-                        <EditText
-                            android:id="@+id/edit_email"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@drawable/border1"
-                            android:inputType="text"
-                            android:paddingLeft="10dp"
-                            android:textSize="15sp" />
+<!--                        <EditText-->
+<!--                            android:id="@+id/edit_email"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:background="@drawable/border1"-->
+<!--                            android:inputType="text"-->
+<!--                            android:paddingLeft="10dp"-->
+<!--                            android:textSize="15sp" />-->
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -134,39 +134,39 @@
                             android:paddingLeft="10dp"
                             android:textSize="15sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:padding="5dp"
-                            android:text="Branch*"
-                            android:textStyle="bold" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="left"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:text="Branch*"-->
+<!--                            android:textStyle="bold" />-->
 
-                        <EditText
-                            android:id="@+id/edit_branch"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@drawable/border1"
-                            android:inputType="text"
-                            android:paddingLeft="10dp"
-                            android:textSize="15sp" />
+<!--                        <EditText-->
+<!--                            android:id="@+id/edit_branch"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:background="@drawable/border1"-->
+<!--                            android:inputType="text"-->
+<!--                            android:paddingLeft="10dp"-->
+<!--                            android:textSize="15sp" />-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:padding="5dp"
-                            android:text="Transaction ID*"
-                            android:textStyle="bold" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="left"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:text="Transaction ID*"-->
+<!--                            android:textStyle="bold" />-->
 
-                        <EditText
-                            android:id="@+id/edit_transactionID"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@drawable/border1"
-                            android:inputType="text"
-                            android:paddingLeft="10dp"
-                            android:textSize="15sp" />
+<!--                        <EditText-->
+<!--                            android:id="@+id/edit_transactionID"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:background="@drawable/border1"-->
+<!--                            android:inputType="text"-->
+<!--                            android:paddingLeft="10dp"-->
+<!--                            android:textSize="15sp" />-->
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -201,6 +201,20 @@
                             android:inputType="text"
                             android:paddingLeft="10dp"
                             android:textSize="15sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:padding="5dp"
+                            android:text="Quantity*"
+                            android:textStyle="bold" />
+                        <Spinner
+                            android:id="@+id/quantity_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:gravity="center"
+                            android:background="@drawable/border1"
+                            style="@style/mySpinnerItemStyle"/>
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/choose_size"
@@ -245,43 +259,42 @@
         </LinearLayout>
     </ScrollView>
 
-    <!--  <androidx.cardview.widget.CardView-->
-    <!--      xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--      android:layout_width="wrap_content"-->
-    <!--      android:layout_height="wrap_content"-->
-    <!--      xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--      android:elevation="30dp"-->
-    <!--      app:cardCornerRadius="20dp"-->
-    <!--      android:layout_gravity="center"-->
-    <!--      android:id="@+id/loading_card"-->
-    <!--      android:background="@color/cardview_shadow_end_color"-->
-    <!--      app:layout_constraintStart_toStartOf="parent"-->
-    <!--      app:layout_constraintEnd_toEndOf="parent"-->
-    <!--      app:layout_constraintTop_toTopOf="parent"-->
-    <!--      app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--      android:visibility="gone"-->
-    <!--      >-->
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="@drawable/border"-->
-    <!--        android:padding="30dp"-->
-    <!--        android:orientation="vertical"-->
-    <!--        android:gravity="center_horizontal">-->
-    <!--      <pl.droidsonroids.gif.GifImageView-->
-    <!--          android:layout_width="100dp"-->
-    <!--          android:layout_height="100dp"-->
-    <!--          android:src="@drawable/iv_srijan_light"/>-->
-    <!--      <TextView-->
-    <!--          android:layout_width="wrap_content"-->
-    <!--          android:layout_height="wrap_content"-->
-    <!--          android:text="Loading..."-->
-    <!--          android:textColor="@color/white"-->
-    <!--          android:textSize="20dp"-->
-    <!--          />-->
+      <androidx.cardview.widget.CardView
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          xmlns:app="http://schemas.android.com/apk/res-auto"
+          android:elevation="30dp"
+          app:cardCornerRadius="20dp"
+          android:layout_gravity="center"
+          android:id="@+id/loading_card"
+          android:background="@color/cardview_shadow_end_color"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintBottom_toBottomOf="parent"
+          android:visibility="gone">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bgAlternate"
+            android:padding="30dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+          <ImageView
+              android:layout_width="100dp"
+              android:layout_height="100dp"
+              android:src="@drawable/iv_srijan_light"/>
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Loading..."
+              android:textColor="@color/white"
+              android:textSize="20dp"
+              />
 
-    <!--    </LinearLayout>-->
+        </LinearLayout>
 
-    <!--  </androidx.cardview.widget.CardView>-->
+      </androidx.cardview.widget.CardView>
 
 </FrameLayout>

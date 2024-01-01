@@ -5,6 +5,7 @@
     <color name="transparent">#00000000</color>
 
     <color name="bg">#FFFFFFFF</color>
+    <color name="alternate">#FF000000</color>
     <color name="bgAlternate">#919191</color>
 
     <color name="primary">#FBE10E</color>

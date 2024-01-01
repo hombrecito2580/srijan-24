@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     android:background="@color/bg"
     android:orientation="vertical"
     tools:ignore="hardcodedText">
@@ -12,7 +13,7 @@
         layout="@layout/content_main"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,19 +33,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="0dp"
+            android:layout_margin="8dp"
             app:cardBackgroundColor="@color/transparent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/primary"
-                android:padding="10dp">
+                android:background="@drawable/bg_action_bar"
+                android:orientation="horizontal"
+                android:padding="16dp">
 <!--                android:background="@drawable/bg_action_bar"-->
                 <ImageButton
                     android:id="@+id/btnMenu"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="@color/transparent"
+                    android:layout_gravity="center_vertical"
                     android:contentDescription="Menu"
                     android:src="@drawable/ic_menu" />
 
@@ -52,11 +56,9 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/roboto_bold"
+                    style="@style/h2"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:layout_centerInParent="true"/>
 
             </RelativeLayout>
 

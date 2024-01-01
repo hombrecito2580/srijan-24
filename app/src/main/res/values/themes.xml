@@ -10,6 +10,11 @@
 
     <style name="Theme.Srijan24" parent="Base.Theme.Srijan24" />
 
+    <style name="h0">
+        <item name="android:textSize">38sp</item>
+        <item name="android:fontFamily">@font/roboto_extra_bold</item>
+    </style>
+
     <style name="h1">
         <item name="android:textSize">32sp</item>
         <item name="android:fontFamily">@font/roboto_extra_bold</item>

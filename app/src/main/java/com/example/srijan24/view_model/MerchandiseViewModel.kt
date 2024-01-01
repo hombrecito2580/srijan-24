@@ -55,7 +55,7 @@ class MerchandiseViewModel(application: Application) : AndroidViewModel(applicat
                     selectedImageUri
                 )!!
             )
-//
+
             Log.i("Data", dataModel.toString())
             Log.i("file", imageFile.toString())
 
@@ -76,8 +76,7 @@ class MerchandiseViewModel(application: Application) : AndroidViewModel(applicat
             call.enqueue(object : retrofit2.Callback<ApiResponse> {
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     Log.i("Tag", response.toString())
-//                binding.loadingCard.visibility = View.INVISIBLE
-//                binding.scrollViewMerchandise.visibility = View.VISIBLE
+
 
                     Log.i("response", response.body()?.message.toString())
                     if (response.body() == null) {
@@ -97,8 +96,6 @@ class MerchandiseViewModel(application: Application) : AndroidViewModel(applicat
 
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                     Log.i("Tag", t.toString())
-//                binding.loadingCard.visibility = View.INVISIBLE
-//                binding.scrollViewMerchandise.visibility = View.VISIBLE
                     Toast.makeText(
                         context,
                         "Try again !!, It may happen first time",

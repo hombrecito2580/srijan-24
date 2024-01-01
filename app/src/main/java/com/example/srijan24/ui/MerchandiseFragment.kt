@@ -12,6 +12,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.OpenableColumns
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
@@ -27,6 +29,7 @@ import android.widget.SpinnerAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -60,26 +63,17 @@ class MerchandiseFragment : Fragment() {
         const val REQUEST_CODE_IMAGE = 101
     }
 
+    private val perUnitTshirtPrice = 399
     private var isSizeSelected = 0
     private var isImageUploaded = 0
-    private var selectedQuantity = 0
     private var selectedImageUri: Uri? = null
     private lateinit var dataModel: DetailsDataModel
     private var _binding: FragmentMerchandiseBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewPager: ViewPager2
-    private val networkService = NetworkService()
-    private lateinit var spinnerArrayAdapter: ArrayAdapter<String?>
-    private lateinit var quantitySpinner: Spinner
+
     private lateinit var merchViewModel: MerchandiseViewModel
     private lateinit var dialog: Dialog
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -145,60 +139,34 @@ class MerchandiseFragment : Fragment() {
             }
         })
 
-        val quantityArray = resources.getStringArray(R.array.Quantity)
-        quantitySpinner = binding.quantitySpinner
-
-        spinnerArrayAdapter = object : ArrayAdapter<String?>(
-            requireContext(), R.layout.spinner_item, quantityArray
-        ) {
-            override fun isEnabled(position: Int): Boolean {
-                return if (position == 0) {
-                    false
-                } else {
-                    true
-                }
+        // Price Calculation
+        binding.editQuantity.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                return
             }
 
-            override fun getDropDownView(
-                position: Int,
-                convertView: View?,
-                parent: ViewGroup
-            ): View {
-                val view = super.getDropDownView(position, convertView, parent)
-                val tv = view as TextView
-                if (position == 0) {
-                    tv.setTextColor(Color.GRAY)
-                } else {
-                    tv.setTextColor(Color.BLACK)
-                }
-                return view
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                return
+
             }
-        }
-        quantitySpinner.adapter = spinnerArrayAdapter
 
+            override fun afterTextChanged(p0: Editable?) {
 
-        try {
-            quantitySpinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
-                ) {
-                    if (position > 0) {
-                        selectedQuantity = position
+                binding.apply {
+                    val selectedQuantity = editQuantity.text.toString()
+                    if (selectedQuantity.isNotEmpty()) {
+                        val totalPriceToPay = (selectedQuantity.toInt() * perUnitTshirtPrice).toString()
+                        val textToShow = "Total Price: Rs.$totalPriceToPay"
+                        totalPrice.visibility = View.VISIBLE
+                        totalPrice.text = textToShow
+                    } else {
+                        totalPrice.visibility = View.INVISIBLE
+                        totalPrice.text = ""
                     }
-
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    selectedQuantity = 0
-
-
                 }
             }
-        } catch (e: Exception) {
-            Log.d("Error", e.toString())
-        }
+
+        })
 
 
         binding.chooseSize.setOnClickListener {
@@ -351,7 +319,9 @@ class MerchandiseFragment : Fragment() {
 
     }
 
+
     private fun placeOrder() {
+
         dataModel = DetailsDataModel(
             binding.editName.text.toString(),
             binding.editName.text.toString(),
@@ -370,7 +340,7 @@ class MerchandiseFragment : Fragment() {
                 tShirtSize = selectedSize.toString()
                 hostel = editHostel.text.toString()
                 roomNumber = editRoomNo.text.toString()
-                quantity = selectedQuantity.toString()
+                quantity = editQuantity.text.toString()
             }
         }
 
@@ -379,32 +349,36 @@ class MerchandiseFragment : Fragment() {
 
         if (dataModel.name.isEmpty()) {
             binding.editName.error = "Name can't be empty"
-            Log.d("Field1", binding.editName.text.toString())
+            Log.d("name", binding.editName.text.toString())
             flag = 0
         }
         if (dataModel.admissionNumber.isEmpty()) {
             binding.editAdmno.error = "Admission no. can't be empty"
-            Log.d("Field1", dataModel.admissionNumber)
+            Log.d("admission no", dataModel.admissionNumber)
             flag = 0
         }
 
         if (dataModel.hostel.isEmpty()) {
 
             binding.editHostel.error = "Hostel name can't be empty"
-            Log.d("Field1", dataModel.hostel)
+            Log.d("hostel", dataModel.hostel)
             flag = 0
         }
         if (dataModel.mobileNumber.isEmpty()) {
             binding.editPhone.error = "Phone no. can't be empty"
-            Log.d("Field1", dataModel.mobileNumber)
+            Log.d("phone", dataModel.mobileNumber)
             flag = 0
         }
         if (dataModel.roomNumber.isEmpty()) {
             binding.editRoomNo.error = "Room no. can't be empty"
-            Log.d("Field1", dataModel.roomNumber)
+            Log.d("room no", dataModel.roomNumber)
             flag = 0
         }
-
+        if (dataModel.quantity.isEmpty()) {
+            binding.editQuantity.error = "Quantity not selected"
+            Log.d("quantity", dataModel.roomNumber)
+            flag = 0
+        }
         if (isSizeSelected == 0) {
             flag = 0
             Toast.makeText(context, "Size not Selected!!", Toast.LENGTH_SHORT).show()
@@ -413,15 +387,9 @@ class MerchandiseFragment : Fragment() {
             flag = 0
             Toast.makeText(context, "Image not Uploaded!!", Toast.LENGTH_SHORT).show()
         }
-        if (selectedQuantity == 0) {
-            flag = 0
-            Toast.makeText(context, "Quantity not Selected!!", Toast.LENGTH_SHORT).show()
-        }
 
-        if (flag == 1 && isSizeSelected == 1 && selectedQuantity > 0) {
-//            binding.loadingCard.visibility = View.VISIBLE
-//            binding.scrollViewMerchandise.visibility = View.INVISIBLE
 
+        if (flag == 1 && isSizeSelected == 1) {
 
             //api hit
 
@@ -432,22 +400,21 @@ class MerchandiseFragment : Fragment() {
                     dialog.show()
                 } else {
                     dialog.dismiss()
+
+                    binding.chooseSize.text = "Choose Size"
+                    binding.choosePaymentSs.text = "Payement Screenshot"
+                    selectedSizeIndex = 0
+                    binding.editName.text.clear()
+                    binding.editAdmno.text.clear()
+                    binding.editHostel.text.clear()
+                    binding.editRoomNo.text.clear()
+                    binding.editPhone.text.clear()
+                    binding.editQuantity.text.clear()
+                    selectedImageUri = null
                 }
             }
 
-            binding.chooseSize.text = "Choose Size"
-            binding.choosePaymentSs.text = "Payement Screenshot"
-            selectedSizeIndex = 0;
-//            binding.loadingCard.visibility = View.INVISIBLE
 
-            binding.editName.text.clear()
-            binding.editAdmno.text.clear()
-            binding.editHostel.text.clear()
-            binding.editRoomNo.text.clear()
-            binding.editPhone.text.clear()
-            quantitySpinner.setSelection(0)
-            selectedQuantity = 0
-            selectedImageUri = null
         }
     }
 

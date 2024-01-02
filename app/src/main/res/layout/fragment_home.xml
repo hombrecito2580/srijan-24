@@ -1,294 +1,356 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@color/bg"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".ui.HomeFragment"-->
+<!--    tools:ignore="hardcodedText">-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
+    android:fillViewport="true"
     android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     tools:context=".ui.HomeFragment"
     tools:ignore="hardcodedText">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <!--            <ImageView-->
-            <!--                android:layout_width="300dp"-->
-            <!--                android:layout_height="210dp"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:src="@drawable/home_logo" />-->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/h2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Teaser"
-                    android:textColor="@color/text" />
-
-                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                    android:id="@+id/youtube_player"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    app:autoPlay="false"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginHorizontal="8dp"
-                    app:enableAutomaticInitialization="true"
-                    app:handleNetworkEvents="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:videoId="PZrTRhAXPWY"
-                    tools:ignore="MissingClass" />
-
-                <TextView
-                    style="@style/h2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="24dp"
-                    android:text="Gallery"
-                    android:textColor="@color/text" />
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/view_pager_carousel"
-                    android:layout_width="300dp"
-                    android:layout_height="240dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="8dp" />
-
-                <LinearLayout
-                    android:id="@+id/dotLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:orientation="horizontal" />
-
-                <TextView
-                    style="@style/h2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="24dp"
-                    android:text="Timeline"
-                    android:textColor="@color/text" />
-
-                <ImageView
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:elevation="10dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/coming_soon"
-                    android:layout_gravity="center_horizontal"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textcounterdown"
-            style="@style/h2"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Time Left"
-            android:textColor="@color/text" />
+            android:layout_margin="8dp">
 
-        <TextView
-            android:id="@+id/finished_id"
-            style="@style/h2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Finished"
-            android:textColor="@color/text"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lobster_regular"
+                android:text="Srijan'24"
+                android:textColor="@color/primary"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@id/ivLogo"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lobster_regular"
+                android:text="is here...."
+                android:textColor="@color/text"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivLogo"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
-        <!--                <TextView-->
-        <!--                    android:id="@+id/finished_id"-->
-        <!--                    style="@style/h2"-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:text="Finished"-->
-        <!--                    android:textAlignment="center"-->
-        <!--                    android:textColor="@color/text"-->
-        <!--                    android:visibility="gone" />-->
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="200dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:contentDescription="ivLogo"
+                android:src="@drawable/home_logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/textcounterdown"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Time Left"
+                android:textColor="@color/text" />
+
+            <TextView
+                android:id="@+id/finished_id"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Finished"
+                android:textColor="@color/text"
+                android:visibility="gone" />
+
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/finished_id"-->
+            <!--                    style="@style/h2"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="Finished"-->
+            <!--                    android:textAlignment="center"-->
+            <!--                    android:textColor="@color/text"-->
+            <!--                    android:visibility="gone" />-->
+
+
+            <LinearLayout
+                android:id="@+id/LinearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/counter"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/txtDay"
+                        style="@style/h3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:gravity="center"
+                        android:textColor="@color/text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_Day"
+                        style="@style/h5"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Days"
+                        android:textColor="@color/text"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/counter"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/txtHour"
+                        style="@style/h3"
+                        android:text="00"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_Hour"
+                        style="@style/h5"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="Hours"
+                        android:textColor="@color/text"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:id="@+id/LinearLayout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/counter"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/txtMinute"
+                        style="@style/h3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="00"
+                        android:textColor="@color/text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/h5"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="Minutes"
+                        android:textColor="@color/text"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:id="@+id/LinearLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/counter"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/txtSecond"
+                        style="@style/h3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="00"
+                        android:textColor="@color/text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_Second"
+                        style="@style/h5"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="Seconds"
+                        android:textColor="@color/text"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:autoPlay="false"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="8dp"
+            app:enableAutomaticInitialization="true"
+            app:handleNetworkEvents="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:videoId="PZrTRhAXPWY"
+            tools:ignore="MissingClass" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_carousel"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:id="@+id/dotLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal" />
 
-            <LinearLayout
-                android:id="@+id/LinearLayout1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/counter"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
+        <TextView
+            style="@style/h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="Timeline"
+            android:textColor="@color/text" />
 
-                <TextView
-                    android:id="@+id/txtDay"
-                    style="@style/h3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_Day"
-                    style="@style/h4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="Days"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LinearLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/counter"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/txtHour"
-                    style="@style/h3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_Hour"
-                    style="@style/h4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="Hours"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-
-                android:id="@+id/LinearLayout3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/counter"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/txtMinute"
-                    style="@style/h3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-
-                <TextView
-                    style="@style/h4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="Minutes"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-
-                android:id="@+id/LinearLayout4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/counter"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/txtSecond"
-                    style="@style/h3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_Second"
-                    style="@style/h4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="Seconds"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:elevation="10dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/coming_soon"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:gravity="center_horizontal"-->
+    <!--            android:orientation="vertical">-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:orientation="vertical">-->
+
+    <!--                <TextView-->
+    <!--                    style="@style/h2"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_gravity="center_horizontal"-->
+    <!--                    android:text="Teaser"-->
+    <!--                    android:textColor="@color/text" />-->
+
+
+
+    <!--                <TextView-->
+    <!--                    style="@style/h2"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_gravity="center_horizontal"-->
+    <!--                    android:layout_marginTop="24dp"-->
+    <!--                    android:text="Gallery"-->
+    <!--                    android:textColor="@color/text" />-->
+
+
+
+
+
+    <!--            </LinearLayout>-->
+
+    <!--        </LinearLayout>-->
+
+</ScrollView>
+
+
+
+    <!--    <androidx.constraintlayout.widget.Guideline-->
+    <!--        android:id="@+id/guideline"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintGuide_percent="0.8" />-->
+
+    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
 

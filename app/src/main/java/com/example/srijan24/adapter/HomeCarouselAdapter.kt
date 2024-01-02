@@ -26,6 +26,7 @@ class HomeCarouselAdapter(private val dataList: Array<Int>): RecyclerView.Adapte
             .load(dataList[position])
             .placeholder(R.drawable.ic_merchandise)
             .error(R.drawable.ic_merchandise)
+            .centerCrop()
             .into(imageView)
     }
 }

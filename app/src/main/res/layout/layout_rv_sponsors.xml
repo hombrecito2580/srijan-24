@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/ivSponsor"
             android:padding="4dp"
-            android:src="@drawable/ic_team"
+            android:src="@drawable/home_logo"
             android:scaleType="fitCenter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

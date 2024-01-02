@@ -374,8 +374,8 @@ class MerchandiseFragment : Fragment() {
             Log.d("room no", dataModel.roomNumber)
             flag = 0
         }
-        if (dataModel.quantity.isEmpty()) {
-            binding.editQuantity.error = "Quantity not selected"
+        if (dataModel.quantity.isEmpty() || dataModel.quantity.toInt() < 1 ) {
+            binding.editQuantity.error = "Quantity  can't be empty"
             Log.d("quantity", dataModel.roomNumber)
             flag = 0
         }

@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val images = arrayOf(R.drawable.ic_team , R.drawable.ic_team, R.drawable.ic_team, R.drawable.ic_team, R.drawable.ic_team, R.drawable.ic_team, R.drawable.ic_team)
+        val images = arrayOf(R.drawable.gallery_img_1 , R.drawable.gallery_img_2, R.drawable.gallery_img_3, R.drawable.gallery_img_4, R.drawable.gallery_img_5, R.drawable.gallery_img_6)
         binding.viewPagerCarousel.adapter = HomeCarouselAdapter(images)
 
         val compositePageTransformer = CompositePageTransformer()

@@ -39,8 +39,8 @@ class SponsorRVAdapter(
                 .load(currentData.img)
                 .apply(
                     RequestOptions()
-                        .placeholder(R.drawable.home_logo)
-                        .error(R.drawable.home_logo)
+                        .placeholder(R.drawable.srijan_modified_logo)
+                        .error(R.drawable.srijan_modified_logo)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                 )
                 .into(holder.ivSponsor)

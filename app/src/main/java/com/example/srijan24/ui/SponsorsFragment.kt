@@ -55,6 +55,8 @@ class SponsorsFragment : Fragment() {
                     )
                 )
             )
+            dialog.window!!.setBackgroundDrawableResource(R.color.transparent)
+
         }
 
         binding.rvSponsors.layoutManager = LinearLayoutManager(context)

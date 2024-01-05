@@ -51,5 +51,12 @@
 
     <style name="ProgressBarTheme">
         <item name="colorSecondary">@color/primary</item>
+
     </style>
+
+    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

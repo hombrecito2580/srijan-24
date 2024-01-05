@@ -10,16 +10,13 @@ interface MerchandiseApiService {
     @Multipart
     @POST("api/purchase")
     fun uploadData(
-        @Part("orderID") orderID: RequestBody,
         @Part("name") name: RequestBody,
         @Part("admissionNumber") admissionNumber: RequestBody,
         @Part("mobileNumber") mobileNumber: RequestBody,
-        @Part("branch") branch: RequestBody,
         @Part("tshirtSize") tshirtSize: RequestBody,
-        @Part("transactionID") transactionID: RequestBody,
         @Part("hostel") hostel: RequestBody,
         @Part("roomNumber") roomNumber: RequestBody,
-        @Part("email") email : RequestBody,
+        @Part("quantity") quantity: RequestBody,
         @Part image: MultipartBody.Part
     ): Call<ApiResponse>
 }

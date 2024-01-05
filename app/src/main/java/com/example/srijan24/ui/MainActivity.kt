@@ -42,11 +42,22 @@ class MainActivity : AppCompatActivity() {
 //        setupActionBarWithNavController(navController, binding.drawerLayout)
 //        binding.navView.setupWithNavController(navController)
 
+
         binding.appBar.btnMenu.setOnClickListener{
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
+
+            when (destination.id) {
+                R.id.homeFragment -> binding.navView.setCheckedItem(R.id.homeFragment)
+                R.id.eventsFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
+                R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
+                R.id.sponsorsFragment -> binding.navView.setCheckedItem(R.id.sponsorsFragment)
+                R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
+                R.id.contactFragment -> binding.navView.setCheckedItem(R.id.contactFragment)
+                else -> binding.navView.setCheckedItem(R.id.homeFragment)
+            }
             binding.appBar.tvTitle.text = when(destination.id) {
                 R.id.homeFragment -> "Home"
                 R.id.eventsFragment -> "Events"

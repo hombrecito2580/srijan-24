@@ -239,22 +239,6 @@
 
         </LinearLayout>
 
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:id="@+id/youtube_player"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:autoPlay="false"
-            android:layout_marginTop="24dp"
-            android:layout_marginHorizontal="8dp"
-            app:enableAutomaticInitialization="true"
-            app:handleNetworkEvents="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:videoId="PZrTRhAXPWY"
-            tools:ignore="MissingClass" />
-
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_carousel"
             android:layout_width="match_parent"
@@ -271,6 +255,22 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal" />
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:autoPlay="false"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="8dp"
+            app:enableAutomaticInitialization="true"
+            app:handleNetworkEvents="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:videoId="PZrTRhAXPWY"
+            tools:ignore="MissingClass" />
 
         <TextView
             style="@style/h2"

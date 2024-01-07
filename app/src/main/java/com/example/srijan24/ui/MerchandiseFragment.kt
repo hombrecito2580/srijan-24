@@ -46,11 +46,19 @@ import com.example.srijan24.view_model.MerchandiseViewModel
 import com.example.srijan24.view_model.SponsorViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.razorpay.Checkout
+import com.razorpay.ExternalWalletListener
+import com.razorpay.PaymentResultListener
+import com.razorpay.PaymentResultWithDataListener
+import com.razorpay.RzpAssist
+import com.razorpay.RzpGpayUtilMerged
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 import java.io.File
@@ -81,6 +89,7 @@ class MerchandiseFragment : Fragment() {
     ): View {
         _binding = FragmentMerchandiseBinding.inflate(inflater, container, false)
         val view = binding.root
+        Checkout.preload(requireContext())
         return view
     }
 
@@ -180,6 +189,10 @@ class MerchandiseFragment : Fragment() {
 
         binding.placeOrderButton.setOnClickListener {
             placeOrder()
+        }
+
+        binding.payButton.setOnClickListener {
+            makepayment()
         }
 
     }
@@ -319,7 +332,6 @@ class MerchandiseFragment : Fragment() {
 
     }
 
-
     private fun placeOrder() {
 
         dataModel = DetailsDataModel(
@@ -417,6 +429,41 @@ class MerchandiseFragment : Fragment() {
 
         }
     }
+
+    private fun makepayment(){
+
+        val activity=requireActivity()
+        val co = Checkout()
+        //co.setKeyID("rzp_test_k00cTtIsQ85SIy")
+
+        try {
+            val options = JSONObject()
+            options.put("name","Srijan")
+            options.put("description","Demoing Charges")
+            //You can omit the image option to fetch the image from the dashboard
+            options.put("theme.color", "#3399cc");
+            options.put("currency","INR");
+            options.put("amount","100")//pass amount in currency subunits
+
+            val retryObj = JSONObject();
+            retryObj.put("enabled", true)
+            retryObj.put("max_count", 4);
+            options.put("retry", retryObj);
+
+//            val prefill = JSONObject()
+//            prefill.put("email","srijan@iitism.ac.in")
+//            prefill.put("contact","8789185248")
+
+//            options.put("prefill",prefill)
+            co.open(activity,options)
+        }catch (e: Exception){
+            Toast.makeText(activity,"Error in payment: "+ e.message,Toast.LENGTH_LONG).show()
+            e.printStackTrace()
+        }
+
+
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

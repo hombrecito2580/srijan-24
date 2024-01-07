@@ -38,6 +38,10 @@
 
             <group android:checkableBehavior="single">
 
+                <item android:id="@+id/aboutUsFragment"
+                    android:icon="@drawable/ic_about_us"
+                    android:title="About Us" />
+
                 <item android:id="@+id/coreTeamFragment"
                     android:icon="@drawable/ic_team"
                     android:title="Core Team" />

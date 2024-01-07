@@ -36,6 +36,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -67,4 +68,9 @@ dependencies {
 
     //gif drawable
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    api ("com.razorpay:checkout:1.6.20")
+
+
 }

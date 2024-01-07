@@ -15,6 +15,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.srijan24.R
 import com.example.srijan24.adapter.HomeCarouselAdapter
 import com.example.srijan24.databinding.FragmentHomeBinding
+import java.text.SimpleDateFormat
+import java.util.Date
 import kotlin.math.abs
 
 
@@ -32,6 +34,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        countDownSrijanStart()
 
         val images = arrayOf(R.drawable.gallery_img_1 , R.drawable.gallery_img_2, R.drawable.gallery_img_3, R.drawable.gallery_img_4, R.drawable.gallery_img_5, R.drawable.gallery_img_6)
         binding.viewPagerCarousel.adapter = HomeCarouselAdapter(images)
@@ -52,6 +56,86 @@ class HomeFragment : Fragment() {
                 updateDots(position)
             }
         })
+    }
+
+    fun countDownSrijanStart(){
+        val handler = android.os.Handler()
+        val runnable = object : java.lang.Runnable {
+            override fun run() {
+                handler.postDelayed(this, 1000)
+                try {
+                    val currentDate = Date()
+                    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                    val futureDate: Date = dateFormat.parse("2024-02-02 00:00:00")
+                    if (!currentDate.after(futureDate)) {
+                        var diff: Long = (futureDate.getTime()
+                                - currentDate.getTime())
+                        val days = diff / (24 * 60 * 60 * 1000)
+                        diff -= days * (24 * 60 * 60 * 1000)
+                        val hours = diff / (60 * 60 * 1000)
+                        diff -= hours * (60 * 60 * 1000)
+                        val minutes = diff / (60 * 1000)
+                        diff -= minutes * (60 * 1000)
+                        val seconds = diff / 1000
+                        binding.txtDay.setText("" + String.format("%02d", days))
+                        binding.txtHour.setText("" + String.format("%02d", hours))
+                        binding.txtMinute.setText("" + String.format("%02d", minutes))
+                        binding.txtSecond.setText("" + String.format("%02d",seconds))
+                    }
+                    else {
+                        countDownSrijanEnd()
+                        binding.textcounterdown.text = "Srijan'23 is Live"
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        handler.postDelayed(runnable, 1 * 1000)
+
+    }
+
+
+
+    fun countDownSrijanEnd(){
+        val handler = android.os.Handler()
+        val runnable = object : java.lang.Runnable {
+            override fun run() {
+                handler.postDelayed(this, 1000)
+                try {
+                    val currentDate = Date()
+                    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                    val futureDate: Date = dateFormat.parse("2024-02-05 00:00:00")
+                    if (!currentDate.after(futureDate)) {
+
+                        var diff: Long = (futureDate.getTime()
+                                - currentDate.getTime())
+                        val days = diff / (24 * 60 * 60 * 1000)
+                        diff -= days * (24 * 60 * 60 * 1000)
+                        val hours = diff / (60 * 60 * 1000)
+                        diff -= hours * (60 * 60 * 1000)
+                        val minutes = diff / (60 * 1000)
+                        diff -= minutes * (60 * 1000)
+                        val seconds = diff / 1000
+                        binding.txtDay.setText("" + String.format("%02d", days))
+                        binding.txtHour.setText("" + String.format("%02d", hours))
+                        binding.txtMinute.setText("" + String.format("%02d", minutes))
+                        binding.txtSecond.setText("" + String.format("%02d",seconds))
+                    }
+                    else {
+                        binding.textcounterdown.text = "Srijan'23 is  Over"
+                        binding.txtDay.visibility = View.INVISIBLE
+                        binding.txtHour.visibility = View.INVISIBLE
+                        binding.txtMinute.visibility = View.INVISIBLE
+                        binding.txtSecond.visibility = View.INVISIBLE
+
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        handler.postDelayed(runnable,  1 * 1000)
     }
 
     private fun addDotsIndicator(size: Int) {

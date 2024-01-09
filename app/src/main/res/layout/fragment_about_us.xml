@@ -48,7 +48,9 @@
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
                     style="@style/h5"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp"
+                    android:justificationMode="inter_word"
+                    tools:targetApi="o"/>
 
             </LinearLayout>
 

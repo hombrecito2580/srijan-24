@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="false"
-        android:backgroundTint="@color/bg"
+        android:backgroundTint="@color/nav_bar"
         app:headerLayout="@layout/layout_nav_drawer_header"
         app:itemRippleColor="@color/primary"
         app:itemBackground="@drawable/nav_item_background"

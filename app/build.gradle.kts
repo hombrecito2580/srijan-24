@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.srijan24"
+    namespace = "com.iitism.srijan24"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.srijan24"
+        applicationId = "com.iitism.srijan24"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -70,7 +70,7 @@ dependencies {
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
-    api ("com.razorpay:checkout:1.6.20")
+    api ("com.razorpay:checkout:1.6.33")
 
 
 }

@@ -15,4 +15,6 @@
     <color name="text">#FFFFFFFF</color>
 
     <color name="action_bar">#151409</color>
+    <color name="nav_bar">#151409</color>
+
 </resources>

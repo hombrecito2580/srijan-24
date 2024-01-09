@@ -32,19 +32,6 @@
             android:layout_gravity="center"
             android:layout_margin="8dp">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="36dp"
-                android:fontFamily="@font/lobster_regular"
-                android:text="is here..."
-                android:textColor="@color/text"
-                android:textSize="32sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.347"
-                app:layout_constraintStart_toEndOf="@+id/ivLogo" />
 
             <ImageView
                 android:id="@+id/ivLogo"
@@ -52,10 +39,11 @@
                 android:layout_height="120dp"
                 android:layout_gravity="center"
                 android:contentDescription="ivLogo"
-                android:src="@drawable/srijan_modified_logo"
+                android:src="@drawable/iv_srijan_light"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.543"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
@@ -75,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Time Left"
-                android:textColor="@color/text" />
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/finished_id"
@@ -84,19 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Finished"
-                android:textColor="@color/text"
+                android:textColor="@color/white"
                 android:visibility="gone" />
-
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/finished_id"-->
-            <!--                    style="@style/h2"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Finished"-->
-            <!--                    android:textAlignment="center"-->
-            <!--                    android:textColor="@color/text"-->
-            <!--                    android:visibility="gone" />-->
 
 
             <LinearLayout
@@ -125,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:text="00"
                         android:gravity="center"
-                        android:textColor="@color/text"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
 
                     <TextView
@@ -135,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:text="Days"
-                        android:textColor="@color/text"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -156,7 +133,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textColor="@color/text"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
 
                     <TextView
@@ -167,7 +144,7 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:text="Hours"
-                        android:textColor="@color/text"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -189,7 +166,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="00"
-                        android:textColor="@color/text"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
 
                     <TextView
@@ -199,7 +176,7 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:text="Minutes"
-                        android:textColor="@color/text"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -221,7 +198,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="00"
-                        android:textColor="@color/text"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
 
                     <TextView
@@ -232,12 +209,13 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:text="Seconds"
-                        android:textColor="@color/text"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
+
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_carousel"
@@ -279,7 +257,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:text="Timeline"
-            android:textColor="@color/text" />
+            android:textColor="@color/white" />
 
         <ImageView
             android:layout_width="300dp"

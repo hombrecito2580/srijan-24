@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.iitism.srijan24.R
+
 import com.iitism.srijan24.data.CoreTeamDataModel
 
 class CoreTeamAdapter(private val dataList:List<CoreTeamDataModel>) :

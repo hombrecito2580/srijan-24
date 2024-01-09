@@ -113,6 +113,8 @@
                     android:gravity="center_horizontal"
                     android:layout_gravity="center_horizontal"
                     android:textColor="@color/text"
+                    android:justificationMode="inter_word"
+                    tools:targetApi="o"
                     style="@style/h5"
                     android:layout_margin="10dp"/>
 
@@ -166,6 +168,8 @@
                     android:layout_height="wrap_content"
                     android:text="Co Convener"
                     android:textColor="@color/text"
+                    android:justificationMode="inter_word"
+                    tools:targetApi="o"
                     android:layout_margin="10dp"
                     style="@style/h3"/>
 
@@ -230,6 +234,8 @@
                     android:layout_height="wrap_content"
                     android:text="Co Convener"
                     android:textColor="@color/text"
+                    android:justificationMode="inter_word"
+                    tools:targetApi="o"
                     android:layout_margin="10dp"
                     style="@style/h3"/>
 

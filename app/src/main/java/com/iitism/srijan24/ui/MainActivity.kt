@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.homeFragment,
             R.id.eventsFragment,
+            R.id.announcementsFragment,
             R.id.merchandiseFragment,
             R.id.sponsorsFragment,
             R.id.aboutUsFragment,
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             when (destination.id) {
                 R.id.homeFragment -> binding.navView.setCheckedItem(R.id.homeFragment)
                 R.id.eventsFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
+                R.id.announcementsFragment -> binding.navView.setCheckedItem(R.id.announcementsFragment)
                 R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
                 R.id.sponsorsFragment -> binding.navView.setCheckedItem(R.id.sponsorsFragment)
                 R.id.aboutUsFragment -> binding.navView.setCheckedItem(R.id.aboutUsFragment)
@@ -63,6 +65,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             binding.appBar.tvTitle.text = when(destination.id) {
                 R.id.homeFragment -> "Home"
                 R.id.eventsFragment -> "Events"
+                R.id.announcementsFragment -> "Announcements"
                 R.id.merchandiseFragment -> "Merchandise"
                 R.id.sponsorsFragment -> "Past Sponsors"
                 R.id.aboutUsFragment -> "About Us"

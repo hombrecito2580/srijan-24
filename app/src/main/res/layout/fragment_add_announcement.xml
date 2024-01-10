@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg"
+    tools:context=".ui.AddAnnouncementFragment"
+    tools:ignore="hardcodedText">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/bgLight"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="12dp">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                style="@style/h3"
+                android:textColor="@color/text"
+                android:text="Create an announcement" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="Title*"
+                style="@style/h4"
+                android:textColor="@color/text" />
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:background="@drawable/border"
+                android:inputType="textMultiLine"
+                style="@style/h3"
+                android:textColor="@color/text"
+                android:maxLines="2"
+                tools:ignore="Autofill,LabelFor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="5dp"
+                android:text="Body*"
+                style="@style/h4"
+                android:textColor="@color/text" />
+
+            <EditText
+                android:id="@+id/etBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:background="@drawable/border"
+                android:inputType="textMultiLine"
+                android:textColor="@color/text"
+                style="@style/h3"
+                android:maxLines="4"
+                tools:ignore="Autofill,LabelFor" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSubmit"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:background="@drawable/button_background1"
+                android:backgroundTint="@color/primary"
+                android:padding="16dp"
+                android:text="SUBMIT"
+                android:textColor="@color/black" />
+            
+        </LinearLayout>
+        
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

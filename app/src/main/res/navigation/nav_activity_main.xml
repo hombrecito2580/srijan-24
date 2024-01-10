@@ -45,5 +45,10 @@
         android:name="com.iitism.srijan24.ui.AnnouncementsFragment"
         android:label="fragment_announcements"
         tools:layout="@layout/fragment_announcements" />
+    <fragment
+        android:id="@+id/addAnnouncementFragment"
+        android:name="com.iitism.srijan24.ui.AddAnnouncementFragment"
+        android:label="fragment_add_announcement"
+        tools:layout="@layout/fragment_add_announcement" />
 
 </navigation>

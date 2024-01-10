@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             R.id.announcementsFragment,
             R.id.merchandiseFragment,
             R.id.sponsorsFragment,
+            R.id.addAnnouncementFragment,
             R.id.aboutUsFragment,
             R.id.coreTeamFragment,
             R.id.contactFragment
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.announcementsFragment -> binding.navView.setCheckedItem(R.id.announcementsFragment)
                 R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
                 R.id.sponsorsFragment -> binding.navView.setCheckedItem(R.id.sponsorsFragment)
+                R.id.addAnnouncementFragment -> binding.navView.setCheckedItem(R.id.addAnnouncementFragment)
                 R.id.aboutUsFragment -> binding.navView.setCheckedItem(R.id.aboutUsFragment)
                 R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
                 R.id.contactFragment -> binding.navView.setCheckedItem(R.id.contactFragment)
@@ -68,6 +70,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.announcementsFragment -> "Announcements"
                 R.id.merchandiseFragment -> "Merchandise"
                 R.id.sponsorsFragment -> "Past Sponsors"
+                R.id.addAnnouncementFragment -> "New Announcement"
                 R.id.aboutUsFragment -> "About Us"
                 R.id.coreTeamFragment -> "Core Team"
                 R.id.contactFragment -> "Contact Us"

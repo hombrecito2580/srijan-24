@@ -36,6 +36,22 @@
 
     </item>
 
+    <item android:title="Admin Section">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item android:id="@+id/addAnnouncementFragment"
+                    android:icon="@drawable/ic_write"
+                    android:title="New Announcement" />
+
+            </group>
+
+        </menu>
+
+    </item>
+
     <item android:title="Support Section">
 
         <menu>

@@ -3,13 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg"
-    tools:context=".ui.AnnouncementsFragment">
+    tools:context=".ui.AnnouncementsFragment"
+    tools:ignore="hardcodedText">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAnnouncement"
+        android:id="@+id/rvAnnouncements"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/layout_rv_announcement" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_refresh"
+        android:backgroundTint="@color/primary"
+        app:tint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="24dp"
+        android:contentDescription="btnRefresh" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,23 +30,25 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 
 //        setSupportActionBar(toolbar)
 
-        appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.homeFragment,
-            R.id.eventsFragment,
-            R.id.announcementsFragment,
-            R.id.merchandiseFragment,
-            R.id.sponsorsFragment,
-            R.id.addAnnouncementFragment,
-            R.id.aboutUsFragment,
-            R.id.coreTeamFragment,
-            R.id.contactFragment
-        ), binding.drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment,
+                R.id.eventsFragment,
+                R.id.announcementsFragment,
+                R.id.merchandiseFragment,
+                R.id.sponsorsFragment,
+                R.id.addAnnouncementFragment,
+                R.id.aboutUsFragment,
+                R.id.coreTeamFragment,
+                R.id.contactFragment
+            ), binding.drawerLayout
+        )
 
 //        setupActionBarWithNavController(navController, binding.drawerLayout)
 //        binding.navView.setupWithNavController(navController)
 
 
-        binding.appBar.btnMenu.setOnClickListener{
+        binding.appBar.btnMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
 
@@ -64,7 +66,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.contactFragment -> binding.navView.setCheckedItem(R.id.contactFragment)
                 else -> binding.navView.setCheckedItem(R.id.homeFragment)
             }
-            binding.appBar.tvTitle.text = when(destination.id) {
+            binding.appBar.tvTitle.text = when (destination.id) {
                 R.id.homeFragment -> "Home"
                 R.id.eventsFragment -> "Events"
                 R.id.announcementsFragment -> "Announcements"
@@ -88,10 +90,12 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
     }
 
     override fun onPaymentSuccess(p0: String?) {
-        Toast.makeText(applicationContext,"Payment success", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "Payment success", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
-        Toast.makeText(applicationContext,"Payment failure", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "Payment failure", Toast.LENGTH_SHORT).show()
     }
+
+
 }

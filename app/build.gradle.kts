@@ -64,13 +64,16 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     //youtubeplayer
-    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
 
     //gif drawable
-    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
-    api ("com.razorpay:checkout:1.6.33")
+    api("com.razorpay:checkout:1.6.33")
+
+    //otp_view
+    implementation("implementation ‘io.github.chaosleung:pinview:1.4.4")
 
 
 }

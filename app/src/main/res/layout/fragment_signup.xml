@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.LoginFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="24dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/h1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Account" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please enter your college email" />
+            <EditText
+                android:id="@+id/editNameSign"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Name"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/border2"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="10dp"
+                android:textSize="15sp" />
+            <EditText
+                android:id="@+id/editEmailSign"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="College Email"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/border2"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="10dp"
+                android:textSize="15sp" />
+            <EditText
+                android:id="@+id/editPhnSign"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textCursorDrawable="@null"
+                android:hint="Contact Number"
+                android:background="@drawable/border2"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="10dp"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/editPassSign"
+                android:layout_width="match_parent"
+                android:textCursorDrawable="@null"
+                android:layout_height="40dp"
+                android:hint="Password"
+                android:background="@drawable/border2"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="10dp"
+                android:textSize="15sp" />
+            <EditText
+                android:id="@+id/editConPassSign"
+                android:layout_width="match_parent"
+                android:textCursorDrawable="@null"
+                android:layout_height="40dp"
+                android:hint="Confirm Password"
+                android:background="@drawable/border2"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="10dp"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/signInBtn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                style="@style/btn"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="end"
+                android:backgroundTint="#F1A820"
+                android:drawableEnd="@drawable/ic_btn_right_arrow"
+                android:text="SIGNUP" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/light_text"
+                    android:text="Already have an account?" />
+
+                <TextView
+                    android:id="@+id/loginTextView"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:layout_marginStart="4dp"
+                    android:textSize="16sp"
+                    android:textColor="#F1A820" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

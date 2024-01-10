@@ -7,17 +7,18 @@
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
+
             <data android:scheme="http" />
         </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
+
             <data android:scheme="https" />
         </intent>
     </queries>
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -25,8 +26,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Srijan24"
+        android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.LoginSignupActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
@@ -40,24 +45,20 @@
 
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_k00cTtIsQ85SIy">
-
-        </meta-data>
+            android:value="rzp_test_k00cTtIsQ85SIy"></meta-data>
 
         <activity
             android:name="com.razorpay.CheckoutActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
+
                 <data
                     android:host="rzp.io"
-                    android:scheme="io.rzp">
-
-                </data>
-
+                    android:scheme="io.rzp"></data>
             </intent-filter>
-        <!-- Other activity attributes -->
+            <!-- Other activity attributes -->
         </activity>
 
         <receiver
@@ -65,11 +66,9 @@
             android:exported="false"
             tools:replace="android:exported">
             <intent-filter>
-                <action android:name="rzp.device_token.share"/>
+                <action android:name="rzp.device_token.share" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>
-

@@ -76,7 +76,7 @@
 
                 <data
                     android:host="rzp.io"
-                    android:scheme="io.rzp"></data>
+                    android:scheme="io.rzp" />
             </intent-filter>
             <!-- Other activity attributes -->
         </activity>

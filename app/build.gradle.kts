@@ -4,6 +4,8 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
+
+
 android {
     namespace = "com.iitism.srijan24"
     compileSdk = 34
@@ -73,7 +75,8 @@ dependencies {
     api("com.razorpay:checkout:1.6.33")
 
     //otp_view
-    implementation("implementation ‘io.github.chaosleung:pinview:1.4.4")
+//    implementation("io.github.chaosleung:pinview:1.4.4")
 
+    implementation("com.github.criminact:OTPView:1.0.1")
 
 }

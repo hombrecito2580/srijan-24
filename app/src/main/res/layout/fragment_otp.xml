@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.OtpFragment">
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_otp_verify"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OTP verification"
+        android:fontFamily="@font/futura"
+        android:textSize="28sp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_text"
+        android:text="Enter the OTP sent to your registered mail id"
+        android:textSize="18sp"/>
 
+    <com.noobcode.otpview.OTPView
+        android:id="@+id/otpView"
+        android:layout_marginTop="30dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#F4B33E"
+        app:borderThickness="6"
+        app:otpLength="6"
+        app:spaceBetween="20" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnVerifyOtp"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:backgroundTint="@color/primary"
+        android:background="@drawable/button_background1"/>
 
-</FrameLayout>
+</LinearLayout>

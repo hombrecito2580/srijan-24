@@ -29,5 +29,10 @@ class SignupFragment : Fragment() {
         loginBtn.setOnClickListener {
             findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
         }
+
+        val signUpBtn = binding.signInBtn
+        signUpBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_signupFragment_to_otpFragment)
+        }
     }
 }

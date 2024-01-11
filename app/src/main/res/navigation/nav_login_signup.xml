@@ -26,5 +26,13 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/nav_login_signup"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_signupFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.iitism.srijan24.ui.OtpFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" />
 </navigation>

@@ -1,0 +1,288 @@
+[33mcommit f90e696add558454c97a5bfb458a2b4dd9b7e69a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 00a516e ab0f577
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Fri Jan 5 13:26:54 2024 +0530
+
+    Merge pull request #9 from hombrecito2580/sid_test
+    
+    Home + Merch
+
+[33mcommit ab0f57783d68404c24ed76487abf242c52fff8de[m[33m ([m[1;31morigin/sid_test[m[33m)[m
+Merge: 276b79b 4554ce9
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Tue Jan 2 11:10:15 2024 +0530
+
+    Merge remote-tracking branch 'origin/sid_test' into sid_test
+
+[33mcommit 276b79b467d514bcce1065e712029d3d76cde5e5[m
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Tue Jan 2 11:00:37 2024 +0530
+
+    minor bugs fixed
+
+[33mcommit 090bf2603a94192d2b87a435efa8a9b17bab4dc6[m
+Merge: 4ab6001 575120a
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Tue Jan 2 07:32:12 2024 +0530
+
+    Merge branch 'sid_test'
+    
+    # Conflicts:
+    #       app/src/main/ic_launcher-playstore.png
+    #       app/src/main/res/mipmap-hdpi/ic_launcher.webp
+    #       app/src/main/res/mipmap-hdpi/ic_launcher_foreground.webp
+    #       app/src/main/res/mipmap-hdpi/ic_launcher_round.webp
+    #       app/src/main/res/mipmap-mdpi/ic_launcher.webp
+    #       app/src/main/res/mipmap-mdpi/ic_launcher_foreground.webp
+    #       app/src/main/res/mipmap-mdpi/ic_launcher_round.webp
+    #       app/src/main/res/mipmap-xhdpi/ic_launcher.webp
+    #       app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.webp
+    #       app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp
+    #       app/src/main/res/mipmap-xxhdpi/ic_launcher.webp
+    #       app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.webp
+    #       app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp
+    #       app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp
+    #       app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.webp
+    #       app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp
+    #       app/src/main/res/values/ic_launcher_background.xml
+
+[33mcommit 575120a145e5c484f0570922e8d89e65467d21c5[m
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Tue Jan 2 07:31:09 2024 +0530
+
+    merchandise functional with quantity
+
+[33mcommit 4554ce976657e620f3e1de5215af3b8ae5b5b5b9[m
+Merge: 4fbd072 00a516e
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Tue Jan 2 07:13:35 2024 +0530
+
+    Merge pull request #8 from hombrecito2580/master
+    
+    UI Updates & Home Fragment Update
+
+[33mcommit 4ab600144ebea8ecae6c55b38f593bf7663c66ba[m
+Merge: 4fbd072 00a516e
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Tue Jan 2 07:07:18 2024 +0530
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 00a516e87d71623853b587b784cc0a750d68723b[m
+Author: Pratyush Kumar Chaturvedi <hombrecito2580@gmail.com>
+Date:   Mon Jan 1 17:13:49 2024 +0530
+
+    UI Updates & Home Fragment Update
+
+[33mcommit 4fbd072daa13af18596eae4618101888064d0a84[m
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Mon Jan 1 08:29:31 2024 +0530
+
+    merchandise functional with quantity
+
+[33mcommit c45306eda80ca1ea7e9fe1f48c71e37ab869ae81[m[33m ([m[1;32msid_test[m[33m)[m
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Sun Dec 31 21:11:58 2023 +0530
+
+    merchandise functional
+
+[33mcommit 9e82f98ea351960f88bd654324ef7e408113f2ac[m
+Merge: 3908f2f fe2567a
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Sat Dec 30 22:28:35 2023 +0530
+
+    Merge pull request #7 from hombrecito2580/pratyushTest
+    
+    UI Updates & Home Fragment Update
+
+[33mcommit fe2567a8b074812397fbf5b5482edb98b03b871a[m[33m ([m[1;31morigin/pratyushTest[m[33m)[m
+Author: Pratyush Kumar Chaturvedi <hombrecito2580@gmail.com>
+Date:   Sat Dec 30 16:02:21 2023 +0530
+
+    UI Updates & Home Fragment Update
+
+[33mcommit 3908f2f1fb86a8ed17998aca9fe5d77144d38348[m
+Merge: 42512fa b2c0b0b
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Sat Dec 30 11:48:47 2023 +0530
+
+    Merge pull request #6 from hombrecito2580/sid_test
+    
+    Sid test - Home and Merchandise
+
+[33mcommit b2c0b0b910298f0fda805c1f2498321b219d89ef[m
+Merge: 477d527 42512fa
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Sat Dec 30 11:48:38 2023 +0530
+
+    Merge branch 'master' into sid_test
+
+[33mcommit 42512fa5daa33ba877102720849adf2e188db818[m
+Author: Pratyush Kumar Chaturvedi <hombrecito2580@gmail.com>
+Date:   Sat Dec 30 11:43:55 2023 +0530
+
+    UI Updates & Sponsor Fragment Bug fix
+
+[33mcommit 477d527ef030bb0ccf85c95702a9649640249298[m
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Sat Dec 30 11:17:26 2023 +0530
+
+    home fragment
+
+[33mcommit 8558c6379abcef68d3840f3ae5718a30255f8aec[m
+Merge: 6c2bc72 083197c
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Sat Dec 30 11:12:04 2023 +0530
+
+    Merge branch 'sid_test'
+    
+    # Conflicts:
+    #       app/src/main/res/drawable/border.xml
+
+[33mcommit 3a1aa027d48b8731d6c850b8f3856c48a6a5581a[m
+Merge: c296309 e6366e3
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Sat Dec 30 11:12:00 2023 +0530
+
+    Merge pull request #5 from hombrecito2580/pratyushTest
+    
+    Minor UI Updates
+
+[33mcommit 083197c568ef0cbcc5c6a027806feaecb789aa92[m
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Sat Dec 30 11:11:17 2023 +0530
+
+    home fragment
+
+[33mcommit e6366e33824280371183c9311520acda41150c45[m
+Author: Pratyush Kumar Chaturvedi <hombrecito2580@gmail.com>
+Date:   Sat Dec 30 11:11:11 2023 +0530
+
+    Minor UI Updates
+
+[33mcommit c296309d4bd71263a55e5d447c9c26856349888f[m
+Merge: 6c2bc72 7e66b56
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Sat Dec 30 11:09:52 2023 +0530
+
+    Merge pull request #4 from hombrecito2580/rick_test
+    
+    Rick test - Contact Us Functional
+
+[33mcommit ad16b0be0acc0001463d7782f912626125b83358[m
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Sat Dec 30 11:01:57 2023 +0530
+
+    home fragment
+
+[33mcommit 996976c065e5fd165ae594febe424ea39e8bd829[m
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Sat Dec 30 08:50:16 2023 +0530
+
+    merchandisefragment
+
+[33mcommit 7e66b5671694fc9467ea7237de38c23568a6ce21[m[33m ([m[1;31morigin/rick_test[m[33m)[m
+Author: SaurikSaha <rick.iitian@gmail.com>
+Date:   Sat Dec 30 01:40:56 2023 +0530
+
+    AboutUs functional
+
+[33mcommit b45f88a95f2782e14e852e454ef33fb564c37c58[m
+Merge: c96277e 6c2bc72
+Author: SaurikSaha <rick.iitian@gmail.com>
+Date:   Sat Dec 30 01:31:07 2023 +0530
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       app/build.gradle.kts
+    #       app/src/main/AndroidManifest.xml
+
+[33mcommit c96277e7947da9a05b7ef6ad40eb568bb770cc8a[m
+Author: SaurikSaha <rick.iitian@gmail.com>
+Date:   Sat Dec 30 01:28:24 2023 +0530
+
+    AboutUs functional
+
+[33mcommit 6c2bc72b7d75dcced97c9a8e713faf022b611c9a[m
+Merge: 33c2cc8 5d70450
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Fri Dec 29 15:42:29 2023 +0530
+
+    Merge pull request #3 from hombrecito2580/rick_test
+    
+    Rick test
+
+[33mcommit 5d7045027215dce8e45d9aade14a64e5f768cfcb[m
+Merge: c6f956e 33c2cc8
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Fri Dec 29 15:42:20 2023 +0530
+
+    Merge branch 'master' into rick_test
+
+[33mcommit 33c2cc8b85f7dc04071914a3f97eac7d4741f358[m
+Merge: 3565c79 2232550
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Fri Dec 29 15:38:49 2023 +0530
+
+    Merge pull request #2 from hombrecito2580/pratyushTest
+    
+    Sponsor Fragment Data Update
+
+[33mcommit 2232550c533f47c36aa22c41699e9eb9771a1810[m
+Author: Pratyush Kumar Chaturvedi <hombrecito2580@gmail.com>
+Date:   Fri Dec 29 15:35:45 2023 +0530
+
+    Sponsor Fragment Data Update
+
+[33mcommit 3565c795c7f7be18118ac3223b76e64114cca762[m
+Merge: c361f36 4f62148
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Fri Dec 29 15:00:58 2023 +0530
+
+    Merge pull request #1 from hombrecito2580/sid_test
+    
+    Home Fragment - Siddharth
+
+[33mcommit 4f62148fee069b68afa25e2b4f117540172e255f[m
+Merge: 18ba1e0 c361f36
+Author: Pratyush Kumar Chaturvedi <135107579+hombrecito2580@users.noreply.github.com>
+Date:   Fri Dec 29 14:59:11 2023 +0530
+
+    Merge branch 'master' into sid_test
+
+[33mcommit c361f3628345a09380d55ddf55e6328c61998d49[m
+Author: Pratyush Kumar Chaturvedi <hombrecito2580@gmail.com>
+Date:   Fri Dec 29 14:52:41 2023 +0530
+
+    Sponsors Fragment
+
+[33mcommit c6f956eec18dad37684e2f4733f62e4513cd97bf[m
+Author: SaurikSaha <rick.iitian@gmail.com>
+Date:   Fri Dec 29 14:28:40 2023 +0530
+
+    Initial commit
+
+[33mcommit 6e49a47d384e82e5cfb3f3fb6f9e58162890f963[m
+Author: SaurikSaha <rick.iitian@gmail.com>
+Date:   Fri Dec 29 14:27:48 2023 +0530
+
+    Initial commit
+
+[33mcommit 18ba1e0c3b3c7a095863efc7416a3b52d78ebe1f[m
+Author: Siddharth <goraisiddharth@gmail.com>
+Date:   Fri Dec 29 13:42:12 2023 +0530
+
+    first commit
+
+[33mcommit 286f911911ec68e2dbd61605be33817e6b2cb64a[m
+Author: Pratyush Kumar Chaturvedi <hombrecito2580@gmail.com>
+Date:   Fri Dec 29 01:54:03 2023 +0530
+
+    Navigation Complete
+
+[33mcommit 2bdf8a0a56b21c17c2feea58097466e87892c7f9[m
+Author: Pratyush Kumar Chaturvedi <hombrecito2580@gmail.com>
+Date:   Thu Dec 28 22:08:26 2023 +0530
+
+    Initial Commit

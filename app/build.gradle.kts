@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -72,5 +73,6 @@ dependencies {
 
     api ("com.razorpay:checkout:1.6.33")
 
+    implementation("com.google.firebase:firebase-messaging:23.4.0")
 
 }

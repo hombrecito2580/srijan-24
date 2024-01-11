@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1098435113899",
+    "project_id": "srijan-24",
+    "storage_bucket": "srijan-24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098435113899:android:8dbae85fbdbf5c7c55d8ee",
+        "android_client_info": {
+          "package_name": "com.iitism.srijan24"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4GgD-G-R8V84kd_Ih4OkUK43Xq2bxR9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

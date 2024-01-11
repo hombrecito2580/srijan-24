@@ -26,19 +26,42 @@
                 style="@style/h1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login" />
+                android:text="Create Account" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please log in to continue" />
-
+                android:text="Please enter your college email" />
             <EditText
-                android:id="@+id/editEmailLogin"
+                android:id="@+id/editNameSign"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Name"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/border2"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="10dp"
+                android:textSize="15sp" />
+            <EditText
+                android:id="@+id/editEmailSign"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="College Email"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/border2"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="10dp"
+                android:textSize="15sp" />
+            <EditText
+                android:id="@+id/editPhnSign"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textCursorDrawable="@null"
-                android:hint="someone@email.com"
+                android:hint="Contact Number"
                 android:background="@drawable/border2"
                 android:autofillHints="emailAddress"
                 android:inputType="textEmailAddress"
@@ -47,28 +70,32 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editPassLogin"
+                android:id="@+id/editPassSign"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
                 android:textCursorDrawable="@null"
-                android:hint="password"
+                android:layout_height="40dp"
+                android:hint="Password"
                 android:background="@drawable/border2"
                 android:autofillHints="emailAddress"
                 android:inputType="textEmailAddress"
                 android:layout_marginTop="18dp"
                 android:paddingLeft="10dp"
                 android:textSize="15sp" />
-            <TextView
-                android:id="@+id/forgotPasswordTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:clickable="true"
-                android:text="Forgot password?"
-                android:layout_gravity="end" />
+            <EditText
+                android:id="@+id/editConPassSign"
+                android:layout_width="match_parent"
+                android:textCursorDrawable="@null"
+                android:layout_height="40dp"
+                android:hint="Confirm Password"
+                android:background="@drawable/border2"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="10dp"
+                android:textSize="15sp" />
 
             <Button
-                android:id="@+id/loginBtn"
+                android:id="@+id/signInBtn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 style="@style/btn"
@@ -76,7 +103,7 @@
                 android:layout_gravity="end"
                 android:backgroundTint="#F1A820"
                 android:drawableEnd="@drawable/ic_btn_right_arrow"
-                android:text="LOGIN" />
+                android:text="SIGNUP" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,14 +118,14 @@
                     android:layout_marginEnd="4dp"
                     android:textSize="16sp"
                     android:textColor="@color/light_text"
-                    android:text="Don't have an account?" />
+                    android:text="Already have an account?" />
 
                 <TextView
-                    android:id="@+id/registerTextView"
+                    android:id="@+id/loginTextView"
                     android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Register"
+                    android:text="Login"
                     android:layout_marginStart="4dp"
                     android:textSize="16sp"
                     android:textColor="#F1A820" />

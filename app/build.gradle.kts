@@ -2,7 +2,10 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
+
+
 
 android {
     namespace = "com.iitism.srijan24"
@@ -64,13 +67,20 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     //youtubeplayer
-    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
 
     //gif drawable
-    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
-    api ("com.razorpay:checkout:1.6.33")
+    api("com.razorpay:checkout:1.6.33")
+
+    //otp_view
+//    implementation("io.github.chaosleung:pinview:1.4.4")
+
+    implementation("com.github.criminact:OTPView:1.0.1")
+
+    implementation("com.google.firebase:firebase-messaging:23.4.0")
 
 
 }

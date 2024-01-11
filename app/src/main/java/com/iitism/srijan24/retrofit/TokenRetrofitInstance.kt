@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object AnnouncementRetrofitInstance {
+object TokenRetrofitInstance {
     private const val BASE_URL = "https://srijan2024.onrender.com/"
 
     private val client = OkHttpClient.Builder()
@@ -20,5 +20,5 @@ object AnnouncementRetrofitInstance {
         .client(client)
         .build()
 
-    val announcementApi: AnnouncementApi = retrofit.create(AnnouncementApi::class.java)
+    val tokenApi: TokenApi = retrofit.create(TokenApi::class.java)
 }

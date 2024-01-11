@@ -2,6 +2,7 @@ package com.iitism.srijan24.retrofit
 
 import com.iitism.srijan24.data.Announcement
 import com.iitism.srijan24.data.CreateAnnouncementModel
+import com.iitism.srijan24.data.Token
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

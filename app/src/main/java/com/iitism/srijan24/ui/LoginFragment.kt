@@ -1,83 +1,126 @@
 package com.iitism.srijan24.ui
 
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.iitism.srijan24.R
-import com.iitism.srijan24.data.AuthDataModel
+import com.iitism.srijan24.data.LoginDataModel
 import com.iitism.srijan24.databinding.FragmentLoginBinding
-import com.iitism.srijan24.view_model.AuthenticationViewModel
 import com.iitism.srijan24.view_model.LoginViewModel
-import com.iitism.srijan24.view_model.MerchandiseViewModel
 
 class LoginFragment : Fragment() {
 
-    init {
-        fun newInstance() =LoginFragment()
-    }
-
-    private lateinit var binding:FragmentLoginBinding
-    private lateinit var loginViewModel: AuthenticationViewModel
-    private lateinit var datamodel: AuthDataModel
-    var flag=1
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var loginViewModel: LoginViewModel
+    var flag = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding=FragmentLoginBinding.inflate(inflater)
+    ): View {
+        _binding = FragmentLoginBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loginViewModel = ViewModelProvider(
-            requireActivity(),
-            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
-        )[LoginViewModel::class.java]
+        loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
-        binding.loginbtn.setOnClickListener{
-            login()
+        binding.registerTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_signupFragment2)
+        }
+
+        binding.loginBtn.setOnClickListener {
+            if (validateEmail() && validatePassword())
+                loginAndRedirect()
         }
 
     }
 
-    private fun login() {
+    private fun loginAndRedirect() {
+        val request = LoginDataModel()
         binding.apply {
-            datamodel.apply {
-                email=.text.toString()
-                password=.text.toString()
+            request.apply {
+                email = etEmail.text.toString()
+                password = etPassword.text.toString()
             }
         }
 
-        val pattern = Regex("""^\S+@\S+\.\S+$""")
-        if (datamodel.email==null){
-            binding.editEmailLogin.helperText="Email should not be null"
-            flag=0
-        }
-        else if(!pattern.matches(binding.editEmail.text)) {
-            binding.editEmailLogin.helperText = "Email is not in correct format"
-            flag = 0
+
+        loginViewModel.checkCredentials(request,
+            { code ->
+                when (code) {
+                    500 -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Login failed... Please try again later",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    422 -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Account doesn't exist",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    201 -> {
+
+                    }
+                }
+            }, { isSuccessful ->
+                if (!isSuccessful) {
+                    Toast.makeText(requireContext(), "Internal server error...", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            })
+    }
+
+
+    private fun validateEmail(): Boolean {
+        var error: String? = null
+        val email = binding.etEmail.text.toString().trim()
+        if (email.isEmpty()) {
+            error = "Please enter your email."
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            error = "Invalid email address."
         }
 
-        if(datamodel.password.length < 6) {
-            binding.editPasswordLogin.helperText = "Password must contain at least 6 characters"
-            flag=0
+        if (error != null) {
+            binding.etEmail.error = error
+        } else {
+            binding.etEmail.error = null
         }
 
-        if(flag==1){
-            loginViewModel.uploadCredentials(datamodel,requireContext())
+        return error == null
+    }
+
+    private fun validatePassword(): Boolean {
+        var error: String? = null
+        val password = binding.etPassword.text.toString().trim()
+        if (password.isEmpty()) {
+            error = "Please enter your password."
+        } else if (password.length < 6) {
+            error = "Password is too short."
         }
+
+        if (error != null) {
+            binding.etPassword.error = error
+        } else {
+            binding.etPassword.error = null
+        }
+
+        return error == null
     }
 
 }

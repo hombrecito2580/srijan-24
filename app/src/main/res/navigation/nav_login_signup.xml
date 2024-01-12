@@ -34,5 +34,9 @@
         android:id="@+id/otpFragment"
         android:name="com.iitism.srijan24.ui.OtpFragment"
         android:label="fragment_otp"
-        tools:layout="@layout/fragment_otp" />
+        tools:layout="@layout/fragment_otp" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
 </navigation>

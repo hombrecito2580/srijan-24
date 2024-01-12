@@ -1,19 +1,17 @@
 package com.iitism.srijan24.ui
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
-import androidx.viewpager.widget.ViewPager
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
@@ -89,16 +87,16 @@ class HomeFragment : Fragment() {
         stopAutoScroll()
     }
 
-    private fun countDownSrijanStart(){
-        val handler = android.os.Handler()
-        val runnable = object : java.lang.Runnable {
-            @SuppressLint("SetTextI18n")
+    private fun countDownSrijanStart() {
+        @Suppress("DEPRECATION") val handler = Handler()
+        val runnable = object : Runnable {
+            @SuppressLint("SetTextI18n", "SimpleDateFormat")
             override fun run() {
                 handler.postDelayed(this, 1000)
                 try {
                     val currentDate = Date()
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    val futureDate: Date = dateFormat.parse("2024-02-02 00:00:00")
+                    val futureDate: Date = dateFormat.parse("2024-02-02 00:00:00")!!
                     if (!currentDate.after(futureDate)) {
                         var diff: Long = (futureDate.time
                                 - currentDate.time)
@@ -130,15 +128,15 @@ class HomeFragment : Fragment() {
 
 
     fun countDownSrijanEnd(){
-        val handler = android.os.Handler()
-        val runnable = object : java.lang.Runnable {
-            @SuppressLint("SetTextI18n")
+        @Suppress("DEPRECATION") val handler = Handler()
+        val runnable = object : Runnable {
+            @SuppressLint("SetTextI18n", "SimpleDateFormat")
             override fun run() {
                 handler.postDelayed(this, 1000)
                 try {
                     val currentDate = Date()
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    val futureDate: Date = dateFormat.parse("2024-02-05 00:00:00")
+                    val futureDate: Date = dateFormat.parse("2024-02-05 00:00:00")!!
                     if (!currentDate.after(futureDate)) {
 
                         var diff: Long = (futureDate.time

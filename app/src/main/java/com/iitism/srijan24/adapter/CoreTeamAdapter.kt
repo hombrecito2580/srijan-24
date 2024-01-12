@@ -42,7 +42,7 @@ class CoreTeamAdapter(private val dataList:List<CoreTeamDataModel>) :
 
             Glide.with(holder.itemView)
                 .load(currentData.image)
-                .placeholder(R.drawable.iv_srijan_light)
+                .placeholder(R.drawable.srijan_modified_logo)
                 .centerCrop()
                 .into(holder.image_c)
         }

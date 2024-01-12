@@ -60,7 +60,15 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_centerInParent="true"/>
-
+                <ImageButton
+                    android:id="@+id/btnProfile"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:background="@color/transparent"
+                    android:contentDescription="Profile"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_person" />
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

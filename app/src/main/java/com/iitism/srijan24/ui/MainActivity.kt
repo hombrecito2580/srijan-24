@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -83,6 +84,13 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 //        setupActionBarWithNavController(navController, binding.drawerLayout)
 //        binding.navView.setupWithNavController(navController)
 
+        if(navController.currentDestination?.id == R.id.homeFragment){
+            binding.appBar.btnProfile.visibility = View.VISIBLE
+            binding.appBar.btnProfile.setOnClickListener {
+                navController.navigate(R.id.action_homeFragment_to_profileFragment)
+            }
+        }
+
 
         binding.appBar.btnMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
@@ -112,8 +120,12 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.aboutUsFragment -> "About Us"
                 R.id.coreTeamFragment -> "Core Team"
                 R.id.contactFragment -> "Contact Us"
+                R.id.profileFragment -> "Profile"
                 else -> "Srijan 24"
             }
+
+            if(destination.id != R.id.homeFragment) binding.appBar.btnProfile.visibility = View.GONE
+            else binding.appBar.btnProfile.visibility = View.VISIBLE
         }
 
         binding.navView.setupWithNavController(navController)

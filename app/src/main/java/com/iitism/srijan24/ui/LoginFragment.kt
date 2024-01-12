@@ -44,6 +44,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         binding.registerTextView.setOnClickListener {
@@ -94,8 +95,15 @@ class LoginFragment : Fragment() {
 
                     preferences.edit().putString("token", viewModel.responseBody!!.token)
                         .apply()
-                    preferences.edit().putString("email", binding.etEmail.text.toString().trim()).apply()
+                    preferences.edit().putString("email", binding.etEmail.text.toString().trim())
+                        .apply()
+                    if (isISMite()) {
+                        preferences.edit().putString("isISMite", "true").apply()
 
+                    } else {
+                        preferences.edit().putString("isISMite", "false").apply()
+
+                    }
                     val jwt = JWT(viewModel.responseBody!!.token)
                     val userId: String? = jwt.getClaim("UserId").asString()
 
@@ -109,6 +117,7 @@ class LoginFragment : Fragment() {
 
 
                 }
+
                 1000 -> {
                     dialog.dismiss()
                     Toast.makeText(context, "Internal server error", Toast.LENGTH_SHORT)
@@ -123,6 +132,12 @@ class LoginFragment : Fragment() {
             }
 //
         }
+    }
+
+    private fun isISMite(): Boolean {
+
+        return binding.etEmail.text.toString().trim().endsWith("@iitism.ac.in")
+
     }
 
 

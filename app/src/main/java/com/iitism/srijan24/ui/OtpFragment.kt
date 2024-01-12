@@ -86,7 +86,13 @@ class OtpFragment : Fragment() {
                             preferences.edit().putString("token", viewModel.responseBody!!.token)
                                 .apply()
                             preferences.edit().putString("email", email).apply()
+                            if (isISMite()) {
+                                preferences.edit().putString("isISMite", "true").apply()
 
+                            } else {
+                                preferences.edit().putString("isISMite", "false").apply()
+
+                            }
                             val jwt = JWT(viewModel.responseBody!!.token)
                             val userId: String? = jwt.getClaim("UserId").asString()
 
@@ -113,6 +119,10 @@ class OtpFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun isISMite(): Boolean {
+        return email.endsWith("@iitism.ac.in")
     }
 
     private fun initializeDialog() {

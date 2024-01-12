@@ -24,7 +24,11 @@
         android:id="@+id/merchandiseFragment"
         android:name="com.iitism.srijan24.ui.MerchandiseFragment"
         android:label="Merchandise"
-        tools:layout="@layout/fragment_merchandise" />
+        tools:layout="@layout/fragment_merchandise" >
+        <action
+            android:id="@+id/action_merchandiseFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sponsorsFragment"
         android:name="com.iitism.srijan24.ui.SponsorsFragment"

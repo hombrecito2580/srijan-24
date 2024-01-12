@@ -15,7 +15,6 @@ class EventsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        startActivity(Intent(context, LoginSignupActivity::class.java))
 //        activity?.finish()
     }
 

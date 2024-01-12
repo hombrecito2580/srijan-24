@@ -58,6 +58,7 @@
                 android:layout_marginTop="18dp"
                 android:paddingLeft="10dp"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/forgotPasswordTextView"
                 android:layout_width="wrap_content"

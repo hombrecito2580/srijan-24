@@ -12,10 +12,10 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
 
 
 
-    fun checkCredentials(dataModel: LoginDataModel, context: Context){
-        viewModelScope.launch {
-            AuthRetrofitInstance.authApi.signup(dataModel.email,dataModel.password)
-        }
-    }
+//    fun checkCredentials(dataModel: LoginDataModel, context: Context){
+//        viewModelScope.launch {
+//            AuthRetrofitInstance.authApi.signup(dataModel.email,dataModel.password)
+//        }
+//    }
 
 }

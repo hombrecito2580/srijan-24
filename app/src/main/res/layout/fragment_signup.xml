@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.LoginFragment">
+    tools:context=".ui.SignupFragment"
+    tools:ignore="hardcodedText">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -31,71 +32,109 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/h4"
+                android:textColor="@color/light_text"
                 android:text="Please enter your college email" />
             <EditText
-                android:id="@+id/editNameSign"
+                android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="Name"
                 android:textCursorDrawable="@null"
                 android:background="@drawable/border2"
-                android:autofillHints="emailAddress"
-                android:inputType="textEmailAddress"
+                android:autofillHints="name"
+                android:inputType="textPersonName"
                 android:layout_marginTop="18dp"
-                android:paddingLeft="10dp"
+                android:paddingHorizontal="10dp"
                 android:textSize="15sp" />
+
             <EditText
-                android:id="@+id/editEmailSign"
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="College Email"
+                android:hint="Email"
                 android:textCursorDrawable="@null"
                 android:background="@drawable/border2"
                 android:autofillHints="emailAddress"
                 android:inputType="textEmailAddress"
                 android:layout_marginTop="18dp"
-                android:paddingLeft="10dp"
+                android:paddingHorizontal="10dp"
                 android:textSize="15sp" />
             <EditText
-                android:id="@+id/editPhnSign"
+                android:id="@+id/etPhone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textCursorDrawable="@null"
                 android:hint="Contact Number"
                 android:background="@drawable/border2"
-                android:autofillHints="emailAddress"
-                android:inputType="textEmailAddress"
+                android:autofillHints="phone"
+                android:inputType="phone"
                 android:layout_marginTop="18dp"
-                android:paddingLeft="10dp"
+                android:paddingHorizontal="10dp"
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editPassSign"
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:textCursorDrawable="@null"
                 android:layout_height="40dp"
                 android:hint="Password"
                 android:background="@drawable/border2"
-                android:autofillHints="emailAddress"
-                android:inputType="textEmailAddress"
+                android:autofillHints="password"
+                android:inputType="textPassword"
                 android:layout_marginTop="18dp"
-                android:paddingLeft="10dp"
+                android:paddingHorizontal="10dp"
                 android:textSize="15sp" />
+
             <EditText
-                android:id="@+id/editConPassSign"
+                android:id="@+id/etConfirmPassword"
                 android:layout_width="match_parent"
                 android:textCursorDrawable="@null"
                 android:layout_height="40dp"
                 android:hint="Confirm Password"
                 android:background="@drawable/border2"
-                android:autofillHints="emailAddress"
-                android:inputType="textEmailAddress"
+                android:autofillHints="password"
+                android:inputType="textPassword"
                 android:layout_marginTop="18dp"
-                android:paddingLeft="10dp"
+                android:paddingHorizontal="10dp"
                 android:textSize="15sp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                style="@style/h4"
+                android:text="Are you an IIT ISM student?" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginTop="12dp"
+                android:checkedButton="@id/btnYes"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/btnYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/primary"
+                    android:text="Yes" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/btnNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/primary"
+                    android:text="No" />
+
+            </RadioGroup>
+
             <Button
-                android:id="@+id/signInBtn"
+                android:id="@+id/btnSignup"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 style="@style/btn"
@@ -117,12 +156,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:textSize="16sp"
-                    android:textColor="@color/light_text"
+                    android:textColor="@color/black"
                     android:text="Already have an account?" />
 
                 <TextView
-                    android:id="@+id/loginTextView"
-                    android:clickable="true"
+                    android:id="@+id/tvLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Login"
@@ -136,4 +174,4 @@
 
     </androidx.cardview.widget.CardView>
 
-</FrameLayout>
+</ScrollView>

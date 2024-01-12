@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="20dp"
+    android:elevation="20dp"
+    android:backgroundTint="@color/bg"
+    android:backgroundTintMode="src_in"
+    android:outlineAmbientShadowColor="@color/white"
+    app:cardCornerRadius="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EBE29C"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="3dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="20dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginRight="17dp"
+                android:layout_marginLeft="17dp"
+                app:cardCornerRadius="30dp">
+                <ImageView
+                    android:id="@+id/event_img"
+                    android:outlineProvider="background"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="200dp"
+                    android:elevation="50dp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/event_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Event Name"
+                android:textSize="24sp"
+                android:layout_marginTop="10dp"
+                style="@style/h3"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/clubname_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Club Name"
+                style="@style/h3"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                />
+            <LinearLayout
+                android:padding="8dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="Venue: "
+                        style="@style/h4"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tv_venue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        style="@style/h4"
+                        android:text="tv_venue">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="Price Money: "
+                        style="@style/h4"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tv_prize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/h4"
+                        android:textColor="@color/black"
+                        android:text="tv_price"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_viewmore"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:text="View More"
+            android:textColor="@color/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="17dp"
+            android:textAllCaps="false"
+            android:elevation="20dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="@color/black"
+            ></com.google.android.material.button.MaterialButton>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

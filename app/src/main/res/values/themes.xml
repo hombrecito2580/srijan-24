@@ -17,7 +17,7 @@
 
     <style name="h1">
         <item name="android:textSize">32sp</item>
-        <item name="android:fontFamily">@font/futura</item>
+        <item name="android:fontFamily">@font/roboto_extra_bold</item>
     </style>
 
     <style name="h2">
@@ -63,7 +63,7 @@
         <item name="backgroundTint">@color/primary</item>
         <item name="android:background">@drawable/button_background1</item>
         <item name="android:fontFamily">@font/roboto_black</item>
-        <item name="android:textColor">@color/light_text</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 </resources>

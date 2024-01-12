@@ -34,7 +34,7 @@
                 android:text="Please log in to continue" />
 
             <EditText
-                android:id="@+id/editEmailLogin"
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textCursorDrawable="@null"
@@ -47,7 +47,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editPassLogin"
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textCursorDrawable="@null"
@@ -58,6 +58,7 @@
                 android:layout_marginTop="18dp"
                 android:paddingLeft="10dp"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/forgotPasswordTextView"
                 android:layout_width="wrap_content"

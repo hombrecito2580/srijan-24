@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 
@@ -78,5 +79,11 @@ dependencies {
 //    implementation("io.github.chaosleung:pinview:1.4.4")
 
     implementation("com.github.criminact:OTPView:1.0.1")
+
+    implementation("com.google.firebase:firebase-messaging:23.4.0")
+
+    implementation("com.auth0.android:jwtdecode:2.0.2")
+
+
 
 }

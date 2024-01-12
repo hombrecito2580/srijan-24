@@ -16,7 +16,7 @@ class EventsFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         startActivity(Intent(context, LoginSignupActivity::class.java))
-        activity?.finish()
+//        activity?.finish()
     }
 
     override fun onCreateView(

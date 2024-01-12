@@ -83,7 +83,7 @@ class OtpFragment : Fragment() {
                                 "MyPreferences",
                                 Context.MODE_PRIVATE
                             )
-                            preferences.edit().putString("fcmToken", viewModel.responseBody!!.token)
+                            preferences.edit().putString("token", viewModel.responseBody!!.token)
                                 .apply()
                             preferences.edit().putString("email", email).apply()
 

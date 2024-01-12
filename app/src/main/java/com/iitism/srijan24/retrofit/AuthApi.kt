@@ -1,6 +1,7 @@
 package com.iitism.srijan24.retrofit
 
 import com.iitism.srijan24.data.LoginDataModel
+import com.iitism.srijan24.data.LoginResponse
 import com.iitism.srijan24.data.OTPDataModel
 import com.iitism.srijan24.data.OTPResponse
 import com.iitism.srijan24.data.SignUpDataModel
@@ -17,7 +18,7 @@ interface AuthApi {
     @POST("api/login")
     fun login(
         @Body body: LoginDataModel
-    ): Call<Void>
+    ): Call<LoginResponse>
 
     @POST("api/signup")
     fun signup(

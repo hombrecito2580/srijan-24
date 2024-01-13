@@ -5,6 +5,8 @@
         <item name="android:windowContentTransitions">true</item>
         <item name="colorAccent">@color/text</item>
         <item name="android:navigationBarColor">@color/black</item>
+        <item name="colorPrimary">@color/primary
+        </item>
         <item name="colorPrimaryDark">@color/bgAlternate</item>
     </style>
 
@@ -66,4 +68,10 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="ShapeAppearance.MyApp.MediumComponent.Rounded" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
 </resources>

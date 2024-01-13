@@ -13,7 +13,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/transparent"
     android:fillViewport="true"
     android:orientation="vertical"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -35,11 +35,11 @@
 
             <ImageView
                 android:id="@+id/ivLogo"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:contentDescription="ivLogo"
-                android:src="@drawable/iv_srijan_light"
+                android:src="@drawable/iv_srijan"
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +90,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:background="@drawable/counter"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -121,7 +120,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:background="@drawable/counter"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -154,7 +152,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:background="@drawable/counter"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -186,7 +183,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:background="@drawable/counter"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">

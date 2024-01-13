@@ -9,7 +9,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="35dp"
         app:cardBackgroundColor="#071d1d"
         app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded"
         app:layout_constraintStart_toStartOf="parent"

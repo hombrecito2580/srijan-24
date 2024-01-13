@@ -7,10 +7,15 @@
     tools:context=".ui.SignupFragment"
     tools:ignore="hardcodedText">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="35dp"
         app:cardBackgroundColor="#071d1d"
         app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +30,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/h1"
+                style="@style/h2"
                 android:textColor="#C8C7C7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -189,4 +194,10 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+    </LinearLayout>
 </ScrollView>

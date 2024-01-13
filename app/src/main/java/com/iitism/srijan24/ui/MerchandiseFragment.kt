@@ -11,7 +11,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.OpenableColumns
-import android.provider.Settings.Global
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Base64
@@ -43,9 +42,6 @@ import com.iitism.srijan24.data.GetUserResponse
 import com.iitism.srijan24.databinding.FragmentMerchandiseBinding
 import com.iitism.srijan24.retrofit.UserApiInstance
 import com.iitism.srijan24.view_model.MerchandiseViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.math.abs
@@ -75,10 +71,17 @@ class MerchandiseFragment : Fragment() {
     private lateinit var isISMite: String
     private lateinit var token: String
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        try {
+            // Attempt to initialize MediaManager
+            MediaManager.init(requireContext())
+        } catch (e: IllegalStateException) {
+            // MediaManager is already initialized, handle accordingly
+        }
         _binding = FragmentMerchandiseBinding.inflate(inflater, container, false)
         initializeDialog()
 
@@ -92,7 +95,7 @@ class MerchandiseFragment : Fragment() {
 //        config["cloud_name"] = "digvpmszg"
 //        config["api_key"] = "346224682169534"
 //        config["api_secret"] = "c7Eip5uGeMBUYxU8ta4iGn51qPo"
-        MediaManager.init(requireContext())
+
 
         //        Checkout.preload(requireContext())
         return binding.root
@@ -234,7 +237,7 @@ class MerchandiseFragment : Fragment() {
                 ColorDrawable(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.bg
+                        R.color.progress_bar
                     )
                 )
             )

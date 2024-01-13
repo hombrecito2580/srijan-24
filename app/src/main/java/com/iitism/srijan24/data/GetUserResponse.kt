@@ -7,7 +7,7 @@ data class GetUserResponse(
     @SerializedName("IsEvents") val isEvents: Boolean,
     @SerializedName("IsISM") val isISM: Boolean,
     @SerializedName("IsProNight") val isProNight: Boolean,
-    @SerializedName("Merchandise") val merchandise: List<Any>,
+    @SerializedName("Merchandise") val merchandise: List<Merchandise>,
     @SerializedName("Name") val name: String,
     @SerializedName("Password") val password: String,
     @SerializedName("PhoneNumber") val phoneNumber: String,

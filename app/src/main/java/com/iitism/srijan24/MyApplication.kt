@@ -1,6 +1,7 @@
 package com.iitism.srijan24
 
 import android.app.Application
+import com.cloudinary.android.MediaManager
 import com.google.firebase.FirebaseApp
 
 class MyApplication: Application() {

@@ -245,7 +245,7 @@ class SignupFragment : Fragment() {
                 ColorDrawable(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.bg
+                        R.color.progress_bar
                     )
                 )
             )

@@ -7,6 +7,8 @@ import android.content.pm.PackageManager
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -17,7 +19,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
@@ -31,7 +32,6 @@ import com.razorpay.PaymentResultListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.Timer
 
 
 class MainActivity : AppCompatActivity(), PaymentResultListener {
@@ -50,12 +50,15 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         askNotificationPermission()
 
         dialog.show()
+        dismissDialogAfterDelay()
         FirebaseMessaging.getInstance().subscribeToTopic(topic).addOnCompleteListener {
             if (it.isSuccessful) {
                 Log.d("SUBSCRIBE", "subscribed")
             } else {
                 Log.d("SUBSCRIBE", "subscription failed")
             }
+            dialog.dismiss()
+        }.addOnFailureListener {
             dialog.dismiss()
         }
 
@@ -134,13 +137,29 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 else -> "Srijan 24"
             }
 
-            if (destination.id != R.id.homeFragment) binding.appBar.btnProfile.visibility =
-                View.GONE
-            else binding.appBar.btnProfile.visibility = View.VISIBLE
+//            if (destination.id != R.id.homeFragment)
+                binding.appBar.btnProfile.visibility = View.GONE
+//            else binding.appBar.btnProfile.visibility = View.VISIBLE
         }
+
+//        binding.navView.setNavigationItemSelectedListener { menuItem ->
+//            when (menuItem.itemId) {
+//                R.id.profileFragment -> navController.navigate(R.id.homeFragment)
+//            }
+//
+//            binding.drawerLayout.closeDrawer(GravityCompat.START)
+//            true
+//        }
 
         binding.navView.setupWithNavController(navController)
         binding.navView.setCheckedItem(R.id.homeFragment)
+    }
+
+    private fun dismissDialogAfterDelay() {
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            dialog.dismiss()
+        }, 10000)
     }
 
     private fun initializeDialog() {
@@ -157,7 +176,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 ColorDrawable(
                     ContextCompat.getColor(
                         this,
-                        R.color.bg
+                        R.color.progress_bar
                     )
                 )
             )

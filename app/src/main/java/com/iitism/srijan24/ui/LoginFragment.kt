@@ -81,10 +81,13 @@ class LoginFragment : Fragment() {
 
                 422 -> {
                     dialog.dismiss()
-                    Toast.makeText(context, "Invalid Credentials", Toast.LENGTH_SHORT).show()
-
+                    Toast.makeText(context, "User not found", Toast.LENGTH_SHORT).show()
                 }
 
+                403 -> {
+                    dialog.dismiss()
+                    Toast.makeText(context, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+                }
 
                 200 -> {
                     dialog.dismiss()
@@ -114,8 +117,6 @@ class LoginFragment : Fragment() {
                     Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(requireContext(), MainActivity::class.java))
                     activity?.finish()
-
-
                 }
 
                 1000 -> {
@@ -191,7 +192,7 @@ class LoginFragment : Fragment() {
                 ColorDrawable(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.bg
+                        R.color.progress_bar
                     )
                 )
             )

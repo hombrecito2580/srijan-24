@@ -1,33 +1,44 @@
 package com.iitism.srijan24.ui
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import com.iitism.srijan24.data.ProfileDataModel
 import com.iitism.srijan24.databinding.FragmentProfileBinding
 import com.iitism.srijan24.view_model.ProfileViewModel
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.iitism.srijan24.R
+import com.iitism.srijan24.data.GetUserResponse
+import com.iitism.srijan24.retrofit.UserApiInstance
+import retrofit2.Call
+import retrofit2.Response
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var profileViewModel: ProfileViewModel
 
     private lateinit var isISMite: String
-    private lateinit var userId: String
+    private lateinit var token: String
+
+    private lateinit var dialog: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        initializeDialog()
         return binding.root
     }
 
@@ -36,23 +47,49 @@ class ProfileFragment : Fragment() {
 
         val preferences =
             requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        val id= preferences?.getString("userId",null)
-        val credential=ProfileDataModel()
-//        credential=profileViewModel.getCredentials(id!!,{
-//
-//        },{
-//
-//        })
-        binding.tvUserName.text= preferences!!.getString("Username", null)
-        binding.tvEmail.text= preferences!!.getString("Email", null)
-        binding.tvContact.text= preferences!!.getString("Contact", null)
+        preferences?.getString("token",null)
+        ProfileDataModel()
+        binding.tvUserName.text= preferences.getString("Username", null)
+        binding.tvEmail.text= preferences.getString("Email", null)
+        binding.tvContact.text= preferences.getString("Contact", null)
 
         isISMite = preferences.getString("isISMite", "") ?: ""
-        userId = preferences.getString("userId", "") ?: ""
+        token = preferences.getString("token", "") ?: ""
 
-        if(userId.isEmpty()){
+        if(token.isEmpty()){
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
             startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
+        } else {
+            Log.d("token", token)
+
+            dialog.show()
+            val call = UserApiInstance.createUserApi(token).getUser()
+
+            call.enqueue(object : retrofit2.Callback<GetUserResponse> {
+                override fun onResponse(
+                    call: Call<GetUserResponse>,
+                    response: Response<GetUserResponse>
+                ) {
+                    val body = response.body()
+                    if (response.isSuccessful && body != null) {
+                        binding.txtProfile.text = body.name[0].toString()
+                        binding.tvUserName.text = body.name
+                        binding.tvEmail.text = body.email
+                        binding.tvContact.text = body.phoneNumber
+                    } else {
+                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
+                    }
+                    dialog.dismiss()
+                }
+
+                override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
+                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                    Log.e("EEEEEEEEEEEEEEEE", t.toString())
+                    findNavController().popBackStack()
+                    dialog.dismiss()
+                }
+            })
         }
 
         binding.btnLogOut.setOnClickListener {
@@ -67,10 +104,30 @@ class ProfileFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        if(userId.isEmpty()){
+        if(token.isEmpty()){
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
             startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
         }
     }
 
+    private fun initializeDialog() {
+        dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.progress_bar)
+        dialog.setCancelable(false)
+        val layoutParams = WindowManager.LayoutParams().apply {
+            width = WindowManager.LayoutParams.MATCH_PARENT
+            height = WindowManager.LayoutParams.MATCH_PARENT
+        }
+        dialog.window?.attributes = layoutParams
+        if (dialog.window != null) {
+            dialog.window!!.setBackgroundDrawable(
+                ColorDrawable(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.progress_bar
+                    )
+                )
+            )
+        }
+    }
 }

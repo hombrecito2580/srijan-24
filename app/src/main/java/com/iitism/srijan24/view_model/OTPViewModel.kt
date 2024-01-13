@@ -22,9 +22,9 @@ class OTPViewModel: ViewModel() {
             call.enqueue(object : Callback<OTPResponse> {
                 override fun onResponse(call: Call<OTPResponse>, response: Response<OTPResponse>) {
                     if(response.isSuccessful) {
-                        if(response.code() == 200) responseBody = response.body()
-                        status.invoke(response.code())
+                        responseBody = response.body()
                     }
+                    status.invoke(response.code())
                 }
 
                 override fun onFailure(call: Call<OTPResponse>, t: Throwable) {

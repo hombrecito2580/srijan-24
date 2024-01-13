@@ -71,6 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:visibility="gone"
                 android:clickable="true"
                 android:textColor="#C8C7C7"
                 android:text="Forgot password?"
@@ -90,7 +91,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_marginTop="16dp"
                 android:gravity="center">
 

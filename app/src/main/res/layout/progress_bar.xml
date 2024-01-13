@@ -18,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#071d1d"
             android:layout_gravity="center"
             android:padding="24dp">
 

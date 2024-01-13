@@ -55,7 +55,7 @@
                     android:textColor="@color/text"
                     android:textStyle="bold" />
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/bgLight"
@@ -308,7 +308,7 @@
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/choose_size"
                             style="@style/h4"
-                            android:layout_width="300dp"
+                            android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginHorizontal="10dp"
@@ -320,7 +320,7 @@
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/choose_payment_ss"
                             style="@style/h4"
-                            android:layout_width="300dp"
+                            android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginHorizontal="10dp"
@@ -332,7 +332,7 @@
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/place_order_button"
                             style="@style/h4"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="50dp"
                             android:layout_marginVertical="16dp"
                             android:layout_marginHorizontal="10dp"
@@ -355,7 +355,7 @@
                         <!--                            android:textColor="@color/black" />-->
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
 

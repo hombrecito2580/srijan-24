@@ -22,9 +22,9 @@
                     android:icon="@drawable/ic_announcement"
                     android:title="Announcements" />
 
-                <item android:id="@+id/merchandiseFragment"
-                    android:icon="@drawable/ic_merchandise"
-                    android:title="Merchandise" />
+<!--                <item android:id="@+id/merchandiseFragment"-->
+<!--                    android:icon="@drawable/ic_merchandise"-->
+<!--                    android:title="Merchandise" />-->
 
                 <item android:id="@+id/sponsorsFragment"
                     android:icon="@drawable/ic_sponsors"
@@ -36,21 +36,21 @@
 
     </item>
 
-    <item android:title="Admin Section">
+<!--    <item android:title="Admin Section">-->
 
-        <menu>
+<!--        <menu>-->
 
-            <group android:checkableBehavior="single">
+<!--            <group android:checkableBehavior="single">-->
 
-                <item android:id="@+id/addAnnouncementFragment"
-                    android:icon="@drawable/ic_write"
-                    android:title="New Announcement" />
+<!--                <item android:id="@+id/addAnnouncementFragment"-->
+<!--                    android:icon="@drawable/ic_write"-->
+<!--                    android:title="New Announcement" />-->
 
-            </group>
+<!--            </group>-->
 
-        </menu>
+<!--        </menu>-->
 
-    </item>
+<!--    </item>-->
 
     <item android:title="Support Section">
 

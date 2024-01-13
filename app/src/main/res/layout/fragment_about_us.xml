@@ -16,7 +16,7 @@
         android:background="@color/bg"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="10dp"
@@ -57,7 +57,7 @@
 
 
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivConvener"
@@ -70,7 +70,7 @@
             android:layout_marginBottom="-40dp"
             android:src="@drawable/instagram"/>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="10dp"
@@ -124,7 +124,7 @@
 
 
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivCoConvener1"
@@ -137,7 +137,7 @@
             android:layout_marginBottom="-40dp"
             android:src="@drawable/instagram"/>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="10dp"
@@ -191,7 +191,7 @@
 
 
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivCoConvener2"
@@ -204,7 +204,7 @@
             android:layout_marginBottom="-40dp"
             android:src="@drawable/instagram"/>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="10dp"
@@ -258,7 +258,7 @@
 
 
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

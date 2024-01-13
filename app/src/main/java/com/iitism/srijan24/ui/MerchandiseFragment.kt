@@ -1,5 +1,6 @@
 package com.iitism.srijan24.ui
 
+import com.iitism.srijan24.retrofit.UserApiInstance
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -23,32 +24,31 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.MerchandiseCarouselAdapter
 import com.iitism.srijan24.data.DetailsDataModel
+import com.iitism.srijan24.data.GetUserResponse
 import com.iitism.srijan24.databinding.FragmentMerchandiseBinding
 import com.iitism.srijan24.view_model.MerchandiseViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
-import com.razorpay.Checkout
-import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Response
 import kotlin.math.abs
 
 
 class MerchandiseFragment : Fragment() {
     companion object {
-        fun newInstance() = MerchandiseFragment()
         const val REQUEST_CODE_IMAGE = 101
     }
 
-    private var perUnitTshirtPrice = 399
+    private var perUnitTShirtPrice = 399
     private var isSizeSelected = 0
     private var isImageUploaded = 0
     private var selectedImageUri: Uri? = null
@@ -60,69 +60,73 @@ class MerchandiseFragment : Fragment() {
     private lateinit var merchViewModel: MerchandiseViewModel
     private lateinit var dialog: Dialog
     private lateinit var isISMite: String
-    private lateinit var userId: String
+    private lateinit var token: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMerchandiseBinding.inflate(inflater, container, false)
-        val view = binding.root
-//        Checkout.preload(requireContext())
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val preferences =
-            requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        isISMite = preferences.getString("isISMite", "") ?: ""
-        userId = preferences.getString("userId", "") ?: ""
-
-        if(userId.isEmpty()){
-            findNavController().navigate(R.id.action_merchandiseFragment_to_homeFragment)
-            startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
-        } else{
-            if(isISMite == "true") perUnitTshirtPrice = 349
-        }
-
+        initializeDialog()
 
         merchViewModel = ViewModelProvider(
             requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[MerchandiseViewModel::class.java]
 
-        dialog = Dialog(requireActivity())
-        dialog.setContentView(R.layout.progress_bar)
-        dialog.setCancelable(false)
-        val layoutParams = WindowManager.LayoutParams().apply {
-            width = WindowManager.LayoutParams.MATCH_PARENT
-            height = WindowManager.LayoutParams.MATCH_PARENT
-        }
-        dialog.window?.attributes = layoutParams
-        if (dialog.window != null) {
-            dialog.window!!.setBackgroundDrawable(
-                ColorDrawable(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.bg
-                    )
-                )
-            )
-            dialog.window!!.setBackgroundDrawableResource(R.color.transparent)
+        //        Checkout.preload(requireContext())
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        dialog.show()
+        val preferences =
+            requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        isISMite = preferences.getString("isISMite", "") ?: ""
+        token = preferences.getString("token", "") ?: ""
+
+        if(token.isEmpty()){
+            findNavController().navigate(R.id.action_merchandiseFragment_to_homeFragment)
+            startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
+            dialog.dismiss()
+        } else{
+            if(isISMite == "true") perUnitTShirtPrice = 349
+            val call = UserApiInstance.createUserApi(token).getUser()
+
+            call.enqueue(object : retrofit2.Callback<GetUserResponse> {
+                override fun onResponse(call: Call<GetUserResponse>, response: Response<GetUserResponse>) {
+                    val body = response.body()
+                    if(response.isSuccessful && body != null) {
+                        binding.editName.setText(body.name)
+                        binding.editEmail.setText(body.email)
+                        binding.editPhone.setText(body.phoneNumber)
+                    }
+                    else {
+                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
+                    }
+                    dialog.dismiss()
+                }
+
+                override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
+                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                    Log.e("EEEEEEEEEEEEEEEE", t.toString())
+                    findNavController().popBackStack()
+                    dialog.dismiss()
+                }
+            })
         }
 
         viewPager = binding.viewPagerCorousel
 
-        val merchandise_images_data = arrayOf(
+        val merchandiseImagesData = arrayOf(
             R.drawable.ic_merchandise, R.drawable.ic_merchandise,
             R.drawable.ic_merchandise, R.drawable.ic_merchandise,
             R.drawable.ic_merchandise, R.drawable.ic_merchandise, R.drawable.ic_merchandise
         )
-        viewPager.adapter = MerchandiseCarouselAdapter(merchandise_images_data)
+        viewPager.adapter = MerchandiseCarouselAdapter(merchandiseImagesData)
 
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(MarginPageTransformer((40 * Resources.getSystem().displayMetrics.density).toInt()))
@@ -132,7 +136,7 @@ class MerchandiseFragment : Fragment() {
         }
         viewPager.setPageTransformer(compositePageTransformer)
 
-        addDotsIndicator(merchandise_images_data.size)
+        addDotsIndicator(merchandiseImagesData.size)
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -157,7 +161,7 @@ class MerchandiseFragment : Fragment() {
                     val selectedQuantity = editQuantity.text.toString()
                     if (selectedQuantity.isNotEmpty()) {
                         val totalPriceToPay =
-                            (selectedQuantity.toInt() * perUnitTshirtPrice).toString()
+                            (selectedQuantity.toInt() * perUnitTShirtPrice).toString()
                         val textToShow = "Total Price: Rs.$totalPriceToPay"
                         totalPrice.visibility = View.VISIBLE
                         totalPrice.text = textToShow
@@ -173,11 +177,9 @@ class MerchandiseFragment : Fragment() {
 
         binding.chooseSize.setOnClickListener {
             showSizeMenu(view)
-            isSizeSelected = 1
         }
         binding.choosePaymentSs.setOnClickListener {
             selectImage()
-            isImageUploaded = 1
         }
 
         binding.placeOrderButton.setOnClickListener {
@@ -190,9 +192,30 @@ class MerchandiseFragment : Fragment() {
 
     }
 
+    private fun initializeDialog() {
+        dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.progress_bar)
+        dialog.setCancelable(false)
+        val layoutParams = WindowManager.LayoutParams().apply {
+            width = WindowManager.LayoutParams.MATCH_PARENT
+            height = WindowManager.LayoutParams.MATCH_PARENT
+        }
+        dialog.window?.attributes = layoutParams
+        if (dialog.window != null) {
+            dialog.window!!.setBackgroundDrawable(
+                ColorDrawable(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.bg
+                    )
+                )
+            )
+        }
+    }
+
     override fun onResume() {
         super.onResume()
-        if(userId.isEmpty()){
+        if(token.isEmpty()){
             findNavController().navigate(R.id.action_merchandiseFragment_to_homeFragment)
             startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
         }
@@ -233,25 +256,26 @@ class MerchandiseFragment : Fragment() {
         }
     }
 
-    var selectedSizeIndex = 0;
-    var selectedSize: String? = null
-    fun showSizeMenu(view: View) {
+    private var selectedSizeIndex = 0;
+    private var selectedSize: String? = null
+    private fun showSizeMenu(view: View) {
 
-        val t_shirt_size = arrayOf("XS", "S", "M", "L", "XL", "2XL", "3XL")
-        selectedSize = t_shirt_size[selectedSizeIndex]
+        val tShirtSize = arrayOf("XS", "S", "M", "L", "XL", "2XL", "3XL")
+        selectedSize = tShirtSize[selectedSizeIndex]
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Choose Size")
-            .setSingleChoiceItems(t_shirt_size, selectedSizeIndex) { dialog, which ->
+            .setSingleChoiceItems(tShirtSize, selectedSizeIndex) { _, which ->
                 selectedSizeIndex = which
-                selectedSize = t_shirt_size[selectedSizeIndex]
+                selectedSize = tShirtSize[selectedSizeIndex]
             }
-            .setPositiveButton("OK") { dialog, which ->
+            .setPositiveButton("OK") { _, _ ->
                 showSnackBar("$selectedSize selected")
-                binding.chooseSize.text = t_shirt_size[selectedSizeIndex]
+                binding.chooseSize.text = tShirtSize[selectedSizeIndex]
+                isSizeSelected = 1
 
                 //implement here the size part
             }
-            .setNeutralButton("Cancel") { dialog, which ->
+            .setNeutralButton("Cancel") { _, _ ->
                 Toast.makeText(requireContext(), "Size is required", Toast.LENGTH_LONG).show()
             }
             .show()
@@ -276,6 +300,7 @@ class MerchandiseFragment : Fragment() {
                     if (data != null && data.data != null) {
                         val imageUri = data.data
                         selectedImageUri = imageUri
+                        isImageUploaded = 1
                         val imageBase64 =
                             MyFileHandler(requireContext()).handleFile(selectedImageUri!!)
                         val imageName =
@@ -303,7 +328,7 @@ class MerchandiseFragment : Fragment() {
             return ""
         }
 
-        val resolver = context.contentResolver
+        private val resolver = context.contentResolver
 
         fun getFileName(uri: Uri): String {
             val returnCursor: Cursor = resolver.query(uri, null, null, null, null)!!
@@ -335,68 +360,32 @@ class MerchandiseFragment : Fragment() {
 
     private fun placeOrder() {
 
-        dataModel = DetailsDataModel(
-            binding.editName.text.toString(),
-            binding.editName.text.toString(),
-            binding.editName.text.toString(),
-            binding.editName.text.toString(),
-            binding.editName.text.toString(),
-            binding.editName.text.toString(),
-            binding.editName.text.toString()
-        )
+        dataModel = DetailsDataModel()
 
         binding.apply {
             dataModel.apply {
-                name = editName.text.toString()
-                admissionNumber = editAdmno.text.toString()
-                mobileNumber = editPhone.text.toString()
-                tShirtSize = selectedSize.toString()
-                hostel = editHostel.text.toString()
-                roomNumber = editRoomNo.text.toString()
-                quantity = editQuantity.text.toString()
+                address = editAddress.text.toString().trim()
+                tShirtSize = selectedSize.toString().trim()
+                quantity = editQuantity.text.toString().trim()
             }
         }
 
         var flag = 1
 
-
-        if (dataModel.name.isEmpty()) {
-            binding.editName.error = "Name can't be empty"
-            Log.d("name", binding.editName.text.toString())
+        if (dataModel.address.trim().isEmpty()) {
+            binding.editAddress.error = "Address can't be empty"
+            Log.d("hostel", dataModel.address)
             flag = 0
         }
-        if (dataModel.admissionNumber.isEmpty()) {
-            binding.editAdmno.error = "Admission no. can't be empty"
-            Log.d("admission no", dataModel.admissionNumber)
-            flag = 0
-        }
-
-        if (dataModel.hostel.isEmpty()) {
-
-            binding.editHostel.error = "Hostel name can't be empty"
-            Log.d("hostel", dataModel.hostel)
-            flag = 0
-        }
-        if (dataModel.mobileNumber.isEmpty()) {
-            binding.editPhone.error = "Phone no. can't be empty"
-            Log.d("phone", dataModel.mobileNumber)
-            flag = 0
-        }
-        if (dataModel.roomNumber.isEmpty()) {
-            binding.editRoomNo.error = "Room no. can't be empty"
-            Log.d("room no", dataModel.roomNumber)
-            flag = 0
-        }
-        if (dataModel.quantity.isEmpty() || dataModel.quantity.toInt() < 1) {
+        else if (dataModel.quantity.trim().isEmpty() || dataModel.quantity.toInt() < 1) {
             binding.editQuantity.error = "Quantity  can't be empty"
-            Log.d("quantity", dataModel.roomNumber)
             flag = 0
         }
-        if (isSizeSelected == 0) {
+        else if (isSizeSelected == 0) {
             flag = 0
             Toast.makeText(context, "Size not Selected!!", Toast.LENGTH_SHORT).show()
         }
-        if (selectedImageUri == null) {
+        else if (selectedImageUri == null) {
             flag = 0
             Toast.makeText(context, "Image not Uploaded!!", Toast.LENGTH_SHORT).show()
         }
@@ -406,7 +395,7 @@ class MerchandiseFragment : Fragment() {
 
             //api hit
 
-            merchViewModel.uploadData(dataModel, selectedImageUri!!, requireContext())
+            merchViewModel.uploadData(dataModel, selectedImageUri!!, requireContext(), token)
 
             merchViewModel.showLoading.observe(viewLifecycleOwner) { showLoading ->
                 if (showLoading) {
@@ -415,13 +404,9 @@ class MerchandiseFragment : Fragment() {
                     dialog.dismiss()
 
                     binding.chooseSize.text = "Choose Size"
-                    binding.choosePaymentSs.text = "Payement Screenshot"
+                    binding.choosePaymentSs.text = "Payment Screenshot"
                     selectedSizeIndex = 0
-                    binding.editName.text.clear()
-                    binding.editAdmno.text.clear()
-                    binding.editHostel.text.clear()
-                    binding.editRoomNo.text.clear()
-                    binding.editPhone.text.clear()
+                    binding.editAddress.text.clear()
                     binding.editQuantity.text.clear()
                     selectedImageUri = null
                 }

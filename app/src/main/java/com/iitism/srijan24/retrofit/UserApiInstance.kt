@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object NetworkService {
+object UserApiInstance {
     private const val BASE_URL = "https://srijan2024.onrender.com/"
     private const val AUTH_HEADER = "Authorization"
 
@@ -37,7 +37,7 @@ object NetworkService {
             .build()
     }
 
-    fun createUserApi(jwtToken: String?): MerchandiseApiService {
-        return createRetrofit(jwtToken).create(MerchandiseApiService::class.java)
+    fun createUserApi(jwtToken: String?): UserApi {
+        return createRetrofit(jwtToken).create(UserApi::class.java)
     }
 }

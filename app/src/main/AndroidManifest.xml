@@ -84,6 +84,10 @@
             <!-- Other activity attributes -->
         </activity>
 
+        <meta-data
+            android:name="CLOUDINARY_URL"
+            android:value="cloudinary://digvpmszg"/>
+
         <receiver
             android:name="com.razorpay.RzpTokenReceiver"
             android:exported="false"

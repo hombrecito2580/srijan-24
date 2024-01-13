@@ -29,7 +29,20 @@
         <action
             android:id="@+id/action_signupFragment_to_otpFragment"
             app:destination="@id/otpFragment" />
+
+        <action
+            android:id="@+id/action_signupFragment_to_plansFragment"
+            app:destination="@id/plansFragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/plansFragment"
+        android:name="com.iitism.srijan24.ui.PlansFragment"
+        android:label="fragment_plans"
+        tools:layout="@layout/fragment_plans">
+
+    </fragment>
+
     <fragment
         android:id="@+id/otpFragment"
         android:name="com.iitism.srijan24.ui.OtpFragment"

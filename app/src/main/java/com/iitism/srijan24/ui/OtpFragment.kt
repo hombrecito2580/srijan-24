@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.auth0.android.jwt.JWT
 import com.iitism.srijan24.R
@@ -100,8 +101,16 @@ class OtpFragment : Fragment() {
                                 preferences.edit().putString("userId", userId).apply()
                             }
 
-                            startActivity(Intent(requireContext(), MainActivity::class.java))
-                            activity?.finish()
+//                            if (!isISMite())
+//                            {
+//                                findNavController().navigate(R.id.action_signupFragment_to_plansFragment)
+//                            }
+//                            else
+//                            {
+                                startActivity(Intent(requireContext(), MainActivity::class.java))
+                                activity?.finish()
+                            //}
+
                         }
 
                         1000 -> {

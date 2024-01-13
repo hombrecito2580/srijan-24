@@ -50,6 +50,7 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-messaging-ktx:23.4.0")
+    implementation("com.google.android.gms:play-services-cast-tv:21.0.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -86,5 +87,8 @@ dependencies {
 
     implementation("com.auth0.android:jwtdecode:2.0.2")
 
+    implementation ("com.cloudinary:cloudinary-core:1.35.0")
 
+    implementation("com.cloudinary:cloudinary-android:2.5.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
 }

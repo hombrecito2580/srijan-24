@@ -1,12 +1,16 @@
 package com.iitism.srijan24.ui
 
+import android.app.Dialog
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.iitism.srijan24.R
@@ -19,13 +23,15 @@ class SignupFragment : Fragment() {
     private var _binding: FragmentSignupBinding? = null
     private lateinit var viewmodel: SignupViewModel
     private val binding get() = _binding!!
+    private lateinit var dialog: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentSignupBinding.inflate(layoutInflater)
         viewmodel = ViewModelProvider(this)[SignupViewModel::class.java]
+        initializeDialog()
         return binding.root
     }
 
@@ -39,11 +45,16 @@ class SignupFragment : Fragment() {
         binding.btnSignup.setOnClickListener {
             if (validateName() && validateEmail() && validateContact() && validatePassword() && validateConfirmPassword() && validatePasswordAndConfirmPassword()) {
                 createAccountAndRedirect()
+//                val direction = SignupFragmentDirections.actionSignupFragmentToOtpFragment(
+//                    binding.etEmail.text.toString().trim()
+//                )
+//                findNavController().navigate(direction)
             }
         }
     }
 
     private fun createAccountAndRedirect() {
+        dialog.show()
         val request = SignUpDataModel()
         binding.apply {
             request.apply {
@@ -55,43 +66,56 @@ class SignupFragment : Fragment() {
             }
         }
 
-        viewmodel.uploadCredentials(request,
-            { code ->
-                when (code) {
-                    201 -> {
-                        findNavController().navigate(R.id.action_signupFragment_to_otpFragment)
-                    }
-
-                    500 -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Couldn't register user... Please try again later",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
-                    404 -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Unexpected error occurred",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
-                    422 -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Email already registered",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+        viewmodel.uploadCredentials(request) { code ->
+            when (code) {
+                201 -> {
+                    dialog.dismiss()
+                    val direction = SignupFragmentDirections.actionSignupFragmentToOtpFragment(
+                        binding.etEmail.text.toString().trim()
+                    )
+                    findNavController().navigate(direction)
+//                        findNavController().navigate(R.id.action_signupFragment_to_otpFragment)
                 }
-            }, { isSuccessful ->
-                if (!isSuccessful) {
-                    Toast.makeText(requireContext(), "Internal server error...", Toast.LENGTH_SHORT)
+
+                500 -> {
+                    dialog.dismiss()
+                    Toast.makeText(
+                        requireContext(),
+                        "Couldn't register user... Please try again later",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                404 -> {
+                    dialog.dismiss()
+                    Toast.makeText(
+                        requireContext(),
+                        "Unexpected error occurred",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                422 -> {
+                    dialog.dismiss()
+                    Toast.makeText(
+                        requireContext(),
+                        "Email already registered",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                1000 -> {
+                    dialog.dismiss()
+                    Toast.makeText(requireContext(), "Internal server error", Toast.LENGTH_SHORT)
                         .show()
                 }
-            })
+
+                else -> {
+                    dialog.dismiss()
+                    Toast.makeText(context, "Unexpected error occurred", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun validateName(): Boolean {
@@ -122,7 +146,7 @@ class SignupFragment : Fragment() {
                 error = "Invalid IIT ISM id."
             }
         } else if (binding.btnNo.isChecked) {
-            if (!email.endsWith("@iitism.ac.in")) {
+            if (email.endsWith("@iitism.ac.in")) {
                 error = "Invalid email."
             }
         }
@@ -205,6 +229,27 @@ class SignupFragment : Fragment() {
         }
 
         return error == null
+    }
+
+    private fun initializeDialog() {
+        dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.progress_bar)
+        dialog.setCancelable(false)
+        val layoutParams = WindowManager.LayoutParams().apply {
+            width = WindowManager.LayoutParams.MATCH_PARENT
+            height = WindowManager.LayoutParams.MATCH_PARENT
+        }
+        dialog.window?.attributes = layoutParams
+        if (dialog.window != null) {
+            dialog.window!!.setBackgroundDrawable(
+                ColorDrawable(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.bg
+                    )
+                )
+            )
+        }
     }
 
 }

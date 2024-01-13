@@ -9,7 +9,12 @@
         android:id="@+id/homeFragment"
         android:name="com.iitism.srijan24.ui.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/eventsFragment"
         android:name="com.iitism.srijan24.ui.EventsFragment"
@@ -19,7 +24,11 @@
         android:id="@+id/merchandiseFragment"
         android:name="com.iitism.srijan24.ui.MerchandiseFragment"
         android:label="Merchandise"
-        tools:layout="@layout/fragment_merchandise" />
+        tools:layout="@layout/fragment_merchandise" >
+        <action
+            android:id="@+id/action_merchandiseFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sponsorsFragment"
         android:name="com.iitism.srijan24.ui.SponsorsFragment"
@@ -50,5 +59,15 @@
         android:name="com.iitism.srijan24.ui.AddAnnouncementFragment"
         android:label="fragment_add_announcement"
         tools:layout="@layout/fragment_add_announcement" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.iitism.srijan24.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

@@ -84,4 +84,7 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging:23.4.0")
 
 
+    implementation("com.auth0.android:jwtdecode:2.0.2")
+
+
 }

@@ -53,11 +53,12 @@
                 android:textCursorDrawable="@null"
                 android:hint="password"
                 android:background="@drawable/border2"
-                android:autofillHints="emailAddress"
-                android:inputType="textEmailAddress"
+                android:autofillHints="password"
+                android:inputType="textPassword"
                 android:layout_marginTop="18dp"
                 android:paddingLeft="10dp"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/forgotPasswordTextView"
                 android:layout_width="wrap_content"

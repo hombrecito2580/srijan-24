@@ -27,7 +27,7 @@
 
     <TextView
         style="@style/h2"
-        android:id="@+id/tvUserName"
+        android:id="@+id/userName"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +36,6 @@
         android:text="Siddharth Gorai" />
     <TextView
         style="@style/h4"
-        android:id="@+id/tvEmail"
         android:textColor="#ACA9A9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,12 +43,18 @@
         android:text="goraisiddhart@gmail.com" />
     <TextView
         style="@style/h4"
-        android:id="@+id/tvContact"
         android:textColor="#9C9999"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="8789187244" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+android:layout_marginTop="200dp"
+        android:background="@drawable/button_background1" />
 
 
 </LinearLayout>

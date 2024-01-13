@@ -63,7 +63,7 @@ class AnnouncementsFragment : Fragment(), AnnouncementsRVAdapter.OnTimestampUpda
                     announcements?.let {
                         announcementsAdapter.refreshAnnouncements(it)
                         announcementsAdapter.updateTimestamps()
-                        Toast.makeText(context, "Announcements fetched successfully!", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(context, "Announcements fetched successfully!", Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                     }
                 } else {

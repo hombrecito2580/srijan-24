@@ -2,11 +2,13 @@ package com.iitism.srijan24.ui
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -15,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
@@ -29,6 +32,7 @@ import com.razorpay.PaymentResultListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Timer
 
 
 class MainActivity : AppCompatActivity(), PaymentResultListener {
@@ -48,10 +52,9 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 
         dialog.show()
         FirebaseMessaging.getInstance().subscribeToTopic(topic).addOnCompleteListener {
-            if(it.isSuccessful) {
+            if (it.isSuccessful) {
                 Log.d("SUBSCRIBE", "subscribed")
-            }
-            else {
+            } else {
                 Log.d("SUBSCRIBE", "subscription failed")
             }
             dialog.dismiss()
@@ -73,6 +76,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.merchandiseFragment,
                 R.id.sponsorsFragment,
                 R.id.addAnnouncementFragment,
+                R.id.profileFragment,
                 R.id.aboutUsFragment,
                 R.id.coreTeamFragment,
                 R.id.contactFragment
@@ -81,6 +85,21 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 
 //        setupActionBarWithNavController(navController, binding.drawerLayout)
 //        binding.navView.setupWithNavController(navController)
+
+        if (navController.currentDestination?.id == R.id.homeFragment) {
+            binding.appBar.btnProfile.visibility = View.VISIBLE
+            binding.appBar.btnProfile.setOnClickListener {
+                val preferences =
+                    getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+//                val isISMite = preferences.getString("isISMite", "") ?: ""
+                val userId = preferences.getString("userId", "") ?: ""
+
+                if (userId.isEmpty()) {
+                    startActivity(Intent(this, LoginSignupActivity::class.java))
+                } else{
+                navController.navigate(R.id.action_homeFragment_to_profileFragment)
+            }}
+        }
 
 
         binding.appBar.btnMenu.setOnClickListener {
@@ -96,6 +115,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
                 R.id.sponsorsFragment -> binding.navView.setCheckedItem(R.id.sponsorsFragment)
                 R.id.addAnnouncementFragment -> binding.navView.setCheckedItem(R.id.addAnnouncementFragment)
+                R.id.profileFragment -> binding.navView.setCheckedItem(R.id.profileFragment)
                 R.id.aboutUsFragment -> binding.navView.setCheckedItem(R.id.aboutUsFragment)
                 R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
                 R.id.contactFragment -> binding.navView.setCheckedItem(R.id.contactFragment)
@@ -108,11 +128,16 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.merchandiseFragment -> "Merchandise"
                 R.id.sponsorsFragment -> "Past Sponsors"
                 R.id.addAnnouncementFragment -> "New Announcement"
+                R.id.profileFragment -> "Profile"
                 R.id.aboutUsFragment -> "About Us"
                 R.id.coreTeamFragment -> "Core Team"
                 R.id.contactFragment -> "Contact Us"
                 else -> "Srijan 24"
             }
+
+            if (destination.id != R.id.homeFragment) binding.appBar.btnProfile.visibility =
+                View.GONE
+            else binding.appBar.btnProfile.visibility = View.VISIBLE
         }
 
         binding.navView.setupWithNavController(navController)
@@ -129,7 +154,14 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         }
         dialog.window?.attributes = layoutParams
         if (dialog.window != null) {
-            dialog.window!!.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.bg)))
+            dialog.window!!.setBackgroundDrawable(
+                ColorDrawable(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.bg
+                    )
+                )
+            )
         }
     }
 
@@ -141,14 +173,18 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             //extract token
 
         } else {
-            Toast.makeText(this,"Notifications will not be shown",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Notifications will not be shown", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun askNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) !=
-                PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.POST_NOTIFICATIONS
+                ) !=
+                PackageManager.PERMISSION_GRANTED
+            ) {
                 requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
             }
         }
@@ -182,7 +218,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 
         addTokenCall.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if(response.isSuccessful) {
+                if (response.isSuccessful) {
                     saveFCMTokenToSharedPreferences(token)
                     Log.d("Token sent successfully", token)
                     dialog.dismiss()

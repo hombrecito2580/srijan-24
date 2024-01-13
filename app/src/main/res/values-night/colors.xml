@@ -4,8 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
 
-    <color name="bg">#191917</color>
-    <color name="bgLight">#252522</color>
+    <color name="bg">#00000000</color>
+    <color name="bgLight">#1DFFEB3B</color>
     <color name="alternate">#FFFFFFFF</color>
     <color name="bgAlternate">#1C1C14</color>
 
@@ -13,9 +13,9 @@
     <color name="secondary">#FFFFFFFF</color>
     <color name="primaryTranslucent">#90FBE10E</color>
 
-    <color name="text">#FFFFFFFF</color>
+    <color name="text">#FFFFFF</color>
 
-    <color name="action_bar">#151409</color>
+    <color name="action_bar">#FF000000</color>
     <color name="nav_bar">#151409</color>
 
 </resources>

@@ -4,8 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
 
-    <color name="bg">#5E3509</color>
-    <color name="bgLight">#6A3C0A</color>
+    <color name="bg">#00000000</color>
+    <color name="bgLight">#1DFFEB3B</color>
 <!--    <color name="brown">#723B14</color>-->
     <color name="alternate">#FF000000</color>
     <color name="bgAlternate">#919191</color>
@@ -15,11 +15,11 @@
     <color name="secondary">#FF000000</color>
     <color name="primaryTranslucent">#90FBE10E</color>
 
-    <color name="text">#FFFFFFFF</color>
+    <color name="text">#FFFFFF</color>
 <!--    <color name="text">#FF000000</color>-->
     <color name="light_text">#636262</color>
 
-    <color name="action_bar">#545559</color>
+    <color name="action_bar">#FF000000</color>
     <color name="nav_bar">#FFFFFF</color>
 
 

@@ -8,19 +8,12 @@ import retrofit2.http.POST
 import retrofit2.http.Part
 
 interface MerchandiseApiService {
-    @Headers(
-        "Authorization: "
-    )
     @Multipart
     @POST("api/purchase")
     fun uploadData(
-        @Part("name") name: RequestBody,
-        @Part("admissionNumber") admissionNumber: RequestBody,
-        @Part("mobileNumber") mobileNumber: RequestBody,
-        @Part("tshirtSize") tshirtSize: RequestBody,
-        @Part("hostel") hostel: RequestBody,
-        @Part("roomNumber") roomNumber: RequestBody,
+        @Part("tshirtSize") tShirtSize: RequestBody,
+        @Part("address") address: RequestBody,
         @Part("quantity") quantity: RequestBody,
-        @Part image: MultipartBody.Part
+        @Part imageURL: MultipartBody.Part
     ): Call<ApiResponse>
 }

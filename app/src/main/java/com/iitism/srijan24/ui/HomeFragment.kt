@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
             }
         })
 
-        startAutoScroll()
+//        startAutoScroll()
 
         binding.viewPagerCarousel.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -79,12 +79,12 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        restartAutoScroll()
+//        restartAutoScroll()
     }
 
     override fun onPause() {
         super.onPause()
-        stopAutoScroll()
+//        stopAutoScroll()
     }
 
     private fun countDownSrijanStart() {

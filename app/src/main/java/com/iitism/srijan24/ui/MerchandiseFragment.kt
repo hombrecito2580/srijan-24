@@ -1,6 +1,5 @@
 package com.iitism.srijan24.ui
 
-import com.iitism.srijan24.retrofit.UserApiInstance
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -12,6 +11,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.OpenableColumns
+import android.provider.Settings.Global
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Base64
@@ -30,6 +30,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.cloudinary.Cloudinary
+import com.cloudinary.android.MediaManager
+import com.cloudinary.android.callback.ErrorInfo
+import com.cloudinary.android.callback.UploadCallback
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.iitism.srijan24.R
@@ -37,7 +41,11 @@ import com.iitism.srijan24.adapter.MerchandiseCarouselAdapter
 import com.iitism.srijan24.data.DetailsDataModel
 import com.iitism.srijan24.data.GetUserResponse
 import com.iitism.srijan24.databinding.FragmentMerchandiseBinding
+import com.iitism.srijan24.retrofit.UserApiInstance
 import com.iitism.srijan24.view_model.MerchandiseViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.math.abs
@@ -47,6 +55,11 @@ class MerchandiseFragment : Fragment() {
     companion object {
         const val REQUEST_CODE_IMAGE = 101
     }
+
+    private val cloudinary =
+        Cloudinary("cloudinary://346224682169534:c7Eip5uGeMBUYxU8ta4iGn51qPo@digvpmszg")
+
+//    private lateinit var config: HashMap<String, String>
 
     private var perUnitTShirtPrice = 399
     private var isSizeSelected = 0
@@ -69,10 +82,17 @@ class MerchandiseFragment : Fragment() {
         _binding = FragmentMerchandiseBinding.inflate(inflater, container, false)
         initializeDialog()
 
+//        config = hashMapOf()
+
         merchViewModel = ViewModelProvider(
             requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[MerchandiseViewModel::class.java]
+
+//        config["cloud_name"] = "digvpmszg"
+//        config["api_key"] = "346224682169534"
+//        config["api_secret"] = "c7Eip5uGeMBUYxU8ta4iGn51qPo"
+        MediaManager.init(requireContext())
 
         //        Checkout.preload(requireContext())
         return binding.root
@@ -87,23 +107,25 @@ class MerchandiseFragment : Fragment() {
         isISMite = preferences.getString("isISMite", "") ?: ""
         token = preferences.getString("token", "") ?: ""
 
-        if(token.isEmpty()){
+        if (token.isEmpty()) {
             findNavController().navigate(R.id.action_merchandiseFragment_to_homeFragment)
-            startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
+            startActivity(Intent(requireContext(), LoginSignupActivity::class.java))
             dialog.dismiss()
-        } else{
-            if(isISMite == "true") perUnitTShirtPrice = 349
+        } else {
+            if (isISMite == "true") perUnitTShirtPrice = 349
             val call = UserApiInstance.createUserApi(token).getUser()
 
             call.enqueue(object : retrofit2.Callback<GetUserResponse> {
-                override fun onResponse(call: Call<GetUserResponse>, response: Response<GetUserResponse>) {
+                override fun onResponse(
+                    call: Call<GetUserResponse>,
+                    response: Response<GetUserResponse>
+                ) {
                     val body = response.body()
-                    if(response.isSuccessful && body != null) {
+                    if (response.isSuccessful && body != null) {
                         binding.editName.setText(body.name)
                         binding.editEmail.setText(body.email)
                         binding.editPhone.setText(body.phoneNumber)
-                    }
-                    else {
+                    } else {
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
                         findNavController().popBackStack()
                     }
@@ -186,6 +208,12 @@ class MerchandiseFragment : Fragment() {
             placeOrder()
         }
 
+//        val config= HashMap<Any?, Any?>()
+//        config["cloud_name"] = "digvpmszg"
+//        config["secure"] = true
+//        config["api_key"] = "346224682169534"
+//        MediaManager.init(requireContext(), config)
+
 //        binding.payButton.setOnClickListener {
 ////            makepayment()
 //        }
@@ -215,9 +243,9 @@ class MerchandiseFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        if(token.isEmpty()){
+        if (token.isEmpty()) {
             findNavController().navigate(R.id.action_merchandiseFragment_to_homeFragment)
-            startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
+            startActivity(Intent(requireContext(), LoginSignupActivity::class.java))
         }
     }
 
@@ -359,7 +387,6 @@ class MerchandiseFragment : Fragment() {
     }
 
     private fun placeOrder() {
-
         dataModel = DetailsDataModel()
 
         binding.apply {
@@ -376,41 +403,76 @@ class MerchandiseFragment : Fragment() {
             binding.editAddress.error = "Address can't be empty"
             Log.d("hostel", dataModel.address)
             flag = 0
-        }
-        else if (dataModel.quantity.trim().isEmpty() || dataModel.quantity.toInt() < 1) {
+        } else if (dataModel.quantity.trim().isEmpty() || dataModel.quantity.toInt() < 1) {
             binding.editQuantity.error = "Quantity  can't be empty"
             flag = 0
-        }
-        else if (isSizeSelected == 0) {
+        } else if (isSizeSelected == 0) {
             flag = 0
             Toast.makeText(context, "Size not Selected!!", Toast.LENGTH_SHORT).show()
-        }
-        else if (selectedImageUri == null) {
+        } else if (selectedImageUri == null) {
             flag = 0
             Toast.makeText(context, "Image not Uploaded!!", Toast.LENGTH_SHORT).show()
         }
 
 
         if (flag == 1 && isSizeSelected == 1) {
+            dialog.show()
 
-            //api hit
+            MediaManager.get().upload(selectedImageUri).unsigned("laqyxjqt").callback(
+                object : UploadCallback {
+                    override fun onStart(requestId: String?) {
 
-            merchViewModel.uploadData(dataModel, selectedImageUri!!, requireContext(), token)
+                    }
 
-            merchViewModel.showLoading.observe(viewLifecycleOwner) { showLoading ->
-                if (showLoading) {
-                    dialog.show()
-                } else {
-                    dialog.dismiss()
+                    override fun onProgress(requestId: String?, bytes: Long, totalBytes: Long) {
 
-                    binding.chooseSize.text = "Choose Size"
-                    binding.choosePaymentSs.text = "Payment Screenshot"
-                    selectedSizeIndex = 0
-                    binding.editAddress.text.clear()
-                    binding.editQuantity.text.clear()
-                    selectedImageUri = null
+                    }
+
+                    override fun onSuccess(
+                        requestId: String?,
+                        resultData: MutableMap<Any?, Any?>?
+                    ) {
+                        val imageUrl = resultData?.get("url")?.toString()
+
+                        if (imageUrl != null) {
+                            dataModel.imageURL = imageUrl
+                            Log.d("Image URL", imageUrl)
+
+                            merchViewModel.showLoading.observe(viewLifecycleOwner) { showLoading ->
+                                if (showLoading) {
+                                    dialog.show()
+                                } else {
+                                    dialog.dismiss()
+
+                                    binding.chooseSize.text = "Choose Size"
+                                    binding.choosePaymentSs.text = "Payment Screenshot"
+                                    selectedSizeIndex = 0
+                                    binding.editAddress.text.clear()
+                                    binding.editQuantity.text.clear()
+                                    selectedImageUri = null
+                                }
+                            }
+                            merchViewModel.uploadData(dataModel, requireContext(), token)
+                        } else {
+                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+
+
+                    }
+
+                    override fun onError(requestId: String?, error: ErrorInfo?) {
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                    }
+
+                    override fun onReschedule(requestId: String?, error: ErrorInfo?) {
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                    }
+
                 }
-            }
+            ).dispatch()
 
 
         }

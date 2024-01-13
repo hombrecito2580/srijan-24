@@ -24,7 +24,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.messaging.FirebaseMessaging
 import com.iitism.srijan24.R
 import com.iitism.srijan24.data.AddTokenModel
-import com.iitism.srijan24.data.GetTokensResponse
 import com.iitism.srijan24.databinding.ActivityMainBinding
 import com.iitism.srijan24.retrofit.TokenApi
 import com.iitism.srijan24.retrofit.TokenRetrofitInstance

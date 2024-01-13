@@ -10,7 +10,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.iitism.srijan24.data.DetailsDataModel
 import com.iitism.srijan24.retrofit.ApiResponse
-import com.iitism.srijan24.retrofit.NetworkService
+import com.iitism.srijan24.retrofit.MerchandiseRetrofitInstance
 import com.iitism.srijan24.ui.MerchandiseFragment
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -59,7 +59,7 @@ class MerchandiseViewModel(application: Application) : AndroidViewModel(applicat
             val fileRequestBody = imageFile.asRequestBody("*/*".toMediaTypeOrNull())
             val filePart =
                 MultipartBody.Part.createFormData("image", imageFile.name, fileRequestBody)
-            val call = NetworkService.createUserApi(token).uploadData(
+            val call = MerchandiseRetrofitInstance.createUserApi(token).uploadData(
                 tShirtSize,
                 address,
                 quantity,

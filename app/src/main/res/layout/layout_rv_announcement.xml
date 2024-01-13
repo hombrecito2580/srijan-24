@@ -9,13 +9,14 @@
     android:backgroundTintMode="src_in"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp"
+    android:backgroundTint="@color/bgLight"
     tools:ignore="hardcodedText">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="@drawable/border">
+        android:background="@color/bgLight"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/tvTitle"

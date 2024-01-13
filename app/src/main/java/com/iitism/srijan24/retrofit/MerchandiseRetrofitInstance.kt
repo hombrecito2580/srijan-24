@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object NetworkService {
+object MerchandiseRetrofitInstance {
     private const val BASE_URL = "https://srijan2024.onrender.com/"
     private const val AUTH_HEADER = "Authorization"
 

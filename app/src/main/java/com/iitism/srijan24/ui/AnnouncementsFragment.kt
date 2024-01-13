@@ -65,6 +65,7 @@ class AnnouncementsFragment : Fragment(), AnnouncementsRVAdapter.OnTimestampUpda
                         announcementsAdapter.updateTimestamps()
 //                        Toast.makeText(context, "Announcements fetched successfully!", Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
+                        Log.d("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq", "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
                     }
                 } else {
                     Toast.makeText(context, "Failed to load data...", Toast.LENGTH_SHORT).show()

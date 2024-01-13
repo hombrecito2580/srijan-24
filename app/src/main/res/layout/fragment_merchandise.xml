@@ -39,6 +39,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
                 android:orientation="vertical">
 
                 <TextView
@@ -51,20 +52,21 @@
                     android:layout_marginBottom="-15dp"
                     android:padding="8dp"
                     android:text="Enter Your Information"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text"
                     android:textStyle="bold" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/bgLight"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/bgLight"
                         android:gravity="center_horizontal"
+                        android:background="@color/bgLight"
                         android:orientation="vertical"
                         android:padding="10dp">
 
@@ -332,7 +334,7 @@
                             style="@style/h4"
                             android:layout_width="150dp"
                             android:layout_height="50dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginVertical="16dp"
                             android:layout_marginHorizontal="10dp"
                             android:background="@drawable/button_background1"
                             android:backgroundTint="@color/primary"

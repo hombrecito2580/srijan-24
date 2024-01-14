@@ -5,12 +5,17 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -41,11 +46,13 @@ class OtpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setEditTextListeners(binding.editText1, binding.editText2, binding.editText3, binding.editText4, binding.editText5, binding.editText6)
 
         email = args.email
 
         binding.btnVerifyOtp.setOnClickListener {
-            val otp = binding.otpView.text.toString()
+//            val otp = binding.otpView.text.toString()
+            val otp = getOtpFromEditTexts(binding.editText1, binding.editText2, binding.editText3, binding.editText4, binding.editText5, binding.editText6)
             if (otp.length != 6) {
                 Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show()
             } else {
@@ -130,8 +137,58 @@ class OtpFragment : Fragment() {
         }
     }
 
+    private fun setEditTextListeners(vararg editTexts: EditText) {
+        for ((index, editText) in editTexts.withIndex()) {
+            editText.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    charSequence: CharSequence,
+                    start: Int,
+                    before: Int,
+                    count: Int
+                ) {
+                    // Do nothing
+                }
+
+                override fun onTextChanged(
+                    charSequence: CharSequence,
+                    start: Int,
+                    before: Int,
+                    count: Int
+                ) {
+                    if (charSequence.length == 1 && index < editTexts.size - 1) {
+                        // Move focus to the next EditText
+                        editTexts[index + 1].requestFocus()
+                    } else if (charSequence.isEmpty() && index > 0) {
+                        // Move focus to the previous EditText
+                        editTexts[index - 1].requestFocus()
+                    } else if (charSequence.length == 1 && index == editTexts.size - 1) {
+                        // Entered text in the last EditText, hide the keyboard
+                        hideKeyboard()
+                    }
+                }
+
+                override fun afterTextChanged(editable: Editable) {
+                    // Do nothing
+                }
+            })
+        }
+    }
+
+    private fun hideKeyboard() {
+        val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
+    }
+
     private fun isISMite(): Boolean {
         return email.endsWith("@iitism.ac.in")
+    }
+
+    private fun getOtpFromEditTexts(vararg editTexts: EditText): String {
+        val otpStringBuilder = StringBuilder()
+        for (editText in editTexts) {
+            otpStringBuilder.append(editText.text)
+        }
+        return otpStringBuilder.toString()
     }
 
     private fun initializeDialog() {

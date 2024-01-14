@@ -80,8 +80,6 @@ dependencies {
     //otp_view
 //    implementation("io.github.chaosleung:pinview:1.4.4")
 
-    implementation("com.github.criminact:OTPView:1.0.1")
-
     implementation("com.google.firebase:firebase-messaging:23.4.0")
 
 

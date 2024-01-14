@@ -27,21 +27,118 @@
         android:text="Enter the OTP sent to your registered mail id"
         android:textSize="18sp"/>
 
-    <com.noobcode.otpview.OTPView
-        android:id="@+id/otpView"
-        android:layout_marginTop="30dp"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textColor="#F4B33E"
-        app:borderThickness="6"
-        app:otpLength="6"
-        app:spaceBetween="20" />
+        android:orientation="horizontal"
+        android:weightSum="6"
+        android:layout_marginHorizontal="8dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/roboto_regular"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            tools:ignore="LabelFor"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/roboto_regular"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            tools:ignore="LabelFor"
+            android:autofillHints=""/>
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/roboto_regular"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            tools:ignore="LabelFor"
+            android:autofillHints=""/>
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/roboto_regular"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            tools:ignore="LabelFor"
+            android:autofillHints=""/>
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/roboto_regular"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            tools:ignore="LabelFor"
+            android:autofillHints=""/>
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/roboto_regular"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            tools:ignore="LabelFor"
+            android:autofillHints=""/>
+
+    </LinearLayout>
+
+<!--    <com.noobcode.otpview.OTPView-->
+<!--        android:id="@+id/otpView"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:textColor="#F4B33E"-->
+<!--        app:borderThickness="6"-->
+<!--        app:otpLength="6"-->
+<!--        app:spaceBetween="20" />-->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnVerifyOtp"
         android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/h3"
+        android:textColor="@color/black"
+        android:padding="12dp"
         android:text="Verify"
         android:backgroundTint="@color/primary"
         android:background="@drawable/button_background1"/>

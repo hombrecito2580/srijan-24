@@ -38,12 +38,15 @@ import com.iitism.srijan24.data.DetailsDataModel
 import com.iitism.srijan24.data.GetUserResponse
 import com.iitism.srijan24.databinding.FragmentMerchandiseBinding
 import com.iitism.srijan24.view_model.MerchandiseViewModel
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.math.abs
 
 
-class MerchandiseFragment : Fragment() {
+class MerchandiseFragment : Fragment(), PaymentResultListener {
     companion object {
         const val REQUEST_CODE_IMAGE = 101
     }
@@ -61,6 +64,7 @@ class MerchandiseFragment : Fragment() {
     private lateinit var dialog: Dialog
     private lateinit var isISMite: String
     private lateinit var token: String
+    private var totalPriceToPay: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,7 +78,7 @@ class MerchandiseFragment : Fragment() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[MerchandiseViewModel::class.java]
 
-        //        Checkout.preload(requireContext())
+        Checkout.preload(requireContext())
         return binding.root
     }
 
@@ -87,23 +91,25 @@ class MerchandiseFragment : Fragment() {
         isISMite = preferences.getString("isISMite", "") ?: ""
         token = preferences.getString("token", "") ?: ""
 
-        if(token.isEmpty()){
+        if (token.isEmpty()) {
             findNavController().navigate(R.id.action_merchandiseFragment_to_homeFragment)
-            startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
+            startActivity(Intent(requireContext(), LoginSignupActivity::class.java))
             dialog.dismiss()
-        } else{
-            if(isISMite == "true") perUnitTShirtPrice = 349
+        } else {
+            if (isISMite == "true") perUnitTShirtPrice = 349
             val call = UserApiInstance.createUserApi(token).getUser()
 
             call.enqueue(object : retrofit2.Callback<GetUserResponse> {
-                override fun onResponse(call: Call<GetUserResponse>, response: Response<GetUserResponse>) {
+                override fun onResponse(
+                    call: Call<GetUserResponse>,
+                    response: Response<GetUserResponse>
+                ) {
                     val body = response.body()
-                    if(response.isSuccessful && body != null) {
+                    if (response.isSuccessful && body != null) {
                         binding.editName.setText(body.name)
                         binding.editEmail.setText(body.email)
                         binding.editPhone.setText(body.phoneNumber)
-                    }
-                    else {
+                    } else {
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
                         findNavController().popBackStack()
                     }
@@ -160,8 +166,9 @@ class MerchandiseFragment : Fragment() {
                 binding.apply {
                     val selectedQuantity = editQuantity.text.toString()
                     if (selectedQuantity.isNotEmpty()) {
-                        val totalPriceToPay =
-                            (selectedQuantity.toInt() * perUnitTShirtPrice).toString()
+                         totalPriceToPay =
+                            (selectedQuantity.toInt() * perUnitTShirtPrice)
+
                         val textToShow = "Total Price: Rs.$totalPriceToPay"
                         totalPrice.visibility = View.VISIBLE
                         totalPrice.text = textToShow
@@ -186,9 +193,11 @@ class MerchandiseFragment : Fragment() {
             placeOrder()
         }
 
-//        binding.payButton.setOnClickListener {
-////            makepayment()
-//        }
+        binding.payButton.setOnClickListener {
+            var amt = totalPriceToPay
+            amt = 1
+            startPayment(amt)
+        }
 
     }
 
@@ -215,9 +224,9 @@ class MerchandiseFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        if(token.isEmpty()){
+        if (token.isEmpty()) {
             findNavController().navigate(R.id.action_merchandiseFragment_to_homeFragment)
-            startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
+            startActivity(Intent(requireContext(), LoginSignupActivity::class.java))
         }
     }
 
@@ -376,16 +385,13 @@ class MerchandiseFragment : Fragment() {
             binding.editAddress.error = "Address can't be empty"
             Log.d("hostel", dataModel.address)
             flag = 0
-        }
-        else if (dataModel.quantity.trim().isEmpty() || dataModel.quantity.toInt() < 1) {
+        } else if (dataModel.quantity.trim().isEmpty() || dataModel.quantity.toInt() < 1) {
             binding.editQuantity.error = "Quantity  can't be empty"
             flag = 0
-        }
-        else if (isSizeSelected == 0) {
+        } else if (isSizeSelected == 0) {
             flag = 0
             Toast.makeText(context, "Size not Selected!!", Toast.LENGTH_SHORT).show()
-        }
-        else if (selectedImageUri == null) {
+        } else if (selectedImageUri == null) {
             flag = 0
             Toast.makeText(context, "Image not Uploaded!!", Toast.LENGTH_SHORT).show()
         }
@@ -449,6 +455,52 @@ class MerchandiseFragment : Fragment() {
 //
 //
 //    }
+
+    private fun startPayment(amount: Int) {
+        /*
+        *  You need to pass the current activity to let Razorpay create CheckoutActivity
+        * */
+        val activity: Activity = requireActivity()
+        val co = Checkout()
+
+        try {
+            val options = JSONObject()
+            options.put("name", "Srijan '24 Merchandise")
+            options.put("description", "Merchandise Charges")
+            //You can omit the image option to fetch the image from the dashboard
+            options.put("image","https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw")
+            options.put("theme.color", "#FBE10E")
+            options.put("currency", "INR")
+//            options.put("order_id", "order_DBJOWzybf0sJbx");
+            options.put("amount", amount*100)//pass amount in currency subunits
+            options.put("method", JSONObject().put("upi", true))
+
+            val retryObj = JSONObject()
+            retryObj.put("enabled", true);
+            retryObj.put("max_count", 4);
+            options.put("retry", retryObj);
+
+//            val prefill = JSONObject()
+//            prefill.put("email", "gaurav.kumar@example.com")
+//            prefill.put("contact", "9876543210")
+
+//            options.put("prefill", prefill)
+            co.open(activity, options)
+        } catch (e: Exception) {
+            Toast.makeText(activity, "Error in payment: " + e.message, Toast.LENGTH_LONG).show()
+            e.printStackTrace()
+        }
+    }
+
+    override fun onPaymentSuccess(s: String?) {
+        // this method is called on payment success.
+        Toast.makeText(requireContext(), "Payment is successful : " + s, Toast.LENGTH_SHORT).show();
+    }
+
+    override fun onPaymentError(p0: Int, s: String?) {
+        // on payment failed.
+        Toast.makeText(requireContext(), "Payment Failed due to error : " + s, Toast.LENGTH_SHORT).show();
+    }
 
 
     override fun onDestroyView() {

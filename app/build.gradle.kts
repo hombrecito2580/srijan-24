@@ -73,7 +73,8 @@ dependencies {
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
-    api("com.razorpay:checkout:1.6.33")
+//    api("com.razorpay:checkout:1.6.33")
+    implementation("com.razorpay:checkout:1.6.33")
 
     //otp_view
 //    implementation("io.github.chaosleung:pinview:1.4.4")
@@ -84,6 +85,7 @@ dependencies {
 
 
     implementation("com.auth0.android:jwtdecode:2.0.2")
+
 
 
 }

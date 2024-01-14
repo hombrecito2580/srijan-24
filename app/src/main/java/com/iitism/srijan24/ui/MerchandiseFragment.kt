@@ -42,12 +42,15 @@ import com.iitism.srijan24.data.GetUserResponse
 import com.iitism.srijan24.databinding.FragmentMerchandiseBinding
 import com.iitism.srijan24.retrofit.UserApiInstance
 import com.iitism.srijan24.view_model.MerchandiseViewModel
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.math.abs
 
 
-class MerchandiseFragment : Fragment() {
+class MerchandiseFragment : Fragment(), PaymentResultListener {
     companion object {
         const val REQUEST_CODE_IMAGE = 101
     }
@@ -70,6 +73,7 @@ class MerchandiseFragment : Fragment() {
     private lateinit var dialog: Dialog
     private lateinit var isISMite: String
     private lateinit var token: String
+    private var totalPriceToPay: Int = 0
 
 
     override fun onCreateView(
@@ -97,7 +101,7 @@ class MerchandiseFragment : Fragment() {
 //        config["api_secret"] = "c7Eip5uGeMBUYxU8ta4iGn51qPo"
 
 
-        //        Checkout.preload(requireContext())
+        Checkout.preload(requireContext())
         return binding.root
     }
 
@@ -182,11 +186,13 @@ class MerchandiseFragment : Fragment() {
 
             override fun afterTextChanged(p0: Editable?) {
 
+
                 binding.apply {
                     val selectedQuantity = editQuantity.text.toString()
                     if (selectedQuantity.isNotEmpty()) {
-                        val totalPriceToPay =
-                            (selectedQuantity.toInt() * perUnitTShirtPrice).toString()
+                        totalPriceToPay =
+                            (selectedQuantity.toInt() * perUnitTShirtPrice)
+
                         val textToShow = "Total Price: Rs.$totalPriceToPay"
                         totalPrice.visibility = View.VISIBLE
                         totalPrice.text = textToShow
@@ -217,10 +223,12 @@ class MerchandiseFragment : Fragment() {
 //        config["api_key"] = "346224682169534"
 //        MediaManager.init(requireContext(), config)
 
-//        binding.payButton.setOnClickListener {
-////            makepayment()
-//        }
 
+        binding.payButton.setOnClickListener {
+            var amt = totalPriceToPay
+            amt = 1
+            startPayment(amt)
+        }
     }
 
     private fun initializeDialog() {
@@ -514,6 +522,57 @@ class MerchandiseFragment : Fragment() {
 //
 //
 //    }
+
+
+    private fun startPayment(amount: Int) {
+        /*
+        *  You need to pass the current activity to let Razorpay create CheckoutActivity
+        * */
+        val activity: Activity = requireActivity()
+        val co = Checkout()
+
+        try {
+            val options = JSONObject()
+            options.put("name", "Srijan '24 Merchandise")
+            options.put("description", "Merchandise Charges")
+            //You can omit the image option to fetch the image from the dashboard
+            options.put(
+                "image",
+                "https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw"
+            )
+            options.put("theme.color", "#FBE10E")
+            options.put("currency", "INR")
+//            options.put("order_id", "order_DBJOWzybf0sJbx");
+            options.put("amount", amount * 100)//pass amount in currency subunits
+            options.put("method", JSONObject().put("upi", true))
+
+            val retryObj = JSONObject()
+            retryObj.put("enabled", true);
+            retryObj.put("max_count", 4);
+            options.put("retry", retryObj);
+
+//            val prefill = JSONObject()
+//            prefill.put("email", "gaurav.kumar@example.com")
+//            prefill.put("contact", "9876543210")
+
+//            options.put("prefill", prefill)
+            co.open(activity, options)
+        } catch (e: Exception) {
+            Toast.makeText(activity, "Error in payment: " + e.message, Toast.LENGTH_LONG).show()
+            e.printStackTrace()
+        }
+    }
+
+    override fun onPaymentSuccess(s: String?) {
+        // this method is called on payment success.
+        Toast.makeText(requireContext(), "Payment is successful : " + s, Toast.LENGTH_SHORT).show();
+    }
+
+    override fun onPaymentError(p0: Int, s: String?) {
+        // on payment failed.
+        Toast.makeText(requireContext(), "Payment Failed due to error : " + s, Toast.LENGTH_SHORT)
+            .show();
+    }
 
 
     override fun onDestroyView() {

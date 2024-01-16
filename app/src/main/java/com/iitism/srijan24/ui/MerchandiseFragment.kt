@@ -128,7 +128,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             startActivity(Intent(requireContext(), LoginSignupActivity::class.java))
             dialog.dismiss()
         } else {
-            if (isISMite == "true") perUnitTShirtPrice = 349
+//            if (isISMite == "true") perUnitTShirtPrice = 349
             val call = UserApiInstance.createUserApi(token).getUser()
 
             call.enqueue(object : retrofit2.Callback<GetUserResponse> {
@@ -578,7 +578,6 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 //            Toast.makeText(context, "Image not Uploaded!!", Toast.LENGTH_SHORT).show()
 //        }
 
-
         if (flag == 1 && isSizeSelected == 1) {
             val sharedPreferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
@@ -587,6 +586,9 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 //            editor.putString("orderId", dataModel.orderId)
             editor.putString("quantity", dataModel.quantity)
             editor.putInt("amount", amount)
+            editor.putString("userName", binding.editName.text.toString().trim())
+            editor.putString("contact", "+91"+binding.editPhone.text.toString().trim())
+            editor.putString("email", binding.editEmail.text.toString().trim())
             editor.apply()
 
             startActivity(Intent(requireContext(), MerchandiseActivity::class.java))

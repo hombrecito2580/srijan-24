@@ -125,6 +125,12 @@ class LoginFragment : Fragment() {
                         .show()
                 }
 
+                404 -> {
+                    dialog.dismiss()
+                    Toast.makeText(context, "Internet error, please try again", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
                 else -> {
                     dialog.dismiss()
                     Toast.makeText(context, "Unexpected error occurred", Toast.LENGTH_SHORT)

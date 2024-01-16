@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initializeDialog()
-        askNotificationPermission()
+        askNotificationAndSmsPermission()
 
         dialog.show()
         dismissDialogAfterDelay()
@@ -198,20 +198,20 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             // FCM SDK (and your app) can post notifications.
             //extract token
 
-        } else {
-            Toast.makeText(this, "Notifications will not be shown", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun askNotificationPermission() {
+    private fun askNotificationAndSmsPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.POST_NOTIFICATIONS
-                ) !=
-                PackageManager.PERMISSION_GRANTED
-            ) {
-                requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+            val notificationPermission = android.Manifest.permission.POST_NOTIFICATIONS
+            val smsPermission = android.Manifest.permission.RECEIVE_SMS
+
+            if (ContextCompat.checkSelfPermission(this, notificationPermission) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissionLauncher.launch(notificationPermission)
+            }
+
+            if (ContextCompat.checkSelfPermission(this, smsPermission) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissionLauncher.launch(smsPermission)
             }
         }
     }

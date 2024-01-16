@@ -5,6 +5,7 @@
     android:background="@color/bg"
     android:fillViewport="true"
     android:orientation="vertical"
+    android:scrollbars="none"
     tools:context=".ui.ContactFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

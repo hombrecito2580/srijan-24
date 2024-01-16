@@ -36,6 +36,9 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
     private lateinit var quantity: String
     private lateinit var orderId: String
     private lateinit var token: String
+    private lateinit var userName: String
+    private lateinit var contact: String
+    private lateinit var email: String
     private var amount: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,9 +53,14 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
         address = sharedPreferences.getString("address", "address")!!
         token = sharedPreferences.getString("token", "") ?: ""
         amount = sharedPreferences.getInt("amount", 399)
+        userName = sharedPreferences.getString("userName", "")!!
+        contact = sharedPreferences.getString("contact", "")!!
+        email = sharedPreferences.getString("email", "")!!
 
         if(token.isEmpty()) {
             Toast.makeText(this, "Unauthorized access, please log in again", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+            finish()
         }
 
         val call = RazorpayRetrofitInstance.createApi(token).makeOrder(MakeOrderBody(amount))
@@ -82,19 +90,21 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                             options.put("description", "Merchandise Payment")
                             options.put("image", "https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw")
                             options.put("theme.color", "#FBE10E")
+                            options.put("prefill.name", userName)
+                            options.put("prefill.contact", contact)
+                            options.put("prefill.email", email)
                             options.put("currency", "INR")
-//            options.put("order_id", "order_DBJOWzybf0sJbx");
                             options.put("amount", 1 * 100)//pass amount in currency subunits
                             options.put("method", JSONObject().put("upi", true))
 
                             val retryObj = JSONObject()
-                            retryObj.put("enabled", true);
-                            retryObj.put("max_count", 4);
-                            options.put("retry", retryObj);
+                            retryObj.put("enabled", true)
+                            retryObj.put("max_count", 4)
+                            options.put("retry", retryObj)
 
                             checkout.open(this@MerchandiseActivity, options)
                         } catch (e: Exception) {
-                            Toast.makeText(this@MerchandiseActivity, "Error in payment: " + e.message, Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@MerchandiseActivity, "Something went wrong", Toast.LENGTH_LONG).show()
                             dialog.dismiss()
                             finish()
                             e.printStackTrace()
@@ -205,7 +215,7 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                                             }
 
                                             400 -> {
-                                                Toast.makeText(this@MerchandiseActivity, "Something went wrong!!!", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(this@MerchandiseActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
                                             }
 
                                             else -> {
@@ -253,46 +263,46 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
 
 
 
-        val signature = paymentId?.let { generateRazorpaySignature(orderId, it) }
-        if (signature == null) {
-            Log.d("Payment", "Signature fail!!!")
-            dialog.dismiss()
-            finish()
-//            binding.progressBar.visibility = View.GONE
-        } else {
-
-
-//            merchViewModel.showLoading.observe(viewLifecycleOwner) { showLoading ->
-//                if (showLoading) {
-//                    dialog.show()
-//                } else {
-//                    dialog.dismiss()
-//                    binding.chooseSize.text = "Choose Size"
-////                                    binding.choosePaymentSs.text = "Payment Screenshot"
-//                    selectedSizeIndex = 0
-//                    binding.editAddress.text.clear()
-//                    binding.editQuantity.text.clear()
-//                }
-//            }
+//        val signature = paymentId?.let { generateRazorpaySignature(orderId, it) }
+//        if (signature == null) {
+//            Log.d("Payment", "Signature fail!!!")
+//            dialog.dismiss()
+//            finish()
+////            binding.progressBar.visibility = View.GONE
+//        } else {
 //
-//            merchViewModel.errorOccurred.observe(viewLifecycleOwner) { errorOccurred ->
-//                if(errorOccurred) {
-//                    binding.tvError.visibility = View.VISIBLE
-//                    binding.tvError.text = getString(R.string.payment_success_internal_server_error)
-//                } else {
-//                    binding.tvError.visibility = View.GONE
-//                }
-//            }
-
-
-//            merchViewModel.uploadData(dataModel, requireContext(), token)
-//            Log.d("Reached here", "Reached here")
-        }
+//
+////            merchViewModel.showLoading.observe(viewLifecycleOwner) { showLoading ->
+////                if (showLoading) {
+////                    dialog.show()
+////                } else {
+////                    dialog.dismiss()
+////                    binding.chooseSize.text = "Choose Size"
+//////                                    binding.choosePaymentSs.text = "Payment Screenshot"
+////                    selectedSizeIndex = 0
+////                    binding.editAddress.text.clear()
+////                    binding.editQuantity.text.clear()
+////                }
+////            }
+////
+////            merchViewModel.errorOccurred.observe(viewLifecycleOwner) { errorOccurred ->
+////                if(errorOccurred) {
+////                    binding.tvError.visibility = View.VISIBLE
+////                    binding.tvError.text = getString(R.string.payment_success_internal_server_error)
+////                } else {
+////                    binding.tvError.visibility = View.GONE
+////                }
+////            }
+//
+//
+////            merchViewModel.uploadData(dataModel, requireContext(), token)
+////            Log.d("Reached here", "Reached here")
+//        }
 //        finish()
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
-        Toast.makeText(this, "All set but wrong", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Payment failed", Toast.LENGTH_SHORT).show()
         finish()
     }
 }

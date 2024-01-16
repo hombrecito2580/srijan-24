@@ -6,7 +6,7 @@
 
     <color name="bg">#00000000</color>
     <color name="progress_bar">#CC000000</color>
-    <color name="bgLight">#33FFEB3B</color>
+    <color name="bgLight">#4DFFEB3B</color>
 <!--    <color name="brown">#723B14</color>-->
     <color name="alternate">#FF000000</color>
     <color name="bgAlternate">#919191</color>

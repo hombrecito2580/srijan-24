@@ -22,7 +22,6 @@ class MerchandiseCarouselAdapter(private val carouselDataList: Array<String>) : 
         return carouselDataList.size
     }
 
-
     override fun onBindViewHolder(holder: CarouselItemViewHolder, position: Int) {
         val imageView = holder.itemView.findViewById<ImageView>(R.id.image_merchandise)
         Log.i("src", carouselDataList[position])

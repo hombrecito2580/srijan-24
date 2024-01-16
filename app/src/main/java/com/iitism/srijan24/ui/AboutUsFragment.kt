@@ -75,6 +75,8 @@ class AboutUsFragment : Fragment() {
 
         binding.tvCoConvener2Name.text="Prof. Suresh K Yatirajula"
 
+        binding.tvTreasurerName.text="Prof. Madhulika Gupta"
+
         Glide.with(requireContext())
             .load("https://res.cloudinary.com/dfr1kvie3/image/upload/v1703957539/prof_convener_mojstc.jpg")
             .placeholder(R.drawable.iv_srijan_light)
@@ -92,5 +94,11 @@ class AboutUsFragment : Fragment() {
             .placeholder(R.drawable.iv_srijan_light)
             .centerCrop()
             .into(binding.ivCoConvener2)
+
+        Glide.with(requireContext())
+            .load("https://res.cloudinary.com/dkdratnao/image/upload/v1704473056/madhulika_gupta_ye3xav.jpg")
+            .placeholder(R.drawable.iv_srijan_light)
+            .centerCrop()
+            .into(binding.ivTreasurer)
     }
 }

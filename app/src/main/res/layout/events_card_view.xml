@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     android:elevation="20dp"
-    android:backgroundTint="@color/bg"
-    android:backgroundTintMode="src_in"
+    android:backgroundTint="@color/transparent"
     android:outlineAmbientShadowColor="@color/white"
     app:cardCornerRadius="20dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EBE29C"
+        android:background="@drawable/border"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:id="@+id/event_tv"
+                android:id="@+id/tvEvent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Event Name"
@@ -52,11 +52,11 @@
                 android:textColor="@color/black"
                 />
             <TextView
-                android:id="@+id/clubname_tv"
+                android:id="@+id/tvOrganiser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Club Name"
+                android:text="Organiser"
                 style="@style/h3"
                 android:textSize="20sp"
                 android:textColor="@color/black"
@@ -80,16 +80,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Venue: "
+                        android:text="Mode: "
                         style="@style/h4"
                         android:textStyle="bold"/>
                     <TextView
-                        android:id="@+id/tv_venue"
+                        android:id="@+id/tv_mode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         style="@style/h4"
-                        android:text="tv_venue">
+                        android:text="tv_mode">
                     </TextView>
                 </LinearLayout>
                 <LinearLayout

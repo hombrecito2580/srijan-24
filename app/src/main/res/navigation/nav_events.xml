@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_events"
+    app:startDestination="@id/aboutEventFragment">
+
+    <fragment
+        android:id="@+id/aboutEventFragment"
+        android:name="com.iitism.srijan24.ui.AboutEventFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about_event" />
+
+    <fragment
+        android:id="@+id/eventRulesFragment2"
+        android:name="com.iitism.srijan24.ui.EventRulesFragment"
+        android:label="Rules"
+        tools:layout="@layout/fragment_event_rules" />
+
+    <fragment
+        android:id="@+id/eventDetailsFragment"
+        android:name="com.iitism.srijan24.ui.EventDetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_event_details" />
+
+</navigation>

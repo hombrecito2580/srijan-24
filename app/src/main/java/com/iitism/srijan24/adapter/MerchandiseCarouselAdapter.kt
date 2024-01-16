@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.iitism.srijan24.R
 
-class MerchandiseCarouselAdapter(private val carouselDataList: Array<Int>) : RecyclerView.Adapter<MerchandiseCarouselAdapter.CarouselItemViewHolder>()
+class MerchandiseCarouselAdapter(private val carouselDataList: Array<String>) : RecyclerView.Adapter<MerchandiseCarouselAdapter.CarouselItemViewHolder>()
 {
     inner class CarouselItemViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
@@ -22,14 +22,13 @@ class MerchandiseCarouselAdapter(private val carouselDataList: Array<Int>) : Rec
         return carouselDataList.size
     }
 
-
     override fun onBindViewHolder(holder: CarouselItemViewHolder, position: Int) {
         val imageView = holder.itemView.findViewById<ImageView>(R.id.image_merchandise)
-        Log.i("src",carouselDataList[position].toString())
+        Log.i("src", carouselDataList[position])
         Glide.with(holder.itemView.context)
             .load(carouselDataList[position])
-            .placeholder(R.drawable.ic_merchandise)
-            .error(R.drawable.ic_merchandise)
+            .placeholder(R.drawable.srijan_modified_logo)
+            .error(R.drawable.srijan_modified_logo)
             .into(imageView)
     }
 

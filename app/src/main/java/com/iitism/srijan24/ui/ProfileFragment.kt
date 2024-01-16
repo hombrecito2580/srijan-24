@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import com.iitism.srijan24.data.ProfileDataModel
 import com.iitism.srijan24.databinding.FragmentProfileBinding
-import com.iitism.srijan24.view_model.ProfileViewModel
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController

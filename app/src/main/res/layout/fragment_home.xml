@@ -19,7 +19,8 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:context=".ui.HomeFragment"
-    tools:ignore="hardcodedText">
+    tools:ignore="hardcodedText"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_marginBottom="-10dp"
+    android:paddingBottom="0dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvStageNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stage "
+        android:textAlignment="center"
+        style="@style/h2"
+        android:textColor="@color/text" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvStageDescription"
+        style="@style/h4"
+        android:textColor="@color/text"
+        android:text="Objective: Test participants' financial decision-making skills. Format: Participants will be provided with a virtual case. They will bid on items or projects based on parameters set by the organizers. The teams will be qualified based on the most efficient bidding of the given cash in the given time period. The number of teams that qualify for the next round will be based on the performance of the teams. Remaining teams will be disqualified."/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Timing : "
+            android:textAlignment="viewEnd"
+            android:textColor="@color/text"
+            style="@style/h4"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvStageTiming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="10:00PM"
+            android:textColor="@color/white"
+            style="@style/h4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:text="Venue : "
+            android:textAlignment="viewEnd"
+            android:textColor="@color/text"
+            android:textStyle="bold"
+            style="@style/h4" />
+
+        <TextView
+            android:id="@+id/tvStageVenue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NLHC"
+            android:textColor="@color/text"
+            style="@style/h4" />
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="200sp"
+        android:background="@color/bg"
+        android:layout_gravity="center"
+        android:layout_height="1dp"/>
+
+</LinearLayout>

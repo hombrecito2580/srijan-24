@@ -78,7 +78,7 @@ class ProfileFragment : Fragment() {
                         binding.tvContact.text = body.phoneNumber
                     } else {
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
+//                        findNavController().popBackStack()
                     }
                     dialog.dismiss()
                 }

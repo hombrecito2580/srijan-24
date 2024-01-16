@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Srijan 24</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="payment_success_internal_server_error">"Payment was successful, but the order couldn't be created due to an internal server error. Please contact: +917999819086 for a refund. The inconvenience is deeply regretted."</string>
 
     <!--    <string name="convener_message">Identification of a country’s civilization has always been through the-->
     <!--                culture its people follow and promote. It generates a sense of unity via-->

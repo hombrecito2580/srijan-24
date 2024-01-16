@@ -1,5 +1,6 @@
 package com.iitism.srijan24.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -31,32 +32,39 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.cloudinary.Cloudinary
 import com.cloudinary.android.MediaManager
-import com.cloudinary.android.callback.ErrorInfo
-import com.cloudinary.android.callback.UploadCallback
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.JsonObject
+import com.iitism.srijan24.BuildConfig.CLOUDINARY_URL
+import com.iitism.srijan24.BuildConfig.RAZORPAY_KEY
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.MerchandiseCarouselAdapter
 import com.iitism.srijan24.data.DetailsDataModel
 import com.iitism.srijan24.data.GetUserResponse
+import com.iitism.srijan24.data.MakeOrderBody
+import com.iitism.srijan24.data.MakeOrderResponse
 import com.iitism.srijan24.databinding.FragmentMerchandiseBinding
+import com.iitism.srijan24.retrofit.RazorpayRetrofitInstance
 import com.iitism.srijan24.retrofit.UserApiInstance
 import com.iitism.srijan24.view_model.MerchandiseViewModel
 import com.razorpay.Checkout
-import com.razorpay.PaymentResultListener
 import org.json.JSONObject
+import com.razorpay.PaymentResultListener
 import retrofit2.Call
 import retrofit2.Response
+import javax.crypto.Mac
+import javax.crypto.spec.SecretKeySpec
 import kotlin.math.abs
+import kotlin.text.Charsets.UTF_8
 
 
 class MerchandiseFragment : Fragment(), PaymentResultListener {
+//    private var merchandiseListener: MerchandiseListener? = null
     companion object {
         const val REQUEST_CODE_IMAGE = 101
     }
 
-    private val cloudinary =
-        Cloudinary("cloudinary://346224682169534:c7Eip5uGeMBUYxU8ta4iGn51qPo@digvpmszg")
+    private val cloudinary = Cloudinary(CLOUDINARY_URL)
 
 //    private lateinit var config: HashMap<String, String>
 
@@ -74,11 +82,12 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
     private lateinit var isISMite: String
     private lateinit var token: String
     private var totalPriceToPay: Int = 0
+    private lateinit var orderId: String
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         try {
             // Attempt to initialize MediaManager
@@ -101,7 +110,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 //        config["api_secret"] = "c7Eip5uGeMBUYxU8ta4iGn51qPo"
 
 
-        Checkout.preload(requireContext())
+
         return binding.root
     }
 
@@ -125,7 +134,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             call.enqueue(object : retrofit2.Callback<GetUserResponse> {
                 override fun onResponse(
                     call: Call<GetUserResponse>,
-                    response: Response<GetUserResponse>
+                    response: Response<GetUserResponse>,
                 ) {
                     val body = response.body()
                     if (response.isSuccessful && body != null) {
@@ -151,9 +160,10 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         viewPager = binding.viewPagerCorousel
 
         val merchandiseImagesData = arrayOf(
-            R.drawable.ic_merchandise, R.drawable.ic_merchandise,
-            R.drawable.ic_merchandise, R.drawable.ic_merchandise,
-            R.drawable.ic_merchandise, R.drawable.ic_merchandise, R.drawable.ic_merchandise
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1705310024/srijan%2024/gqvhedqnvgevbgsoquq5.jpg",
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1705310035/srijan%2024/nyko1lzetgqbxuzo9lwi.jpg",
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1705310023/srijan%2024/w1scw9cxlifqpmdaexkd.jpg",
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1705313483/srijan%2024/gwr6dh2j2quest3aalo6.jpg"
         )
         viewPager.adapter = MerchandiseCarouselAdapter(merchandiseImagesData)
 
@@ -209,13 +219,13 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         binding.chooseSize.setOnClickListener {
             showSizeMenu(view)
         }
-        binding.choosePaymentSs.setOnClickListener {
-            selectImage()
-        }
+//        binding.choosePaymentSs.setOnClickListener {
+//            selectImage()
+//        }
 
-        binding.placeOrderButton.setOnClickListener {
-            placeOrder()
-        }
+//        binding.placeOrderButton.setOnClickListener {
+//            placeOrder()
+//        }
 
 //        val config= HashMap<Any?, Any?>()
 //        config["cloud_name"] = "digvpmszg"
@@ -225,11 +235,24 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 
 
         binding.payButton.setOnClickListener {
-            var amt = totalPriceToPay
-            amt = 1
-            startPayment(amt)
+//            totalPriceToPay = 1
+            startPayment(totalPriceToPay)
         }
     }
+
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        if (context is MerchandiseListener) {
+//            merchandiseListener = context
+//        } else {
+//            throw ClassCastException("$context must implement Merchandise")
+//        }
+//    }
+//
+//    override fun onDetach() {
+//        super.onDetach()
+//        merchandiseListener = null
+//    }
 
     private fun initializeDialog() {
         dialog = Dialog(requireContext())
@@ -346,7 +369,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
                             MyFileHandler(requireContext()).getFileName(selectedImageUri!!)
                         Log.i("image", imageBase64.toString())
                         showSnackBar("$imageName is selected")
-                        binding.choosePaymentSs.text = imageName
+//                        binding.choosePaymentSs.text = imageName
                     }
                 }
             }
@@ -397,97 +420,97 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 
     }
 
-    private fun placeOrder() {
-        dataModel = DetailsDataModel()
-
-        binding.apply {
-            dataModel.apply {
-                address = editAddress.text.toString().trim()
-                tShirtSize = selectedSize.toString().trim()
-                quantity = editQuantity.text.toString().trim()
-            }
-        }
-
-        var flag = 1
-
-        if (dataModel.address.trim().isEmpty()) {
-            binding.editAddress.error = "Address can't be empty"
-            Log.d("hostel", dataModel.address)
-            flag = 0
-        } else if (dataModel.quantity.trim().isEmpty() || dataModel.quantity.toInt() < 1) {
-            binding.editQuantity.error = "Quantity  can't be empty"
-            flag = 0
-        } else if (isSizeSelected == 0) {
-            flag = 0
-            Toast.makeText(context, "Size not Selected!!", Toast.LENGTH_SHORT).show()
-        } else if (selectedImageUri == null) {
-            flag = 0
-            Toast.makeText(context, "Image not Uploaded!!", Toast.LENGTH_SHORT).show()
-        }
-
-
-        if (flag == 1 && isSizeSelected == 1) {
-            dialog.show()
-
-            MediaManager.get().upload(selectedImageUri).unsigned("laqyxjqt").callback(
-                object : UploadCallback {
-                    override fun onStart(requestId: String?) {
-
-                    }
-
-                    override fun onProgress(requestId: String?, bytes: Long, totalBytes: Long) {
-
-                    }
-
-                    override fun onSuccess(
-                        requestId: String?,
-                        resultData: MutableMap<Any?, Any?>?
-                    ) {
-                        val imageUrl = resultData?.get("url")?.toString()
-
-                        if (imageUrl != null) {
-                            dataModel.imageURL = imageUrl
-                            Log.d("Image URL", imageUrl)
-
-                            merchViewModel.showLoading.observe(viewLifecycleOwner) { showLoading ->
-                                if (showLoading) {
-                                    dialog.show()
-                                } else {
-                                    dialog.dismiss()
-
-                                    binding.chooseSize.text = "Choose Size"
-                                    binding.choosePaymentSs.text = "Payment Screenshot"
-                                    selectedSizeIndex = 0
-                                    binding.editAddress.text.clear()
-                                    binding.editQuantity.text.clear()
-                                    selectedImageUri = null
-                                }
-                            }
-                            merchViewModel.uploadData(dataModel, requireContext(), token)
-                        } else {
-                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-
-
-                    }
-
-                    override fun onError(requestId: String?, error: ErrorInfo?) {
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
-                        dialog.dismiss()
-                    }
-
-                    override fun onReschedule(requestId: String?, error: ErrorInfo?) {
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
-                        dialog.dismiss()
-                    }
-
-                }
-            ).dispatch()
-
-
-        }
-    }
+//    private fun placeOrder() {
+//        dataModel = DetailsDataModel()
+//
+//        binding.apply {
+//            dataModel.apply {
+//                address = editAddress.text.toString().trim()
+//                tShirtSize = selectedSize.toString().trim()
+//                quantity = editQuantity.text.toString().trim()
+//            }
+//        }
+//
+//        var flag = 1
+//
+//        if (dataModel.address.trim().isEmpty()) {
+//            binding.editAddress.error = "Address can't be empty"
+//            Log.d("hostel", dataModel.address)
+//            flag = 0
+//        } else if (dataModel.quantity.trim().isEmpty() || dataModel.quantity.toInt() < 1) {
+//            binding.editQuantity.error = "Quantity  can't be empty"
+//            flag = 0
+//        } else if (isSizeSelected == 0) {
+//            flag = 0
+//            Toast.makeText(context, "Size not Selected!!", Toast.LENGTH_SHORT).show()
+//        } else if (selectedImageUri == null) {
+//            flag = 0
+//            Toast.makeText(context, "Image not Uploaded!!", Toast.LENGTH_SHORT).show()
+//        }
+//
+//
+//        if (flag == 1 && isSizeSelected == 1) {
+//            dialog.show()
+//
+//            MediaManager.get().upload(selectedImageUri).unsigned("laqyxjqt").callback(
+//                object : UploadCallback {
+//                    override fun onStart(requestId: String?) {
+//
+//                    }
+//
+//                    override fun onProgress(requestId: String?, bytes: Long, totalBytes: Long) {
+//
+//                    }
+//
+//                    override fun onSuccess(
+//                        requestId: String?,
+//                        resultData: MutableMap<Any?, Any?>?
+//                    ) {
+//                        val imageUrl = resultData?.get("url")?.toString()
+//
+//                        if (imageUrl != null) {
+//                            dataModel.imageURL = imageUrl
+//                            Log.d("Image URL", imageUrl)
+//
+//                            merchViewModel.showLoading.observe(viewLifecycleOwner) { showLoading ->
+//                                if (showLoading) {
+//                                    dialog.show()
+//                                } else {
+//                                    dialog.dismiss()
+//
+//                                    binding.chooseSize.text = "Choose Size"
+////                                    binding.choosePaymentSs.text = "Payment Screenshot"
+//                                    selectedSizeIndex = 0
+//                                    binding.editAddress.text.clear()
+//                                    binding.editQuantity.text.clear()
+//                                    selectedImageUri = null
+//                                }
+//                            }
+//                            merchViewModel.uploadData(dataModel, requireContext(), token)
+//                        } else {
+//                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT)
+//                                .show()
+//                        }
+//
+//
+//                    }
+//
+//                    override fun onError(requestId: String?, error: ErrorInfo?) {
+//                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+//                        dialog.dismiss()
+//                    }
+//
+//                    override fun onReschedule(requestId: String?, error: ErrorInfo?) {
+//                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+//                        dialog.dismiss()
+//                    }
+//
+//                }
+//            ).dispatch()
+//
+//
+//        }
+//    }
 
 //    private fun makepayment(){
 //
@@ -525,59 +548,232 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 
 
     private fun startPayment(amount: Int) {
-        /*
-        *  You need to pass the current activity to let Razorpay create CheckoutActivity
-        * */
-        val activity: Activity = requireActivity()
-        val co = Checkout()
+//        val checkout = Checkout()
 
-        try {
-            val options = JSONObject()
-            options.put("name", "Srijan '24 Merchandise")
-            options.put("description", "Merchandise Charges")
-            //You can omit the image option to fetch the image from the dashboard
-            options.put(
-                "image",
-                "https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw"
-            )
-            options.put("theme.color", "#FBE10E")
-            options.put("currency", "INR")
-//            options.put("order_id", "order_DBJOWzybf0sJbx");
-            options.put("amount", amount * 100)//pass amount in currency subunits
-            options.put("method", JSONObject().put("upi", true))
+        dataModel = DetailsDataModel()
 
-            val retryObj = JSONObject()
-            retryObj.put("enabled", true);
-            retryObj.put("max_count", 4);
-            options.put("retry", retryObj);
+        binding.apply {
+            dataModel.apply {
+                address = editAddress.text.toString().trim()
+                tShirtSize = selectedSize.toString().trim()
+                quantity = editQuantity.text.toString().trim()
+            }
+        }
 
-//            val prefill = JSONObject()
-//            prefill.put("email", "gaurav.kumar@example.com")
-//            prefill.put("contact", "9876543210")
+        var flag = 1
 
-//            options.put("prefill", prefill)
-            co.open(activity, options)
-        } catch (e: Exception) {
-            Toast.makeText(activity, "Error in payment: " + e.message, Toast.LENGTH_LONG).show()
-            e.printStackTrace()
+        if (dataModel.address.trim().isEmpty()) {
+            binding.editAddress.error = "Address can't be empty"
+            Log.d("hostel", dataModel.address)
+            flag = 0
+        } else if (dataModel.quantity.trim().isEmpty() || dataModel.quantity.toInt() < 1) {
+            binding.editQuantity.error = "Quantity  can't be empty"
+            flag = 0
+        } else if (isSizeSelected == 0) {
+            flag = 0
+            Toast.makeText(context, "Size not Selected!!", Toast.LENGTH_SHORT).show()
+        }
+//        else if (selectedImageUri == null) {
+//            flag = 0
+//            Toast.makeText(context, "Image not Uploaded!!", Toast.LENGTH_SHORT).show()
+//        }
+
+
+        if (flag == 1 && isSizeSelected == 1) {
+            val sharedPreferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("tShirtSize", dataModel.tShirtSize)
+            editor.putString("address", dataModel.address)
+//            editor.putString("orderId", dataModel.orderId)
+            editor.putString("quantity", dataModel.quantity)
+            editor.putInt("amount", amount)
+            editor.apply()
+
+            startActivity(Intent(requireContext(), MerchandiseActivity::class.java))
+//            val call = RazorpayRetrofitInstance.createApi(token).makeOrder(MakeOrderBody(amount))
+//
+//            call.enqueue(object : retrofit2.Callback<MakeOrderResponse> {
+//                override fun onResponse(
+//                    call: Call<MakeOrderResponse>,
+//                    response: Response<MakeOrderResponse>,
+//                ) {
+//                    if(response.isSuccessful) {
+//                        orderId = response.body()!!.id
+//                        val sharedPreferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+//                        val editor = sharedPreferences.edit()
+//                        editor.putString("tShirtSize", dataModel.tShirtSize)
+//                        editor.putString("address", dataModel.address)
+//                        editor.putString("orderId", dataModel.orderId)
+//                        editor.putString("quantity", dataModel.quantity)
+//                        editor.apply()
+//                        try {
+////                            merchandiseListener?.sendOrder(dataModel.tShirtSize, dataModel.address, dataModel.quantity, orderId)
+//
+//                            val options = JSONObject()
+//                            options.put("name", "Srijan '24 Merchandise")
+//                            options.put("description", "Merchandise Payment")
+//                            options.put("image", "https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw")
+//                            options.put("theme.color", "#FBE10E")
+//                            options.put("currency", "INR")
+////            options.put("order_id", "order_DBJOWzybf0sJbx");
+//                            options.put("amount", amount * 100)//pass amount in currency subunits
+//                            options.put("method", JSONObject().put("upi", true))
+//
+//                            val retryObj = JSONObject()
+//                            retryObj.put("enabled", true);
+//                            retryObj.put("max_count", 4);
+//                            options.put("retry", retryObj);
+//
+//                            checkout.open(requireActivity(), options)
+//                        } catch (e: Exception) {
+//                            Toast.makeText(context, "Error in payment: " + e.message, Toast.LENGTH_LONG).show()
+//                            e.printStackTrace()
+//                        }
+//                    } else {
+//                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+//                        Log.d("Merchandise Fragment", response.code().toString())
+//                        Log.d("Merchandise Fragment", amount.toString())
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<MakeOrderResponse>, t: Throwable) {
+//                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//                    Log.e("EEEEEEEEEEEEEEEE", "failed to create order id")
+//
+//                }
+//            })
+//
+//            try {
+////                binding.progressBar.visibility = View.VISIBLE
+//                val options = JSONObject()
+//                options.put("name", "Srijan '24 Merchandise")
+//                options.put("description", "Merchandise Payment")
+//                //You can omit the image option to fetch the image from the dashboard
+//                options.put(
+//                    "image",
+//                    "https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw"
+//                )
+//                options.put("theme.color", "#FBE10E")
+//                options.put("currency", "INR")
+////            options.put("order_id", "order_DBJOWzybf0sJbx");
+//                options.put("amount", amount * 100)//pass amount in currency subunits
+//                options.put("method", JSONObject().put("upi", true))
+//
+//                val retryObj = JSONObject()
+//                retryObj.put("enabled", true);
+//                retryObj.put("max_count", 4);
+//                options.put("retry", retryObj);
+//
+////            val prefill = JSONObject()
+////            prefill.put("email", "gaurav.kumar@example.com")
+////            prefill.put("contact", "9876543210")
+//
+////            options.put("prefill", prefill)
+//
+//                checkout.open(requireActivity(), options)
+//            } catch (e: Exception) {
+//                Toast.makeText(context, "Error in payment: " + e.message, Toast.LENGTH_LONG).show()
+//                e.printStackTrace()
+//            }
         }
     }
 
-    override fun onPaymentSuccess(s: String?) {
-        // this method is called on payment success.
-        Toast.makeText(requireContext(), "Payment is successful : " + s, Toast.LENGTH_SHORT).show();
+    @SuppressLint("SetTextI18n")
+    override fun onPaymentSuccess(paymentId: String?) {
+        Log.d("Payment", "Success!!!")
+        Toast.makeText(requireContext(), "Payment is successful : $paymentId", Toast.LENGTH_SHORT)
+            .show()
+//        orderId = generateOrderId()
+//        Log.d("Payment orderId", orderId)
+//        val signature = paymentId?.let { generateRazorpaySignature(orderId, it) }
+//        if (signature == null) {
+//            binding.tvError.visibility = View.VISIBLE
+//            binding.tvError.text = getString(R.string.payment_success_internal_server_error)
+//            Log.d("Payment", "Signature fail!!!")
+////            binding.progressBar.visibility = View.GONE
+//        } else {
+//            dialog.show()
+//            Toast.makeText(context, "Payment successful", Toast.LENGTH_SHORT).show()
+//
+//            dataModel.orderId = orderId
+//            dataModel.paymentId = paymentId
+//            dataModel.signature = signature
+//
+//            merchViewModel.showLoading.observe(viewLifecycleOwner) { showLoading ->
+//                if (showLoading) {
+//                    dialog.show()
+//                } else {
+//                    dialog.dismiss()
+//                    binding.chooseSize.text = "Choose Size"
+////                                    binding.choosePaymentSs.text = "Payment Screenshot"
+//                    selectedSizeIndex = 0
+//                    binding.editAddress.text.clear()
+//                    binding.editQuantity.text.clear()
+//                }
+//            }
+//
+//            merchViewModel.errorOccurred.observe(viewLifecycleOwner) { errorOccurred ->
+//                if(errorOccurred) {
+//                    binding.tvError.visibility = View.VISIBLE
+//                    binding.tvError.text = getString(R.string.payment_success_internal_server_error)
+//                } else {
+//                    binding.tvError.visibility = View.GONE
+//                }
+//            }
+//
+//
+//            merchViewModel.uploadData(dataModel, requireContext(), token)
+//            Log.d("Reached here", "Reached here")
+//        }
     }
 
     override fun onPaymentError(p0: Int, s: String?) {
         // on payment failed.
-        Toast.makeText(requireContext(), "Payment Failed due to error : " + s, Toast.LENGTH_SHORT)
-            .show();
+        Toast.makeText(requireContext(), "Payment Failed due to error : $s", Toast.LENGTH_SHORT)
+            .show()
     }
+
+
 
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun generateRazorpaySignature(orderId: String, paymentId: String): String {
+        return try {
+            val data = "$orderId|$paymentId"
+            val keySpec = SecretKeySpec(RAZORPAY_KEY.toByteArray(UTF_8), "HmacSHA256")
+            val mac = Mac.getInstance("HmacSHA256")
+            mac.init(keySpec)
+            val result = mac.doFinal(data.toByteArray(UTF_8))
+            bytesToHex(result)
+        } catch (e: Exception) {
+            // Handle exception appropriately
+            e.printStackTrace()
+            ""
+        }
+    }
+
+    private fun bytesToHex(bytes: ByteArray): String {
+        val hexArray = "0123456789ABCDEF".toCharArray()
+        val hexChars = CharArray(bytes.size * 2)
+        for (i in bytes.indices) {
+            val v = bytes[i].toInt() and 0xFF
+            hexChars[i * 2] = hexArray[v.ushr(4)]
+            hexChars[i * 2 + 1] = hexArray[v and 0x0F]
+        }
+        return String(hexChars)
+    }
+
+    private fun generateOrderId(): String {
+        // Use a combination of timestamp and a random number for simplicity
+        val timestamp = System.currentTimeMillis()
+        val random = (Math.random() * 1000).toInt()
+
+        // Concatenate timestamp and random number to create a unique order ID
+        return "$timestamp$random"
     }
 
 }

@@ -23,7 +23,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager_corousel"
                 android:layout_width="300dp"
-                android:layout_height="240dp"
+                android:layout_height="200dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 tools:ignore="InefficientWeight" />
@@ -58,15 +58,15 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/bgLight"
                     android:layout_margin="10dp"
+                    android:backgroundTint="@color/bgLight"
                     app:cardCornerRadius="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
                         android:background="@color/bgLight"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical"
                         android:padding="10dp">
 
@@ -310,49 +310,62 @@
                             style="@style/h4"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:layout_marginTop="16dp"
                             android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="16dp"
                             android:background="@drawable/button_background1"
                             android:padding="10dp"
                             android:text="Choose Size"
                             android:textColor="@color/black" />
 
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/choose_payment_ss"
-                            style="@style/h4"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginHorizontal="10dp"
-                            android:background="@drawable/button_background1"
-                            android:padding="10dp"
-                            android:text="Payment Screenshot"
-                            android:textColor="@color/black" />
+                        <!--                        <androidx.appcompat.widget.AppCompatButton-->
+                        <!--                            android:id="@+id/choose_payment_ss"-->
+                        <!--                            style="@style/h4"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="40dp"-->
+                        <!--                            android:layout_marginTop="16dp"-->
+                        <!--                            android:layout_marginHorizontal="10dp"-->
+                        <!--                            android:background="@drawable/button_background1"-->
+                        <!--                            android:padding="10dp"-->
+                        <!--                            android:text="Payment Screenshot"-->
+                        <!--                            android:textColor="@color/black" />-->
+
+                        <!--                        <androidx.appcompat.widget.AppCompatButton-->
+                        <!--                            android:id="@+id/place_order_button"-->
+                        <!--                            style="@style/h4"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="50dp"-->
+                        <!--                            android:layout_marginVertical="16dp"-->
+                        <!--                            android:layout_marginHorizontal="10dp"-->
+                        <!--                            android:background="@drawable/button_background1"-->
+                        <!--                            android:backgroundTint="@color/primary"-->
+                        <!--                            android:padding="10dp"-->
+                        <!--                            android:text="Place Order"-->
+                        <!--                            android:textColor="@color/black" />-->
 
                         <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/place_order_button"
+                            android:id="@+id/pay_button"
                             style="@style/h4"
-                            android:layout_width="wrap_content"
+                            android:layout_width="150dp"
                             android:layout_height="50dp"
-                            android:layout_marginVertical="16dp"
-                            android:layout_marginHorizontal="10dp"
+                            android:layout_margin="10dp"
                             android:background="@drawable/button_background1"
                             android:backgroundTint="@color/primary"
                             android:padding="10dp"
-                            android:text="Place Order"
+                            android:text="Pay"
                             android:textColor="@color/black" />
 
-                                                <androidx.appcompat.widget.AppCompatButton
-                                                    android:id="@+id/pay_button"
-                                                    style="@style/h4"
-                                                    android:layout_width="150dp"
-                                                    android:layout_height="50dp"
-                                                    android:layout_margin="10dp"
-                                                    android:background="@drawable/button_background1"
-                                                    android:backgroundTint="@color/primary"
-                                                    android:padding="10dp"
-                                                    android:text="Pay"
-                                                    android:textColor="@color/black" />
+                        <TextView
+                            android:id="@+id/tvError"
+                            style="@style/h4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:textIsSelectable="true"
+                            android:visibility="gone" />
+
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -404,5 +417,21 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/primary"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone" />
 
 </FrameLayout>

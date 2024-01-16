@@ -32,15 +32,20 @@
         tools:replace="android:theme,android:allowBackup"
         tools:targetApi="31">
         <activity
-            android:name=".ui.LoginSignupActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".ui.MerchandiseActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.LoginSignupActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,11 +55,10 @@
 
         <service
             android:name=".services.MyFirebaseMessagingService"
-            android:permission="com.google.android.c2dm.permission.SEND"
-            android:exported="false">
+            android:exported="false"
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
@@ -62,20 +66,32 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/iv_srijan_light" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/primary" />
-
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_live_hCIa25zbx0icRX" />
-
+            android:value="rzp_live_hCIa25zbx0icRX" /> <!-- <activity android:name="com.razorpay.CheckoutActivity" -->
+        <!-- android:configChanges="keyboard|keyboardHidden|orientation|screenSize" -->
+        <!-- tools:replace="android:exported" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <data -->
+        <!-- android:host="rzp.io" -->
+        <!-- android:scheme="io.rzp" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!-- <receiver android:name="com.razorpay.RzpTokenReceiver" -->
+        <!-- tools:replace="android:exported" -->
+        <!-- android:exported="false"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="rzp.device_token.share" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
         <meta-data
             android:name="CLOUDINARY_URL"
-            android:value="cloudinary://digvpmszg"/>
-
-
+            android:value="cloudinary://digvpmszg" />
     </application>
 
 </manifest>

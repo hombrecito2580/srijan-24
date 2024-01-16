@@ -28,6 +28,7 @@ import com.iitism.srijan24.data.AddTokenModel
 import com.iitism.srijan24.databinding.ActivityMainBinding
 import com.iitism.srijan24.retrofit.TokenApi
 import com.iitism.srijan24.retrofit.TokenRetrofitInstance
+import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,6 +42,11 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+    private lateinit var tShirtSize: String
+    private lateinit var address: String
+    private lateinit var quantity: String
+    private lateinit var orderId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -153,6 +159,8 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 
         binding.navView.setupWithNavController(navController)
         binding.navView.setCheckedItem(R.id.homeFragment)
+
+        Checkout.preload(this)
     }
 
     private fun dismissDialogAfterDelay() {
@@ -258,13 +266,52 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onPaymentSuccess(p0: String?) {
+    override fun onPaymentSuccess(paymentId: String?) {
+        if (paymentId != null) {
+            Log.d("payId", paymentId)
+        }
         Toast.makeText(applicationContext, "Payment success", Toast.LENGTH_SHORT).show()
+
+        val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        orderId = sharedPreferences.getString("orderId", "orderId")!!
+        quantity = sharedPreferences.getString("quantity", "quantity")!!
+        tShirtSize = sharedPreferences.getString("tShirtSize", "tShirtSize")!!
+        address = sharedPreferences.getString("address", "address")!!
+
+        Log.d("dataMerch", orderId)
+        Log.d("dataMerch", quantity)
+        Log.d("dataMerch", tShirtSize)
+        Log.d("dataMerch", address)
+        if (paymentId != null) {
+            Log.d("dataMerch", paymentId)
+        }
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
         Toast.makeText(applicationContext, "Payment failure", Toast.LENGTH_SHORT).show()
+        Log.d("Asgdfg", "dgdfggdfggdfvrfgrgr")
+        val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        orderId = sharedPreferences.getString("orderId", "orderId")!!
+        quantity = sharedPreferences.getString("quantity", "quantity")!!
+        tShirtSize = sharedPreferences.getString("tShirtSize", "tShirtSize")!!
+        address = sharedPreferences.getString("address", "address")!!
+
+        Log.d("dataMerch", orderId)
+        Log.d("dataMerch", quantity)
+        Log.d("dataMerch", tShirtSize)
+        Log.d("dataMerch", address)
+//        if (paymentId != null) {
+//            Log.d("dataMerch", paymentId)
+//        }
     }
+
+//    override fun sendOrder(tShirtSize: String, address: String, quantity: String, orderId: String) {
+//        Log.d("OKKKKKKKKKKK", "OKKKKKKKKKKKKKKKK")
+//        this.tShirtSize = tShirtSize
+//        this.address = address
+//        this.orderId = orderId
+//        this.quantity = quantity
+//    }
 
 
 }

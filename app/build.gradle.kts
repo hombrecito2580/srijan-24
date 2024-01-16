@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -19,6 +22,12 @@ android {
         versionName = "2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val properties = Properties().apply {
+            load(rootProject.file("local.properties").inputStream())
+        }
+        buildConfigField("String", "RAZORPAY_KEY", "\"${properties.getProperty("RAZORPAY_KEY")}\"")
+        buildConfigField("String", "CLOUDINARY_URL", "\"${properties.getProperty("CLOUDINARY_URL")}\"")
     }
 
     buildTypes {
@@ -28,6 +37,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
         }
     }
     compileOptions {
@@ -40,6 +50,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 }
 
@@ -75,7 +86,7 @@ dependencies {
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
-    api("com.razorpay:checkout:1.6.33")
+    implementation("com.razorpay:checkout:1.6.33")
 
     //otp_view
 //    implementation("io.github.chaosleung:pinview:1.4.4")

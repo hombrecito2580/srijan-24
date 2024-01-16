@@ -16,10 +16,15 @@ import java.io.IOException
 class MerchandiseViewModel(application: Application) : AndroidViewModel(application) {
     private val _showLoading = MutableLiveData<Boolean>()
     val showLoading: LiveData<Boolean> get() = _showLoading
+
+    private val _errorOccurred = MutableLiveData<Boolean>().apply { value = false }
+    val errorOccurred get() = _showLoading
+
     fun uploadData(dataModel: DetailsDataModel, context: Context, token: String) {
 
         try {
             _showLoading.value = true
+            _errorOccurred.value = false
 
             val call = MerchandiseRetrofitInstance.createUserApi(token).uploadData(dataModel)
             call.enqueue(object : retrofit2.Callback<Void> {
@@ -29,13 +34,15 @@ class MerchandiseViewModel(application: Application) : AndroidViewModel(applicat
                             .show()
                         _showLoading.value = false
                     } else {
+                        errorOccurred.value = true
+                        Log.d("Response code", response.code().toString())
                         when(response.code()) {
                             403 -> {
                                 Toast.makeText(context, "Authorization Unsuccessful", Toast.LENGTH_SHORT).show()
                                 _showLoading.value = false
                             }
 
-                            404 -> {
+                            400 -> {
                                 Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
                                 _showLoading.value = false
                             }

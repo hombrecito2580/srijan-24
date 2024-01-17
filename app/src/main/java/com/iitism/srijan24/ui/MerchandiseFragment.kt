@@ -20,8 +20,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -322,25 +325,59 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
     private var selectedSize: String? = null
     private fun showSizeMenu(view: View) {
 
+        val customView = layoutInflater.inflate(R.layout.layout_custom_material_dialog, null)
+        val materialDialog = MaterialAlertDialogBuilder(requireContext(), R.style.CustomAlertDialog)
+            .setView(customView)
+            .show()
+
+        // Find the RadioGroup in the layout
+        val radioGroup = materialDialog.findViewById<RadioGroup>(R.id.customDialogRadioGroup)!!
+
+// Add radio buttons dynamically based on the array of options
         val tShirtSize = arrayOf("XS", "S", "M", "L", "XL", "2XL", "3XL")
-        selectedSize = tShirtSize[selectedSizeIndex]
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Choose Size")
-            .setSingleChoiceItems(tShirtSize, selectedSizeIndex) { _, which ->
-                selectedSizeIndex = which
-                selectedSize = tShirtSize[selectedSizeIndex]
+        var selectedSizeIndex = 0
+        var selectedSize = tShirtSize[selectedSizeIndex]
+        for (i in tShirtSize.indices) {
+            val radioButton = layoutInflater.inflate(R.layout.layout_custom_material_dialog_radio_button, null) as RadioButton
+            radioButton.text = tShirtSize[i]
+            radioButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            // Add other properties and setOnClickListener if needed
+            radioGroup.addView(radioButton)
+
+            // Set the default selected radio button
+            if (i == selectedSizeIndex) {
+                radioButton.isChecked = true
             }
-            .setPositiveButton("OK") { _, _ ->
+
+            radioButton.tag = i
+
+            radioButton.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    selectedSizeIndex = radioButton.tag as Int
+                    selectedSize = tShirtSize[selectedSizeIndex]
+                }
+            }
+        }
+
+// Find and set onClickListeners for buttons
+        val positiveButton = materialDialog.findViewById<Button>(R.id.customDialogPositiveBtn)
+        positiveButton?.apply {
+            text = "OK" // Set the button text if needed
+            setOnClickListener {
                 showSnackBar("$selectedSize selected")
                 binding.chooseSize.text = tShirtSize[selectedSizeIndex]
                 isSizeSelected = 1
+                materialDialog.dismiss()
+            }
+        }
 
-                //implement here the size part
+        val neutralButton = materialDialog.findViewById<Button>(R.id.customDialogNeutralBtn)
+        neutralButton?.apply {
+            text = "CANCEL" // Set the button text if needed
+            setOnClickListener {
+                materialDialog.dismiss()
             }
-            .setNeutralButton("Cancel") { _, _ ->
-                Toast.makeText(requireContext(), "Size is required", Toast.LENGTH_LONG).show()
-            }
-            .show()
+        }
     }
 
     private fun showSnackBar(msg: String) {

@@ -91,7 +91,6 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                         Log.d("Merch real merch!!!", orderId)
                         try {
 //                            merchandiseListener?.sendOrder(dataModel.tShirtSize, dataModel.address, dataModel.quantity, orderId)
-                            amount = 1
                             val options = JSONObject()
                             options.put("name", "Srijan '24 Merchandise")
                             options.put("description", "Merchandise Payment")

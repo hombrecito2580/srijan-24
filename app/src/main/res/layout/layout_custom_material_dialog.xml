@@ -17,6 +17,15 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:text="Choose Size"/>
+    <TextView
+        android:id="@+id/subTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:visibility="gone"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        style="@style/h3"/>
 
     <!-- Content -->
     <ScrollView

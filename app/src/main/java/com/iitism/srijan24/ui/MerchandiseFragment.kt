@@ -27,6 +27,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -173,6 +174,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705487638/srijan%2024/fae1pzqqziwqvzddpo9p.jpg",
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705487629/srijan%2024/bjb66hakdbeymti2gk3g.jpg",
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705310035/srijan%2024/nyko1lzetgqbxuzo9lwi.jpg",
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1705310023/srijan%2024/w1scw9cxlifqpmdaexkd.jpg",
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705487625/srijan%2024/bhxtelqfpwt2pykfcw5v.jpg",
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705313483/srijan%2024/gwr6dh2j2quest3aalo6.jpg"
         )
@@ -469,6 +471,8 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
                 }
             }
         }
+
+        materialDialogMerch.findViewById<TextView>(R.id.customDialogTitle)?.text = "Available Merchandise"
 
         // Find and set onClickListeners for buttons
         val positiveButton = materialDialogMerch.findViewById<Button>(R.id.customDialogPositiveBtn)

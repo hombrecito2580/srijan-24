@@ -12,6 +12,9 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +25,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.messaging.FirebaseMessaging
 import com.iitism.srijan24.R
 import com.iitism.srijan24.data.AddTokenModel
@@ -54,6 +58,53 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         setContentView(binding.root)
         initializeDialog()
         askNotificationAndSmsPermission()
+
+        val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        val token = preferences.getString("token", "") ?: ""
+        if (token.isEmpty()) {
+            binding.appBar.btnLogOut.visibility = View.GONE
+            binding.appBar.btnLogin.visibility = View.VISIBLE
+        } else {
+            binding.appBar.btnLogOut.visibility = View.VISIBLE
+            binding.appBar.btnLogin.visibility = View.GONE
+        }
+
+        binding.appBar.btnLogin.setOnClickListener {
+            startActivity(Intent(this, LoginSignupActivity::class.java))
+        }
+
+        binding.appBar.btnLogOut.setOnClickListener {
+            val logOutDialog = layoutInflater.inflate(R.layout.layout_custom_material_dialog, null)
+            val logOutDialogBuilder =
+                MaterialAlertDialogBuilder(this,R.style.CustomAlertDialog)
+                    .setView(logOutDialog)
+                    .show()
+
+            logOutDialogBuilder.findViewById<TextView>(R.id.customDialogTitle)?.text = "Srijan '24"
+            logOutDialogBuilder.findViewById<TextView>(R.id.subTitle)?.visibility = View.VISIBLE
+            logOutDialogBuilder.findViewById<TextView>(R.id.subTitle)?.text = "Do you want to Log Out?"
+            val positiveButton = logOutDialogBuilder.findViewById<Button>(R.id.customDialogPositiveBtn)
+            positiveButton?.apply {
+                text = "Yes" // Set the button text if needed
+                setOnClickListener {
+                    preferences.edit().clear().apply()
+                    binding.appBar.btnLogOut.visibility = View.GONE
+                    binding.appBar.btnLogin.visibility = View.VISIBLE
+
+                    logOutDialogBuilder.dismiss()
+                    Toast.makeText(this@MainActivity, "Logged out successfully ", Toast.LENGTH_SHORT).show()
+                }
+            }
+            val neutralButton = logOutDialogBuilder.findViewById<Button>(R.id.customDialogNeutralBtn)
+            neutralButton?.apply {
+                text = "No" // Set the button text if needed
+                setOnClickListener {
+                    logOutDialogBuilder.dismiss()
+                }
+            }
+
+
+        }
 
         dialog.show()
         dismissDialogAfterDelay()
@@ -94,20 +145,21 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 //        setupActionBarWithNavController(navController, binding.drawerLayout)
 //        binding.navView.setupWithNavController(navController)
 
-        if (navController.currentDestination?.id == R.id.homeFragment) {
-            binding.appBar.btnProfile.visibility = View.VISIBLE
-            binding.appBar.btnProfile.setOnClickListener {
-                val preferences =
-                    getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-//                val isISMite = preferences.getString("isISMite", "") ?: ""
-                val userId = preferences.getString("userId", "") ?: ""
 
-                if (userId.isEmpty()) {
-                    startActivity(Intent(this, LoginSignupActivity::class.java))
-                } else{
-                navController.navigate(R.id.action_homeFragment_to_profileFragment)
-            }}
-        }
+//        if (navController.currentDestination?.id == R.id.homeFragment) {
+//            binding.appBar.btnProfile.visibility = View.VISIBLE
+//            binding.appBar.btnProfile.setOnClickListener {
+//                val preferences =
+//                    getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+////                val isISMite = preferences.getString("isISMite", "") ?: ""
+//                val userId = preferences.getString("userId", "") ?: ""
+//
+//                if (userId.isEmpty()) {
+//                    startActivity(Intent(this, LoginSignupActivity::class.java))
+//                } else{
+//                navController.navigate(R.id.action_homeFragment_to_profileFragment)
+//            }}
+//        }
 
 
         binding.appBar.btnMenu.setOnClickListener {
@@ -144,7 +196,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             }
 
 //            if (destination.id != R.id.homeFragment)
-                binding.appBar.btnProfile.visibility = View.GONE
+//                binding.appBar.btnProfile.visibility = View.GONE
 //            else binding.appBar.btnProfile.visibility = View.VISIBLE
         }
 
@@ -161,6 +213,19 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         binding.navView.setCheckedItem(R.id.homeFragment)
 
         Checkout.preload(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        val token = preferences.getString("token", "") ?: ""
+        if (token.isEmpty()) {
+            binding.appBar.btnLogOut.visibility = View.GONE
+            binding.appBar.btnLogin.visibility = View.VISIBLE
+        } else {
+            binding.appBar.btnLogOut.visibility = View.VISIBLE
+            binding.appBar.btnLogin.visibility = View.GONE
+        }
     }
 
     private fun dismissDialogAfterDelay() {
@@ -206,11 +271,19 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             val notificationPermission = android.Manifest.permission.POST_NOTIFICATIONS
             val smsPermission = android.Manifest.permission.READ_SMS
 
-            if (ContextCompat.checkSelfPermission(this, notificationPermission) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    notificationPermission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 requestPermissionLauncher.launch(notificationPermission)
             }
 
-            if (ContextCompat.checkSelfPermission(this, smsPermission) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    smsPermission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 requestPermissionLauncher.launch(smsPermission)
             }
         }

@@ -131,8 +131,7 @@
                     android:background="@drawable/border2"
                     android:inputType="textPassword"
                     android:padding="10dp"
-                    android:textColor="@color/text"
-                    android:textCursorDrawable="@color/primary" />
+                    android:textColor="@color/text" />
 
                 <TextView
                     style="@style/h4"
@@ -154,8 +153,7 @@
                     android:background="@drawable/border2"
                     android:inputType="textPassword"
                     android:padding="10dp"
-                    android:textColor="@color/text"
-                    android:textCursorDrawable="@color/primary" />
+                    android:textColor="@color/text" />
 
                 <TextView
                     style="@style/h4"

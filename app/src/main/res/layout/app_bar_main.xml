@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutAppBar" />
 
-    <com.google.android.material.appbar.AppBarLayout
+    <Toolbar
         android:id="@+id/layoutAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,7 +61,16 @@
                     android:textColor="@color/black"
                     android:layout_centerInParent="true"/>
                 <ImageButton
-                    android:id="@+id/btnProfile"
+                    android:id="@+id/btnLogOut"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:background="@color/transparent"
+                    android:contentDescription="Profile"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_logout" />
+                <ImageButton
+                    android:id="@+id/btnLogin"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:visibility="gone"
@@ -73,7 +82,7 @@
 
         </androidx.cardview.widget.CardView>
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </Toolbar>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

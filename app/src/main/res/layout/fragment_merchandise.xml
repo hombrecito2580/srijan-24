@@ -252,6 +252,18 @@
                             android:textColor="@color/text"
                             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
+                        <TextView
+                            style="@style/h5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:padding="5dp"
+                            android:text="*Delivery outside IIT ISM campus is chargeable"
+                            android:textColor="#CACACA"
+                            android:textStyle="bold" />
+
+
+
                         <!--                        <TextView-->
                         <!--                            android:layout_width="wrap_content"-->
                         <!--                            android:layout_height="wrap_content"-->

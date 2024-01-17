@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutAppBar" />
 
-    <Toolbar
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/layoutAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
 
         </androidx.cardview.widget.CardView>
 
-    </Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

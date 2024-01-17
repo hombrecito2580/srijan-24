@@ -114,7 +114,7 @@ class HomeFragment : Fragment() {
                     }
                     else {
                         countDownSrijanEnd()
-                        binding.textcounterdown.text = "Srijan'23 is Live"
+                        binding.textCounterDown.text = "Srijan'23 is Live"
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -154,7 +154,7 @@ class HomeFragment : Fragment() {
                         binding.txtSecond.text = "" + String.format("%02d",seconds)
                     }
                     else {
-                        binding.textcounterdown.text = "Srijan'23 is  Over"
+                        binding.textCounterDown.text = "Srijan'23 is  Over"
                         binding.txtDay.visibility = View.INVISIBLE
                         binding.txtHour.visibility = View.INVISIBLE
                         binding.txtMinute.visibility = View.INVISIBLE

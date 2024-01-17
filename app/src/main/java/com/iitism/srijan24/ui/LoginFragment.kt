@@ -30,8 +30,6 @@ class LoginFragment : Fragment() {
     private lateinit var dialog: Dialog
 
 
-    var flag = 1
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

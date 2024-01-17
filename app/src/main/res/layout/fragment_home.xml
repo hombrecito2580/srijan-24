@@ -58,7 +58,7 @@
             android:layout_marginTop="220dp">
 
             <TextView
-                android:id="@+id/textcounterdown"
+                android:id="@+id/textCounterDown"
                 style="@style/h2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

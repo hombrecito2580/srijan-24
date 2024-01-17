@@ -23,11 +23,11 @@
 
             <TextView
                 android:id="@+id/txtProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="100sp" />
+                android:textSize="80sp" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -64,7 +64,7 @@
                     android:layout_marginTop="12dp"
                     android:text=""
                     android:textAlignment="center"
-                    android:textColor="#CFCFCF" />
+                    android:textColor="#C8C7C7" />
 
                 <TextView
                     android:id="@+id/tvContact"
@@ -75,7 +75,7 @@
                     android:layout_marginBottom="48dp"
                     android:text=""
                     android:textAlignment="center"
-                    android:textColor="#CFCFCF" />
+                    android:textColor="#C8C7C7" />
 
             </LinearLayout>
 

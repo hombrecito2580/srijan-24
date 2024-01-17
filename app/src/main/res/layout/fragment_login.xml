@@ -21,11 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="24dp"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
             <TextView
                 style="@style/h1"
-                android:textColor="#C8C7C7"
+                android:textColor="@color/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Login" />
@@ -34,37 +33,53 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#C8C7C7"
+                style="@style/h4"
                 android:text="Please log in to continue" />
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Email"
+                android:textColor="@color/text"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textCursorDrawable="@color/primary"
-                android:hint="someone@email.com"
-                android:textColor="@color/primary"
-                android:textColorHint="#6FFBE10E"
+                android:layout_height="wrap_content"
+                style="@style/h4"
+                android:textColor="@color/text"
                 android:background="@drawable/border2"
                 android:autofillHints="emailAddress"
                 android:inputType="textEmailAddress"
-                android:layout_marginTop="18dp"
-                android:paddingLeft="10dp"
-                android:textSize="15sp" />
+                android:padding="10dp"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Password"
+                android:textColor="@color/text"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textCursorDrawable="@color/primary"
-                android:textColor="@color/primary"
-                android:hint="password"
-                android:textColorHint="#6FFBE10E"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                style="@style/h4"
                 android:background="@drawable/border2"
                 android:autofillHints="password"
                 android:inputType="textPassword"
-                android:layout_marginTop="18dp"
-                android:paddingLeft="10dp"
-                android:textSize="15sp" />
+                android:padding="10dp"/>
 
             <TextView
                 android:id="@+id/forgotPasswordTextView"
@@ -79,7 +94,7 @@
 
             <Button
                 android:id="@+id/loginBtn"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 style="@style/btn"
                 android:layout_marginTop="24dp"
@@ -98,20 +113,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:textSize="16sp"
-                    android:textColor="#C8C7C7"
+                    style="@style/h4"
+                    android:textColor="@color/text"
                     android:text="Don't have an account?" />
 
                 <TextView
                     android:id="@+id/registerTextView"
-                    android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/h4"
                     android:text="Register"
-                    android:layout_marginStart="4dp"
-                    android:textSize="16sp"
-                    android:textColor="#F1A820" />
+                    android:textColor="@color/primary" />
 
             </LinearLayout>
 

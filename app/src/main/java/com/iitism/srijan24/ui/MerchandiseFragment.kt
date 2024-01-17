@@ -170,9 +170,10 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         viewPager = binding.viewPagerCorousel
 
         val merchandiseImagesData = arrayOf(
-            "https://res.cloudinary.com/dxomldckp/image/upload/v1705310024/srijan%2024/gqvhedqnvgevbgsoquq5.jpg",
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1705487638/srijan%2024/fae1pzqqziwqvzddpo9p.jpg",
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1705487629/srijan%2024/bjb66hakdbeymti2gk3g.jpg",
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705310035/srijan%2024/nyko1lzetgqbxuzo9lwi.jpg",
-            "https://res.cloudinary.com/dxomldckp/image/upload/v1705310023/srijan%2024/w1scw9cxlifqpmdaexkd.jpg",
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1705487625/srijan%2024/bhxtelqfpwt2pykfcw5v.jpg",
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705313483/srijan%2024/gwr6dh2j2quest3aalo6.jpg"
         )
         viewPager.adapter = MerchandiseCarouselAdapter(merchandiseImagesData)
@@ -395,6 +396,13 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         }
     }
 
+    fun String.unescapeUnicode(): String {
+        return Regex("""\\u([0-9a-fA-F]{4})""")
+            .replace(this) {
+                it.groupValues[1].toInt(16).toChar().toString()
+            }
+    }
+
     private fun showPrice() {
         binding.apply {
             if (isMerchSelected == 1 && isSizeSelected == 1) {
@@ -410,12 +418,12 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
                             (selectedQuantity.toInt() * perUnitHoodiePrice)
                     }
 
-                    val textToShow = "Payable Amount: \\u20B9 $totalPriceToPay"
+                    val textToShow = "Payable Amount: \\u20B9 $totalPriceToPay".unescapeUnicode()
                     totalPrice.text = textToShow
                 }
             } else {
 
-                totalPrice.text = "Payable Amount: \\u20B9 0"
+                totalPrice.text = "Payable Amount: \\u20B9 0".unescapeUnicode()
             }
         }
     }

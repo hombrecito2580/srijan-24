@@ -204,7 +204,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
     private fun askNotificationAndSmsPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val notificationPermission = android.Manifest.permission.POST_NOTIFICATIONS
-            val smsPermission = android.Manifest.permission.RECEIVE_SMS
+            val smsPermission = android.Manifest.permission.READ_SMS
 
             if (ContextCompat.checkSelfPermission(this, notificationPermission) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissionLauncher.launch(notificationPermission)

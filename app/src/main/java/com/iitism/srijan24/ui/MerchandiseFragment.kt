@@ -1,10 +1,12 @@
 package com.iitism.srijan24.ui
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.database.Cursor
 import android.graphics.drawable.ColorDrawable
@@ -26,6 +28,7 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -62,7 +65,7 @@ import kotlin.text.Charsets.UTF_8
 
 
 class MerchandiseFragment : Fragment(), PaymentResultListener {
-//    private var merchandiseListener: MerchandiseListener? = null
+    //    private var merchandiseListener: MerchandiseListener? = null
     companion object {
         const val REQUEST_CODE_IMAGE = 101
     }
@@ -72,7 +75,9 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 //    private lateinit var config: HashMap<String, String>
 
     private var perUnitTShirtPrice = 399
+    private var perUnitHoodiePrice = 799
     private var isSizeSelected = 0
+    private var isMerchSelected = 0
     private var isImageUploaded = 0
     private var selectedImageUri: Uri? = null
     private lateinit var dataModel: DetailsDataModel
@@ -86,6 +91,9 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
     private lateinit var token: String
     private var totalPriceToPay: Int = 0
     private lateinit var orderId: String
+
+    //    val merchSize = arrayOf("XS", "S", "M", "L", "XL", "2XL", "3XL")
+    var merchSize = arrayOf<String>()
 
 
     override fun onCreateView(
@@ -111,7 +119,6 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 //        config["cloud_name"] = "digvpmszg"
 //        config["api_key"] = "346224682169534"
 //        config["api_secret"] = "c7Eip5uGeMBUYxU8ta4iGn51qPo"
-
 
 
         return binding.root
@@ -198,29 +205,20 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             }
 
             override fun afterTextChanged(p0: Editable?) {
+                if (isMerchSelected == 1 && isSizeSelected == 1) {
+                    showPrice()
 
-
-                binding.apply {
-                    val selectedQuantity = editQuantity.text.toString()
-                    if (selectedQuantity.isNotEmpty()) {
-                        totalPriceToPay =
-                            (selectedQuantity.toInt() * perUnitTShirtPrice)
-
-                        val textToShow = "Total Price: Rs.$totalPriceToPay"
-                        totalPrice.visibility = View.VISIBLE
-                        totalPrice.text = textToShow
-                    } else {
-                        totalPrice.visibility = View.INVISIBLE
-                        totalPrice.text = ""
-                    }
                 }
             }
 
         })
 
-
+        binding.chooseMerch.setOnClickListener {
+            showMerchMenu(view)
+        }
         binding.chooseSize.setOnClickListener {
-            showSizeMenu(view)
+            if (isMerchSelected == 1) showSizeMenu(view)
+            else Toast.makeText(context, "Select Merchandise", Toast.LENGTH_SHORT).show()
         }
 //        binding.choosePaymentSs.setOnClickListener {
 //            selectImage()
@@ -239,7 +237,19 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 
         binding.payButton.setOnClickListener {
 //            totalPriceToPay = 1
-            startPayment(totalPriceToPay)
+            if (ContextCompat.checkSelfPermission(
+                    requireActivity(),
+                    Manifest.permission.READ_SMS
+                ) !=
+                PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissions(
+                    arrayOf(Manifest.permission.READ_SMS),
+                    1001
+                )
+            } else {
+                startPayment(totalPriceToPay)
+            }
         }
     }
 
@@ -321,9 +331,10 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         }
     }
 
-    private var selectedSizeIndex = 0;
+    private var selectedSizeIndex = 0
     private var selectedSize: String? = null
     private fun showSizeMenu(view: View) {
+
 
         val customView = layoutInflater.inflate(R.layout.layout_custom_material_dialog, null)
         val materialDialog = MaterialAlertDialogBuilder(requireContext(), R.style.CustomAlertDialog)
@@ -334,12 +345,15 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         val radioGroup = materialDialog.findViewById<RadioGroup>(R.id.customDialogRadioGroup)!!
 
 // Add radio buttons dynamically based on the array of options
-        val tShirtSize = arrayOf("XS", "S", "M", "L", "XL", "2XL", "3XL")
-        var selectedSizeIndex = 0
-        var selectedSize = tShirtSize[selectedSizeIndex]
-        for (i in tShirtSize.indices) {
-            val radioButton = layoutInflater.inflate(R.layout.layout_custom_material_dialog_radio_button, null) as RadioButton
-            radioButton.text = tShirtSize[i]
+        selectedSizeIndex = 0
+        selectedSize = merchSize[selectedSizeIndex]
+        for (i in merchSize.indices) {
+
+            val radioButton = layoutInflater.inflate(
+                R.layout.layout_custom_material_dialog_radio_button,
+                null
+            ) as RadioButton
+            radioButton.text = merchSize[i]
             radioButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
             // Add other properties and setOnClickListener if needed
             radioGroup.addView(radioButton)
@@ -354,7 +368,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             radioButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     selectedSizeIndex = radioButton.tag as Int
-                    selectedSize = tShirtSize[selectedSizeIndex]
+                    selectedSize = merchSize[selectedSizeIndex]
                 }
             }
         }
@@ -365,9 +379,10 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             text = "OK" // Set the button text if needed
             setOnClickListener {
                 showSnackBar("$selectedSize selected")
-                binding.chooseSize.text = tShirtSize[selectedSizeIndex]
+                binding.chooseSize.text = merchSize[selectedSizeIndex]
                 isSizeSelected = 1
                 materialDialog.dismiss()
+                showPrice()
             }
         }
 
@@ -378,6 +393,104 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
                 materialDialog.dismiss()
             }
         }
+    }
+
+    private fun showPrice() {
+        binding.apply {
+            if (isMerchSelected == 1 && isSizeSelected == 1) {
+
+                val selectedQuantity = editQuantity.text.toString().trim()
+
+                if (selectedQuantity.isNotEmpty()) {
+                    if (chooseMerch.text == "T-Shirt") {
+                        totalPriceToPay =
+                            (selectedQuantity.toInt() * perUnitTShirtPrice)
+                    } else if (chooseMerch.text == "Hoodie") {
+                        totalPriceToPay =
+                            (selectedQuantity.toInt() * perUnitHoodiePrice)
+                    }
+
+                    val textToShow = "Payable Amount: \\u20B9 $totalPriceToPay"
+                    totalPrice.text = textToShow
+                }
+            } else {
+
+                totalPrice.text = "Payable Amount: \\u20B9 0"
+            }
+        }
+    }
+
+    private var selectedMerchIndex = 0
+    private var selectedMerch: String? = null
+    private fun showMerchMenu(view: View) {
+
+        val customViewMerch = layoutInflater.inflate(R.layout.layout_custom_material_dialog, null)
+        val materialDialogMerch =
+            MaterialAlertDialogBuilder(requireContext(), R.style.CustomAlertDialog)
+                .setView(customViewMerch)
+                .show()
+
+        // Find the RadioGroup in the layout
+        val radioGroup = materialDialogMerch.findViewById<RadioGroup>(R.id.customDialogRadioGroup)!!
+
+        // Add radio buttons dynamically based on the array of options
+        val merchandiseArray = arrayOf("T-Shirt", "Hoodie")
+        selectedMerchIndex = 0
+        selectedMerch = merchandiseArray[selectedMerchIndex]
+        for (i in merchandiseArray.indices) {
+            val radioButton = layoutInflater.inflate(
+                R.layout.layout_custom_material_dialog_radio_button,
+                null
+            ) as RadioButton
+            radioButton.text = merchandiseArray[i]
+            radioButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            // Add other properties and setOnClickListener if needed
+            radioGroup.addView(radioButton)
+
+            // Set the default selected radio button
+            if (i == selectedMerchIndex) {
+                radioButton.isChecked = true
+            }
+
+            radioButton.tag = i
+
+            radioButton.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    selectedMerchIndex = radioButton.tag as Int
+                    selectedMerch = merchandiseArray[selectedMerchIndex]
+                }
+            }
+        }
+
+        // Find and set onClickListeners for buttons
+        val positiveButton = materialDialogMerch.findViewById<Button>(R.id.customDialogPositiveBtn)
+        positiveButton?.apply {
+            text = "OK" // Set the button text if needed
+            setOnClickListener {
+                showSnackBar("$selectedMerch selected")
+                binding.chooseMerch.text = merchandiseArray[selectedMerchIndex]
+                isMerchSelected = 1
+                if (selectedMerch == "T-Shirt") {
+                    merchSize = arrayOf("XS", "S", "M", "L", "XL", "2XL")
+                } else if (selectedMerch == "Hoodie") {
+                    merchSize = arrayOf("XS", "S", "M", "L", "XL", "2XL", "3XL")
+
+                }
+                isSizeSelected = 0
+                binding.chooseSize.text = "Choose Size"
+                showPrice()
+                materialDialogMerch.dismiss()
+            }
+        }
+
+        val neutralButton = materialDialogMerch.findViewById<Button>(R.id.customDialogNeutralBtn)
+        neutralButton?.apply {
+            text = "CANCEL" // Set the button text if needed
+            setOnClickListener {
+                materialDialogMerch.dismiss()
+            }
+        }
+
     }
 
     private fun showSnackBar(msg: String) {
@@ -606,6 +719,9 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         } else if (dataModel.quantity.trim().isEmpty() || dataModel.quantity.toInt() < 1) {
             binding.editQuantity.error = "Quantity  can't be empty"
             flag = 0
+        } else if (isMerchSelected == 0) {
+            flag = 0
+            Toast.makeText(context, "Merchandise not Selected!!", Toast.LENGTH_SHORT).show()
         } else if (isSizeSelected == 0) {
             flag = 0
             Toast.makeText(context, "Size not Selected!!", Toast.LENGTH_SHORT).show()
@@ -615,8 +731,9 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 //            Toast.makeText(context, "Image not Uploaded!!", Toast.LENGTH_SHORT).show()
 //        }
 
-        if (flag == 1 && isSizeSelected == 1) {
-            val sharedPreferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        if (flag == 1 && isSizeSelected == 1 && isMerchSelected == 1) {
+            val sharedPreferences =
+                requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("tShirtSize", dataModel.tShirtSize)
             editor.putString("address", dataModel.address)
@@ -624,7 +741,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             editor.putString("quantity", dataModel.quantity)
             editor.putInt("amount", amount)
             editor.putString("userName", binding.editName.text.toString().trim())
-            editor.putString("contact", "+91"+binding.editPhone.text.toString().trim())
+            editor.putString("contact", "+91" + binding.editPhone.text.toString().trim())
             editor.putString("email", binding.editEmail.text.toString().trim())
             editor.apply()
 
@@ -771,8 +888,6 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         Toast.makeText(requireContext(), "Payment Failed due to error : $s", Toast.LENGTH_SHORT)
             .show()
     }
-
-
 
 
     override fun onDestroyView() {

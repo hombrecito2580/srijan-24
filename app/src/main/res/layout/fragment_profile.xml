@@ -58,7 +58,9 @@
                 <TextView
                     android:id="@+id/tvEmail"
                     style="@style/h4"
+                    android:drawableStart="@drawable/ic_mail"
                     android:layout_width="wrap_content"
+                    android:drawableTint="@color/primary"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="12dp"
@@ -69,6 +71,8 @@
                 <TextView
                     android:id="@+id/tvContact"
                     style="@style/h4"
+                    android:drawableTint="@color/primary"
+                    android:drawableStart="@drawable/ic_contact2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

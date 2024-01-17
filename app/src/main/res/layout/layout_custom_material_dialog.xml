@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            style="@style/h3"
+            style="@style/h4"
             android:text="OK"
             android:textColor="@color/white"/>
 
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:layout_weight="1"
-            style="@style/h3"
+            style="@style/h4"
             android:text="CANCEL"
             android:textColor="@color/white"/>
     </LinearLayout>

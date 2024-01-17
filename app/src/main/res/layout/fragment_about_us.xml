@@ -43,7 +43,7 @@
 
                 <TextView
                     android:id="@+id/tvAboutUs"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="Header"
@@ -112,7 +112,7 @@
 
                 <TextView
                     android:id="@+id/tvConvenerMessage"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Header"
                     android:gravity="center_horizontal"
@@ -170,7 +170,7 @@
                     android:layout_marginTop="30dp"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Co Convener"
                     android:textColor="@color/text"
@@ -179,16 +179,16 @@
                     android:layout_margin="10dp"
                     style="@style/h3"/>
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tvCoConvenerMessage"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Header"-->
-<!--                    android:textColor="@color/text"-->
-<!--                    android:gravity="center_horizontal"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    style="@style/h4"-->
-<!--                    android:layout_margin="10dp"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tvCoConvenerMessage"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Header"-->
+                <!--                    android:textColor="@color/text"-->
+                <!--                    android:gravity="center_horizontal"-->
+                <!--                    android:layout_gravity="center_horizontal"-->
+                <!--                    style="@style/h4"-->
+                <!--                    android:layout_margin="10dp"/>-->
 
             </LinearLayout>
 
@@ -237,7 +237,7 @@
                     android:layout_marginTop="30dp"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Co Convener"
                     android:textColor="@color/text"
@@ -293,7 +293,7 @@
                     android:layout_marginTop="30dp"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Treasurer"
                     android:textColor="@color/text"

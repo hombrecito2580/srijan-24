@@ -94,7 +94,7 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                             options.put("prefill.contact", contact)
                             options.put("prefill.email", email)
                             options.put("currency", "INR")
-                            options.put("amount", 1 * 100)//pass amount in currency subunits
+                            options.put("amount", amount * 100)//pass amount in currency subunits
                             options.put("method", JSONObject().put("upi", true))
 
                             val retryObj = JSONObject()

@@ -39,6 +39,7 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
     private lateinit var userName: String
     private lateinit var contact: String
     private lateinit var email: String
+    private lateinit var type: String
     private var amount: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,9 +57,11 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
         userName = sharedPreferences.getString("userName", "")!!
         contact = sharedPreferences.getString("contact", "")!!
         email = sharedPreferences.getString("email", "")!!
+        type = sharedPreferences.getString("type", "")!!
 
-        if(token.isEmpty()) {
-            Toast.makeText(this, "Unauthorized access, please log in again", Toast.LENGTH_SHORT).show()
+        if (token.isEmpty()) {
+            Toast.makeText(this, "Unauthorized access, please log in again", Toast.LENGTH_SHORT)
+                .show()
             dialog.dismiss()
             finish()
         }
@@ -70,11 +73,15 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                 call: Call<MakeOrderResponse>,
                 response: Response<MakeOrderResponse>,
             ) {
-                if(response.isSuccessful) {
+                if (response.isSuccessful) {
                     orderId = response.body()?.id ?: ""
                     dialog.dismiss()
                     if (orderId.isEmpty()) {
-                        Toast.makeText(this@MerchandiseActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MerchandiseActivity,
+                            "Something went wrong",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
                         Log.d("Merchandise Fragment", response.code().toString())
                         Log.d("Merchandise Fragment", amount.toString())
@@ -84,11 +91,14 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                         Log.d("Merch real merch!!!", orderId)
                         try {
 //                            merchandiseListener?.sendOrder(dataModel.tShirtSize, dataModel.address, dataModel.quantity, orderId)
-
+                            amount = 1
                             val options = JSONObject()
                             options.put("name", "Srijan '24 Merchandise")
                             options.put("description", "Merchandise Payment")
-                            options.put("image", "https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw")
+                            options.put(
+                                "image",
+                                "https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw"
+                            )
                             options.put("theme.color", "#FBE10E")
                             options.put("prefill.name", userName)
                             options.put("prefill.contact", contact)
@@ -104,7 +114,11 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
 
                             checkout.open(this@MerchandiseActivity, options)
                         } catch (e: Exception) {
-                            Toast.makeText(this@MerchandiseActivity, "Something went wrong", Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                this@MerchandiseActivity,
+                                "Something went wrong",
+                                Toast.LENGTH_LONG
+                            ).show()
                             dialog.dismiss()
                             finish()
                             e.printStackTrace()
@@ -112,7 +126,11 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                     }
 
                 } else {
-                    Toast.makeText(this@MerchandiseActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@MerchandiseActivity,
+                        "Something went wrong",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     dialog.dismiss()
                     finish()
                     Log.d("Merchandise Fragment", response.code().toString())
@@ -121,7 +139,8 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
             }
 
             override fun onFailure(call: Call<MakeOrderResponse>, t: Throwable) {
-                Toast.makeText(this@MerchandiseActivity, "Failed to load data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MerchandiseActivity, "Failed to load data", Toast.LENGTH_SHORT)
+                    .show()
                 dialog.dismiss()
                 finish()
                 Log.e("EEEEEEEEEEEEEEEE", "failed to create order id")
@@ -154,7 +173,8 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
     private fun generateRazorpaySignature(orderId: String, paymentId: String): String {
         return try {
             val data = "$orderId|$paymentId"
-            val keySpec = SecretKeySpec(BuildConfig.RAZORPAY_KEY.toByteArray(Charsets.UTF_8), "HmacSHA256")
+            val keySpec =
+                SecretKeySpec(BuildConfig.RAZORPAY_KEY.toByteArray(Charsets.UTF_8), "HmacSHA256")
             val mac = Mac.getInstance("HmacSHA256")
             mac.init(keySpec)
             val result = mac.doFinal(data.toByteArray(Charsets.UTF_8))
@@ -181,15 +201,23 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
         Toast.makeText(this, "Payment successful", Toast.LENGTH_SHORT).show()
         dialog.show()
 
-        if(paymentId != null) {
-            val call = RazorpayRetrofitInstance.createApi(token).getSignature(GetSignatureModel(orderId, paymentId))
+        if (paymentId != null) {
+            val call = RazorpayRetrofitInstance.createApi(token)
+                .getSignature(GetSignatureModel(orderId, paymentId))
 
             call.enqueue(object : retrofit2.Callback<GetSignatureResponse> {
-                override fun onResponse(call: Call<GetSignatureResponse>, response: Response<GetSignatureResponse>) {
-                    if(response.isSuccessful && response.body() != null) {
+                override fun onResponse(
+                    call: Call<GetSignatureResponse>,
+                    response: Response<GetSignatureResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
                         val signature = response.body()!!.signature
 
-                        Toast.makeText(this@MerchandiseActivity, "Payment successful", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MerchandiseActivity,
+                            "Payment successful",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         val dataModel = DetailsDataModel()
                         dataModel.orderId = orderId
                         dataModel.paymentId = paymentId
@@ -197,29 +225,50 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                         dataModel.address = address
                         dataModel.quantity = quantity
                         dataModel.tShirtSize = tShirtSize
+                        dataModel.type = type
 
                         try {
 
-                            val call2 = RazorpayRetrofitInstance.createApi(token).submitOrderDetails(dataModel)
+                            val call2 = RazorpayRetrofitInstance.createApi(token)
+                                .submitOrderDetails(dataModel)
                             call2.enqueue(object : retrofit2.Callback<Void> {
-                                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                                    if(response.isSuccessful) {
-                                        Toast.makeText(this@MerchandiseActivity, "Order is successfully placed!!", Toast.LENGTH_SHORT)
+                                override fun onResponse(
+                                    call: Call<Void>,
+                                    response: Response<Void>
+                                ) {
+                                    if (response.isSuccessful) {
+                                        Toast.makeText(
+                                            this@MerchandiseActivity,
+                                            "Order is successfully placed!!",
+                                            Toast.LENGTH_SHORT
+                                        )
                                             .show()
                                         finish()
                                     } else {
                                         Log.d("Response code", response.code().toString())
-                                        when(response.code()) {
+                                        when (response.code()) {
                                             403 -> {
-                                                Toast.makeText(this@MerchandiseActivity, "Authorization Unsuccessful", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(
+                                                    this@MerchandiseActivity,
+                                                    "Authorization Unsuccessful",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
                                             }
 
                                             400 -> {
-                                                Toast.makeText(this@MerchandiseActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(
+                                                    this@MerchandiseActivity,
+                                                    "Something went wrong",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
                                             }
 
                                             else -> {
-                                                Toast.makeText(this@MerchandiseActivity, "Unexpected error occurred", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(
+                                                    this@MerchandiseActivity,
+                                                    "Unexpected error occurred",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
                                             }
                                         }
                                         dialog.dismiss()
@@ -260,7 +309,6 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
             }
             )
         }
-
 
 
 //        val signature = paymentId?.let { generateRazorpaySignature(orderId, it) }

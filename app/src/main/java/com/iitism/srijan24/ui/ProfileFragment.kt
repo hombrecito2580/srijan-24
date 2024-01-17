@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.ProfileRVAdapter
 import com.iitism.srijan24.data.GetUserResponse
@@ -43,7 +44,7 @@ class ProfileFragment : Fragment() {
         initializeDialog()
 
 //        adapter = ProfileRVAdapter(emptyList())
-        binding.rvMerch.layoutManager = LinearLayoutManager(context)
+        binding.rvMerch.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         return binding.root
     }

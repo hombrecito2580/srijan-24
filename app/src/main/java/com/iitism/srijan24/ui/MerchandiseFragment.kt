@@ -751,6 +751,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             editor.putString("userName", binding.editName.text.toString().trim())
             editor.putString("contact", "+91" + binding.editPhone.text.toString().trim())
             editor.putString("email", binding.editEmail.text.toString().trim())
+            editor.putString("type", binding.chooseMerch.text.toString().trim())
             editor.apply()
 
             startActivity(Intent(requireContext(), MerchandiseActivity::class.java))

@@ -5,7 +5,7 @@
     android:id="@+id/cvProfile"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="12dp"
+    android:layout_margin="6dp"
     android:backgroundTint="@color/transparent"
     app:cardCornerRadius="20dp"
     tools:ignore="hardcodedText">
@@ -70,6 +70,17 @@
             style="@style/h4"
             android:textColor="@color/text"
             app:layout_constraintTop_toBottomOf="@id/tvQuantity"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvPaymentId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment ID: dsfrgrg"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvSpecification"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="12dp" />
 

@@ -8,5 +8,6 @@ data class DetailsDataModel(
     @SerializedName("quantity") var quantity: String = "",
     @SerializedName("razorpay_order_id") var orderId: String = "",
     @SerializedName("razorpay_payment_id") var paymentId: String = "",
-    @SerializedName("razorpay_signature") var signature: String = ""
+    @SerializedName("razorpay_signature") var signature: String = "",
+    @SerializedName("type") var type: String = ""
 )

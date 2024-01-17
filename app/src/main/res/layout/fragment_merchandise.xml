@@ -10,9 +10,9 @@
 
     <ScrollView
         android:id="@+id/scroll_view_merchandise"
-        android:scrollbars="none"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -353,6 +353,7 @@
                             android:text="Payable Amount: \u20B9 0"
                             android:textColor="@color/text"
                             android:textStyle="bold" />
+
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/pay_button"
                             style="@style/h4"
@@ -365,18 +366,17 @@
                             android:text="Pay"
                             android:textColor="@color/black" />
 
-                        <TextView
-                            android:id="@+id/tvError"
-                            style="@style/h4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="20dp"
-                            android:text="Secured via razorpay"
-                            android:textAlignment="center"
-                            android:textColor="@color/text"
-                            android:textIsSelectable="true" />
+                            <ImageView
+                                android:id="@+id/ivRazorpay"
+                                android:layout_width="160dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/razorpay"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/tvError"
+                                app:layout_constraintStart_toEndOf="@+id/tvError"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </LinearLayout>
 
-                    </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 

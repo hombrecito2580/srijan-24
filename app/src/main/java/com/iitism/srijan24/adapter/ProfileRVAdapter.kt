@@ -18,6 +18,7 @@ class ProfileRVAdapter(private var dataList: List<Merchandise>): RecyclerView.Ad
         val tvSize: TextView = view.findViewById(R.id.tvSize)
         val tvQuantity: TextView = view.findViewById(R.id.tvQuantity)
         val tvSpecification: TextView = view.findViewById(R.id.tvSpecification)
+        val tvPaymentId: TextView = view.findViewById(R.id.tvPaymentId)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
@@ -37,6 +38,7 @@ class ProfileRVAdapter(private var dataList: List<Merchandise>): RecyclerView.Ad
         holder.tvSize.text = "Size: "+currentData.tShirtSize
         holder.tvQuantity.text = "Quantity: "+currentData.quantity
         holder.tvSpecification.text = "Specification: "+currentData.type
+        holder.tvPaymentId.text = "Payment ID: "+currentData.paymentId
 
         Log.d("order$position", "Order: "+(position+1).toString())
         Log.d("order$position", "Address: "+currentData.address)

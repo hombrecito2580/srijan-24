@@ -107,6 +107,7 @@
                     android:autofillHints="phone"
                     android:background="@drawable/border2"
                     android:inputType="phone"
+                    android:maxLength="10"
                     android:padding="10dp"
                     android:textColor="@color/text"
                     android:textCursorDrawable="@color/primary" />

@@ -15,11 +15,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_plan1"
                 app:cardCornerRadius="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/bgLight"
                 android:layout_margin="10dp"
                 android:layout_marginBottom="10dp">
 
@@ -27,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="@drawable/bg_plans">
+                    android:background="@color/bgLight">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -132,7 +133,7 @@
                             android:layout_height="wrap_content"
                             style="@style/h3"
                             android:textColor="@color/text"
-                            android:text="Pronight"/>
+                            android:text="Pronite"/>
                     </LinearLayout>
 
                     <Button
@@ -146,13 +147,14 @@
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_plan2"
                 app:cardCornerRadius="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/bgLight"
                 android:layout_margin="10dp"
                 android:layout_marginBottom="10dp">
 
@@ -160,7 +162,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="@drawable/bg_plans">
+                    android:background="@color/bgLight">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -248,6 +250,7 @@
                     </LinearLayout>
 
                     <Button
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/primary"
@@ -259,13 +262,14 @@
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_plan3"
                 app:cardCornerRadius="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/bgLight"
                 android:layout_margin="10dp"
                 android:layout_marginBottom="10dp">
 
@@ -273,7 +277,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="@drawable/bg_plans">
+                    android:background="@color/bgLight">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -349,13 +353,14 @@
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_plan4"
                 app:cardCornerRadius="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/bgLight"
                 android:layout_margin="10dp"
                 android:layout_marginBottom="10dp">
 
@@ -363,7 +368,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="@drawable/bg_plans">
+                    android:background="@color/bgLight">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -424,7 +429,7 @@
                             android:layout_height="wrap_content"
                             style="@style/h3"
                             android:textColor="@color/text"
-                            android:text="Pronight"/>
+                            android:text="Pronite"/>
                     </LinearLayout>
 
                     <Button
@@ -439,7 +444,7 @@
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 

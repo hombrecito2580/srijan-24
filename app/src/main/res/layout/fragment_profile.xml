@@ -1,95 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="30dp"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context=".ui.ProfileFragment">
+    android:layout_marginVertical="30dp"
+    android:scrollbars="none">
 
     <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:elevation="10dp"
-        android:background="@drawable/ic_profile">
-
-        <TextView
-            android:id="@+id/txtProfile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="100sp" />
-    </LinearLayout>
-
-    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-40dp"
-        android:layout_marginLeft="10dp"
-        app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded"
-        app:cardBackgroundColor="#C4ECB309"
-        android:layout_marginRight="10dp">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".ui.ProfileFragment">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-
-
-            <TextView
-                android:id="@+id/tvUserName"
-                style="@style/h2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="60dp"
-                android:text=""
-                android:textColor="@color/black" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_profile"
+            android:elevation="10dp">
 
             <TextView
-                android:id="@+id/tvEmail"
-                style="@style/h4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text=""
-                android:textColor="#434343" />
-
-            <TextView
-                android:id="@+id/tvContact"
-                style="@style/h4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text=""
-                android:layout_marginBottom="48dp"
-                android:textColor="#474747" />
-
+                android:id="@+id/txtProfile"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="80sp" />
         </LinearLayout>
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-40dp"
+            app:cardBackgroundColor="@color/bgLight"
+            app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
 
-    </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:id="@+id/tvUserName"
+                    style="@style/h2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="60dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="@color/text" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:drawableStart="@drawable/ic_mail"
+                    android:drawableTint="@color/primary"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#C8C7C7" />
+
+                <TextView
+                    android:id="@+id/tvContact"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="48dp"
+                    android:drawableStart="@drawable/ic_contact2"
+                    android:drawableTint="@color/primary"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#C8C7C7" />
+
+            </LinearLayout>
 
 
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/bgLight"
+            app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Orders"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    android:id="@+id/tvNoOrders"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="24dp"
+                    android:text="Currently you do not have any orders..."
+                    android:textAlignment="center"
+                    android:textColor="@color/text"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMerch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="18dp"
+                    tools:listitem="@layout/layout_rv_profile" />
+            </LinearLayout>
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:padding="12dp"
-        style="@style/h3"
-        android:background="@drawable/button_background1"
-        android:textColor="#1B1B1A"
-        android:text="Logout" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogOut"
+            style="@style/h4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_background1"
+            android:padding="12dp"
+            android:text="Logout"
+            android:textColor="#1B1B1A" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

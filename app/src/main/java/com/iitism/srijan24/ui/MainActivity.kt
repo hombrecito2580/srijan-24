@@ -12,6 +12,9 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -22,12 +25,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.messaging.FirebaseMessaging
 import com.iitism.srijan24.R
 import com.iitism.srijan24.data.AddTokenModel
 import com.iitism.srijan24.databinding.ActivityMainBinding
 import com.iitism.srijan24.retrofit.TokenApi
 import com.iitism.srijan24.retrofit.TokenRetrofitInstance
+import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,12 +47,64 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    private lateinit var tShirtSize: String
+    private lateinit var address: String
+    private lateinit var quantity: String
+    private lateinit var orderId: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initializeDialog()
-        askNotificationPermission()
+        askNotificationAndSmsPermission()
+
+//        val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+//        val token = preferences.getString("token", "") ?: ""
+//        if (token.isEmpty()) {
+//            binding.appBar.btnLogOut.visibility = View.GONE
+//            binding.appBar.btnLogin.visibility = View.VISIBLE
+//        } else {
+//            binding.appBar.btnLogOut.visibility = View.VISIBLE
+//            binding.appBar.btnLogin.visibility = View.GONE
+//        }
+
+//        binding.appBar.btnLogin.setOnClickListener {
+//            startActivity(Intent(this, LoginSignupActivity::class.java))
+//        }
+//
+//        binding.appBar.btnLogOut.setOnClickListener {
+//            val logOutDialog = layoutInflater.inflate(R.layout.layout_custom_material_dialog, null)
+//            val logOutDialogBuilder =
+//                MaterialAlertDialogBuilder(this,R.style.CustomAlertDialog)
+//                    .setView(logOutDialog)
+//                    .show()
+//
+//            logOutDialogBuilder.findViewById<TextView>(R.id.customDialogTitle)?.text = "Srijan '24"
+//            logOutDialogBuilder.findViewById<TextView>(R.id.subTitle)?.visibility = View.VISIBLE
+//            logOutDialogBuilder.findViewById<TextView>(R.id.subTitle)?.text = "Do you want to Log Out?"
+//            val positiveButton = logOutDialogBuilder.findViewById<Button>(R.id.customDialogPositiveBtn)
+//            positiveButton?.apply {
+//                text = "Yes" // Set the button text if needed
+//                setOnClickListener {
+//                    preferences.edit().clear().apply()
+//                    binding.appBar.btnLogOut.visibility = View.GONE
+//                    binding.appBar.btnLogin.visibility = View.VISIBLE
+//
+//                    logOutDialogBuilder.dismiss()
+//                    Toast.makeText(this@MainActivity, "Logged out successfully ", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//            val neutralButton = logOutDialogBuilder.findViewById<Button>(R.id.customDialogNeutralBtn)
+//            neutralButton?.apply {
+//                text = "No" // Set the button text if needed
+//                setOnClickListener {
+//                    logOutDialogBuilder.dismiss()
+//                }
+//            }
+//
+//
+//        }
 
         dialog.show()
         dismissDialogAfterDelay()
@@ -88,20 +145,21 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 //        setupActionBarWithNavController(navController, binding.drawerLayout)
 //        binding.navView.setupWithNavController(navController)
 
-        if (navController.currentDestination?.id == R.id.homeFragment) {
-            binding.appBar.btnProfile.visibility = View.VISIBLE
-            binding.appBar.btnProfile.setOnClickListener {
-                val preferences =
-                    getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-//                val isISMite = preferences.getString("isISMite", "") ?: ""
-                val userId = preferences.getString("userId", "") ?: ""
 
-                if (userId.isEmpty()) {
-                    startActivity(Intent(this, LoginSignupActivity::class.java))
-                } else{
-                navController.navigate(R.id.action_homeFragment_to_profileFragment)
-            }}
-        }
+//        if (navController.currentDestination?.id == R.id.homeFragment) {
+//            binding.appBar.btnProfile.visibility = View.VISIBLE
+//            binding.appBar.btnProfile.setOnClickListener {
+//                val preferences =
+//                    getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+////                val isISMite = preferences.getString("isISMite", "") ?: ""
+//                val userId = preferences.getString("userId", "") ?: ""
+//
+//                if (userId.isEmpty()) {
+//                    startActivity(Intent(this, LoginSignupActivity::class.java))
+//                } else{
+//                navController.navigate(R.id.action_homeFragment_to_profileFragment)
+//            }}
+//        }
 
 
         binding.appBar.btnMenu.setOnClickListener {
@@ -138,7 +196,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             }
 
 //            if (destination.id != R.id.homeFragment)
-                binding.appBar.btnProfile.visibility = View.GONE
+//                binding.appBar.btnProfile.visibility = View.GONE
 //            else binding.appBar.btnProfile.visibility = View.VISIBLE
         }
 
@@ -153,7 +211,22 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 
         binding.navView.setupWithNavController(navController)
         binding.navView.setCheckedItem(R.id.homeFragment)
+
+        Checkout.preload(this)
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//        val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+//        val token = preferences.getString("token", "") ?: ""
+//        if (token.isEmpty()) {
+//            binding.appBar.btnLogOut.visibility = View.GONE
+//            binding.appBar.btnLogin.visibility = View.VISIBLE
+//        } else {
+//            binding.appBar.btnLogOut.visibility = View.VISIBLE
+//            binding.appBar.btnLogin.visibility = View.GONE
+//        }
+//    }
 
     private fun dismissDialogAfterDelay() {
         val handler = Handler(Looper.getMainLooper())
@@ -190,20 +263,28 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             // FCM SDK (and your app) can post notifications.
             //extract token
 
-        } else {
-            Toast.makeText(this, "Notifications will not be shown", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun askNotificationPermission() {
+    private fun askNotificationAndSmsPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val notificationPermission = android.Manifest.permission.POST_NOTIFICATIONS
+            val smsPermission = android.Manifest.permission.READ_SMS
+
             if (ContextCompat.checkSelfPermission(
                     this,
-                    android.Manifest.permission.POST_NOTIFICATIONS
-                ) !=
-                PackageManager.PERMISSION_GRANTED
+                    notificationPermission
+                ) != PackageManager.PERMISSION_GRANTED
             ) {
-                requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                requestPermissionLauncher.launch(notificationPermission)
+            }
+
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    smsPermission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissionLauncher.launch(smsPermission)
             }
         }
     }
@@ -258,13 +339,52 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onPaymentSuccess(p0: String?) {
+    override fun onPaymentSuccess(paymentId: String?) {
+        if (paymentId != null) {
+            Log.d("payId", paymentId)
+        }
         Toast.makeText(applicationContext, "Payment success", Toast.LENGTH_SHORT).show()
+
+        val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        orderId = sharedPreferences.getString("orderId", "orderId")!!
+        quantity = sharedPreferences.getString("quantity", "quantity")!!
+        tShirtSize = sharedPreferences.getString("tShirtSize", "tShirtSize")!!
+        address = sharedPreferences.getString("address", "address")!!
+
+        Log.d("dataMerch", orderId)
+        Log.d("dataMerch", quantity)
+        Log.d("dataMerch", tShirtSize)
+        Log.d("dataMerch", address)
+        if (paymentId != null) {
+            Log.d("dataMerch", paymentId)
+        }
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
         Toast.makeText(applicationContext, "Payment failure", Toast.LENGTH_SHORT).show()
+        Log.d("Asgdfg", "dgdfggdfggdfvrfgrgr")
+        val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        orderId = sharedPreferences.getString("orderId", "orderId")!!
+        quantity = sharedPreferences.getString("quantity", "quantity")!!
+        tShirtSize = sharedPreferences.getString("tShirtSize", "tShirtSize")!!
+        address = sharedPreferences.getString("address", "address")!!
+
+        Log.d("dataMerch", orderId)
+        Log.d("dataMerch", quantity)
+        Log.d("dataMerch", tShirtSize)
+        Log.d("dataMerch", address)
+//        if (paymentId != null) {
+//            Log.d("dataMerch", paymentId)
+//        }
     }
+
+//    override fun sendOrder(tShirtSize: String, address: String, quantity: String, orderId: String) {
+//        Log.d("OKKKKKKKKKKK", "OKKKKKKKKKKKKKKKK")
+//        this.tShirtSize = tShirtSize
+//        this.address = address
+//        this.orderId = orderId
+//        this.quantity = quantity
+//    }
 
 
 }

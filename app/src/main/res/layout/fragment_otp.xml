@@ -16,6 +16,7 @@
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/text"
         android:text="OTP verification"
         android:fontFamily="@font/futura"
         android:textSize="28sp"/>
@@ -23,7 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/light_text"
+        android:textColor="#D6D6D6"
         android:text="Enter the OTP sent to your registered mail id"
         android:textSize="18sp"/>
 
@@ -32,7 +33,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="6"
-        android:layout_marginHorizontal="8dp"
+        android:layout_marginHorizontal="16dp"
         android:gravity="center">
 
         <EditText
@@ -42,7 +43,7 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:textColor="@color/text"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/futura_medium"
             android:inputType="number"
             android:maxLength="1"
             android:gravity="center"
@@ -56,7 +57,7 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:textColor="@color/text"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/futura_medium"
             android:inputType="number"
             android:maxLength="1"
             android:gravity="center"
@@ -70,7 +71,7 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:textColor="@color/text"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/futura_medium"
             android:inputType="number"
             android:maxLength="1"
             android:gravity="center"
@@ -84,7 +85,7 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:textColor="@color/text"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/futura_medium"
             android:inputType="number"
             android:maxLength="1"
             android:gravity="center"
@@ -98,7 +99,7 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:textColor="@color/text"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/futura_medium"
             android:inputType="number"
             android:maxLength="1"
             android:gravity="center"
@@ -112,7 +113,7 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:textColor="@color/text"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/futura_medium"
             android:inputType="number"
             android:maxLength="1"
             android:gravity="center"

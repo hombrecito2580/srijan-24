@@ -30,8 +30,6 @@ class LoginFragment : Fragment() {
     private lateinit var dialog: Dialog
 
 
-    var flag = 1
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -122,6 +120,12 @@ class LoginFragment : Fragment() {
                 1000 -> {
                     dialog.dismiss()
                     Toast.makeText(context, "Internal server error", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                404 -> {
+                    dialog.dismiss()
+                    Toast.makeText(context, "Internet error, please try again", Toast.LENGTH_SHORT)
                         .show()
                 }
 

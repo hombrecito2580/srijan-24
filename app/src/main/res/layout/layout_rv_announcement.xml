@@ -1,50 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="10dp"
-    app:cardCornerRadius="20dp"
     android:backgroundTint="@color/bgLight"
+    app:cardCornerRadius="20dp"
     tools:ignore="hardcodedText">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/border"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/tvTitle"
+            style="@style/h4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/h4"
             android:textColor="@color/text"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvBody"
+            style="@style/h4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle"
             android:layout_marginTop="12dp"
-            style="@style/h4"
-            android:textColor="@color/text" />
+            android:textColor="@color/text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
         <TextView
             android:id="@+id/tvTime"
+            style="@style/h4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvBody"
             android:layout_marginTop="12dp"
-            style="@style/h4"
-            android:textColor="@color/text" />
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBody" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

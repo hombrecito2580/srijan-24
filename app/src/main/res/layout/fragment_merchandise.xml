@@ -11,7 +11,8 @@
     <ScrollView
         android:id="@+id/scroll_view_merchandise"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager_corousel"
                 android:layout_width="300dp"
-                android:layout_height="240dp"
+                android:layout_height="200dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 tools:ignore="InefficientWeight" />
@@ -58,15 +59,15 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/bgLight"
                     android:layout_margin="10dp"
+                    android:backgroundTint="@color/bgLight"
                     app:cardCornerRadius="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
                         android:background="@color/bgLight"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical"
                         android:padding="10dp">
 
@@ -90,13 +91,12 @@
                                 android:id="@+id/edit_name"
                                 style="@style/h4"
                                 android:layout_width="wrap_content"
-                                android:layout_height="40dp"
+                                android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:enabled="false"
                                 android:inputType="none"
                                 android:padding="10dp"
                                 android:textColor="@color/text"
-                                android:textSize="15sp"
                                 tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                         </HorizontalScrollView>
@@ -121,7 +121,7 @@
                                 android:id="@+id/edit_email"
                                 style="@style/h4"
                                 android:layout_width="wrap_content"
-                                android:layout_height="40dp"
+                                android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:enabled="false"
                                 android:inputType="none"
@@ -186,7 +186,7 @@
                                 android:id="@+id/edit_phone"
                                 style="@style/h4"
                                 android:layout_width="wrap_content"
-                                android:layout_height="40dp"
+                                android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:enabled="false"
                                 android:inputType="none"
@@ -245,12 +245,22 @@
                             android:id="@+id/edit_address"
                             style="@style/h4"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
+                            android:layout_height="wrap_content"
                             android:background="@drawable/border1"
                             android:inputType="text"
                             android:padding="10dp"
                             android:textColor="@color/text"
                             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
+
+                        <TextView
+                            style="@style/h5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:padding="5dp"
+                            android:text="*Delivery outside IIT ISM campus is chargeable"
+                            android:textColor="#CACACA"
+                            android:textStyle="bold" />
 
                         <!--                        <TextView-->
                         <!--                            android:layout_width="wrap_content"-->
@@ -286,74 +296,96 @@
                             android:id="@+id/edit_quantity"
                             style="@style/h4"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:background="@drawable/border1"
                             android:inputType="number"
+                            android:maxLength="3"
                             android:padding="10dp"
                             android:textColor="@color/text"
                             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-                        <TextView
-                            android:id="@+id/total_price"
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/choose_merch"
                             style="@style/h4"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:padding="5dp"
-                            android:text="Total Price:"
-                            android:textColor="@color/text"
-                            android:textStyle="bold"
-                            android:visibility="gone" />
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/button_background1"
+                            android:padding="10dp"
+                            android:text="Available Merchandise"
+                            android:textColor="@color/black" />
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/choose_size"
                             style="@style/h4"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="16dp"
                             android:background="@drawable/button_background1"
                             android:padding="10dp"
                             android:text="Choose Size"
                             android:textColor="@color/black" />
 
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/choose_payment_ss"
-                            style="@style/h4"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginHorizontal="10dp"
-                            android:background="@drawable/button_background1"
-                            android:padding="10dp"
-                            android:text="Payment Screenshot"
-                            android:textColor="@color/black" />
+                        <!--                        <androidx.appcompat.widget.AppCompatButton-->
+                        <!--                            android:id="@+id/choose_payment_ss"-->
+                        <!--                            style="@style/h4"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="40dp"-->
+                        <!--                            android:layout_marginTop="16dp"-->
+                        <!--                            android:layout_marginHorizontal="10dp"-->
+                        <!--                            android:background="@drawable/button_background1"-->
+                        <!--                            android:padding="10dp"-->
+                        <!--                            android:text="Payment Screenshot"-->
+                        <!--                            android:textColor="@color/black" />-->
 
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/place_order_button"
+                        <!--                        <androidx.appcompat.widget.AppCompatButton-->
+                        <!--                            android:id="@+id/place_order_button"-->
+                        <!--                            style="@style/h4"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="50dp"-->
+                        <!--                            android:layout_marginVertical="16dp"-->
+                        <!--                            android:layout_marginHorizontal="10dp"-->
+                        <!--                            android:background="@drawable/button_background1"-->
+                        <!--                            android:backgroundTint="@color/primary"-->
+                        <!--                            android:padding="10dp"-->
+                        <!--                            android:text="Place Order"-->
+                        <!--                            android:textColor="@color/black" />-->
+                        <TextView
+                            android:id="@+id/total_price"
                             style="@style/h4"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:text="Payable Amount: \u20B9 0"
+                            android:textColor="@color/text"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/pay_button"
+                            style="@style/h4"
+                            android:layout_width="150dp"
                             android:layout_height="50dp"
-                            android:layout_marginVertical="16dp"
-                            android:layout_marginHorizontal="10dp"
+                            android:layout_margin="10dp"
                             android:background="@drawable/button_background1"
                             android:backgroundTint="@color/primary"
                             android:padding="10dp"
-                            android:text="Place Order"
+                            android:text="Pay"
                             android:textColor="@color/black" />
 
-                                                <androidx.appcompat.widget.AppCompatButton
-                                                    android:id="@+id/pay_button"
-                                                    style="@style/h4"
-                                                    android:layout_width="150dp"
-                                                    android:layout_height="50dp"
-                                                    android:layout_margin="10dp"
-                                                    android:background="@drawable/button_background1"
-                                                    android:backgroundTint="@color/primary"
-                                                    android:padding="10dp"
-                                                    android:text="Pay"
-                                                    android:textColor="@color/black" />
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/ivRazorpay"
+                                android:layout_width="160dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/razorpay"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/tvError"
+                                app:layout_constraintStart_toEndOf="@+id/tvError"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </LinearLayout>
+
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -404,5 +436,21 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/primary"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone" />
 
 </FrameLayout>

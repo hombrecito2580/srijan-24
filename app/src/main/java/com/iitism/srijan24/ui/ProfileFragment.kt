@@ -16,7 +16,10 @@ import com.iitism.srijan24.databinding.FragmentProfileBinding
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.iitism.srijan24.R
+import com.iitism.srijan24.adapter.ProfileRVAdapter
 import com.iitism.srijan24.data.GetUserResponse
 import com.iitism.srijan24.retrofit.UserApiInstance
 import retrofit2.Call
@@ -25,6 +28,7 @@ import retrofit2.Response
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
+    private lateinit var adapter: ProfileRVAdapter
     private val binding get() = _binding!!
 
     private lateinit var isISMite: String
@@ -38,6 +42,10 @@ class ProfileFragment : Fragment() {
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         initializeDialog()
+
+//        adapter = ProfileRVAdapter(emptyList())
+        binding.rvMerch.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         return binding.root
     }
 
@@ -71,13 +79,24 @@ class ProfileFragment : Fragment() {
                 ) {
                     val body = response.body()
                     if (response.isSuccessful && body != null) {
+                        Log.d("response body", response.body()!!.toString())
                         binding.txtProfile.text = body.name[0].toString()
                         binding.tvUserName.text = body.name
                         binding.tvEmail.text = body.email
                         binding.tvContact.text = body.phoneNumber
+
+                        if(body.merchandise.isEmpty()) {
+                            binding.rvMerch.visibility = View.GONE
+                            binding.tvNoOrders.visibility = View.VISIBLE
+                        } else {
+                            binding.rvMerch.visibility = View.VISIBLE
+                            binding.tvNoOrders.visibility = View.GONE
+                        }
+                        binding.rvMerch.adapter = ProfileRVAdapter(body.merchandise)
+//                        adapter.setData(body.merchandise)
                     } else {
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
+//                        findNavController().popBackStack()
                     }
                     dialog.dismiss()
                 }

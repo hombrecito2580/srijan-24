@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:fontFamily="@font/roboto_semi_bold"
+                android:fontFamily="@font/futura_medium"
                 android:text="Please wait..."
                 android:textColor="@color/primary"
                 android:textSize="20sp"

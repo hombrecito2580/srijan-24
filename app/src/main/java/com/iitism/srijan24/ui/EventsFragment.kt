@@ -24,7 +24,7 @@ class EventsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding=FragmentEventsBinding.inflate(inflater)
         viewModel = EventsViewModel(requireContext())
@@ -35,13 +35,13 @@ class EventsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewModel.getEvents()
-
-        adapter=EventsAdapter(viewModel.eventList,requireContext())
-        binding!!.rvEvents.layoutManager = LinearLayoutManager(requireContext())
-        binding!!.rvEvents.adapter = adapter
-        binding!!.rvEvents.setHasFixedSize(true)
-        Toast.makeText(requireContext(),viewModel.eventList.size.toString(),Toast.LENGTH_SHORT).show()
+//        viewModel.getEvents()
+//
+//        adapter=EventsAdapter(viewModel.eventList,requireContext())
+//        binding!!.rvEvents.layoutManager = LinearLayoutManager(requireContext())
+//        binding!!.rvEvents.adapter = adapter
+//        binding!!.rvEvents.setHasFixedSize(true)
+//        Toast.makeText(requireContext(),viewModel.eventList.size.toString(),Toast.LENGTH_SHORT).show()
     }
 
 }

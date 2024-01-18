@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvProfile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:backgroundTint="@color/transparent"
+    app:cardCornerRadius="20dp"
+    tools:ignore="hardcodedText">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvOrderNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order 1"
+            style="@style/h3"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address: Aquamarine Hostel"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size: L"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantity: 1"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvSize"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvSpecification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Specification: T Shirt"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvQuantity"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvPaymentId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment ID: dsfrgrg"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvSpecification"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

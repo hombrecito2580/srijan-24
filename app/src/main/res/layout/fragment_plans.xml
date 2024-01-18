@@ -1,453 +1,462 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="hardcodedText,UseCompoundDrawables"
     tools:context=".ui.PlansFragment">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_plan1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="20dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_plan1"
-                app:cardCornerRadius="20dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/bgLight"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="10dp">
+                android:background="@color/bgLight"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Platinum Plan"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Rs. 1999"
+                    android:textColor="@color/text" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/bgLight">
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Platinum Plan"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/primary"
                         style="@style/h3"
-                        android:layout_gravity="center_horizontal"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Accomodation"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
 
                     <TextView
+                        style="@style/h3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Rs. 1999"
-                        android:textColor="@color/text"
-                        style="@style/h1"
-                        android:layout_gravity="center_horizontal"/>
+                        android:text="Events"
+                        android:textColor="@color/text" />
+                </LinearLayout>
 
-                    <LinearLayout
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
+                        android:text="Merchandise"
+                        android:textColor="@color/text" />
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Accomodation"/>
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
 
-                    <LinearLayout
+                    <TextView
+                        style="@style/h3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
+                        android:text="Pronite"
+                        android:textColor="@color/text" />
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
+                <Button
+                    android:id="@+id/btnPlatinum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="BUY NOW"
+                    style="@style/h3" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Events"/>
-                    </LinearLayout>
+            </LinearLayout>
 
-                    <LinearLayout
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_plan2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bgLight"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Gold Plan"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Rs. 1799"
+                    android:textColor="@color/text" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
+                        android:text="Accomodation"
+                        android:textColor="@color/text" />
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Merchandise"/>
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
 
-                    <LinearLayout
+                    <TextView
+                        style="@style/h3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
+                        android:text="Events"
+                        android:textColor="@color/text" />
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Pronite"/>
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
 
-                    <Button
+                    <TextView
+                        style="@style/h3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primary"
-                        android:text="BUY NOW"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center_horizontal"/>
+                        android:text="Merchandise"
+                        android:textColor="@color/text" />
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                <Button
+                    android:id="@+id/btnGold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="BUY NOW"
+                    style="@style/h3" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_plan2"
-                app:cardCornerRadius="20dp"
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_plan3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/bgLight"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="10dp">
+                android:background="@color/bgLight"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Silver Plan"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Rs. 1499"
+                    android:textColor="@color/text" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/bgLight">
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Gold Plan"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/primary"
                         style="@style/h3"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Rs. 1799"
-                        android:textColor="@color/text"
-                        style="@style/h1"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Accomodation"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Events"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Merchandise"/>
-
-                    </LinearLayout>
-
-                    <Button
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primary"
-                        android:text="BUY NOW"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center_horizontal"/>
-
-
+                        android:text="Accomodation"
+                        android:textColor="@color/text" />
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_plan3"
-                app:cardCornerRadius="20dp"
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Events"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnSilver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="BUY NOW"
+                    style="@style/h3"/>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_plan4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/bgLight"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="10dp">
+                android:background="@color/bgLight"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Bronze Plan"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Rs. 1199"
+                    android:textColor="@color/text" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/bgLight">
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/checkmark"
+                        android:contentDescription="ivTick" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Silver Plan"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/primary"
                         style="@style/h3"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Rs. 1499"
-                        android:textColor="@color/text"
-                        style="@style/h1"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Accomodation"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Events"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primary"
-                        android:text="BUY NOW"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center_horizontal"/>
-
-
+                        android:text="Accomodation"
+                        android:textColor="@color/text" />
                 </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_plan4"
-                app:cardCornerRadius="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/bgLight"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="10dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/bgLight">
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/checkmark" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bronze Plan"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/primary"
                         style="@style/h3"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Rs. 1199"
-                        android:textColor="@color/text"
-                        style="@style/h1"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Accomodation"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Pronite"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primary"
-                        android:text="BUY NOW"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center_horizontal"/>
-
-
+                        android:text="Pronite"
+                        android:textColor="@color/text" />
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                <Button
+                    android:id="@+id/btnBronze"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/h3"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="BUY NOW" />
 
-        </LinearLayout>
 
-    </ScrollView>
+            </LinearLayout>
 
-</FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

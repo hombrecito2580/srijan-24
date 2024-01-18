@@ -30,20 +30,20 @@ class EventsAdapter(val eventsList:List<EventDataModel>,val context: Context?): 
     override fun onBindViewHolder(holder: EventsAdapter.EventsViewHolder, position: Int) {
         val currentEvent=eventsList[position]
 
-        holder.eventName.text=currentEvent.name
-        holder.organiser.text=currentEvent.organizer
-        holder.mode.text=currentEvent.mode
-        holder.prize.text=currentEvent.prizes
-
-        Glide.with(holder.itemView.context)
-            .load(currentEvent.posterMobile)
-            .placeholder(R.drawable.srijan_modified_logo)
-            .centerCrop()
-            .into(holder.image)
-
-        holder.btnViewMore.setOnClickListener{
-
-        }
+//        holder.eventName.text=currentEvent.name
+//        holder.organiser.text=currentEvent.organizer
+//        holder.mode.text=currentEvent.mode
+//        holder.prize.text=currentEvent.prizes
+//
+//        Glide.with(holder.itemView.context)
+//            .load(currentEvent.posterMobile)
+//            .placeholder(R.drawable.srijan_modified_logo)
+//            .centerCrop()
+//            .into(holder.image)
+//
+//        holder.btnViewMore.setOnClickListener{
+//
+//        }
     }
 
     override fun getItemCount(): Int {

@@ -21,22 +21,22 @@ class EventsViewModel(private val context: Context):ViewModel() {
     fun getEvents(){
         viewModelScope.launch {
 
-            val call = EventsRetrofitInstance.eventsApi.getAllEvents()
-            call.enqueue(object : retrofit2.Callback<List<EventDataModel>> {
-                override fun onResponse(
-                    call: Call<List<EventDataModel>>,
-                    response: Response<List<EventDataModel>>
-                ) {
-                    if (response.isSuccessful) {
-                        _eventList.addAll(response.body()!!)
-                    }
-                }
-
-                override fun onFailure(call: Call<List<EventDataModel>>, t: Throwable) {
-                    Toast.makeText(context, "Response failed", Toast.LENGTH_SHORT).show()
-                }
-
-            })
+//            val call = EventsRetrofitInstance.eventsApi.getAllEvents()
+//            call.enqueue(object : retrofit2.Callback<List<EventDataModel>> {
+//                override fun onResponse(
+//                    call: Call<List<EventDataModel>>,
+//                    response: Response<List<EventDataModel>>
+//                ) {
+//                    if (response.isSuccessful) {
+//                        _eventList.addAll(response.body()!!)
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<List<EventDataModel>>, t: Throwable) {
+//                    Toast.makeText(context, "Response failed", Toast.LENGTH_SHORT).show()
+//                }
+//
+//            })
         }
     }
 }

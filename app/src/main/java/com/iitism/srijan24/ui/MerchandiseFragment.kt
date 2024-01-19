@@ -349,7 +349,6 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         val radioGroup = materialDialog.findViewById<RadioGroup>(R.id.customDialogRadioGroup)!!
 
 // Add radio buttons dynamically based on the array of options
-        selectedSizeIndex = 0
         selectedSize = merchSize[selectedSizeIndex]
         for (i in merchSize.indices) {
 
@@ -446,7 +445,6 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 
         // Add radio buttons dynamically based on the array of options
         val merchandiseArray = arrayOf("T-Shirt", "Hoodie")
-        selectedMerchIndex = 0
         selectedMerch = merchandiseArray[selectedMerchIndex]
         for (i in merchandiseArray.indices) {
             val radioButton = layoutInflater.inflate(

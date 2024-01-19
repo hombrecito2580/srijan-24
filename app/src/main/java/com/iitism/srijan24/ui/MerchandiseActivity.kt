@@ -3,12 +3,11 @@ package com.iitism.srijan24.ui
 import android.app.Dialog
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.iitism.srijan24.BuildConfig
 import com.iitism.srijan24.R
@@ -17,7 +16,6 @@ import com.iitism.srijan24.data.GetSignatureModel
 import com.iitism.srijan24.data.GetSignatureResponse
 import com.iitism.srijan24.data.MakeOrderBody
 import com.iitism.srijan24.data.MakeOrderResponse
-import com.iitism.srijan24.retrofit.MerchandiseRetrofitInstance
 import com.iitism.srijan24.retrofit.RazorpayRetrofitInstance
 import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
@@ -96,7 +94,7 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                             options.put("description", "Merchandise Payment")
                             options.put(
                                 "image",
-                                "https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw"
+                                "https://res.cloudinary.com/dxomldckp/image/upload/v1705684703/srijan%2024/uxk9iaw0n4xok4jlm6qb.jpg"
                             )
                             options.put("theme.color", "#FBE10E")
                             options.put("prefill.name", userName)
@@ -207,7 +205,7 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
             call.enqueue(object : retrofit2.Callback<GetSignatureResponse> {
                 override fun onResponse(
                     call: Call<GetSignatureResponse>,
-                    response: Response<GetSignatureResponse>
+                    response: Response<GetSignatureResponse>,
                 ) {
                     if (response.isSuccessful && response.body() != null) {
                         val signature = response.body()!!.signature
@@ -233,7 +231,7 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                             call2.enqueue(object : retrofit2.Callback<Void> {
                                 override fun onResponse(
                                     call: Call<Void>,
-                                    response: Response<Void>
+                                    response: Response<Void>,
                                 ) {
                                     if (response.isSuccessful) {
                                         Toast.makeText(

@@ -60,6 +60,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_centerInParent="true"/>
+
                 <ImageButton
                     android:id="@+id/btnLogOut"
                     android:layout_width="30dp"
@@ -69,6 +70,7 @@
                     android:contentDescription="Profile"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/ic_logout" />
+
                 <ImageButton
                     android:id="@+id/btnLogin"
                     android:layout_width="30dp"

@@ -81,6 +81,8 @@
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_live_hCIa25zbx0icRX" />
+<!--        rzp_test_k00cTtIsQ85SIy-->
+<!--        rzp_live_hCIa25zbx0icRX-->
         <meta-data
             android:name="CLOUDINARY_URL"
             android:value="cloudinary://digvpmszg" />

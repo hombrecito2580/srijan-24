@@ -31,6 +31,10 @@ class PlansActivity : AppCompatActivity(), PaymentResultListener {
     private lateinit var contact: String
     private lateinit var email: String
     private lateinit var token: String
+    private lateinit var address: String
+    private lateinit var proof: String
+    private lateinit var tShirtSize: String
+    private lateinit var gender: String
     private var amount: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,100 +44,115 @@ class PlansActivity : AppCompatActivity(), PaymentResultListener {
         initializeDialog()
         dialog.show()
         val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        userName = sharedPreferences.getString("userName", "")!!
-        email = sharedPreferences.getString("email", "")!!
-        contact = sharedPreferences.getString("contact", "")!!
         token = sharedPreferences.getString("token", "") ?: ""
 
         val intent = intent
-        val amount = intent.getIntExtra("amount", 1199)
+
+        amount = intent.getIntExtra("amount", 1199)
+        userName = intent.getStringExtra("userName")!!
+        contact = intent.getStringExtra("contact")!!
+        email = intent.getStringExtra("email")!!
+        address = intent.getStringExtra("address")!!
+        proof = intent.getStringExtra("proof")!!
+        tShirtSize = intent.getStringExtra("tShirtSize")!!
+        gender = intent.getStringExtra("gender")!!
+
+//        intent.putExtra("address", binding.editAddress.text.toString().trim())
+//        intent.putExtra("proof", binding.editAddress.text.toString().trim())
+//        intent.putExtra("gender", binding.editGender.text.toString().trim())
+//        intent.putExtra("userName", userName)
+//        intent.putExtra("contact", "+91$contact")
+//        intent.putExtra("email", email)
+//        intent.putExtra("tShirtSize", binding.chooseSize.text.toString().trim())
+//        intent.putExtra("amount", amount)
 
         if (token.isEmpty()) {
             Toast.makeText(this, "Unauthorized access, please log in again", Toast.LENGTH_SHORT)
                 .show()
             dialog.dismiss()
             finish()
-        }
-        val call = RazorpayRetrofitInstance.createApi(token).makeOrder(MakeOrderBody(amount))
+        } else {
+            val call = RazorpayRetrofitInstance.createApi(token).makeOrder(MakeOrderBody(amount))
 
-        call.enqueue(object : Callback<MakeOrderResponse> {
-            override fun onResponse(
-                call: Call<MakeOrderResponse>,
-                response: Response<MakeOrderResponse>
-            ) {
-                if (response.isSuccessful) {
-                    orderId = response.body()?.id ?: ""
-                    dialog.dismiss()
-                    if (orderId.isEmpty()) {
+            call.enqueue(object : Callback<MakeOrderResponse> {
+                override fun onResponse(
+                    call: Call<MakeOrderResponse>,
+                    response: Response<MakeOrderResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        orderId = response.body()?.id ?: ""
+                        dialog.dismiss()
+                        if (orderId.isEmpty()) {
+                            Toast.makeText(
+                                this@PlansActivity,
+                                "Something went wrong",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            Log.d("Plans Fragment", response.code().toString())
+                            Log.d("Plans Fragment", amount.toString())
+                            finish()
+                        } else {
+                            val checkout = Checkout()
+                            Log.d("Plans Order ID", orderId)
+                            try {
+                                val options = JSONObject()
+                                options.put("name", "Srijan '24 Plans")
+                                options.put("description", "Plan Payment")
+                                options.put(
+                                    "image",
+                                    "https://res.cloudinary.com/dxomldckp/image/upload/v1705684703/srijan%2024/uxk9iaw0n4xok4jlm6qb.jpg"
+                                )
+                                options.put("theme.color", "#FBE10E")
+                                options.put("prefill.name", userName)
+                                options.put("prefill.contact", contact)
+                                options.put("prefill.email", email)
+                                options.put("currency", "INR")
+                                options.put("amount", amount * 100)//pass amount in currency subunits
+                                options.put("method", JSONObject().put("upi", true))
+
+                                val retryObj = JSONObject()
+                                retryObj.put("enabled", true)
+                                retryObj.put("max_count", 4)
+                                options.put("retry", retryObj)
+
+                                checkout.open(this@PlansActivity, options)
+
+                            } catch (e: Exception) {
+                                Toast.makeText(
+                                    this@PlansActivity,
+                                    "Something went wrong",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                dialog.dismiss()
+                                finish()
+                                e.printStackTrace()
+                            }
+
+                        }
+                    } else {
                         Toast.makeText(
                             this@PlansActivity,
                             "Something went wrong",
                             Toast.LENGTH_SHORT
                         ).show()
-
+                        dialog.dismiss()
+                        finish()
                         Log.d("Plans Fragment", response.code().toString())
                         Log.d("Plans Fragment", amount.toString())
-                        finish()
-                    } else {
-                        val checkout = Checkout()
-                        Log.d("Plans Order ID", orderId)
-                        try {
-                            val options = JSONObject()
-                            options.put("name", "Srijan '24 Plans")
-                            options.put("description", "Plan Payment")
-                            options.put(
-                                "image",
-                                "https://play-lh.googleusercontent.com/bP7gDv1Uy14E1iRQdGK0ybnGmPca3tStsMqnm1ScHcY87gYOxwxRhfR4n2GWKI_sfNA=w240-h480-rw"
-                            )
-                            options.put("theme.color", "#FBE10E")
-                            options.put("prefill.name", userName)
-                            options.put("prefill.contact", contact)
-                            options.put("prefill.email", email)
-                            options.put("currency", "INR")
-                            options.put("amount", amount * 100)//pass amount in currency subunits
-                            options.put("method", JSONObject().put("upi", true))
-
-                            val retryObj = JSONObject()
-                            retryObj.put("enabled", true)
-                            retryObj.put("max_count", 4)
-                            options.put("retry", retryObj)
-
-                            checkout.open(this@PlansActivity, options)
-
-                        } catch (e: Exception) {
-                            Toast.makeText(
-                                this@PlansActivity,
-                                "Something went wrong",
-                                Toast.LENGTH_LONG
-                            ).show()
-                            dialog.dismiss()
-                            finish()
-                            e.printStackTrace()
-                        }
-
                     }
-                } else {
-                    Toast.makeText(
-                        this@PlansActivity,
-                        "Something went wrong",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                }
+
+                override fun onFailure(call: Call<MakeOrderResponse>, t: Throwable) {
+                    Toast.makeText(this@PlansActivity, "Failed to load data", Toast.LENGTH_SHORT)
+                        .show()
                     dialog.dismiss()
                     finish()
-                    Log.d("Plans Fragment", response.code().toString())
-                    Log.d("Plans Fragment", amount.toString())
+                    Log.e("onFailure", "failed to create order id")
                 }
-            }
 
-            override fun onFailure(call: Call<MakeOrderResponse>, t: Throwable) {
-                Toast.makeText(this@PlansActivity, "Failed to load data", Toast.LENGTH_SHORT)
-                    .show()
-                dialog.dismiss()
-                finish()
-                Log.e("onFailure", "failed to create order id")
-            }
-
-        })
+            })
+        }
     }
 
     private fun initializeDialog() {
@@ -178,22 +197,27 @@ class PlansActivity : AppCompatActivity(), PaymentResultListener {
                             "Payment successful",
                             Toast.LENGTH_SHORT
                         ).show()
+
                         val dataModel = PlansDataModel()
                         dataModel.orderId = orderId
                         dataModel.paymentId = paymentId
                         dataModel.signature = signature
+
                         val plan = when (amount) {
                             1999 -> "platinum"
                             1799 -> "gold"
                             1499 -> "silver"
                             else -> "bronze"
                         }
-
                         dataModel.plan = plan
 
+                        dataModel.address = address
+                        dataModel.gender = gender
+                        dataModel.tShirtSize = tShirtSize
+                        dataModel.proof = proof
+
                         try{
-                            val call2 = RazorpayRetrofitInstance.createApi(token)
-                                .submitPlanDetails(dataModel)
+                            val call2 = RazorpayRetrofitInstance.createApi(token).submitPlanDetails(dataModel)
 
                             call2.enqueue(object : Callback<Void> {
                                 override fun onResponse(

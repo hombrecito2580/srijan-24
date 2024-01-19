@@ -30,6 +30,9 @@
                     android:icon="@drawable/ic_sponsors"
                     android:title="Past Sponsors" />
 
+                <item android:id="@+id/plansFragmentDrawer"
+                    android:icon="@drawable/ic_plans"
+                    android:title="Plans" />
             </group>
 
         </menu>

@@ -282,7 +282,7 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                                         "Try again !!, It may happen first time",
                                         Toast.LENGTH_SHORT
                                     ).show()
-
+                                    finish()
                                 }
                             }
                             )
@@ -300,9 +300,15 @@ class MerchandiseActivity : AppCompatActivity(), PaymentResultListener {
                     Log.i("Tag", t.toString())
                     Toast.makeText(
                         this@MerchandiseActivity,
-                        "Try again !!, It may happen first time",
+                        "Payment Successful but order not placed.",
                         Toast.LENGTH_SHORT
                     ).show()
+                    Toast.makeText(
+                        this@MerchandiseActivity,
+                        "Please contact administration for refund.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
 
                 }
             }

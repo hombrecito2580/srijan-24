@@ -44,11 +44,12 @@ class PlansFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val preferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        val preferences =
+            requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         token = preferences.getString("token", "") ?: ""
 
         if (token.isEmpty()) {
-            findNavController().navigate(R.id.action_merchandiseFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_plansFragmentDrawer_to_homeFragment)
             startActivity(Intent(requireContext(), LoginSignupActivity::class.java))
         } else {
             val call = UserApiInstance.createUserApi(token).getUser()
@@ -63,6 +64,14 @@ class PlansFragment : Fragment() {
                         userName = body.name
                         contact = body.phoneNumber
                         email = body.email
+                        val sharedPreferences =
+                            requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putString("userName", userName)
+                        editor.putString("contact", "+91" + contact)
+                        editor.putString("email", email)
+                        editor.apply()
+
                     } else {
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
                         findNavController().popBackStack()
@@ -77,21 +86,32 @@ class PlansFragment : Fragment() {
             })
         }
 
+        val intent = Intent(requireContext(), PlansActivity::class.java)
         binding.btnPlatinum.setOnClickListener {
             amount = 1999
-            startActivity(Intent(requireContext(), PlansActivity::class.java))
+            intent.putExtra("amount", amount)
+            startActivity(intent)
         }
 
         binding.btnGold.setOnClickListener {
             amount = 1799
+            intent.putExtra("amount", amount)
+            startActivity(intent)
+
         }
 
         binding.btnSilver.setOnClickListener {
             amount = 1499
+            intent.putExtra("amount", amount)
+            startActivity(intent)
+
         }
 
         binding.btnBronze.setOnClickListener {
             amount = 1199
+            intent.putExtra("amount", amount)
+            startActivity(intent)
+
         }
     }
 

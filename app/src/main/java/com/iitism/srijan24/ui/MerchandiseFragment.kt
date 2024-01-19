@@ -239,20 +239,21 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 
 
         binding.payButton.setOnClickListener {
+            startPayment(totalPriceToPay)
 //            totalPriceToPay = 1
-            if (ContextCompat.checkSelfPermission(
-                    requireActivity(),
-                    Manifest.permission.READ_SMS
-                ) !=
-                PackageManager.PERMISSION_GRANTED
-            ) {
-                requestPermissions(
-                    arrayOf(Manifest.permission.READ_SMS),
-                    1001
-                )
-            } else {
-                startPayment(totalPriceToPay)
-            }
+//            if (ContextCompat.checkSelfPermission(
+//                    requireActivity(),
+//                    Manifest.permission.READ_SMS
+//                ) !=
+//                PackageManager.PERMISSION_GRANTED
+//            ) {
+//                requestPermissions(
+//                    arrayOf(Manifest.permission.READ_SMS),
+//                    1001
+//                )
+//            } else {
+//                startPayment(totalPriceToPay)
+//            }
         }
     }
 

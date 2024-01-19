@@ -57,7 +57,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -80,7 +80,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -103,7 +103,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -126,7 +126,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -145,6 +145,7 @@
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/primary"
                     android:text="BUY NOW"
+                    android:textColor="@color/black"
                     style="@style/h3" />
 
             </LinearLayout>
@@ -196,7 +197,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -219,7 +220,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -242,7 +243,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -251,7 +252,29 @@
                         android:layout_height="wrap_content"
                         android:text="Merchandise"
                         android:textColor="@color/text" />
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pronite"
+                        android:textColor="@color/text" />
                 </LinearLayout>
 
                 <Button
@@ -262,6 +285,7 @@
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/primary"
                     android:text="BUY NOW"
+                    android:textColor="@color/black"
                     style="@style/h3" />
 
 
@@ -314,7 +338,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -337,7 +361,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -348,12 +372,59 @@
                         android:textColor="@color/text" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Merchandise"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pronite"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
                 <Button
                     android:id="@+id/btnSilver"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
+                    android:textColor="@color/black"
                     android:backgroundTint="@color/primary"
                     android:text="BUY NOW"
                     style="@style/h3"/>
@@ -408,7 +479,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/checkmark"
+                        android:src="@drawable/ic_right"
                         android:contentDescription="ivTick" />
 
                     <TextView
@@ -432,7 +503,7 @@
                         android:layout_marginStart="110dp"
                         android:layout_marginEnd="10dp"
                         android:contentDescription="ivTick"
-                        android:src="@drawable/checkmark" />
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -441,7 +512,50 @@
                         android:text="Pronite"
                         android:textColor="@color/text" />
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Merchandise"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Events"
+                        android:textColor="@color/text" />
+                </LinearLayout>
                 <Button
                     android:id="@+id/btnBronze"
                     android:layout_width="wrap_content"
@@ -450,6 +564,7 @@
                     style="@style/h3"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/primary"
+                    android:textColor="@color/black"
                     android:text="BUY NOW" />
 
 

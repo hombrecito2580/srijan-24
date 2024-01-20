@@ -24,13 +24,15 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="@drawable/border"
-        android:elevation="6dp"
-        app:tabIndicator="@color/primary"
+        app:tabIndicatorGravity="center"
+        app:tabIndicator="@drawable/bg_tab"
+        app:tabBackground="@drawable/bg_tab"
         app:tabTextColor="@color/text"
-        app:tabSelectedTextAppearance="@color/action_bar"
-        android:minHeight="?attr/actionBarSize"
+        app:tabIndicatorAnimationMode="linear"
+        app:tabSelectedTextColor="@color/black"
+        app:tabSelectedTextAppearance="@style/h4"
+        app:tabTextAppearance="@style/h4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -38,6 +40,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02"
         app:tabGravity="fill"
-        app:tabMode="fixed" />
+        app:tabMode="fixed">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_tab"
+            android:text="Details"
+            android:padding="5dp"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_tab"
+            android:text="Rules"
+            android:padding="5dp"/>
+    </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

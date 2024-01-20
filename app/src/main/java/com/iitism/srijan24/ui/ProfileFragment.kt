@@ -43,7 +43,6 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         initializeDialog()
 
-//        adapter = ProfileRVAdapter(emptyList())
         binding.rvMerch.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         return binding.root

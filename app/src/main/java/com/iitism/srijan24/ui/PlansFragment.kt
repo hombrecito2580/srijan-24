@@ -53,6 +53,7 @@ class PlansFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
         val preferences =
             requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         token = preferences.getString("token", "") ?: ""

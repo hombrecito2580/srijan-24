@@ -22,7 +22,11 @@
         android:id="@+id/eventsFragment"
         android:name="com.iitism.srijan24.ui.EventsFragment"
         android:label="Events"
-        tools:layout="@layout/fragment_events" />
+        tools:layout="@layout/fragment_events">
+        <action
+            android:id="@+id/action_eventsFragment_tosingleEventFragment"
+            app:destination="@id/singleEventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/merchandiseFragment"
         android:name="com.iitism.srijan24.ui.MerchandiseFragment"
@@ -73,6 +77,19 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
+        android:id="@+id/singleEventFragment"
+        android:name="com.iitism.srijan24.ui.SingleEventFragment"
+        android:label="fragment_single_event"
+        tools:layout="@layout/fragment_single_event">
+        <action
+            android:id="@+id/action_singleEventFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_singleEventFragment_to_EventsFragment"
+            app:destination="@id/eventsFragment"
+            app:popUpToInclusive="true" />
+     <fragment
         android:id="@+id/plansFragmentDrawer"
         android:name="com.iitism.srijan24.ui.PlansFragment"
         android:label="fragment_plans"
@@ -80,6 +97,5 @@
         <action
             android:id="@+id/action_plansFragmentDrawer_to_homeFragment"
             app:destination="@id/homeFragment" />
-    </fragment>
 
 </navigation>

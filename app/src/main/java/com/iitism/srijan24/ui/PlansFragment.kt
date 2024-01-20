@@ -63,11 +63,13 @@ class PlansFragment : Fragment() {
         } else {
             val call = UserApiInstance.createUserApi(token).getUser()
 
+            dialog.show()
             call.enqueue(object : retrofit2.Callback<GetUserResponse> {
                 override fun onResponse(
                     call: Call<GetUserResponse>,
                     response: Response<GetUserResponse>,
                 ) {
+                    dialog.dismiss()
                     val body = response.body()
                     if (response.isSuccessful && body != null) {
                         userName = body.name
@@ -90,6 +92,7 @@ class PlansFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
+                    dialog.dismiss()
                     Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
                     Log.e("EEEEEEEEEEEEEEEE", t.toString())
                     findNavController().popBackStack()
@@ -106,7 +109,7 @@ class PlansFragment : Fragment() {
             amount = 1999
             binding.totalPrice.text = "Payable Amount: \\u20B9 1999".unescapeUnicode()
             binding.scrollview.post {
-                binding.scrollview.smoothScrollTo(0, binding.cvDetails.top)
+                binding.scrollview.smoothScrollTo(0, binding.payButton.top)
             }
         }
 

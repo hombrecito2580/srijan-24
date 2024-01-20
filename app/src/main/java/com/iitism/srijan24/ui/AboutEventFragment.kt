@@ -16,7 +16,7 @@ import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.ContactAdapter
 import com.iitism.srijan24.databinding.FragmentAboutEventBinding
 
-class AboutEventFragment(val eventData:EventDataModel) : Fragment() {
+class AboutEventFragment(private val eventData:EventDataModel) : Fragment() {
 
     private var _binding: FragmentAboutEventBinding? = null
     private val binding get() = _binding!!
@@ -25,7 +25,7 @@ class AboutEventFragment(val eventData:EventDataModel) : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding=FragmentAboutEventBinding.inflate(inflater)
         return binding.root
@@ -40,14 +40,19 @@ class AboutEventFragment(val eventData:EventDataModel) : Fragment() {
         binding.tvEventDescription.text=eventData.miniDescription
 
         adapter= ContactAdapter(eventData.contact!!,requireContext())
-        binding!!.rvContact.layoutManager = LinearLayoutManager(requireContext())
-        binding!!.rvContact.adapter = adapter
-        binding!!.rvContact.setHasFixedSize(true)
+        binding.rvContact.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvContact.adapter = adapter
+        binding.rvContact.setHasFixedSize(true)
 
         Glide.with(requireContext())
             .load(eventData.poster)
             .placeholder(R.drawable.srijan_modified_logo)
             .into(binding.eventImage)
+
+        Glide.with(requireContext())
+            .load(eventData.poster)
+            .placeholder(R.drawable.srijan_modified_logo)
+            .into(binding.ivEvent)
 
         binding.pdfLink.setOnClickListener {
             if (eventData.ruleBookLink != null) {
@@ -61,6 +66,11 @@ class AboutEventFragment(val eventData:EventDataModel) : Fragment() {
             }
             else
                 Toast.makeText(context, "No PDF Link available", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.btnRegister.setOnClickListener {
+            binding.cvRegister.visibility = View.VISIBLE
+            binding.btnRegister.visibility = View.GONE
         }
     }
 

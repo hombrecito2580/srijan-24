@@ -3,6 +3,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:backgroundTint="@color/bgLight"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.RegistrationFragment">
@@ -12,9 +13,17 @@
         android:id="@+id/scroll_view_merchandise"
         android:layout_height="match_parent">
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="15dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/bgLight"
             android:layout_marginTop="80dp"
             android:gravity="center"
             android:orientation="vertical">
@@ -42,8 +51,7 @@
                 android:text="Enter Your Information"
                 android:layout_marginBottom="15dp"
                 style="@style/h2"
-                android:textAlignment="center"
-                />
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/edit_team_name"
@@ -654,6 +662,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"/>
         </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
     </ScrollView>
     <androidx.appcompat.widget.AppCompatButton
         android:visibility="gone"

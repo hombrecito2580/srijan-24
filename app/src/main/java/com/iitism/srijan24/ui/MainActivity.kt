@@ -131,6 +131,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             setOf(
                 R.id.homeFragment,
                 R.id.eventsFragment,
+                R.id.singleEventFragment,
                 R.id.announcementsFragment,
                 R.id.merchandiseFragment,
                 R.id.sponsorsFragment,
@@ -171,6 +172,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
             when (destination.id) {
                 R.id.homeFragment -> binding.navView.setCheckedItem(R.id.homeFragment)
                 R.id.eventsFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
+                R.id.singleEventFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
                 R.id.announcementsFragment -> binding.navView.setCheckedItem(R.id.announcementsFragment)
                 R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
                 R.id.sponsorsFragment -> binding.navView.setCheckedItem(R.id.sponsorsFragment)
@@ -192,6 +194,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.aboutUsFragment -> "About Us"
                 R.id.coreTeamFragment -> "Core Team"
                 R.id.contactFragment -> "Contact Us"
+                R.id.singleEventFragment -> "Events"
                 else -> "Srijan 24"
             }
 

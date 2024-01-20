@@ -1,24 +1,20 @@
 package com.iitism.srijan24.view_model
 
-import android.content.Context
-import android.widget.Toast
+import EventDataModel
 import androidx.compose.runtime.mutableStateListOf
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.iitism.srijan24.adapter.EventsAdapter
-import com.iitism.srijan24.data.CoreTeamDataModel
-import com.iitism.srijan24.data.EventDataModel
 import com.iitism.srijan24.retrofit.EventsRetrofitInstance
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 
-class EventsViewModel(private val context: Context):ViewModel() {
+class EventsViewModel():ViewModel() {
 
     private  var _eventList = mutableStateListOf<EventDataModel>()
-    val eventList : List<EventDataModel>
-        get() = _eventList
-    fun getEvents(){
+    val eventList = MutableLiveData<List<EventDataModel>>()
+    fun getEvents(isSuccess: (Boolean) -> Unit){
         viewModelScope.launch {
 
             val call = EventsRetrofitInstance.eventsApi.getAllEvents()
@@ -29,11 +25,15 @@ class EventsViewModel(private val context: Context):ViewModel() {
                 ) {
                     if (response.isSuccessful) {
                         _eventList.addAll(response.body()!!)
+                        eventList.value=_eventList.toList()
+                        isSuccess.invoke(true)
+                    }else{
+                        isSuccess.invoke(false)
                     }
                 }
 
                 override fun onFailure(call: Call<List<EventDataModel>>, t: Throwable) {
-                    Toast.makeText(context, "Response failed", Toast.LENGTH_SHORT).show()
+                    isSuccess.invoke(false)
                 }
 
             })

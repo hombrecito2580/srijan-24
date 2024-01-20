@@ -12,17 +12,20 @@
         android:textColor="@color/white"
         android:textAlignment="center"
         android:text="Contact Name"
-        style="@style/h4"/>
+        style="@style/h5"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <TextView
         android:id="@+id/tvContactNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="20sp"
         android:textColor="@color/white"
         android:textAlignment="viewStart"
         android:text="1234567890"
-        style="@style/h4"/>
+        style="@style/h5"
+        android:clickable="true"
+        android:focusable="true"/>
 
 </LinearLayout>

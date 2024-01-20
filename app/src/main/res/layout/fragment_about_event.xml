@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.AboutEventFragment">
+    tools:context=".ui.AboutEventFragment"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,28 +20,28 @@
             android:padding="10dp">
 
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="10dp"
+                android:backgroundTint="@color/transparent"
                 android:layout_marginTop="10dp">
 
                 <ImageView
                     android:id="@+id/event_image"
                     android:layout_width="wrap_content"
                     android:layout_height="250dp"
-                    android:background="@color/black"
+                    android:layout_gravity="center"
                     android:contentDescription="image"
-                    android:scaleType="fitXY"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/srijan_modified_logo" />
 
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
             <TextView
-                android:id="@+id/event_name"
+                android:id="@+id/tveventName"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -53,14 +54,15 @@
                 android:text="Event Name  "
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                style="@style/h2" />
+                style="@style/h3" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:background="@drawable/border">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -68,17 +70,16 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Fee : "
+                        android:text="Fee :"
                         android:textAlignment="center"
                         android:textColor="@color/primary"
-                        style="@style/h3" />
+                        style="@style/h4" />
 
                     <TextView
                         android:id="@+id/tvEventFee"
@@ -86,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:text="0.00"
                         android:textAlignment="center"
-                        style="@style/h4"
+                        style="@style/h5"
                         android:textColor="@color/text" />
 
                 </LinearLayout>
@@ -97,26 +98,25 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:background="@drawable/border"
-                    android:padding="10dp">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Mode of Conducting: "
+                        android:text="Venue:"
                         android:textAlignment="center"
                         android:textColor="@color/primary"
-                        style="@style/h3" />
+                        style="@style/h4" />
 
                     <TextView
-                        android:id="@+id/tvEventMode"
+                        android:id="@+id/tvVenue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Online"
                         android:textAlignment="center"
-                        style="@style/h4"
+                        style="@style/h5"
                         android:textColor="@color/text" />
 
                 </LinearLayout>
@@ -132,7 +132,8 @@
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical"
                 android:background="@drawable/border"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/h3"
@@ -161,7 +162,8 @@
                 android:orientation="vertical"
                 android:padding="5dp"
                 android:background="@drawable/border"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                android:visibility="gone">
 
                 <TextView
 
@@ -201,7 +203,7 @@
                     android:text="Event Description: "
                     android:textAlignment="center"
                     android:textColor="@color/primary"
-                    style="@style/h3" />
+                    style="@style/h4" />
 
                 <TextView
                     android:id="@+id/tvEventDescription"
@@ -210,9 +212,12 @@
                     android:layout_marginTop="5dp"
                     android:text="Teams have to build an autonomous bot that can follow a black line over a contrasting surface to move between the different zones and perform the required tasks. The line may have discontinuities."
                     android:textAlignment="center"
+                    android:layout_gravity="center"
                     android:textColor="@color/white"
-                    
-                    android:textSize="20sp" />
+                    style="@style/h5"
+                    android:padding="5dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
 
             </LinearLayout>
@@ -223,7 +228,8 @@
                 android:background="@drawable/border"
                 android:layout_marginBottom="20dp"
                 android:padding="5dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
 
 
@@ -241,19 +247,93 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
                     android:text="We create products that solve real problems! Whatever your major is, whatever your age be, whatever you do, doesn't matter! Hop on, if you have that keeda of invention."
                     android:textAlignment="center"
                     android:textColor="@color/text"
+                    android:padding="5dp"
                     style="@style/h4" />
 
 
             </LinearLayout>
 
+            <LinearLayout
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:padding="8dp"
+                android:background="@drawable/border"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Details"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    style="@style/h4">
+
+                </TextView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/contact_details_card"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="16dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    style="@style/h4"
+                    android:text="For more info:"
+                    android:textColor="@color/text" />
+
+                <TextView
+                    android:id="@+id/pdfLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="PDF Link"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/primary"
+                    style="@style/h4"/>
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:layout_margin="16dp"
+                style="@style/h4"
+                android:text="Register Now"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_gravity="center"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="40dp"/>
+
+
 
 
 

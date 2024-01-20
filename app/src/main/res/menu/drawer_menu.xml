@@ -18,6 +18,11 @@
                     android:icon="@drawable/ic_events"
                     android:title="Events" />
 
+                <item android:id="@+id/singleEventFragment"
+                    android:icon="@drawable/ic_events"
+                    android:title="Event"
+                    android:visible="false"/>
+
                 <item android:id="@+id/announcementsFragment"
                     android:icon="@drawable/ic_announcement"
                     android:title="Announcements" />

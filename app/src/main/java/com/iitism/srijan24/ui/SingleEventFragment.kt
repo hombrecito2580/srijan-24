@@ -1,5 +1,6 @@
 package com.iitism.srijan24.ui
 
+import EventDataModel
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,23 +21,25 @@ class SingleEventFragment : Fragment() {
     private var _binding: FragmentSingleEventBinding? = null
     private val binding get() = _binding!!
     private lateinit var tabLayout: TabLayout
+    private lateinit var eventData:EventDataModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding=FragmentSingleEventBinding.inflate(inflater)
+        arguments?.let {
+            eventData = it.getParcelable<EventDataModel>("eventData")!!
+            // Use the received data as needed
+        }
+        tabLayout=binding.tabLayout
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        tabLayout.addTab(tabLayout.newTab().setText("ABOUT"))
-        tabLayout.addTab(tabLayout.newTab().setText("RULES"))
-        tabLayout.addTab(tabLayout.newTab().setText("DETAILS"))
         tabLayout.tabGravity= TabLayout.GRAVITY_FILL
-        val adapter= EventsViewPagerAdapter(requireContext(),childFragmentManager,tabLayout.tabCount)
+        val adapter= EventsViewPagerAdapter(requireContext(),childFragmentManager,tabLayout.tabCount,eventData)
         binding.viewPager.adapter=adapter
         binding.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
@@ -50,6 +53,7 @@ class SingleEventFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
         })
+
     }
 
 }

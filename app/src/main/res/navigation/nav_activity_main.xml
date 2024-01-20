@@ -14,6 +14,9 @@
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_plansFragment2"
+            app:destination="@id/plansFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventsFragment"
@@ -86,6 +89,13 @@
             android:id="@+id/action_singleEventFragment_to_EventsFragment"
             app:destination="@id/eventsFragment"
             app:popUpToInclusive="true" />
-    </fragment>
+     <fragment
+        android:id="@+id/plansFragmentDrawer"
+        android:name="com.iitism.srijan24.ui.PlansFragment"
+        android:label="fragment_plans"
+        tools:layout="@layout/fragment_plans" >
+        <action
+            android:id="@+id/action_plansFragmentDrawer_to_homeFragment"
+            app:destination="@id/homeFragment" />
 
 </navigation>

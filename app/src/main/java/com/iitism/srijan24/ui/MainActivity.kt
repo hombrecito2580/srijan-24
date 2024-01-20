@@ -139,7 +139,8 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.profileFragment,
                 R.id.aboutUsFragment,
                 R.id.coreTeamFragment,
-                R.id.contactFragment
+                R.id.contactFragment,
+                R.id.plansFragmentDrawer
             ), binding.drawerLayout
         )
 
@@ -181,6 +182,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.aboutUsFragment -> binding.navView.setCheckedItem(R.id.aboutUsFragment)
                 R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
                 R.id.contactFragment -> binding.navView.setCheckedItem(R.id.contactFragment)
+                R.id.plansFragmentDrawer -> binding.navView.setCheckedItem(R.id.plansFragmentDrawer)
                 else -> binding.navView.setCheckedItem(R.id.homeFragment)
             }
             binding.appBar.tvTitle.text = when (destination.id) {
@@ -195,6 +197,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.coreTeamFragment -> "Core Team"
                 R.id.contactFragment -> "Contact Us"
                 R.id.singleEventFragment -> "Events"
+                R.id.plansFragmentDrawer -> "Plans"
                 else -> "Srijan 24"
             }
 
@@ -272,7 +275,6 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
     private fun askNotificationAndSmsPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val notificationPermission = android.Manifest.permission.POST_NOTIFICATIONS
-            val smsPermission = android.Manifest.permission.READ_SMS
 
             if (ContextCompat.checkSelfPermission(
                     this,
@@ -280,14 +282,6 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 requestPermissionLauncher.launch(notificationPermission)
-            }
-
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    smsPermission
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                requestPermissionLauncher.launch(smsPermission)
             }
         }
     }

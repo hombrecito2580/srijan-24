@@ -1,456 +1,945 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:id="@+id/scrollview"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="hardcodedText,UseCompoundDrawables"
     tools:context=".ui.PlansFragment">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_plan1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="20dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_plan1"
-                app:cardCornerRadius="20dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/bgLight"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="10dp">
+                android:background="@color/bgLight"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Platinum Plan"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="\u20B9 1999"
+                    android:textColor="@color/text" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/bgLight">
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Platinum Plan"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/primary"
                         style="@style/h3"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Rs. 1999"
-                        android:textColor="@color/text"
-                        style="@style/h1"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Accomodation"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Events"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Merchandise"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Pronite"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/btnPlatinum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primary"
-                        android:text="BUY NOW"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center_horizontal"/>
-
+                        android:text="Accomodation"
+                        android:textColor="@color/text" />
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_plan2"
-                app:cardCornerRadius="20dp"
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Events"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Merchandise"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pronite"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnPlatinum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="BUY NOW"
+                    android:textColor="@color/black"
+                    style="@style/h3" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_plan2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/bgLight"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="10dp">
+                android:background="@color/bgLight"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Gold Plan"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="\u20B9 1799"
+                    android:textColor="@color/text" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/bgLight">
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Gold Plan"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/primary"
                         style="@style/h3"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Rs. 1799"
-                        android:textColor="@color/text"
-                        style="@style/h1"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Accomodation"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Events"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Merchandise"/>
-
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/btnGold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primary"
-                        android:text="BUY NOW"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center_horizontal"/>
-
-
+                        android:text="Accomodation"
+                        android:textColor="@color/text" />
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_plan3"
-                app:cardCornerRadius="20dp"
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Events"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Merchandise"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pronite"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnGold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="BUY NOW"
+                    android:textColor="@color/black"
+                    style="@style/h3" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_plan3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/bgLight"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="10dp">
+                android:background="@color/bgLight"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Silver Plan"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="\u20B9 1499"
+                    android:textColor="@color/text" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/bgLight">
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Silver Plan"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/primary"
                         style="@style/h3"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Rs. 1499"
-                        android:textColor="@color/text"
-                        style="@style/h1"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Accomodation"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Events"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/btnSilver"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primary"
-                        android:text="BUY NOW"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center_horizontal"/>
-
-
+                        android:text="Accomodation"
+                        android:textColor="@color/text" />
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_plan4"
-                app:cardCornerRadius="20dp"
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Events"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Merchandise"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pronite"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnSilver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/primary"
+                    android:text="BUY NOW"
+                    style="@style/h3"/>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_plan4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/bgLight"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="10dp">
+                android:background="@color/bgLight"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Bronze Plan"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="\u20B9 1199"
+                    android:textColor="@color/text" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/bgLight">
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_right"
+                        android:contentDescription="ivTick" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bronze Plan"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/primary"
                         style="@style/h3"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Rs. 1199"
-                        android:textColor="@color/text"
-                        style="@style/h1"
-                        android:layout_gravity="center_horizontal"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Accomodation"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="start">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/checkmark"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/h3"
-                            android:textColor="@color/text"
-                            android:text="Pronite"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/btnBronze"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primary"
-                        android:text="BUY NOW"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center_horizontal"/>
-
-
+                        android:text="Accomodation"
+                        android:textColor="@color/text" />
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
-    </ScrollView>
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pronite"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-</FrameLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Merchandise"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_wrong"
+                        android:contentDescription="ivTick" />
+
+                    <TextView
+                        style="@style/h3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Events"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btnBronze"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/h3"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/black"
+                    android:text="BUY NOW" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/bgLight"
+            app:cardCornerRadius="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bgLight"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:text="Name*"
+                    android:textColor="@color/text"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border1">
+
+                    <EditText
+                        android:id="@+id/edit_name"
+                        style="@style/h4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:padding="10dp"
+                        android:textColor="@color/text"
+                        tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </HorizontalScrollView>
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:text="Student Email*"
+                    android:textColor="@color/text"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border1">
+
+                    <EditText
+                        android:id="@+id/edit_email"
+                        style="@style/h4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:padding="10dp"
+                        android:textColor="@color/text"
+                        tools:ignore="Autofill,LabelFor,TextFields,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </HorizontalScrollView>
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="start"-->
+                <!--                            android:padding="5dp"-->
+                <!--                            android:text="Admission Number*"-->
+                <!--                            android:textColor="@color/text"-->
+                <!--                            android:textStyle="bold" />-->
+
+                <!--                        <EditText-->
+                <!--                            android:id="@+id/edit_admno"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="40dp"-->
+                <!--                            android:background="@drawable/border1"-->
+                <!--                            android:inputType="text"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:textColor="@color/text"-->
+                <!--                            android:textSize="15sp" />-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="left"-->
+                <!--                            android:padding="5dp"-->
+                <!--                            android:text="Personal Email*"-->
+                <!--                            android:textStyle="bold" />-->
+
+                <!--                        <EditText-->
+                <!--                            android:id="@+id/edit_email"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="40dp"-->
+                <!--                            android:background="@drawable/border1"-->
+                <!--                            android:inputType="text"-->
+                <!--                            android:paddingLeft="10dp"-->
+                <!--                            android:textSize="15sp" />-->
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:text="Phone Number*"
+                    android:textColor="@color/text"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border1">
+
+                    <EditText
+                        android:id="@+id/edit_phone"
+                        style="@style/h4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:padding="10dp"
+                        android:textColor="@color/text"
+                        tools:ignore="Autofill,LabelFor,TextFields,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </HorizontalScrollView>
+
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="left"-->
+                <!--                            android:padding="5dp"-->
+                <!--                            android:text="Branch*"-->
+                <!--                            android:textStyle="bold" />-->
+
+                <!--                        <EditText-->
+                <!--                            android:id="@+id/edit_branch"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="40dp"-->
+                <!--                            android:background="@drawable/border1"-->
+                <!--                            android:inputType="text"-->
+                <!--                            android:paddingLeft="10dp"-->
+                <!--                            android:textSize="15sp" />-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="left"-->
+                <!--                            android:padding="5dp"-->
+                <!--                            android:text="Transaction ID*"-->
+                <!--                            android:textStyle="bold" />-->
+
+                <!--                        <EditText-->
+                <!--                            android:id="@+id/edit_transactionID"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="40dp"-->
+                <!--                            android:background="@drawable/border1"-->
+                <!--                            android:inputType="text"-->
+                <!--                            android:paddingLeft="10dp"-->
+                <!--                            android:textSize="15sp" />-->
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:text="Address*"
+                    android:textColor="@color/text"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edit_address"
+                    style="@style/h4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border1"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/text"
+                    tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
+
+                <TextView
+                    style="@style/h5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:text="*Delivery outside IIT ISM campus is chargeable"
+                    android:textColor="#CACACA"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:text="ID Proof*"
+                    android:textColor="@color/text"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edit_proof"
+                    style="@style/h4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border1"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/text"
+                    tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
+
+                <TextView
+                    style="@style/h5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:text="*Enter the drive link of a document which can be verified as a valid ID Proof"
+                    android:textColor="#CACACA"
+                    android:textStyle="bold" />
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="start"-->
+                <!--                            android:padding="5dp"-->
+                <!--                            android:text="Room No*"-->
+                <!--                            android:textColor="@color/text"-->
+                <!--                            android:textStyle="bold" />-->
+
+                <!--                        <EditText-->
+                <!--                            android:id="@+id/edit_roomNo"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="40dp"-->
+                <!--                            android:background="@drawable/border1"-->
+                <!--                            android:inputType="text"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:textColor="@color/text"-->
+                <!--                            tools:ignore="Autofill,LabelFor"-->
+                <!--                            android:textSize="15sp" />-->
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:text="Gender*"
+                    android:textColor="@color/text"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/edit_gender"
+                    style="@style/h4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border1"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textColor="@color/text"
+                    tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/choose_merch"
+                    style="@style/h4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_background1"
+                    android:padding="10dp"
+                    android:text="Available Merchandise"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/choose_size"
+                    style="@style/h4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_background1"
+                    android:padding="10dp"
+                    android:text="Choose Size"
+                    android:textColor="@color/black" />
+
+                <!--                        <androidx.appcompat.widget.AppCompatButton-->
+                <!--                            android:id="@+id/choose_payment_ss"-->
+                <!--                            style="@style/h4"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="40dp"-->
+                <!--                            android:layout_marginTop="16dp"-->
+                <!--                            android:layout_marginHorizontal="10dp"-->
+                <!--                            android:background="@drawable/button_background1"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Payment Screenshot"-->
+                <!--                            android:textColor="@color/black" />-->
+
+                <!--                        <androidx.appcompat.widget.AppCompatButton-->
+                <!--                            android:id="@+id/place_order_button"-->
+                <!--                            style="@style/h4"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="50dp"-->
+                <!--                            android:layout_marginVertical="16dp"-->
+                <!--                            android:layout_marginHorizontal="10dp"-->
+                <!--                            android:background="@drawable/button_background1"-->
+                <!--                            android:backgroundTint="@color/primary"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Place Order"-->
+                <!--                            android:textColor="@color/black" />-->
+                <TextView
+                    android:id="@+id/total_price"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:text="Payable Amount: \u20B9 0"
+                    android:textColor="@color/text"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/pay_button"
+                    style="@style/h4"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/button_background1"
+                    android:backgroundTint="@color/primary"
+                    android:padding="10dp"
+                    android:text="Pay"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/ivRazorpay"
+                    android:layout_width="160dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/razorpay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvError"
+                    app:layout_constraintStart_toEndOf="@+id/tvError"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

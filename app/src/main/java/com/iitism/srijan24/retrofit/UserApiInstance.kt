@@ -1,5 +1,6 @@
 package com.iitism.srijan24.retrofit
 
+import com.iitism.srijan24.utils.Constants.Companion.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -7,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object UserApiInstance {
-    private const val BASE_URL = "https://srijan2024.onrender.com/"
+//    private const val BASE_URL = "https://srijan2024.onrender.com/"
     private const val AUTH_HEADER = "Authorization"
 
     private fun createOkHttpClient(jwtToken: String?): OkHttpClient {

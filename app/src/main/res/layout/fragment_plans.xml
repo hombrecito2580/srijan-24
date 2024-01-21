@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:id="@+id/scrollview"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="hardcodedText,UseCompoundDrawables"
-    tools:context=".ui.PlansFragment">
+    tools:context=".ui.PlansFragment"
+    tools:ignore="hardcodedText,UseCompoundDrawables">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,8 +58,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -82,8 +81,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -105,8 +104,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -128,8 +127,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -141,14 +140,14 @@
 
                 <Button
                     android:id="@+id/btnPlatinum"
+                    style="@style/h3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/primary"
                     android:text="BUY NOW"
-                    android:textColor="@color/black"
-                    style="@style/h3" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -199,8 +198,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -222,8 +221,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -245,8 +244,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -268,8 +267,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_wrong"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_wrong" />
 
                     <TextView
                         style="@style/h3"
@@ -281,14 +280,14 @@
 
                 <Button
                     android:id="@+id/btnGold"
+                    style="@style/h3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/primary"
                     android:text="BUY NOW"
-                    android:textColor="@color/black"
-                    style="@style/h3" />
+                    android:textColor="@color/black" />
 
 
             </LinearLayout>
@@ -340,8 +339,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -363,8 +362,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -386,8 +385,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_wrong"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_wrong" />
 
                     <TextView
                         style="@style/h3"
@@ -409,8 +408,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_wrong"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_wrong" />
 
                     <TextView
                         style="@style/h3"
@@ -422,14 +421,14 @@
 
                 <Button
                     android:id="@+id/btnSilver"
+                    style="@style/h3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
-                    android:textColor="@color/black"
                     android:backgroundTint="@color/primary"
                     android:text="BUY NOW"
-                    style="@style/h3"/>
+                    android:textColor="@color/black" />
 
 
             </LinearLayout>
@@ -481,8 +480,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_right"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_right" />
 
                     <TextView
                         style="@style/h3"
@@ -514,6 +513,7 @@
                         android:text="Pronite"
                         android:textColor="@color/text" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -526,8 +526,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_wrong"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_wrong" />
 
                     <TextView
                         style="@style/h3"
@@ -536,6 +536,7 @@
                         android:text="Merchandise"
                         android:textColor="@color/text" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -548,8 +549,8 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_wrong"
-                        android:contentDescription="ivTick" />
+                        android:contentDescription="ivTick"
+                        android:src="@drawable/ic_wrong" />
 
                     <TextView
                         style="@style/h3"
@@ -558,16 +559,17 @@
                         android:text="Events"
                         android:textColor="@color/text" />
                 </LinearLayout>
+
                 <Button
                     android:id="@+id/btnBronze"
+                    style="@style/h3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    style="@style/h3"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/primary"
-                    android:textColor="@color/black"
-                    android:text="BUY NOW" />
+                    android:text="BUY NOW"
+                    android:textColor="@color/black" />
 
 
             </LinearLayout>
@@ -578,9 +580,9 @@
             android:id="@+id/cvDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:visibility="gone"
             android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_margin="10dp"
             android:backgroundTint="@color/bgLight"
             app:cardCornerRadius="15dp">
 
@@ -752,36 +754,44 @@
                 <!--                            android:paddingLeft="10dp"-->
                 <!--                            android:textSize="15sp" />-->
 
-                <TextView
-                    style="@style/h4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:padding="5dp"
-                    android:text="Address*"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edit_address"
-                    style="@style/h4"
+                <LinearLayout
+                    android:id="@+id/ltAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border1"
-                    android:inputType="text"
-                    android:padding="10dp"
-                    android:textColor="@color/text"
-                    tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
+                    android:orientation="vertical">
 
-                <TextView
-                    style="@style/h5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:padding="5dp"
-                    android:text="*Delivery outside IIT ISM campus is chargeable"
-                    android:textColor="#CACACA"
-                    android:textStyle="bold" />
+                    <TextView
+                        style="@style/h4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:padding="5dp"
+                        android:text="Address*"
+                        android:textColor="@color/text"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edit_address"
+                        style="@style/h4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border1"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/text"
+                        tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
+
+                    <TextView
+                        style="@style/h5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:padding="5dp"
+                        android:text="*Delivery outside IIT ISM campus is chargeable"
+                        android:textColor="#CACACA"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
                 <TextView
                     style="@style/h4"

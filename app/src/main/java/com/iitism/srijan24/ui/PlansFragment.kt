@@ -81,11 +81,6 @@ class PlansFragment : Fragment() {
                         binding.editPhone.setText(contact)
                         binding.editEmail.setText(email)
 
-                        val sharedPreferences = requireActivity().getSharedPreferences(
-                            "MyPreferences",
-                            Context.MODE_PRIVATE
-                        )
-
                     } else {
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
                         findNavController().popBackStack()
@@ -107,20 +102,40 @@ class PlansFragment : Fragment() {
         binding.btnPlatinum.setOnClickListener {
             if(binding.cvDetails.visibility != View.VISIBLE)
                 binding.cvDetails.visibility = View.VISIBLE
+
+            if(binding.ltAddress.visibility != View.VISIBLE)
+                binding.ltAddress.visibility = View.VISIBLE
+
+            if(binding.chooseMerch.visibility != View.VISIBLE)
+                binding.chooseMerch.visibility = View.VISIBLE
+
+            if(binding.chooseSize.visibility != View.VISIBLE)
+                binding.chooseSize.visibility = View.VISIBLE
+
             amount = 1999
             binding.totalPrice.text = "Payable Amount: \\u20B9 1999".unescapeUnicode()
             binding.scrollview.post {
-                binding.scrollview.smoothScrollTo(0, binding.payButton.top)
+                binding.scrollview.fullScroll(View.FOCUS_DOWN)
             }
         }
 
         binding.btnGold.setOnClickListener {
             if(binding.cvDetails.visibility != View.VISIBLE)
                 binding.cvDetails.visibility = View.VISIBLE
+
+            if(binding.ltAddress.visibility != View.VISIBLE)
+                binding.ltAddress.visibility = View.VISIBLE
+
+            if(binding.chooseMerch.visibility != View.VISIBLE)
+                binding.chooseMerch.visibility = View.VISIBLE
+
+            if(binding.chooseSize.visibility != View.VISIBLE)
+                binding.chooseSize.visibility = View.VISIBLE
+
             amount = 1799
             binding.totalPrice.text = "Payable Amount: \\u20B9 1799".unescapeUnicode()
             binding.scrollview.post {
-                binding.scrollview.smoothScrollTo(0, binding.cvDetails.top)
+                binding.scrollview.fullScroll(View.FOCUS_DOWN)
             }
 //            intent.putExtra("amount", amount)
 //            startActivity(intent)
@@ -130,10 +145,20 @@ class PlansFragment : Fragment() {
         binding.btnSilver.setOnClickListener {
             if(binding.cvDetails.visibility != View.VISIBLE)
                 binding.cvDetails.visibility = View.VISIBLE
+
+            if(binding.ltAddress.visibility != View.GONE)
+                binding.ltAddress.visibility = View.GONE
+
+            if(binding.chooseMerch.visibility != View.GONE)
+                binding.chooseMerch.visibility = View.GONE
+
+            if(binding.chooseSize.visibility != View.GONE)
+                binding.chooseSize.visibility = View.GONE
+
             amount = 1499
             binding.totalPrice.text = "Payable Amount: \\u20B9 1499".unescapeUnicode()
             binding.scrollview.post {
-                binding.scrollview.smoothScrollTo(0, binding.cvDetails.top)
+                binding.scrollview.fullScroll(View.FOCUS_DOWN)
             }
 //            intent.putExtra("amount", amount)
 //            startActivity(intent)
@@ -142,10 +167,20 @@ class PlansFragment : Fragment() {
         binding.btnBronze.setOnClickListener {
             if(binding.cvDetails.visibility != View.VISIBLE)
                 binding.cvDetails.visibility = View.VISIBLE
+
+            if(binding.ltAddress.visibility != View.GONE)
+                binding.ltAddress.visibility = View.GONE
+
+            if(binding.chooseMerch.visibility != View.GONE)
+                binding.chooseMerch.visibility = View.GONE
+
+            if(binding.chooseSize.visibility != View.GONE)
+                binding.chooseSize.visibility = View.GONE
+
             amount = 1199
             binding.totalPrice.text = "Payable Amount: \\u20B9 1199".unescapeUnicode()
             binding.scrollview.post {
-                binding.scrollview.smoothScrollTo(0, binding.cvDetails.top)
+                binding.scrollview.fullScroll(View.FOCUS_DOWN)
             }
 //            intent.putExtra("amount", amount)
 //            startActivity(intent)
@@ -166,15 +201,15 @@ class PlansFragment : Fragment() {
         }
 
         binding.payButton.setOnClickListener {
-            if(binding.editAddress.text.toString().trim().isEmpty()) {
+            if((amount == 1999 || amount == 1799) && binding.editAddress.text.toString().trim().isEmpty()) {
                 binding.editAddress.error = "Please enter the address"
             } else if(binding.editProof.text.toString().trim().isEmpty()) {
                 binding.editProof.error = "Please enter your ID Proof"
             } else if(binding.editGender.text.toString().trim().isEmpty()) {
                 binding.editGender.error = "Please enter your gender"
-            } else if(isMerchSelected == 0) {
+            } else if((amount == 1999 || amount == 1799) && isMerchSelected == 0) {
                 Toast.makeText(context, "Please choose from available merchandise", Toast.LENGTH_SHORT).show()
-            } else if(isSizeSelected == 0) {
+            } else if((amount == 1999 || amount == 1799) && isSizeSelected == 0) {
                 Toast.makeText(context, "Please choose from available sizes", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(requireContext(), PlansActivity::class.java)

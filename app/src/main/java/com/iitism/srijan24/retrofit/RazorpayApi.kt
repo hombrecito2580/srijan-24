@@ -20,6 +20,6 @@ interface RazorpayApi {
     @POST("/api/order/getSignature")
     fun getSignature(@Body body: GetSignatureModel): Call<GetSignatureResponse>
 
-    @POST("/api/user/pacakge")
+    @POST("/api/user/package")
     fun submitPlanDetails(@Body body: PlansDataModel): Call<Void>
 }

@@ -127,6 +127,17 @@
                     android:layout_margin="8dp"
                     android:layout_marginTop="18dp"
                     tools:listitem="@layout/layout_rv_profile" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="12dp"
+                    android:textAlignment="center"
+                    style="@style/h4"
+                    android:textColor="@color/text"
+                    android:text="If you have placed an order, and it is not reflecting here, kindly mail us at srijan@iitism.ac.in with your transaction details." />
+                
             </LinearLayout>
 
 

@@ -24,8 +24,8 @@ class HomeCarouselAdapter(private val dataList: Array<String>): RecyclerView.Ada
         val imageView = holder.itemView.findViewById<ImageView>(R.id.image_merchandise)
         Glide.with(holder.itemView.context)
             .load(dataList[position])
-            .placeholder(R.drawable.srijan_modified_logo)
-            .error(R.drawable.srijan_modified_logo)
+            .placeholder(R.drawable.progress_animation)
+            .error(R.drawable.try_later)
             .centerCrop()
             .into(imageView)
     }

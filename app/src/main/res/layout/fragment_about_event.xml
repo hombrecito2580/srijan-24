@@ -29,11 +29,10 @@
                 <ImageView
                     android:id="@+id/event_image"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="500dp"
                     android:layout_gravity="center"
                     android:contentDescription="image"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/srijan_modified_logo" />
+                    android:scaleType="centerCrop" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -345,6 +344,7 @@
                 android:visibility="gone"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/bgLight"
                 app:cardCornerRadius="15dp">
 
@@ -516,6 +516,17 @@
                         android:textColor="@color/black" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnRemoveMembers"
+                        style="@style/h4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/button_background1"
+                        android:padding="10dp"
+                        android:text="Remove Member"
+                        android:textColor="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnSubmit"
                         style="@style/h4"
                         android:layout_width="wrap_content"
@@ -546,10 +557,6 @@
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="40dp" />
 
 
         </LinearLayout>

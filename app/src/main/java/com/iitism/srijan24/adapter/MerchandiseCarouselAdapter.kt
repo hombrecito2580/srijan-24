@@ -27,8 +27,8 @@ class MerchandiseCarouselAdapter(private val carouselDataList: Array<String>) : 
         Log.i("src", carouselDataList[position])
         Glide.with(holder.itemView.context)
             .load(carouselDataList[position])
-            .placeholder(R.drawable.srijan_modified_logo)
-            .error(R.drawable.srijan_modified_logo)
+            .placeholder(R.drawable.progress_animation)
+            .error(R.drawable.try_later)
             .into(imageView)
     }
 

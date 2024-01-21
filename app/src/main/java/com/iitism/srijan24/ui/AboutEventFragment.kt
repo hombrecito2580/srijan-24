@@ -20,6 +20,7 @@ import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.ContactAdapter
 import com.iitism.srijan24.data.EventTeamModel
@@ -51,13 +52,15 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
     private var memberData = listOf<MemberDataModel>()
     private var registerData = EventTeamModel()
 
+    private var addedMemberCount = 0
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tveventName.text = eventData.eventName
         binding.tvEventFee.text = eventData.fees
         binding.tvVenue.text = eventData.venue
-        binding.tvEventDescription.text = eventData.miniDescription
+        binding.tvEventDescription.text = eventData.description
 
         if (eventData.maxMembers!!.toInt() == 1) {
             binding.ltTeamName.visibility = View.GONE
@@ -208,6 +211,8 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
             binding.ltMembers.addView(layout)
         }
 
+        binding.btnRemoveMembers.visibility = View.GONE
+
         binding.btnAddMembers.setOnClickListener {
             if (ind != eventData.maxMembers!!.toInt()) {
                 val layout = LayoutInflater.from(requireContext())
@@ -350,6 +355,9 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
                 ind++
 
                 binding.ltMembers.addView(layout)
+                addedMemberCount++
+                if(binding.btnRemoveMembers.visibility != View.VISIBLE)
+                    binding.btnRemoveMembers.visibility = View.VISIBLE
             } else {
                 Toast.makeText(context, "Maximum members reached", Toast.LENGTH_SHORT).show()
             }
@@ -357,6 +365,19 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
 
         if (eventData.minMembers == eventData.maxMembers)
             binding.btnAddMembers.visibility = View.GONE
+
+        binding.btnRemoveMembers.setOnClickListener {
+            val childCount = binding.ltMembers.childCount
+            if(childCount > 0)
+                binding.ltMembers.removeViewAt(childCount - 1)
+
+            memberData.dropLast(1)
+
+            addedMemberCount--
+            ind--
+            if(addedMemberCount == 0)
+                binding.btnRemoveMembers.visibility = View.GONE
+        }
 
         binding.btnSubmit.setOnClickListener {
             submitData()
@@ -369,7 +390,8 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
 
         Glide.with(requireContext())
             .load(eventData.poster)
-            .placeholder(R.drawable.srijan_modified_logo)
+            .placeholder(R.drawable.progress_animation)
+            .error(R.drawable.try_later)
             .into(binding.eventImage)
 
         binding.pdfLink.setOnClickListener {

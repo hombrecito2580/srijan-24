@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:backgroundTint="@color/primary"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/transparent"
     android:elevation="8dp"
     app:cardCornerRadius="20dp"
-    android:layout_height="match_parent"
     tools:ignore="hardcodedText">
 
     <ImageView
         android:id="@+id/image_merchandise"
         android:layout_width="match_parent"
-        android:layout_height = "match_parent"
-        android:scaleType="fitXY"
+        android:layout_height="match_parent"
+        android:contentDescription="ivGallery"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_merchandise"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="ivGallery" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.cardview.widget.CardView>

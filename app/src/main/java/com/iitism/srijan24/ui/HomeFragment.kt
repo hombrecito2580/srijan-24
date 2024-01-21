@@ -48,7 +48,14 @@ class HomeFragment : Fragment() {
 
         countDownSrijanStart()
 
-        val images = arrayOf(R.drawable.gallery_img_1 , R.drawable.gallery_img_2, R.drawable.gallery_img_3, R.drawable.gallery_img_4, R.drawable.gallery_img_5, R.drawable.gallery_img_6)
+        val images = arrayOf(
+            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848342/xgnkf3oykukuvonrgwrg.png",
+            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848344/wx9jxtcedyqcgayzoy0t.png",
+            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848343/mf7dsivt0tzgkjvlnzzw.png",
+            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848343/c6ncntfglaciucpkhxi3.png",
+            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848342/wuvjptagbmhrsefxue8r.png",
+            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848342/jry9hut8dvpghujngb5y.png"
+        )
         binding.viewPagerCarousel.adapter = HomeCarouselAdapter(images)
 
         val compositePageTransformer = CompositePageTransformer()

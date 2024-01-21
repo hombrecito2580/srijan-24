@@ -71,7 +71,6 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
             binding.ltAccompanist.visibility = View.GONE
         }
 
-        Toast.makeText(context, eventData.maxMembers.toString(), Toast.LENGTH_SHORT).show()
         for (i in 1..eventData.minMembers!!.toInt()) {
             val layout = LayoutInflater.from(requireContext())
                 .inflate(R.layout.layout_event_member_schema, binding.root, false)

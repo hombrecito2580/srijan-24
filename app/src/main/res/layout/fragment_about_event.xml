@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
                 android:backgroundTint="@color/transparent"
-                app:cardCornerRadius="24dp">
+                app:cardCornerRadius="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

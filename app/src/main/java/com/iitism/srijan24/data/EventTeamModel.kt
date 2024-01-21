@@ -7,7 +7,7 @@ data class EventTeamModel(
 data class MemberListModel (
     @SerializedName("MemberList") var memberList: List<MemberDataModel> = mutableListOf(),
     @SerializedName("TeamName") var teamName: String?=null,
-    @SerializedName("isSponsor") var isSponsor: String?=null,
+    @SerializedName("IsSponsor") var isSponsor: String?=null,
     @SerializedName("Audio") var audio: String?=null,
     @SerializedName("Accompanist") var accompanist: String?=null
 )

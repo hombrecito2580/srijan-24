@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ltParticipant"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvMemberNumber"
+        style="@style/h3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary" />
+
+    <TextView
+        style="@style/h4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="Name*"
+        android:textColor="@color/text"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/etName"
+        style="@style/h4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border1"
+        android:gravity="center"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/text" />
+
+    <TextView
+        style="@style/h4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="Email*"
+        android:textColor="@color/text"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/etEmail"
+        style="@style/h4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border1"
+        android:gravity="center"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/text" />
+
+    <TextView
+        style="@style/h4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="Phone Number*"
+        android:textColor="@color/text"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        style="@style/h4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border1"
+        android:gravity="center"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/text" />
+
+    <TextView
+        style="@style/h4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="College*"
+        android:textColor="@color/text"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/etCollege"
+        style="@style/h4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border1"
+        android:gravity="center"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/text" />
+
+    <LinearLayout
+        android:id="@+id/ltInstrument"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/h4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:text="Instrument"
+            android:textColor="@color/text"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etInstrument"
+            style="@style/h4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border1"
+            android:gravity="center"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="@color/text" />
+
+    </LinearLayout>
+
+</LinearLayout>

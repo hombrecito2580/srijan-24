@@ -107,6 +107,15 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 //        }
 
         dialog.show()
+
+        val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        val isISMite = preferences.getString("isISMite", "") ?: ""
+
+        if(isISMite == "true") {
+            binding.navView.menu.findItem(R.id.plansFragmentDrawer).isVisible = false
+
+        }
+
         dismissDialogAfterDelay()
         FirebaseMessaging.getInstance().subscribeToTopic(topic).addOnCompleteListener {
             if (it.isSuccessful) {
@@ -143,6 +152,8 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 R.id.plansFragmentDrawer
             ), binding.drawerLayout
         )
+
+
 
 //        setupActionBarWithNavController(navController, binding.drawerLayout)
 //        binding.navView.setupWithNavController(navController)
@@ -221,8 +232,16 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         Checkout.preload(this)
     }
 
-//    override fun onResume() {
-//        super.onResume()
+    override fun onResume() {
+        super.onResume()
+
+        val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        val isISMite = preferences.getString("isISMite", "") ?: ""
+
+        if(isISMite == "true") {
+            binding.navView.menu.findItem(R.id.plansFragmentDrawer).isVisible = false
+
+        }
 //        val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
 //        val token = preferences.getString("token", "") ?: ""
 //        if (token.isEmpty()) {
@@ -232,7 +251,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 //            binding.appBar.btnLogOut.visibility = View.VISIBLE
 //            binding.appBar.btnLogin.visibility = View.GONE
 //        }
-//    }
+    }
 
     private fun dismissDialogAfterDelay() {
         val handler = Handler(Looper.getMainLooper())

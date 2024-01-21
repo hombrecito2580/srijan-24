@@ -62,6 +62,8 @@ class ProfileFragment : Fragment() {
         isISMite = preferences.getString("isISMite", "") ?: ""
         token = preferences.getString("token", "") ?: ""
 
+        Log.d("tokennnnnn", token)
+
         if(token.isEmpty()){
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
             startActivity(Intent(requireContext(),LoginSignupActivity::class.java))

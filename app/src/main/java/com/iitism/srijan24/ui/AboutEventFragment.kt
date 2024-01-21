@@ -445,7 +445,12 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
                         }
 
                         404 -> {
-                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Every participant should be registered and must have a plan for events", Toast.LENGTH_SHORT).show()
+//                            if(viewModel.errorMessage.isNotEmpty()) {
+//                                Toast.makeText(context, viewModel.errorMessage, Toast.LENGTH_SHORT).show()
+//                            } else {
+//                                Toast.makeText(context, "Every participant should be registered and must have a plan", Toast.LENGTH_SHORT).show()
+//                            }
                         }
 
                         else -> {

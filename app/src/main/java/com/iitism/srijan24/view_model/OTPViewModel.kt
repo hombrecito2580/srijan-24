@@ -17,7 +17,7 @@ class OTPViewModel: ViewModel() {
     fun verifyOTP(otp: String, email: String, status: (Int) -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
             val request = OTPDataModel(otp, email)
-            val call= AuthRetrofitInstance.authApi.verifyOTP(request)
+            val call = AuthRetrofitInstance.authApi.verifyOTP(request)
 
             call.enqueue(object : Callback<OTPResponse> {
                 override fun onResponse(call: Call<OTPResponse>, response: Response<OTPResponse>) {

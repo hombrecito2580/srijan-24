@@ -38,7 +38,7 @@ class ProfileRVAdapter(private var dataList: List<Merchandise>): RecyclerView.Ad
         holder.tvSize.text = "Size: "+currentData.tShirtSize
         holder.tvQuantity.text = "Quantity: "+currentData.quantity
         holder.tvSpecification.text = "Specification: "+currentData.type
-        holder.tvPaymentId.text = "Payment ID: "+currentData.paymentId
+        holder.tvPaymentId.text = "Payment ID:\n"+currentData.paymentId
 
         Log.d("order$position", "Order: "+(position+1).toString())
         Log.d("order$position", "Address: "+currentData.address)

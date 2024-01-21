@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface RegistrationApi {
 
-    @POST("/api/events/register")
+    @POST("/api/event/register")
     fun register(
         @Body body: EventTeamModel
     ): Call<Void>

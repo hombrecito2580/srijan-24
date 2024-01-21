@@ -1,13 +1,13 @@
 package com.iitism.srijan24.data
 import com.google.gson.annotations.SerializedName
 data class EventTeamModel(
-    @SerializedName("EventName") var eventName: String?=null,
-    @SerializedName("Teams") var teams: List<MemberListModel> = mutableListOf()
+    @SerializedName("EventName") var eventName: String="",
+    @SerializedName("Teams") var teams: List<MemberListModel> = emptyList()
 )
 data class MemberListModel (
-    @SerializedName("MemberList") var memberList: List<MemberDataModel> = mutableListOf(),
+    @SerializedName("MembersList") var memberList: List<MemberDataModel> = emptyList(),
     @SerializedName("TeamName") var teamName: String?=null,
-    @SerializedName("isSponsor") var isSponsor: String?=null,
+    @SerializedName("IsSponsor") var isSponsor: String?=null,
     @SerializedName("Audio") var audio: String?=null,
     @SerializedName("Accompanist") var accompanist: String?=null
 )

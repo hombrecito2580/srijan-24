@@ -13,9 +13,9 @@ object UserApiInstance {
 
     private fun createOkHttpClient(jwtToken: String?): OkHttpClient {
         val clientBuilder = OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
 
         if (!jwtToken.isNullOrBlank()) {
             val interceptor = Interceptor { chain ->

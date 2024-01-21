@@ -342,6 +342,7 @@
                 android:id="@+id/cvRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/bgLight"
@@ -399,7 +400,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/border1"
-                            android:gravity="center"
                             android:inputType="text"
                             android:padding="10dp"
                             android:textColor="@color/text" />
@@ -432,7 +432,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/border1"
-                            android:gravity="center"
                             android:inputType="text"
                             android:padding="10dp"
                             android:textColor="@color/text" />
@@ -464,7 +463,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/border1"
-                            android:gravity="center"
                             android:inputType="text"
                             android:padding="10dp"
                             android:textColor="@color/text" />

@@ -13,6 +13,7 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.EventsAdapter
@@ -51,6 +52,10 @@ class EventsFragment : Fragment() {
                 binding!!.rvEvents.adapter = adapter
                 dialog.dismiss()
 //                binding.rvEvents.no
+            } else {
+                Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+                findNavController().popBackStack()
             }
         }
 

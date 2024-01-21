@@ -24,6 +24,7 @@ import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.ContactAdapter
 import com.iitism.srijan24.data.EventTeamModel
 import com.iitism.srijan24.data.MemberDataModel
+import com.iitism.srijan24.data.MemberListModel
 import com.iitism.srijan24.databinding.FragmentAboutEventBinding
 import com.iitism.srijan24.view_model.RegistrationViewModel
 
@@ -47,7 +48,7 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
     }
 
     private var ind = 0
-    private var memberData = mutableListOf<MemberDataModel>()
+    private var memberData = listOf<MemberDataModel>()
     private var registerData = EventTeamModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,7 +77,7 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
                 .inflate(R.layout.layout_event_member_schema, binding.root, false)
 
             val localInd = ind
-            memberData.add(MemberDataModel())
+            memberData += MemberDataModel()
 
             layout.findViewById<TextView>(R.id.tvMemberNumber).text = "Member $i"
 
@@ -214,7 +215,7 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
                     .inflate(R.layout.layout_event_member_schema, binding.root, false)
 
                 val localInd = ind
-                memberData.add(MemberDataModel())
+                memberData += MemberDataModel()
 
                 layout.findViewById<TextView>(R.id.tvMemberNumber).text = "Member ${localInd + 1}"
 
@@ -410,7 +411,9 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
             Toast.makeText(context, "Please fill all the mandatory details", Toast.LENGTH_SHORT)
                 .show()
         } else {
-            registerData.eventName = eventData.eventName
+            registerData.eventName = eventData.eventName!!
+            registerData.teams += arrayOf(MemberListModel())
+            Log.d("aaaaaaaaaaaaaaaaaaaaa", registerData.teams.size.toString())
             registerData.teams[0].teamName = binding.etTeamName.text.toString().trim()
             if (eventData.zone == "Music" || eventData.zone == "Dance") {
                 registerData.teams[0].audio = binding.etAudio.text.toString().trim()

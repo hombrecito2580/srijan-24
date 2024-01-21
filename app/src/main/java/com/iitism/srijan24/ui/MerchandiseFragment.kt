@@ -129,8 +129,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
         super.onViewCreated(view, savedInstanceState)
 
         dialog.show()
-        val preferences =
-            requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        val preferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         isISMite = preferences.getString("isISMite", "") ?: ""
         token = preferences.getString("token", "") ?: ""
 

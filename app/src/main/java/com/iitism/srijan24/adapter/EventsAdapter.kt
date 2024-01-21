@@ -53,61 +53,61 @@ class EventsAdapter(private var eventsList:List<EventDataModel>, val context: Co
         when(currentEvent.zone){
             "Dance"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/Dance.05190f49712746c776b2-r0VBiceH.png")
+                    .load(R.drawable.dance)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }
             "Music"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/Music.c91b700a4c5acdc4bb1c-pIhgd3tj.png")
+                    .load(R.drawable.music)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }
             "Fashion"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/Fashion.2b3060fc31ebc2867069-uxGrmxTl.png")
+                    .load(R.drawable.fashion)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }
             "Finearts"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/FineArts.6b8125d2615ce4bed692-dbxiu6I_.png")
+                    .load(R.drawable.finearts)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }
             "Cinematography"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/FilmFest.0aa5ff627365b4ef7d2f-9cFp181_.png")
+                    .load(R.drawable.cinematography)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }
             "Dramatics"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/Drama.6fbebe13b5a463eababb-zotS868I.png")
+                    .load(R.drawable.drama)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }
             "Quiz"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/download-MMAcZzpv.png")
+                    .load(R.drawable.quiz)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }
             "Literary"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/Literary.ee3a4fdc591b333cb436-LmHnZZtD.png")
+                    .load(R.drawable.literary)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }
             "Comedy"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/pngegg-bJzZu3vP.png")
+                    .load(R.drawable.comedy)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }
             "Culinary"->{
                 Glide.with(holder.itemView.context)
-                    .load("https://srijan-iitism.com/assets/culinary-MoVQzFqO.png")
+                    .load(R.drawable.culinary)
                     .placeholder(R.drawable.srijan_modified_logo)
                     .into(holder.image)
             }

@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit
 
 object RegistrationRetrofitInstance {
 //    private const val BASE_URL = "https://srijan2024.onrender.com/" // Replace with your server URL
-
     private const val AUTH_HEADER = "Authorization"
 
     private fun createOkHttpClient(jwtToken: String?): OkHttpClient {

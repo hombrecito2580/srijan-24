@@ -6,25 +6,24 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import com.iitism.srijan24.data.ProfileDataModel
-import com.iitism.srijan24.databinding.FragmentProfileBinding
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.ProfileAccommodationAdapter
 import com.iitism.srijan24.adapter.ProfileRVAdapter
-import com.iitism.srijan24.data.GetUserAccommodationResponse
+import com.iitism.srijan24.adapter.ProfileRVEventsAdapter
 import com.iitism.srijan24.data.GetUserAccommodationResponseItem
-import com.iitism.srijan24.data.GetUserEventsResponse
+import com.iitism.srijan24.data.GetUserEventsResponseItem
 import com.iitism.srijan24.data.GetUserResponse
+import com.iitism.srijan24.data.ProfileDataModel
+import com.iitism.srijan24.databinding.FragmentProfileBinding
 import com.iitism.srijan24.retrofit.UserApiInstance
 import retrofit2.Call
 import retrofit2.Response
@@ -41,19 +40,22 @@ class ProfileFragment : Fragment() {
     private lateinit var dialog: Dialog
 
     private lateinit var call1: Call<GetUserResponse>
-    private lateinit var call2: Call<GetUserEventsResponse>
+    private lateinit var call2: Call<ArrayList<GetUserEventsResponseItem>>
     private lateinit var call3: Call<ArrayList<GetUserAccommodationResponseItem>>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         initializeDialog()
 
-        binding.rvMerch.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvPlans.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
+        binding.rvMerch.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvPlans.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvEvents.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         return binding.root
     }
 
@@ -62,20 +64,20 @@ class ProfileFragment : Fragment() {
 
         val preferences =
             requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        preferences?.getString("token",null)
+        preferences?.getString("token", null)
         ProfileDataModel()
-        binding.tvUserName.text= preferences.getString("Username", null)
-        binding.tvEmail.text= preferences.getString("Email", null)
-        binding.tvContact.text= preferences.getString("Contact", null)
+        binding.tvUserName.text = preferences.getString("Username", null)
+        binding.tvEmail.text = preferences.getString("Email", null)
+        binding.tvContact.text = preferences.getString("Contact", null)
 
         isISMite = preferences.getString("isISMite", "") ?: ""
         token = preferences.getString("token", "") ?: ""
 
         Log.d("tokennnnnn", token)
 
-        if(token.isEmpty()){
+        if (token.isEmpty()) {
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
-            startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
+            startActivity(Intent(requireContext(), LoginSignupActivity::class.java))
         } else {
             Log.d("token", token)
 
@@ -90,7 +92,7 @@ class ProfileFragment : Fragment() {
             call1.enqueue(object : retrofit2.Callback<GetUserResponse> {
                 override fun onResponse(
                     call: Call<GetUserResponse>,
-                    response: Response<GetUserResponse>
+                    response: Response<GetUserResponse>,
                 ) {
                     val body = response.body()
                     if (response.isSuccessful && body != null) {
@@ -100,7 +102,7 @@ class ProfileFragment : Fragment() {
                         binding.tvEmail.text = body.email
                         binding.tvContact.text = body.phoneNumber
 
-                        if(body.merchandise.isEmpty()) {
+                        if (body.merchandise.isEmpty()) {
                             binding.rvMerch.visibility = View.GONE
                             binding.tvNoOrders.visibility = View.VISIBLE
                         } else {
@@ -127,13 +129,21 @@ class ProfileFragment : Fragment() {
             })
 
 
-            call2.enqueue(object : retrofit2.Callback<GetUserEventsResponse> {
+            call2.enqueue(object : retrofit2.Callback<ArrayList<GetUserEventsResponseItem>> {
                 override fun onResponse(
-                    call: Call<GetUserEventsResponse>,
-                    response: Response<GetUserEventsResponse>
+                    call: Call<ArrayList<GetUserEventsResponseItem>>,
+                    response: Response<ArrayList<GetUserEventsResponseItem>>,
                 ) {
                     val body = response.body()
                     if (response.isSuccessful && body != null) {
+                        if (body.isEmpty()) {
+                            binding.rvPlans.visibility = View.GONE
+                            binding.tvNoPlans.visibility=View.VISIBLE
+                        }else{
+                            binding.rvPlans.visibility = View.VISIBLE
+                            binding.tvNoPlans.visibility=View.GONE
+                        }
+                        binding.rvEvents.adapter=ProfileRVEventsAdapter(body)
 
                         counter++
                         checkCompletion(counter)
@@ -146,7 +156,10 @@ class ProfileFragment : Fragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<GetUserEventsResponse>, t: Throwable) {
+                override fun onFailure(
+                    call: Call<ArrayList<GetUserEventsResponseItem>>,
+                    t: Throwable,
+                ) {
                     dialog.dismiss()
                     cancelAllCalls()
                     Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
@@ -158,12 +171,12 @@ class ProfileFragment : Fragment() {
             call3.enqueue(object : retrofit2.Callback<ArrayList<GetUserAccommodationResponseItem>> {
                 override fun onResponse(
                     call: Call<ArrayList<GetUserAccommodationResponseItem>>,
-                    response: Response<ArrayList<GetUserAccommodationResponseItem>>
+                    response: Response<ArrayList<GetUserAccommodationResponseItem>>,
                 ) {
                     val body = response.body()
                     if (response.isSuccessful && body != null) {
                         Log.d("abcdefgh", body.toString())
-                        if(body.isEmpty()) {
+                        if (body.isEmpty()) {
                             binding.rvPlans.visibility = View.GONE
                             binding.tvNoPlans.visibility = View.VISIBLE
                         } else {
@@ -182,7 +195,10 @@ class ProfileFragment : Fragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<ArrayList<GetUserAccommodationResponseItem>>, t: Throwable) {
+                override fun onFailure(
+                    call: Call<ArrayList<GetUserAccommodationResponseItem>>,
+                    t: Throwable,
+                ) {
                     dialog.dismiss()
                     cancelAllCalls()
                     Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
@@ -197,7 +213,7 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
             Toast.makeText(requireContext(), "Logged out successfully ", Toast.LENGTH_SHORT).show()
         }
- 
+
 
     }
 
@@ -208,7 +224,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun checkCompletion(counter: Int) {
-        if(counter == 3)
+        if (counter == 3)
             dialog.dismiss()
     }
 
@@ -217,13 +233,13 @@ class ProfileFragment : Fragment() {
 
         val preferences =
             requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        preferences?.getString("token",null)
+        preferences?.getString("token", null)
 
         token = preferences.getString("token", "") ?: ""
 
-        if(token.isEmpty()){
+        if (token.isEmpty()) {
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
-            startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
+            startActivity(Intent(requireContext(), LoginSignupActivity::class.java))
         }
     }
 

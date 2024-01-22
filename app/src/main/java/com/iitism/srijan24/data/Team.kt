@@ -6,6 +6,6 @@ data class Team(
     val IsSponsor: Boolean,
     val MembersList: List<Members>,
     val ReferralID: Any,
-    val TeamName: String,
+    val TeamName: String?,
     val _id: String
 )

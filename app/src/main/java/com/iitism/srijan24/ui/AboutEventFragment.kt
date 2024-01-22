@@ -1,8 +1,10 @@
 package com.iitism.srijan24.ui
 
 import EventDataModel
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
@@ -12,10 +14,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,15 +33,28 @@ import com.iitism.srijan24.data.MemberListModel
 import com.iitism.srijan24.databinding.FragmentAboutEventBinding
 import com.iitism.srijan24.view_model.RegistrationViewModel
 
-class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
+class AboutEventFragment : Fragment() {
 
     private var _binding: FragmentAboutEventBinding? = null
     private val binding get() = _binding!!
+    private lateinit var eventData: EventDataModel
 
     private lateinit var adapter: ContactAdapter
 
+    private lateinit var dialog: Dialog
+
     private lateinit var viewModel: RegistrationViewModel
     private lateinit var token: String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initializeDialog()
+
+        arguments?.let {
+            eventData = it.getParcelable("eventData")!!
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -413,6 +430,32 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+    private fun initializeDialog() {
+        dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.progress_bar)
+        dialog.setCancelable(false)
+        val layoutParams = WindowManager.LayoutParams().apply {
+            width = WindowManager.LayoutParams.MATCH_PARENT
+            height = WindowManager.LayoutParams.MATCH_PARENT
+        }
+        dialog.window?.attributes = layoutParams
+        if (dialog.window != null) {
+            dialog.window!!.setBackgroundDrawable(
+                ColorDrawable(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.progress_bar
+                    )
+                )
+            )
+        }
+    }
+
     private fun submitData() {
         var check = true
         if (eventData.maxMembers!!.toInt() != 1 && binding.etTeamName.text.toString().trim()
@@ -432,6 +475,8 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
             Toast.makeText(context, "Please fill all the mandatory details", Toast.LENGTH_SHORT)
                 .show()
         } else {
+            dialog.show()
+
             registerData.eventName = eventData.eventName!!
             registerData.teams += arrayOf(MemberListModel())
             Log.d("aaaaaaaaaaaaaaaaaaaaa", registerData.teams.size.toString())
@@ -447,10 +492,12 @@ class AboutEventFragment(private val eventData: EventDataModel) : Fragment() {
             token = preferences.getString("token", "") ?: ""
 
             if (token.isEmpty()) {
+                dialog.dismiss()
                 Toast.makeText(context, "User session expired. Please re-login", Toast.LENGTH_SHORT)
                     .show()
             } else {
                 viewModel.registerData(registerData, token) { code ->
+                    dialog.dismiss()
                     when (code) {
                         200 -> {
                             Toast.makeText(context, "Successfully registered for event!!!", Toast.LENGTH_SHORT).show()

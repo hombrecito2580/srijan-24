@@ -16,17 +16,26 @@ import com.iitism.srijan24.adapter.RulesAdapter
 import com.iitism.srijan24.databinding.FragmentAboutEventBinding
 import com.iitism.srijan24.databinding.FragmentEventRulesBinding
 
-class EventRulesFragment(val eventData:EventDataModel) : Fragment() {
+class EventRulesFragment : Fragment() {
     private var _binding: FragmentEventRulesBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter:RulesAdapter
 
+    private lateinit var eventData: EventDataModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            eventData = it.getParcelable("eventData")!!
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding=FragmentEventRulesBinding.inflate(inflater)
+        _binding=FragmentEventRulesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -34,9 +43,9 @@ class EventRulesFragment(val eventData:EventDataModel) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter= RulesAdapter(eventData.rules!!,requireContext())
-        binding!!.rvRules.layoutManager = LinearLayoutManager(requireContext())
-        binding!!.rvRules.adapter = adapter
-        binding!!.rvRules.setHasFixedSize(true)
+        binding.rvRules.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvRules.adapter = adapter
+        binding.rvRules.setHasFixedSize(true)
 
         binding.pdfLink.setOnClickListener {
             if (eventData.ruleBookLink != null) {

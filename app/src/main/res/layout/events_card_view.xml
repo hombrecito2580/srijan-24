@@ -117,18 +117,17 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_viewmore"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
+            android:layout_margin="16dp"
             android:text="View More"
             android:textColor="@color/black"
             style="@style/h5"
+            android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="17dp"
             android:textAllCaps="false"
             android:elevation="20dp"
             app:cornerRadius="20dp"
-            android:backgroundTint="@color/primary"
-            ></com.google.android.material.button.MaterialButton>
+            android:backgroundTint="@color/primary" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

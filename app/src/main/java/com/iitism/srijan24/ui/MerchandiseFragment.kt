@@ -94,7 +94,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
     private lateinit var orderId: String
 
     //    val merchSize = arrayOf("XS", "S", "M", "L", "XL", "2XL", "3XL")
-    var merchSize = arrayOf<String>()
+    private var merchSize = arrayOf<String>()
 
 
     override fun onCreateView(
@@ -108,7 +108,6 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             // MediaManager is already initialized, handle accordingly
         }
         _binding = FragmentMerchandiseBinding.inflate(inflater, container, false)
-        initializeDialog()
 
 //        config = hashMapOf()
 
@@ -127,6 +126,7 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initializeDialog()
 
         dialog.show()
         val preferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
@@ -273,7 +273,12 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
     private fun initializeDialog() {
         dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.progress_bar)
-        dialog.setCancelable(false)
+        dialog.setCancelable(true)
+        dialog.setOnCancelListener {
+//            Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+            findNavController().popBackStack()
+        }
+
         val layoutParams = WindowManager.LayoutParams().apply {
             width = WindowManager.LayoutParams.MATCH_PARENT
             height = WindowManager.LayoutParams.MATCH_PARENT
@@ -901,10 +906,10 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
     }
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//    }
 
     private fun generateRazorpaySignature(orderId: String, paymentId: String): String {
         return try {

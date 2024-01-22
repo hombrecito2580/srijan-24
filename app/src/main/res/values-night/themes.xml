@@ -7,5 +7,7 @@
         <item name="android:navigationBarColor">@color/black</item>
         <item name="colorPrimary">@color/primary</item>
         <item name="colorControlHighlight">@color/bgAlternate</item>
+
+<!--        <item name="searchViewStyle">@style/MySearchViewStyle</item>-->
     </style>
 </resources>

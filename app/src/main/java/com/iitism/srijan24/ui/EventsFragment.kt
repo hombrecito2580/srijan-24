@@ -1,10 +1,8 @@
 package com.iitism.srijan24.ui
 
-import EventDataModel
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +10,7 @@ import android.view.WindowManager
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +23,7 @@ import com.iitism.srijan24.view_model.EventsViewModel
 class EventsFragment : Fragment() {
 
     private var _binding:FragmentEventsBinding?=null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     private lateinit var viewModel: EventsViewModel
     private lateinit var dialog: Dialog
     private lateinit var adapter: EventsAdapter
@@ -34,22 +33,29 @@ class EventsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding=FragmentEventsBinding.inflate(inflater)
+        _binding = FragmentEventsBinding.inflate(inflater, container, false)
         initializeDialog()
         viewModel = ViewModelProvider(this)[EventsViewModel::class.java]
-        return binding!!.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Set text color for SearchView
+//        val textColor = ContextCompat.getColor(requireContext(), R.color.white)
+//        val searchText = binding.searchView.findViewById<SearchView.SearchAutoComplete>(R.id.search_src_text)
+//        searchText.setTextColor(textColor)
+//        searchText.setHintTextColor(textColor)
+
         dialog.show()
 
+        adapter = EventsAdapter(emptyList(), requireContext())
         viewModel.getEvents{
-            if (it){
+            if (it) {
                 adapter=EventsAdapter(viewModel.eventList.value!!,requireContext())
-                binding!!.rvEvents.layoutManager = LinearLayoutManager(requireContext())
-                binding!!.rvEvents.adapter = adapter
+                binding.rvEvents.layoutManager = LinearLayoutManager(requireContext())
+                binding.rvEvents.adapter = adapter
                 dialog.dismiss()
 //                binding.rvEvents.no
             } else {
@@ -59,7 +65,7 @@ class EventsFragment : Fragment() {
             }
         }
 
-        binding!!.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 return false
             }
@@ -85,7 +91,12 @@ class EventsFragment : Fragment() {
     private fun initializeDialog() {
         dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.progress_bar)
-        dialog.setCancelable(false)
+        dialog.setCancelable(true)
+        dialog.setOnCancelListener {
+//            Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+            findNavController().popBackStack()
+        }
+
         val layoutParams = WindowManager.LayoutParams().apply {
             width = WindowManager.LayoutParams.MATCH_PARENT
             height = WindowManager.LayoutParams.MATCH_PARENT

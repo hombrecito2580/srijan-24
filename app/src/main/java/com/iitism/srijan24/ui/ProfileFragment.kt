@@ -123,6 +123,12 @@ class ProfileFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        val preferences =
+            requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        preferences?.getString("token",null)
+
+        token = preferences.getString("token", "") ?: ""
+
         if(token.isEmpty()){
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
             startActivity(Intent(requireContext(),LoginSignupActivity::class.java))

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:theme="@style/ThemeOverlay.SearchView"
-        android:background="@drawable/border_search"
+        android:background="@drawable/border"
         android:iconifiedByDefault="false"
         android:queryBackground="@color/transparent"
         android:queryHint="Search Events..."

@@ -28,12 +28,13 @@
                 android:layout_marginRight="17dp"
                 android:layout_marginLeft="17dp"
                 app:cardCornerRadius="30dp">
+
                 <ImageView
                     android:id="@+id/event_img"
                     android:outlineProvider="background"
                     android:layout_width="match_parent"
-                    android:scaleType="fitCenter"
-                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:layout_height="350dp"
                     android:elevation="50dp" />
 
             </com.google.android.material.card.MaterialCardView>

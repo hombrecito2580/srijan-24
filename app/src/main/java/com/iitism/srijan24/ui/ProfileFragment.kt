@@ -111,7 +111,7 @@ class ProfileFragment : Fragment() {
             })
         }
 
-        binding.btnLogOut.setOnClickListener {
+        binding.btnLogOut2.setOnClickListener {
             preferences.edit().clear().apply()
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
             Toast.makeText(requireContext(), "Logged out successfully ", Toast.LENGTH_SHORT).show()

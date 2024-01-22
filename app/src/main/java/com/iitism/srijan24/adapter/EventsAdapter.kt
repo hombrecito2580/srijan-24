@@ -16,23 +16,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.iitism.srijan24.R
 
-class EventsAdapter(private var eventsList:List<EventDataModel>, val context: Context?): RecyclerView.Adapter<EventsAdapter.EventsViewHolder>(),
+class EventsAdapter(private var eventsList: List<EventDataModel>, val context: Context?) :
+    RecyclerView.Adapter<EventsAdapter.EventsViewHolder>(),
     Filterable {
 
     private var filteredEventsList: List<EventDataModel> = eventsList
 
-    inner class EventsViewHolder(v: View):RecyclerView.ViewHolder(v){
-        var image: ImageView =v.findViewById(R.id.event_img)
-        var eventName: TextView =v.findViewById(R.id.tvEvent)
-        var zone: TextView =v.findViewById(R.id.tvZone)
-        var venue: TextView =v.findViewById(R.id.tv_venue)
-        var prize: TextView =v.findViewById(R.id.tv_prize)
-        val btnViewMore:Button = v.findViewById(R.id.btn_viewmore)
+    inner class EventsViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+        var image: ImageView = v.findViewById(R.id.event_img)
+        var eventName: TextView = v.findViewById(R.id.tvEvent)
+        var zone: TextView = v.findViewById(R.id.tvZone)
+        var venue: TextView = v.findViewById(R.id.tv_venue)
+        var prize: TextView = v.findViewById(R.id.tv_prize)
+        val btnViewMore: Button = v.findViewById(R.id.btn_viewmore)
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsAdapter.EventsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.events_card_view, parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): EventsAdapter.EventsViewHolder {
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.events_card_view, parent, false)
         return EventsViewHolder(view)
     }
 
@@ -43,17 +48,59 @@ class EventsAdapter(private var eventsList:List<EventDataModel>, val context: Co
     }
 
     override fun onBindViewHolder(holder: EventsAdapter.EventsViewHolder, position: Int) {
-        val currentEvent=filteredEventsList[position]
+        val currentEvent = filteredEventsList[position]
 
-        holder.eventName.text=currentEvent.eventName
-        holder.zone.text=currentEvent.zone
-        holder.venue.text=currentEvent.venue
-        holder.prize.text=currentEvent.venue
+        holder.eventName.text = currentEvent.eventName
+        holder.zone.text = currentEvent.zone
+        holder.venue.text = currentEvent.venue
+        holder.prize.text = currentEvent.venue
+
+        val errorImage: Int = when (currentEvent.zone) {
+            "Dance" -> {
+                R.drawable.dance
+            }
+
+            "Music" -> {
+                R.drawable.music
+            }
+
+            "Fashion" -> {
+                R.drawable.fashion
+            }
+
+            "Finearts" -> {
+                R.drawable.finearts
+            }
+
+            "Cinematography" -> {
+                R.drawable.cinematography
+            }
+
+            "Dramatics" -> {
+                R.drawable.drama
+            }
+
+            "Quiz" -> {
+                R.drawable.quiz
+            }
+
+            "Literary" -> {
+                R.drawable.literary
+            }
+
+            "Comedy" -> {
+                R.drawable.comedy
+            }
+
+            else -> {
+                R.drawable.culinary
+            }
+        }
 
         Glide.with(holder.itemView.context)
             .load(currentEvent.poster)
-            .placeholder(R.drawable.loading_image)
-            .error(R.drawable.loading_image)
+            .placeholder(R.drawable.progress_animation)
+            .error(errorImage)
             .into(holder.image)
 
 //        when(currentEvent.zone){
@@ -120,7 +167,7 @@ class EventsAdapter(private var eventsList:List<EventDataModel>, val context: Co
 //        }
 
 
-        holder.btnViewMore.setOnClickListener{
+        holder.btnViewMore.setOnClickListener {
 
             val bundle = Bundle().apply {
                 putParcelable("eventData", currentEvent)

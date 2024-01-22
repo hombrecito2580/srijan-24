@@ -22,9 +22,11 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.ContactAdapter
 import com.iitism.srijan24.data.EventTeamModel
@@ -66,7 +68,7 @@ class AboutEventFragment : Fragment() {
     }
 
     private var ind = 0
-    private var memberData = listOf<MemberDataModel>()
+    private var memberData = mutableListOf<MemberDataModel>()
     private var registerData = EventTeamModel()
 
     private var addedMemberCount = 0
@@ -376,7 +378,8 @@ class AboutEventFragment : Fragment() {
                 if(binding.btnRemoveMembers.visibility != View.VISIBLE)
                     binding.btnRemoveMembers.visibility = View.VISIBLE
             } else {
-                Toast.makeText(context, "Maximum members reached", Toast.LENGTH_SHORT).show()
+                showSnackBar("Maximum members reached")
+//                Toast.makeText(context, "Maximum members reached", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -388,7 +391,7 @@ class AboutEventFragment : Fragment() {
             if(childCount > 0)
                 binding.ltMembers.removeViewAt(childCount - 1)
 
-            memberData.dropLast(1)
+            memberData.removeLast()
 
             addedMemberCount--
             ind--
@@ -421,7 +424,8 @@ class AboutEventFragment : Fragment() {
                 startActivity(intent)
 
             } else
-                Toast.makeText(context, "No PDF Link available", Toast.LENGTH_SHORT).show()
+                showSnackBar("No PDF Link available")
+//                Toast.makeText(context, "No PDF Link available", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnRegister.setOnClickListener {
@@ -472,8 +476,9 @@ class AboutEventFragment : Fragment() {
         }
 
         if (!check) {
-            Toast.makeText(context, "Please fill all the mandatory details", Toast.LENGTH_SHORT)
-                .show()
+            showSnackBar("Please fill all the mandatory details")
+//            Toast.makeText(context, "Please fill all the mandatory details", Toast.LENGTH_SHORT)
+//                .show()
         } else {
             dialog.show()
 
@@ -493,27 +498,33 @@ class AboutEventFragment : Fragment() {
 
             if (token.isEmpty()) {
                 dialog.dismiss()
-                Toast.makeText(context, "User session expired. Please re-login", Toast.LENGTH_SHORT)
-                    .show()
+                showSnackBar("User session expired. Please re-login")
+//                Toast.makeText(context, "User session expired. Please re-login", Toast.LENGTH_SHORT)
+//                    .show()
             } else {
                 viewModel.registerData(registerData, token) { code ->
                     dialog.dismiss()
                     when (code) {
                         200 -> {
-                            Toast.makeText(context, "Successfully registered for event!!!", Toast.LENGTH_SHORT).show()
+                            showSnackBar("Successfully registered for event!!!")
+//                            Toast.makeText(context, "Successfully registered for event!!!", Toast.LENGTH_SHORT).show()
+                            findNavController().popBackStack()
                         }
 
                         1000 -> {
-                            Toast.makeText(context, "Couldn't send request", Toast.LENGTH_SHORT)
-                                .show()
+                            showSnackBar("Couldn't send request")
+//                            Toast.makeText(context, "Couldn't send request", Toast.LENGTH_SHORT)
+//                                .show()
                         }
 
                         403 -> {
-                            Toast.makeText(context, "User Authentication failed. Please re-login", Toast.LENGTH_SHORT).show()
+                            showSnackBar("User Authentication failed. Please re-login")
+//                            Toast.makeText(context, "User Authentication failed. Please re-login", Toast.LENGTH_SHORT).show()
                         }
 
                         404 -> {
-                            Toast.makeText(context, "Every participant should be registered and must have a plan for events", Toast.LENGTH_SHORT).show()
+                            showSnackBar("Every participant should be registered and must have a plan for events")
+//                            Toast.makeText(context, "Every participant should be registered and must have a plan for events", Toast.LENGTH_SHORT).show()
 //                            if(viewModel.errorMessage.isNotEmpty()) {
 //                                Toast.makeText(context, viewModel.errorMessage, Toast.LENGTH_SHORT).show()
 //                            } else {
@@ -522,7 +533,8 @@ class AboutEventFragment : Fragment() {
                         }
 
                         else -> {
-                            Toast.makeText(context, "Unexpected error occurred", Toast.LENGTH_SHORT).show()
+                            showSnackBar("Unexpected error occurred")
+//                            Toast.makeText(context, "Unexpected error occurred", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -530,4 +542,7 @@ class AboutEventFragment : Fragment() {
         }
     }
 
+    private fun showSnackBar(msg: String) {
+        Snackbar.make(binding.root, msg, Snackbar.LENGTH_SHORT).show()
+    }
 }

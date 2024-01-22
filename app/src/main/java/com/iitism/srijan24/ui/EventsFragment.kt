@@ -61,7 +61,7 @@ class EventsFragment : Fragment() {
             } else {
                 Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
-                findNavController().popBackStack()
+//                findNavController().popBackStack()
             }
         }
 
@@ -91,11 +91,11 @@ class EventsFragment : Fragment() {
     private fun initializeDialog() {
         dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.progress_bar)
-        dialog.setCancelable(true)
-        dialog.setOnCancelListener {
-//            Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-            findNavController().popBackStack()
-        }
+        dialog.setCancelable(false)
+//        dialog.setOnCancelListener {
+////            Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+////            findNavController().popBackStack()
+//        }
 
         val layoutParams = WindowManager.LayoutParams().apply {
             width = WindowManager.LayoutParams.MATCH_PARENT

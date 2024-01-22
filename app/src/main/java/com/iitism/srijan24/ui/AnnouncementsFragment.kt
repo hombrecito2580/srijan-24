@@ -11,6 +11,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.AnnouncementsRVAdapter
@@ -90,6 +91,10 @@ class AnnouncementsFragment : Fragment(), AnnouncementsRVAdapter.OnTimestampUpda
         dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.progress_bar)
         dialog.setCancelable(false)
+//        dialog.setOnCancelListener {
+////            Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+////            findNavController().popBackStack()
+//        }
         val layoutParams = WindowManager.LayoutParams().apply {
             width = WindowManager.LayoutParams.MATCH_PARENT
             height = WindowManager.LayoutParams.MATCH_PARENT

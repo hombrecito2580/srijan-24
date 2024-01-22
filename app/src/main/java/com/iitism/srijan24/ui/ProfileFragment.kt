@@ -116,7 +116,7 @@ class ProfileFragment : Fragment() {
                         dialog.dismiss()
                         cancelAllCalls()
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
+//                        findNavController().popBackStack()
                     }
                 }
 
@@ -124,7 +124,7 @@ class ProfileFragment : Fragment() {
                     dialog.dismiss()
                     cancelAllCalls()
                     Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-                    findNavController().popBackStack()
+//                    findNavController().popBackStack()
                 }
             })
 
@@ -152,7 +152,7 @@ class ProfileFragment : Fragment() {
                         dialog.dismiss()
                         cancelAllCalls()
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
+//                        findNavController().popBackStack()
                     }
                 }
 
@@ -163,7 +163,7 @@ class ProfileFragment : Fragment() {
                     dialog.dismiss()
                     cancelAllCalls()
                     Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-                    findNavController().popBackStack()
+//                    findNavController().popBackStack()
                 }
             })
 
@@ -191,7 +191,7 @@ class ProfileFragment : Fragment() {
                         cancelAllCalls()
                         Log.d("abcdefgh", "Ayein?")
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
+//                        findNavController().popBackStack()
                     }
                 }
 
@@ -202,7 +202,7 @@ class ProfileFragment : Fragment() {
                     dialog.dismiss()
                     cancelAllCalls()
                     Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-                    findNavController().popBackStack()
+//                    findNavController().popBackStack()
                 }
             })
 
@@ -231,8 +231,7 @@ class ProfileFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val preferences =
-            requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        val preferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         preferences?.getString("token", null)
 
         token = preferences.getString("token", "") ?: ""
@@ -247,6 +246,10 @@ class ProfileFragment : Fragment() {
         dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.progress_bar)
         dialog.setCancelable(false)
+//        dialog.setOnCancelListener {
+////            Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+////            findNavController().popBackStack()
+//        }
         val layoutParams = WindowManager.LayoutParams().apply {
             width = WindowManager.LayoutParams.MATCH_PARENT
             height = WindowManager.LayoutParams.MATCH_PARENT

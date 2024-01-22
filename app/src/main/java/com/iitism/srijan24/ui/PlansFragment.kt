@@ -238,6 +238,10 @@ class PlansFragment : Fragment() {
         dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.progress_bar)
         dialog.setCancelable(false)
+//        dialog.setOnCancelListener {
+////            Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//            findNavController().popBackStack()
+//        }
         val layoutParams = WindowManager.LayoutParams().apply {
             width = WindowManager.LayoutParams.MATCH_PARENT
             height = WindowManager.LayoutParams.MATCH_PARENT

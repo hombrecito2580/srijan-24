@@ -144,6 +144,63 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/bgLight"
+            app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/h2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Plans"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    android:id="@+id/tvNoPlans"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="24dp"
+                    android:text="Currently you do not have any packages..."
+                    android:textAlignment="center"
+                    android:textColor="@color/text"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPlans"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="18dp"
+                    tools:listitem="@layout/layout_rv_profile_plan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="12dp"
+                    android:textAlignment="center"
+                    style="@style/h4"
+                    android:textColor="@color/text"
+                    android:text="If you have purchased any package, it will be displayed here,further If you are facing any issue kindly mail us at srijan@iitism.ac.in with your transaction details." />
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogOut2"
             style="@style/h4"

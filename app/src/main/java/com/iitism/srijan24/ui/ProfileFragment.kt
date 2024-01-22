@@ -19,7 +19,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.iitism.srijan24.R
+import com.iitism.srijan24.adapter.ProfileAccommodationAdapter
 import com.iitism.srijan24.adapter.ProfileRVAdapter
+import com.iitism.srijan24.data.GetUserAccommodationResponse
+import com.iitism.srijan24.data.GetUserAccommodationResponseItem
+import com.iitism.srijan24.data.GetUserEventsResponse
 import com.iitism.srijan24.data.GetUserResponse
 import com.iitism.srijan24.retrofit.UserApiInstance
 import retrofit2.Call
@@ -36,6 +40,10 @@ class ProfileFragment : Fragment() {
 
     private lateinit var dialog: Dialog
 
+    private lateinit var call1: Call<GetUserResponse>
+    private lateinit var call2: Call<GetUserEventsResponse>
+    private lateinit var call3: Call<ArrayList<GetUserAccommodationResponseItem>>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +52,7 @@ class ProfileFragment : Fragment() {
         initializeDialog()
 
         binding.rvMerch.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvPlans.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         return binding.root
     }
@@ -71,9 +80,14 @@ class ProfileFragment : Fragment() {
             Log.d("token", token)
 
             dialog.show()
-            val call = UserApiInstance.createUserApi(token).getUser()
 
-            call.enqueue(object : retrofit2.Callback<GetUserResponse> {
+            var counter = 0
+
+            call1 = UserApiInstance.createUserApi(token).getUser()
+            call2 = UserApiInstance.createUserApi(token).getUserEvents()
+            call3 = UserApiInstance.createUserApi(token).getUserAccommodation()
+
+            call1.enqueue(object : retrofit2.Callback<GetUserResponse> {
                 override fun onResponse(
                     call: Call<GetUserResponse>,
                     response: Response<GetUserResponse>
@@ -94,21 +108,88 @@ class ProfileFragment : Fragment() {
                             binding.tvNoOrders.visibility = View.GONE
                         }
                         binding.rvMerch.adapter = ProfileRVAdapter(body.merchandise)
-//                        adapter.setData(body.merchandise)
+                        counter++
+                        checkCompletion(counter)
                     } else {
+                        dialog.dismiss()
+                        cancelAllCalls()
                         Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-//                        findNavController().popBackStack()
+                        findNavController().popBackStack()
                     }
-                    dialog.dismiss()
                 }
 
                 override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
-                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-                    Log.e("EEEEEEEEEEEEEEEE", t.toString())
-                    findNavController().popBackStack()
                     dialog.dismiss()
+                    cancelAllCalls()
+                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
                 }
             })
+
+
+            call2.enqueue(object : retrofit2.Callback<GetUserEventsResponse> {
+                override fun onResponse(
+                    call: Call<GetUserEventsResponse>,
+                    response: Response<GetUserEventsResponse>
+                ) {
+                    val body = response.body()
+                    if (response.isSuccessful && body != null) {
+
+                        counter++
+                        checkCompletion(counter)
+
+                    } else {
+                        dialog.dismiss()
+                        cancelAllCalls()
+                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
+                    }
+                }
+
+                override fun onFailure(call: Call<GetUserEventsResponse>, t: Throwable) {
+                    dialog.dismiss()
+                    cancelAllCalls()
+                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
+                }
+            })
+
+
+            call3.enqueue(object : retrofit2.Callback<ArrayList<GetUserAccommodationResponseItem>> {
+                override fun onResponse(
+                    call: Call<ArrayList<GetUserAccommodationResponseItem>>,
+                    response: Response<ArrayList<GetUserAccommodationResponseItem>>
+                ) {
+                    val body = response.body()
+                    if (response.isSuccessful && body != null) {
+                        Log.d("abcdefgh", body.toString())
+                        if(body.isEmpty()) {
+                            binding.rvPlans.visibility = View.GONE
+                            binding.tvNoPlans.visibility = View.VISIBLE
+                        } else {
+                            binding.rvPlans.visibility = View.VISIBLE
+                            binding.tvNoPlans.visibility = View.GONE
+                        }
+                        binding.rvPlans.adapter = ProfileAccommodationAdapter(body)
+                        counter++
+                        checkCompletion(counter)
+                    } else {
+                        dialog.dismiss()
+                        cancelAllCalls()
+                        Log.d("abcdefgh", "Ayein?")
+                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
+                    }
+                }
+
+                override fun onFailure(call: Call<ArrayList<GetUserAccommodationResponseItem>>, t: Throwable) {
+                    dialog.dismiss()
+                    cancelAllCalls()
+                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
+                }
+            })
+
         }
 
         binding.btnLogOut2.setOnClickListener {
@@ -118,6 +199,17 @@ class ProfileFragment : Fragment() {
         }
  
 
+    }
+
+    private fun cancelAllCalls() {
+        call1.cancel()
+        call2.cancel()
+        call3.cancel()
+    }
+
+    private fun checkCompletion(counter: Int) {
+        if(counter == 3)
+            dialog.dismiss()
     }
 
     override fun onResume() {

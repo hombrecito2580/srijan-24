@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvProfile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:backgroundTint="@color/transparent"
+    app:cardCornerRadius="20dp"
+    tools:ignore="hardcodedText">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            style="@style/h3"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: \npratyushchaturvedi29@gmail.com"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender: Male"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvHostelName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hostel: Aquamarine"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvGender"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvIDProof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Proof: \naaaaaaaaaaaaaaaaaaaa"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvHostelName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvAccommodation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accommodation: "
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvIDProof"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvPackage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Package: PLATINUM"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvAccommodation"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvPaymentId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment ID: \naaaaaaaaaaaaaa"
+            style="@style/h4"
+            android:textColor="@color/text"
+            app:layout_constraintTop_toBottomOf="@id/tvPackage"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

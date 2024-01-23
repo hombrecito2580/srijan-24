@@ -206,7 +206,9 @@ class PlansActivity : AppCompatActivity(), PaymentResultListener {
                             1999 -> "platinum"
                             1799 -> "gold"
                             1499 -> "silver"
-                            else -> "bronze"
+                            1199 -> "bronze"
+                            799  -> "basic"
+                            else -> "essential"
                         }
                         dataModel.plan = plan
 

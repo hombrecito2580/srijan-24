@@ -81,7 +81,7 @@ class AboutEventFragment : Fragment() {
         binding.tvVenue.text = eventData.venue
         binding.tvEventDescription.text = eventData.description
 
-        if (eventData.maxMembers!!.toInt() == 1) {
+        if (eventData.maxMembers!!.toInt() <= 1) {
             binding.ltTeamName.visibility = View.GONE
         }
 
@@ -429,8 +429,12 @@ class AboutEventFragment : Fragment() {
         }
 
         binding.btnRegister.setOnClickListener {
-            binding.cvRegister.visibility = View.VISIBLE
-            binding.btnRegister.visibility = View.GONE
+            if(eventData.maxMembers != null && eventData.maxMembers!!.toInt() == 0) {
+                Toast.makeText(context, "No registration required", Toast.LENGTH_SHORT).show()
+            } else {
+                binding.cvRegister.visibility = View.VISIBLE
+                binding.btnRegister.visibility = View.GONE
+            }
         }
     }
 
@@ -462,7 +466,7 @@ class AboutEventFragment : Fragment() {
 
     private fun submitData() {
         var check = true
-        if (eventData.maxMembers!!.toInt() != 1 && binding.etTeamName.text.toString().trim()
+        if (eventData.maxMembers!!.toInt() > 1 && binding.etTeamName.text.toString().trim()
                 .isEmpty()
         ) {
             check = false

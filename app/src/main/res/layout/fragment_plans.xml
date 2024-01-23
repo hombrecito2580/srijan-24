@@ -1142,9 +1142,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border1"
-                    android:inputType="number"
+                    android:inputType="text"
+                    android:textColor="@color/white"
                     android:padding="10dp"
-                    android:textColor="@color/text"
                     tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <androidx.appcompat.widget.AppCompatButton

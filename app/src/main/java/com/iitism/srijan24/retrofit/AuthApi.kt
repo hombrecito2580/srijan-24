@@ -15,17 +15,17 @@ import retrofit2.http.Part
 
 interface AuthApi {
 
-    @POST("api/login")
+    @POST("/api/login")
     fun login(
         @Body body: LoginDataModel
     ): Call<LoginResponse>
 
-    @POST("api/signup")
+    @POST("/api/signup")
     fun signup(
         @Body body: SignUpDataModel
     ): Call<Void>
 
-    @POST("api/signup/verify")
+    @POST("/api/signup/verify")
     fun verifyOTP(
         @Body body: OTPDataModel
     ): Call<OTPResponse>

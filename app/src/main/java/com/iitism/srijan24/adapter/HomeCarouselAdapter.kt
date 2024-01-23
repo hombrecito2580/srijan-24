@@ -25,7 +25,7 @@ class HomeCarouselAdapter(private val dataList: Array<String>): RecyclerView.Ada
         Glide.with(holder.itemView.context)
             .load(dataList[position])
             .placeholder(R.drawable.progress_animation)
-            .error(R.drawable.try_later)
+            .error(R.drawable.progress_animation)
             .centerCrop()
             .into(imageView)
     }

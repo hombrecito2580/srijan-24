@@ -411,7 +411,7 @@ class AboutEventFragment : Fragment() {
         Glide.with(requireContext())
             .load(eventData.poster)
             .placeholder(R.drawable.progress_animation)
-            .error(R.drawable.try_later)
+            .error(R.drawable.progress_animation)
             .into(binding.eventImage)
 
         binding.pdfLink.setOnClickListener {

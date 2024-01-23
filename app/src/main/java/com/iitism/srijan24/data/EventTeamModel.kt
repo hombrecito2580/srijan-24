@@ -9,7 +9,9 @@ data class MemberListModel (
     @SerializedName("TeamName") var teamName: String?=null,
     @SerializedName("IsSponsor") var isSponsor: String?=null,
     @SerializedName("Audio") var audio: String?=null,
-    @SerializedName("Accompanist") var accompanist: String?=null
+    @SerializedName("Accompanist") var accompanist: String?=null,
+    @SerializedName("ReferralID") var referralId: String? = null,
+    @SerializedName("Genre") var genre: List<String>? = null
 )
 
 data class MemberDataModel(

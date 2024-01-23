@@ -175,8 +175,7 @@
                     android:layout_marginVertical="24dp"
                     android:text="Currently you do not have any packages..."
                     android:textAlignment="center"
-                    android:textColor="@color/text"
-                    android:visibility="gone" />
+                    android:textColor="@color/text" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPlans"
@@ -206,6 +205,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             app:cardBackgroundColor="@color/bgLight"
+            android:visibility="gone"
             app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded">
 
             <LinearLayout
@@ -232,8 +232,7 @@
                     android:layout_marginVertical="24dp"
                     android:text="Currently you are not registerd for any events..."
                     android:textAlignment="center"
-                    android:textColor="@color/text"
-                    android:visibility="gone" />
+                    android:textColor="@color/text" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvEvents"

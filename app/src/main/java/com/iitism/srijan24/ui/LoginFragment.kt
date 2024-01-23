@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -70,6 +71,7 @@ class LoginFragment : Fragment() {
         viewModel.checkCredentials(
             request
         ) { code ->
+            Log.d("response code login", code.toString())
             when (code) {
                 500 -> {
                     dialog.dismiss()

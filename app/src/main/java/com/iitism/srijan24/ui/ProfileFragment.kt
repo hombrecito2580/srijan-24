@@ -115,7 +115,7 @@ class ProfileFragment : Fragment() {
                     } else {
                         dialog.dismiss()
                         cancelAllCalls()
-                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
 //                        findNavController().popBackStack()
                     }
                 }
@@ -123,7 +123,7 @@ class ProfileFragment : Fragment() {
                 override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
                     dialog.dismiss()
                     cancelAllCalls()
-                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
 //                    findNavController().popBackStack()
                 }
             })
@@ -137,11 +137,11 @@ class ProfileFragment : Fragment() {
                     val body = response.body()
                     if (response.isSuccessful && body != null) {
                         if (body.isEmpty()) {
-                            binding.rvPlans.visibility = View.GONE
-                            binding.tvNoPlans.visibility=View.VISIBLE
-                        }else{
-                            binding.rvPlans.visibility = View.VISIBLE
-                            binding.tvNoPlans.visibility=View.GONE
+                            binding.rvEvents.visibility = View.GONE
+                            binding.tvNoEvents.visibility=View.VISIBLE
+                        } else {
+                            binding.rvEvents.visibility = View.VISIBLE
+                            binding.tvNoEvents.visibility=View.GONE
                         }
                         binding.rvEvents.adapter=ProfileRVEventsAdapter(body)
 
@@ -151,7 +151,7 @@ class ProfileFragment : Fragment() {
                     } else {
                         dialog.dismiss()
                         cancelAllCalls()
-                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
 //                        findNavController().popBackStack()
                     }
                 }
@@ -162,7 +162,7 @@ class ProfileFragment : Fragment() {
                 ) {
                     dialog.dismiss()
                     cancelAllCalls()
-                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
 //                    findNavController().popBackStack()
                 }
             })
@@ -190,7 +190,7 @@ class ProfileFragment : Fragment() {
                         dialog.dismiss()
                         cancelAllCalls()
                         Log.d("abcdefgh", "Ayein?")
-                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
 //                        findNavController().popBackStack()
                     }
                 }
@@ -201,7 +201,7 @@ class ProfileFragment : Fragment() {
                 ) {
                     dialog.dismiss()
                     cancelAllCalls()
-                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
 //                    findNavController().popBackStack()
                 }
             })
@@ -218,9 +218,9 @@ class ProfileFragment : Fragment() {
     }
 
     private fun cancelAllCalls() {
-        call1.cancel()
-        call2.cancel()
-        call3.cancel()
+//        call1.cancel()
+//        call2.cancel()
+//        call3.cancel()
     }
 
     private fun checkCompletion(counter: Int) {
@@ -247,7 +247,7 @@ class ProfileFragment : Fragment() {
         dialog.setContentView(R.layout.progress_bar)
         dialog.setCancelable(false)
 //        dialog.setOnCancelListener {
-////            Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//////            Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
 ////            findNavController().popBackStack()
 //        }
         val layoutParams = WindowManager.LayoutParams().apply {

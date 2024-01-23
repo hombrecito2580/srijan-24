@@ -100,7 +100,6 @@ class EventsAdapter(private var eventsList: List<EventDataModel>, val context: C
         Glide.with(holder.itemView.context)
             .load(currentEvent.poster)
             .placeholder(R.drawable.progress_animation)
-            .error(errorImage)
             .into(holder.image)
 
 //        when(currentEvent.zone){

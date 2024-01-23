@@ -214,7 +214,7 @@ class PlansFragment : Fragment() {
             } else {
                 val intent = Intent(requireContext(), PlansActivity::class.java)
                 intent.putExtra("address", binding.editAddress.text.toString().trim())
-                intent.putExtra("proof", binding.editAddress.text.toString().trim())
+                intent.putExtra("proof", binding.editProof.text.toString().trim())
                 intent.putExtra("gender", binding.editGender.text.toString().trim())
                 intent.putExtra("userName", userName)
                 intent.putExtra("contact", "+91$contact")

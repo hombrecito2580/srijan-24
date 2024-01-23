@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.iitism.srijan24.R
 
 import com.iitism.srijan24.data.CoreTeamDataModel
@@ -42,8 +44,11 @@ class CoreTeamAdapter(private val dataList:List<CoreTeamDataModel>) :
 
             Glide.with(holder.itemView)
                 .load(currentData.image)
-                .placeholder(R.drawable.progress_animation)
-                .error(R.drawable.try_later)
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.progress_animation)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                )
                 .centerCrop()
                 .into(holder.image_c)
         }

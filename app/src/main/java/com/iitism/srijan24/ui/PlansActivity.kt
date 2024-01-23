@@ -128,7 +128,6 @@ class PlansActivity : AppCompatActivity(), PaymentResultListener {
                                 finish()
                                 e.printStackTrace()
                             }
-
                         }
                     } else {
                         Toast.makeText(

@@ -61,6 +61,9 @@
 <!--                    android:icon="@drawable/ic_write"-->
 <!--                    android:title="New Announcement" />-->
 
+<!--                <item android:id="@+id/qrScanFragment"-->
+<!--                    android:icon="@drawable/baseline_qr_code_scanner_24"-->
+<!--                    android:title="Scan Qr" />-->
 <!--            </group>-->
 
 <!--        </menu>-->

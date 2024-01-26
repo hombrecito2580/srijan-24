@@ -10,23 +10,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.WriterException
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.ProfileAccommodationAdapter
 import com.iitism.srijan24.adapter.ProfileRVAdapter
-import com.iitism.srijan24.adapter.ProfileRVEventsAdapter
 import com.iitism.srijan24.data.GetUserAccommodationResponseItem
 import com.iitism.srijan24.data.GetUserEventsResponseItem
 import com.iitism.srijan24.data.GetUserResponse
 import com.iitism.srijan24.data.ProfileDataModel
 import com.iitism.srijan24.databinding.FragmentProfileBinding
 import com.iitism.srijan24.retrofit.UserApiInstance
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import retrofit2.Call
 import retrofit2.Response
+
 
 class ProfileFragment : Fragment() {
 
@@ -74,6 +83,9 @@ class ProfileFragment : Fragment() {
         token = preferences.getString("token", "") ?: ""
 
         Log.d("tokennnnnn", token)
+        if (isISMite == "true") {
+            binding.cvPlans.visibility = View.GONE
+        }
 
         if (token.isEmpty()) {
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
@@ -101,6 +113,19 @@ class ProfileFragment : Fragment() {
                         binding.tvUserName.text = body.name
                         binding.tvEmail.text = body.email
                         binding.tvContact.text = body.phoneNumber
+
+                        val mWriter = MultiFormatWriter()
+                        try {
+                            //BitMatrix class to encode entered text and set Width & Height
+                            val myText = body.name + ";" + body.email +
+                                    ";" + body.phoneNumber + ";" + isISMite + ";"
+                            val mMatrix = mWriter.encode(myText, BarcodeFormat.QR_CODE, 400, 400)
+                            val mEncoder = BarcodeEncoder()
+                            val mBitmap = mEncoder.createBitmap(mMatrix) //creating bitmap of code
+                            binding.qrImg.setImageBitmap(mBitmap) //Setting generated QR code to imageView
+                        } catch (e: WriterException) {
+                            e.printStackTrace()
+                        }
 
                         if (body.merchandise.isEmpty()) {
                             binding.rvMerch.visibility = View.GONE
@@ -216,9 +241,39 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnLogOut2.setOnClickListener {
-            preferences.edit().clear().apply()
-            findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
-            Toast.makeText(requireContext(), "Logged out successfully ", Toast.LENGTH_SHORT).show()
+            val logOutDialog = layoutInflater.inflate(R.layout.layout_custom_material_dialog, null)
+            val logOutDialogBuilder =
+                MaterialAlertDialogBuilder(requireContext(), R.style.CustomAlertDialog)
+                    .setView(logOutDialog)
+                    .show()
+
+            logOutDialogBuilder.findViewById<TextView>(R.id.customDialogTitle)?.text = "Srijan '24"
+            logOutDialogBuilder.findViewById<TextView>(R.id.subTitle)?.visibility = View.VISIBLE
+            logOutDialogBuilder.findViewById<TextView>(R.id.subTitle)?.text =
+                "Do you want to Log Out?"
+            val positiveButton =
+                logOutDialogBuilder.findViewById<Button>(R.id.customDialogPositiveBtn)
+            positiveButton?.apply {
+                text = "Yes" // Set the button text if needed
+                setOnClickListener {
+                    preferences.edit().clear().apply()
+
+                    logOutDialogBuilder.dismiss()
+                    preferences.edit().clear().apply()
+                    findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
+                    Toast.makeText(requireContext(), "Logged out successfully ", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+            val neutralButton =
+                logOutDialogBuilder.findViewById<Button>(R.id.customDialogNeutralBtn)
+            neutralButton?.apply {
+                text = "No" // Set the button text if needed
+                setOnClickListener {
+                    logOutDialogBuilder.dismiss()
+                }
+            }
+
         }
 
 
@@ -238,7 +293,8 @@ class ProfileFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val preferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        val preferences =
+            requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         preferences?.getString("token", null)
 
         token = preferences.getString("token", "") ?: ""

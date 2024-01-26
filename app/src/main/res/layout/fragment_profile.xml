@@ -75,13 +75,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="48dp"
                     android:drawableStart="@drawable/ic_contact2"
                     android:drawableTint="@color/primary"
                     android:text=""
                     android:textAlignment="center"
                     android:textColor="#C8C7C7" />
 
+                <ImageView
+                    android:id="@+id/qrImg"
+                    android:layout_marginTop="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    />
             </LinearLayout>
 
 
@@ -128,23 +134,24 @@
                     android:layout_margin="8dp"
                     android:layout_marginTop="18dp"
                     tools:listitem="@layout/layout_rv_profile" />
-                
+
                 <TextView
+                    style="@style/h4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="12dp"
+                    android:text="If you have placed an order, and it is not reflecting here, kindly mail us at srijan@iitism.ac.in with your transaction details."
                     android:textAlignment="center"
-                    style="@style/h4"
-                    android:textColor="@color/text"
-                    android:text="If you have placed an order, and it is not reflecting here, kindly mail us at srijan@iitism.ac.in with your transaction details." />
-                
+                    android:textColor="@color/text" />
+
             </LinearLayout>
 
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvPlans"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -186,14 +193,14 @@
                     tools:listitem="@layout/layout_rv_profile_plan" />
 
                 <TextView
+                    style="@style/h4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="12dp"
+                    android:text="If you have purchased any package, it will be displayed here,further If you are facing any issue kindly mail us at srijan@iitism.ac.in with your transaction details."
                     android:textAlignment="center"
-                    style="@style/h4"
-                    android:textColor="@color/text"
-                    android:text="If you have purchased any package, it will be displayed here,further If you are facing any issue kindly mail us at srijan@iitism.ac.in with your transaction details." />
+                    android:textColor="@color/text" />
 
             </LinearLayout>
 
@@ -204,8 +211,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            app:cardBackgroundColor="@color/bgLight"
             android:visibility="gone"
+            app:cardBackgroundColor="@color/bgLight"
             app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded">
 
             <LinearLayout

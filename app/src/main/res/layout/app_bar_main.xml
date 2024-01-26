@@ -63,19 +63,21 @@
 
                 <ImageView
                     android:id="@+id/btnLogOut"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:visibility="gone"
+                    android:foregroundGravity="center_vertical"
                     android:background="@color/transparent"
                     android:contentDescription="Profile"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/ic_logout" />
 
                 <ImageView
-                    android:id="@+id/btnLogin"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:visibility="gone"
+                    android:id="@+id/btnProfilehome"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:visibility="visible"
+                    android:layout_alignParentTop="true"
                     android:background="@color/transparent"
                     android:contentDescription="Profile"
                     android:layout_alignParentEnd="true"

@@ -174,8 +174,8 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705487629/srijan%2024/bjb66hakdbeymti2gk3g.jpg",
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705310035/srijan%2024/nyko1lzetgqbxuzo9lwi.jpg",
             "https://res.cloudinary.com/dxomldckp/image/upload/v1705310023/srijan%2024/w1scw9cxlifqpmdaexkd.jpg",
-            "https://res.cloudinary.com/dxomldckp/image/upload/v1705487625/srijan%2024/bhxtelqfpwt2pykfcw5v.jpg",
-            "https://res.cloudinary.com/dxomldckp/image/upload/v1705313483/srijan%2024/gwr6dh2j2quest3aalo6.jpg"
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1706260919/srijan%2024/jc3cj53zhgb4wgs1mv64.png",
+            "https://res.cloudinary.com/dxomldckp/image/upload/v1706260802/srijan%2024/uhb4ccj0atv6qc627fw4.png"
         )
         viewPager.adapter = MerchandiseCarouselAdapter(merchandiseImagesData)
 

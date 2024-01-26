@@ -18,8 +18,8 @@ android {
         applicationId = "com.iitism.srijan24"
         minSdk = 24
         targetSdk = 34
-        versionCode = 5
-        versionName = "5.0"
+        versionCode = 7
+        versionName = "7.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -100,4 +100,9 @@ dependencies {
 
     implementation("com.cloudinary:cloudinary-android:2.5.0")
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
+
+   //QR generator
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    // QR Scanner
+    implementation ("com.github.yuriy-budiyev:code-scanner:2.3.0")
 }

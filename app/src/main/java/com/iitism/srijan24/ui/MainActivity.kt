@@ -120,7 +120,6 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 
         if (isISMite == "true") {
             binding.navView.menu.findItem(R.id.plansFragmentDrawer).isVisible = false
-
         }
 
         dismissDialogAfterDelay()
@@ -222,7 +221,6 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 binding.appBar.btnProfilehome.visibility = View.GONE
                 binding.appBar.btnLogOut.visibility = View.GONE
             } else {
-                val token = preferences.getString("token", "") ?: ""
                 if (token.isEmpty()) {
                     binding.appBar.btnLogOut.visibility = View.GONE
                     binding.appBar.btnProfilehome.visibility = View.VISIBLE
@@ -253,18 +251,15 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
 
         val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         val isISMite = preferences.getString("isISMite", "") ?: ""
+        val token = preferences.getString("token", "") ?: ""
 
         if (isISMite == "true") {
             binding.navView.menu.findItem(R.id.plansFragmentDrawer).isVisible = false
 
         }
-        val token = preferences.getString("token", "") ?: ""
-        if (token.isEmpty()) {
-            binding.appBar.btnLogOut.visibility = View.GONE
-            binding.appBar.btnProfilehome.visibility = View.VISIBLE
-        } else {
-            binding.appBar.btnLogOut.visibility = View.VISIBLE
-            binding.appBar.btnProfilehome.visibility = View.GONE
+
+        if(token.isNotEmpty()) {
+
         }
     }
 

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
     android:background="@drawable/srijan_bg"
     android:orientation="vertical"
+    android:padding="8dp"
     tools:ignore="hardcodedText">
 
     <include
@@ -32,9 +32,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="0dp"
             android:layout_margin="8dp"
-            app:cardBackgroundColor="@color/transparent">
+            app:cardBackgroundColor="@color/transparent"
+            app:cardElevation="0dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -42,46 +42,46 @@
                 android:background="@drawable/bg_action_bar"
                 android:orientation="horizontal"
                 android:padding="12dp">
-<!--                android:background="@drawable/bg_action_bar"-->
+                <!--                android:background="@drawable/bg_action_bar"-->
                 <ImageView
                     android:id="@+id/btnMenu"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/transparent"
                     android:layout_gravity="center_vertical"
+                    android:background="@color/transparent"
                     android:contentDescription="Menu"
                     android:src="@drawable/ic_menu" />
 
                 <TextView
                     android:id="@+id/tvTitle"
+                    style="@style/h3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/h3"
-                    android:textStyle="bold"
+                    android:layout_centerInParent="true"
                     android:textColor="@color/black"
-                    android:layout_centerInParent="true"/>
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/btnLogOut"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:visibility="gone"
-                    android:foregroundGravity="center_vertical"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentEnd="true"
                     android:background="@color/transparent"
                     android:contentDescription="Profile"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_logout" />
+                    android:src="@drawable/ic_logout"
+                    android:visibility="visible" />
 
                 <ImageView
                     android:id="@+id/btnProfilehome"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:visibility="visible"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
                     android:background="@color/transparent"
                     android:contentDescription="Profile"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_person" />
+                    android:src="@drawable/ic_person"
+                    android:visibility="gone" />
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

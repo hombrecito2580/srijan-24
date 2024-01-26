@@ -236,7 +236,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             app:autoPlay="false"
-            android:layout_marginTop="24dp"
+            android:layout_marginVertical="24dp"
             android:layout_marginHorizontal="8dp"
             app:enableAutomaticInitialization="true"
             app:handleNetworkEvents="true"
@@ -247,22 +247,22 @@
             app:videoId="u4UPdGSMM1Y"
             tools:ignore="MissingClass" />
 
-        <TextView
-            style="@style/h2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:text="Timeline"
-            android:textColor="@color/white" />
+<!--        <TextView-->
+<!--            style="@style/h2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:text="Timeline"-->
+<!--            android:textColor="@color/white" />-->
 
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:elevation="10dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/coming_soon"
-            android:layout_gravity="center_horizontal"/>
+<!--        <ImageView-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="300dp"-->
+<!--            android:elevation="10dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:src="@drawable/coming_soon"-->
+<!--            android:layout_gravity="center_horizontal"/>-->
 
     </LinearLayout>
 

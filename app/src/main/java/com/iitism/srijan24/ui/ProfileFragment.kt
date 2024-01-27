@@ -260,7 +260,7 @@ class ProfileFragment : Fragment() {
 
                     logOutDialogBuilder.dismiss()
                     preferences.edit().clear().apply()
-                    findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
+                    findNavController().popBackStack()
                     Toast.makeText(requireContext(), "Logged out successfully ", Toast.LENGTH_SHORT)
                         .show()
                 }

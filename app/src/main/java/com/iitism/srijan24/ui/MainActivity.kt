@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
         askNotificationAndSmsPermission()
 
         val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        val token = preferences.getString("token", "") ?: ""
+        var token = preferences.getString("token", "") ?: ""
         if (token.isEmpty()) {
             binding.appBar.btnLogOut.visibility = View.GONE
             binding.appBar.btnProfilehome.visibility = View.VISIBLE
@@ -221,6 +221,7 @@ class MainActivity : AppCompatActivity(), PaymentResultListener {
                 binding.appBar.btnProfilehome.visibility = View.GONE
                 binding.appBar.btnLogOut.visibility = View.GONE
             } else {
+                token = preferences.getString("token", "") ?: ""
                 if (token.isEmpty()) {
                     binding.appBar.btnLogOut.visibility = View.GONE
                     binding.appBar.btnProfilehome.visibility = View.VISIBLE

@@ -52,7 +52,7 @@
 
 
     <item android:title="Admin Section"
-        android:visible="false">
+        android:visible="true">
 
         <menu>
 

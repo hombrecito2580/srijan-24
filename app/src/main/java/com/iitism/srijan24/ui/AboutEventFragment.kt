@@ -48,6 +48,9 @@ class AboutEventFragment : Fragment() {
     private lateinit var viewModel: RegistrationViewModel
     private lateinit var token: String
 
+    val url = "https://forms.gle/DVKjyW2WNECmTUVb6"
+    val intent = Intent(Intent.ACTION_VIEW)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeDialog()
@@ -429,12 +432,15 @@ class AboutEventFragment : Fragment() {
         }
 
         binding.btnRegister.setOnClickListener {
-            if(eventData.maxMembers != null && eventData.maxMembers!!.toInt() == 0) {
-                Toast.makeText(context, "No registration required", Toast.LENGTH_SHORT).show()
-            } else {
-                binding.cvRegister.visibility = View.VISIBLE
-                binding.btnRegister.visibility = View.GONE
-            }
+            intent.data = Uri.parse(url)
+            intent.setPackage("com.android.chrome")
+            startActivity(intent)
+//            if(eventData.maxMembers != null && eventData.maxMembers!!.toInt() == 0) {
+//                Toast.makeText(context, "No registration required", Toast.LENGTH_SHORT).show()
+//            } else {
+//                binding.cvRegister.visibility = View.VISIBLE
+//                binding.btnRegister.visibility = View.GONE
+//            }
         }
     }
 

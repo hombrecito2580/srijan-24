@@ -51,6 +51,7 @@
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     style="@style/h4"
+                    android:visibility="gone"
                     android:textColor="@color/text"/>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -63,6 +64,7 @@
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
+                    android:visibility="gone"
                     android:layout_marginBottom="15dp"/>
 
                 <TextView
@@ -75,7 +77,7 @@
                     android:layout_marginBottom="-15dp"
                     android:padding="8dp"
                     android:text="Enter Your Information"
-                    android:textColor="#70FFFFFF"
+                    android:textColor="@color/text"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -277,7 +279,6 @@
                                 android:inputType="text"
                                 android:padding="10dp"
                                 android:textColor="@color/text"
-                                android:enabled="false"
                                 tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
                             <TextView
@@ -329,7 +330,6 @@
                                 android:inputType="number"
                                 android:maxLength="3"
                                 android:padding="10dp"
-                                android:enabled="false"
                                 android:textColor="@color/text"
                                 tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -342,7 +342,6 @@
                                 android:layout_marginTop="16dp"
                                 android:background="@drawable/button_background1"
                                 android:padding="10dp"
-                                android:enabled="false"
                                 android:text="Available Merchandise"
                                 android:textColor="@color/black" />
 
@@ -356,7 +355,6 @@
                                 android:background="@drawable/button_background1"
                                 android:padding="10dp"
                                 android:text="Choose Size"
-                                android:enabled="false"
                                 android:textColor="@color/black" />
 
                             <!--                        <androidx.appcompat.widget.AppCompatButton-->
@@ -404,7 +402,6 @@
                                 android:backgroundTint="@color/primary"
                                 android:padding="10dp"
                                 android:text="Pay"
-                                android:enabled="false"
                                 android:textColor="@color/black" />
 
                             <ImageView
@@ -420,13 +417,6 @@
 
 
                     </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:backgroundTint="@color/bgLight"
-                        app:cardCornerRadius="15dp"/>
                 </FrameLayout>
 
             </LinearLayout>

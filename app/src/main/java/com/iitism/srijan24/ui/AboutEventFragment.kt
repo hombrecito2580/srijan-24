@@ -432,15 +432,22 @@ class AboutEventFragment : Fragment() {
         }
 
         binding.btnRegister.setOnClickListener {
-            intent.data = Uri.parse(url)
-            intent.setPackage("com.android.chrome")
-            startActivity(intent)
-//            if(eventData.maxMembers != null && eventData.maxMembers!!.toInt() == 0) {
-//                Toast.makeText(context, "No registration required", Toast.LENGTH_SHORT).show()
-//            } else {
-//                binding.cvRegister.visibility = View.VISIBLE
-//                binding.btnRegister.visibility = View.GONE
-//            }
+
+            val preferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+            val isISMite = preferences.getString("isISMite", "") ?: ""
+
+            if(isISMite=="false"){
+                intent.data = Uri.parse(url)
+                intent.setPackage("com.android.chrome")
+                startActivity(intent)
+            }else{
+                if(eventData.maxMembers != null && eventData.maxMembers!!.toInt() == 0) {
+                    Toast.makeText(context, "No registration required", Toast.LENGTH_SHORT).show()
+                } else {
+                    binding.cvRegister.visibility = View.VISIBLE
+                    binding.btnRegister.visibility = View.GONE
+                }
+            }
         }
     }
 

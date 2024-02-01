@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -41,7 +42,8 @@ class PlansFragment : Fragment() {
 
     private var isSizeSelected = 0
     private var isMerchSelected = 0
-
+    val url = "https://forms.gle/VUK1fWcdLyXqNyxa9"
+    val intent = Intent(Intent.ACTION_VIEW)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -100,133 +102,143 @@ class PlansFragment : Fragment() {
 //        val intent = Intent(requireContext(), PlansActivity::class.java)
 //        intent.putExtra("amount", amount)
         binding.btnPlatinum.setOnClickListener {
-            if(binding.cvDetails.visibility != View.VISIBLE)
-                binding.cvDetails.visibility = View.VISIBLE
-
-            if(binding.ltAddress.visibility != View.VISIBLE)
-                binding.ltAddress.visibility = View.VISIBLE
-
-            if(binding.chooseMerch.visibility != View.VISIBLE)
-                binding.chooseMerch.visibility = View.VISIBLE
-
-            if(binding.chooseSize.visibility != View.VISIBLE)
-                binding.chooseSize.visibility = View.VISIBLE
-
-            amount = 1999
-            binding.totalPrice.text = "Payable Amount: \\u20B9 1999".unescapeUnicode()
-            binding.scrollview.post {
-                binding.scrollview.fullScroll(View.FOCUS_DOWN)
-            }
+            intent.data = Uri.parse(url)
+            intent.setPackage("com.android.chrome")
+            startActivity(intent)
+//            if(binding.cvDetails.visibility != View.VISIBLE)
+//                binding.cvDetails.visibility = View.VISIBLE
+//
+//            if(binding.ltAddress.visibility != View.VISIBLE)
+//                binding.ltAddress.visibility = View.VISIBLE
+//
+//            if(binding.chooseMerch.visibility != View.VISIBLE)
+//                binding.chooseMerch.visibility = View.VISIBLE
+//
+//            if(binding.chooseSize.visibility != View.VISIBLE)
+//                binding.chooseSize.visibility = View.VISIBLE
+//
+//            amount = 1999
+//            binding.totalPrice.text = "Payable Amount: \\u20B9 1999".unescapeUnicode()
+//            binding.scrollview.post {
+//                binding.scrollview.fullScroll(View.FOCUS_DOWN)
+//            }
         }
 
         binding.btnGold.setOnClickListener {
-            if(binding.cvDetails.visibility != View.VISIBLE)
-                binding.cvDetails.visibility = View.VISIBLE
-
-            if(binding.ltAddress.visibility != View.VISIBLE)
-                binding.ltAddress.visibility = View.VISIBLE
-
-            if(binding.chooseMerch.visibility != View.VISIBLE)
-                binding.chooseMerch.visibility = View.VISIBLE
-
-            if(binding.chooseSize.visibility != View.VISIBLE)
-                binding.chooseSize.visibility = View.VISIBLE
-
-            amount = 1799
-            binding.totalPrice.text = "Payable Amount: \\u20B9 1799".unescapeUnicode()
-            binding.scrollview.post {
-                binding.scrollview.fullScroll(View.FOCUS_DOWN)
-            }
-//            intent.putExtra("amount", amount)
-//            startActivity(intent)
+            intent.data = Uri.parse(url)
+            intent.setPackage("com.android.chrome")
+            startActivity(intent)
+//            if(binding.cvDetails.visibility != View.VISIBLE)
+//                binding.cvDetails.visibility = View.VISIBLE
+//
+//            if(binding.ltAddress.visibility != View.VISIBLE)
+//                binding.ltAddress.visibility = View.VISIBLE
+//
+//            if(binding.chooseMerch.visibility != View.VISIBLE)
+//                binding.chooseMerch.visibility = View.VISIBLE
+//
+//            if(binding.chooseSize.visibility != View.VISIBLE)
+//                binding.chooseSize.visibility = View.VISIBLE
+//
+//            amount = 1799
+//            binding.totalPrice.text = "Payable Amount: \\u20B9 1799".unescapeUnicode()
+//            binding.scrollview.post {
+//                binding.scrollview.fullScroll(View.FOCUS_DOWN)
+//            }
 
         }
 
         binding.btnSilver.setOnClickListener {
-            if(binding.cvDetails.visibility != View.VISIBLE)
-                binding.cvDetails.visibility = View.VISIBLE
-
-            if(binding.ltAddress.visibility != View.GONE)
-                binding.ltAddress.visibility = View.GONE
-
-            if(binding.chooseMerch.visibility != View.GONE)
-                binding.chooseMerch.visibility = View.GONE
-
-            if(binding.chooseSize.visibility != View.GONE)
-                binding.chooseSize.visibility = View.GONE
-
-            amount = 1499
-            binding.totalPrice.text = "Payable Amount: \\u20B9 1499".unescapeUnicode()
-            binding.scrollview.post {
-                binding.scrollview.fullScroll(View.FOCUS_DOWN)
-            }
-//            intent.putExtra("amount", amount)
-//            startActivity(intent)
+            intent.data = Uri.parse(url)
+            intent.setPackage("com.android.chrome")
+            startActivity(intent)
+//            if(binding.cvDetails.visibility != View.VISIBLE)
+//                binding.cvDetails.visibility = View.VISIBLE
+//
+//            if(binding.ltAddress.visibility != View.GONE)
+//                binding.ltAddress.visibility = View.GONE
+//
+//            if(binding.chooseMerch.visibility != View.GONE)
+//                binding.chooseMerch.visibility = View.GONE
+//
+//            if(binding.chooseSize.visibility != View.GONE)
+//                binding.chooseSize.visibility = View.GONE
+//
+//            amount = 1499
+//            binding.totalPrice.text = "Payable Amount: \\u20B9 1499".unescapeUnicode()
+//            binding.scrollview.post {
+//                binding.scrollview.fullScroll(View.FOCUS_DOWN)
+//            }
         }
 
         binding.btnBronze.setOnClickListener {
-            if(binding.cvDetails.visibility != View.VISIBLE)
-                binding.cvDetails.visibility = View.VISIBLE
-
-            if(binding.ltAddress.visibility != View.GONE)
-                binding.ltAddress.visibility = View.GONE
-
-            if(binding.chooseMerch.visibility != View.GONE)
-                binding.chooseMerch.visibility = View.GONE
-
-            if(binding.chooseSize.visibility != View.GONE)
-                binding.chooseSize.visibility = View.GONE
-
-            amount = 1199
-            binding.totalPrice.text = "Payable Amount: \\u20B9 1199".unescapeUnicode()
-            binding.scrollview.post {
-                binding.scrollview.fullScroll(View.FOCUS_DOWN)
-            }
-
-
-//            intent.putExtra("amount", amount)
-//            startActivity(intent)
+            intent.data = Uri.parse(url)
+            intent.setPackage("com.android.chrome")
+            startActivity(intent)
+//            if(binding.cvDetails.visibility != View.VISIBLE)
+//                binding.cvDetails.visibility = View.VISIBLE
+//
+//            if(binding.ltAddress.visibility != View.GONE)
+//                binding.ltAddress.visibility = View.GONE
+//
+//            if(binding.chooseMerch.visibility != View.GONE)
+//                binding.chooseMerch.visibility = View.GONE
+//
+//            if(binding.chooseSize.visibility != View.GONE)
+//                binding.chooseSize.visibility = View.GONE
+//
+//            amount = 1199
+//            binding.totalPrice.text = "Payable Amount: \\u20B9 1199".unescapeUnicode()
+//            binding.scrollview.post {
+//                binding.scrollview.fullScroll(View.FOCUS_DOWN)
+//            }
 
         }
 
         binding.btnBasic.setOnClickListener {
-            if (binding.cvDetails.visibility != View.VISIBLE)
-                binding.cvDetails.visibility = View.VISIBLE
-
-            if (binding.ltAddress.visibility != View.VISIBLE)
-                binding.ltAddress.visibility = View.VISIBLE
-
-            if (binding.chooseMerch.visibility != View.VISIBLE)
-                binding.chooseMerch.visibility = View.VISIBLE
-
-            if (binding.chooseSize.visibility != View.VISIBLE)
-                binding.chooseSize.visibility = View.VISIBLE
-
-            amount = 799
-            binding.totalPrice.text = "Payable Amount: \\u20B9 799".unescapeUnicode()
-            binding.scrollview.post {
-                binding.scrollview.fullScroll(View.FOCUS_DOWN)
-            }
+            intent.data = Uri.parse(url)
+            intent.setPackage("com.android.chrome")
+            startActivity(intent)
+//            if (binding.cvDetails.visibility != View.VISIBLE)
+//                binding.cvDetails.visibility = View.VISIBLE
+//
+//            if (binding.ltAddress.visibility != View.VISIBLE)
+//                binding.ltAddress.visibility = View.VISIBLE
+//
+//            if (binding.chooseMerch.visibility != View.VISIBLE)
+//                binding.chooseMerch.visibility = View.VISIBLE
+//
+//            if (binding.chooseSize.visibility != View.VISIBLE)
+//                binding.chooseSize.visibility = View.VISIBLE
+//
+//            amount = 799
+//            binding.totalPrice.text = "Payable Amount: \\u20B9 799".unescapeUnicode()
+//            binding.scrollview.post {
+//                binding.scrollview.fullScroll(View.FOCUS_DOWN)
+//            }
         }
 
         binding.btnEssential.setOnClickListener {
-            if (binding.cvDetails.visibility != View.VISIBLE)
-                binding.cvDetails.visibility = View.VISIBLE
-
-            if (binding.ltAddress.visibility != View.GONE)
-                binding.ltAddress.visibility = View.GONE
-
-            if (binding.chooseMerch.visibility != View.GONE)
-                binding.chooseMerch.visibility = View.GONE
-
-            if (binding.chooseSize.visibility != View.GONE)
-                binding.chooseSize.visibility = View.GONE
-
-            amount = 699
-            binding.totalPrice.text = "Payable Amount: \\u20B9 699".unescapeUnicode()
-            binding.scrollview.post {
-                binding.scrollview.fullScroll(View.FOCUS_DOWN)
-            }
+            intent.data = Uri.parse(url)
+            intent.setPackage("com.android.chrome")
+            startActivity(intent)
+//            if (binding.cvDetails.visibility != View.VISIBLE)
+//                binding.cvDetails.visibility = View.VISIBLE
+//
+//            if (binding.ltAddress.visibility != View.GONE)
+//                binding.ltAddress.visibility = View.GONE
+//
+//            if (binding.chooseMerch.visibility != View.GONE)
+//                binding.chooseMerch.visibility = View.GONE
+//
+//            if (binding.chooseSize.visibility != View.GONE)
+//                binding.chooseSize.visibility = View.GONE
+//
+//            amount = 699
+//            binding.totalPrice.text = "Payable Amount: \\u20B9 699".unescapeUnicode()
+//            binding.scrollview.post {
+//                binding.scrollview.fullScroll(View.FOCUS_DOWN)
+//            }
         }
 
         binding.chooseMerch.setOnClickListener {

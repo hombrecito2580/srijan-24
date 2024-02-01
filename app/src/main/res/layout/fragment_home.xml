@@ -16,11 +16,11 @@
     android:background="@color/transparent"
     android:fillViewport="true"
     android:orientation="vertical"
+    android:scrollbars="none"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:context=".ui.HomeFragment"
-    tools:ignore="hardcodedText"
-    android:scrollbars="none">
+    tools:ignore="hardcodedText">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,8 +54,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="220dp">
+            android:layout_marginTop="220dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textCounterDown"
@@ -100,8 +100,8 @@
                         style="@style/h3"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="00"
                         android:gravity="center"
+                        android:text="00"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -128,10 +128,10 @@
                     <TextView
                         android:id="@+id/txtHour"
                         style="@style/h3"
-                        android:text="00"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:text="00"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -217,9 +217,9 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_carousel"
             android:layout_width="match_parent"
-            android:layout_marginHorizontal="8dp"
             android:layout_height="250dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="16dp" />
 
         <LinearLayout
@@ -235,9 +235,9 @@
             android:id="@+id/youtube_player"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            app:autoPlay="false"
-            android:layout_marginVertical="24dp"
             android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="24dp"
+            app:autoPlay="false"
             app:enableAutomaticInitialization="true"
             app:handleNetworkEvents="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -247,22 +247,37 @@
             app:videoId="u4UPdGSMM1Y"
             tools:ignore="MissingClass" />
 
-<!--        <TextView-->
-<!--            style="@style/h2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:layout_marginTop="24dp"-->
-<!--            android:text="Timeline"-->
-<!--            android:textColor="@color/white" />-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:src="@drawable/srijan_1" />
 
-<!--        <ImageView-->
-<!--            android:layout_width="300dp"-->
-<!--            android:layout_height="300dp"-->
-<!--            android:elevation="10dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:src="@drawable/coming_soon"-->
-<!--            android:layout_gravity="center_horizontal"/>-->
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:src="@drawable/srijan_2" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:src="@drawable/srijan_3" />
+        <!--        <TextView-->
+        <!--            style="@style/h2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="24dp"-->
+        <!--            android:text="Timeline"-->
+        <!--            android:textColor="@color/white" />-->
+
+        <!--        <ImageView-->
+        <!--            android:layout_width="300dp"-->
+        <!--            android:layout_height="300dp"-->
+        <!--            android:elevation="10dp"-->
+        <!--            android:layout_marginTop="8dp"-->
+        <!--            android:src="@drawable/coming_soon"-->
+        <!--            android:layout_gravity="center_horizontal"/>-->
 
     </LinearLayout>
 
@@ -271,7 +286,6 @@
     <!--            android:layout_height="wrap_content"-->
     <!--            android:gravity="center_horizontal"-->
     <!--            android:orientation="vertical">-->
-
 
 
     <!--            <LinearLayout-->
@@ -288,7 +302,6 @@
     <!--                    android:textColor="@color/text" />-->
 
 
-
     <!--                <TextView-->
     <!--                    style="@style/h2"-->
     <!--                    android:layout_width="wrap_content"-->
@@ -299,15 +312,11 @@
     <!--                    android:textColor="@color/text" />-->
 
 
-
-
-
     <!--            </LinearLayout>-->
 
     <!--        </LinearLayout>-->
 
 </ScrollView>
-
 
 
     <!--    <androidx.constraintlayout.widget.Guideline-->

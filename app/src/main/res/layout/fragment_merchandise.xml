@@ -43,29 +43,27 @@
                 android:background="@android:color/transparent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:text="Payment via Razorpay is currently suspended. Kindly use the alternate Google form for purchasing your merchandise."
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    style="@style/h4"
-                    android:visibility="gone"
-                    android:textColor="@color/text"/>
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="15dp"-->
+<!--                    android:text="Payment via Razorpay is currently suspended. Kindly use the alternate Google form for purchasing your merchandise."-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:textAlignment="center"-->
+<!--                    style="@style/h4"-->
+<!--                    android:textColor="@color/text"/>-->
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnOrder"
-                    android:background="@drawable/button_background1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ORDER NOW"
-                    style="@style/h4"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:visibility="gone"
-                    android:layout_marginBottom="15dp"/>
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/btnOrder"-->
+<!--                    android:background="@drawable/button_background1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="ORDER NOW"-->
+<!--                    style="@style/h4"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="15dp"/>-->
 
                 <TextView
                     android:id="@+id/enter_info"
@@ -82,8 +80,7 @@
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false">
+                    android:layout_height="wrap_content">
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
@@ -417,6 +414,7 @@
 
 
                     </com.google.android.material.card.MaterialCardView>
+                  
                 </FrameLayout>
 
             </LinearLayout>

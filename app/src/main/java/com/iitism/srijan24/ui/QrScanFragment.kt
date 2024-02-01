@@ -40,20 +40,20 @@ class QrScanFragment : Fragment() {
 
         codeScanner = CodeScanner(requireActivity(), scannerView)
 
-        binding.btnScanqr.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_DENIED
-            ) {
-                requestPermissions(
-                    arrayOf(Manifest.permission.CAMERA),
-                    1001
-                )
-
-            } else {
-                scanQR()
-            }
-
-        }
+//        binding.btnScanqr.setOnClickListener {
+//            if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA)
+//                == PackageManager.PERMISSION_DENIED
+//            ) {
+//                requestPermissions(
+//                    arrayOf(Manifest.permission.CAMERA),
+//                    1001
+//                )
+//
+//            } else {
+//                scanQR()
+//            }
+//
+//        }
     }
 
     private fun scanQR() {

@@ -43,27 +43,27 @@
                 android:background="@android:color/transparent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:text="Payment via Razorpay is currently suspended. Kindly use the alternate Google form for purchasing your merchandise."
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    style="@style/h4"
-                    android:textColor="@color/text"/>
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="15dp"-->
+<!--                    android:text="Payment via Razorpay is currently suspended. Kindly use the alternate Google form for purchasing your merchandise."-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:textAlignment="center"-->
+<!--                    style="@style/h4"-->
+<!--                    android:textColor="@color/text"/>-->
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnOrder"
-                    android:background="@drawable/button_background1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ORDER NOW"
-                    style="@style/h4"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="15dp"/>
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/btnOrder"-->
+<!--                    android:background="@drawable/button_background1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="ORDER NOW"-->
+<!--                    style="@style/h4"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="15dp"/>-->
 
                 <TextView
                     android:id="@+id/enter_info"
@@ -75,13 +75,12 @@
                     android:layout_marginBottom="-15dp"
                     android:padding="8dp"
                     android:text="Enter Your Information"
-                    android:textColor="#70FFFFFF"
+                    android:textColor="#E1FFFFFF"
                     android:textStyle="bold" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false">
+                    android:layout_height="wrap_content">
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
@@ -277,7 +276,6 @@
                                 android:inputType="text"
                                 android:padding="10dp"
                                 android:textColor="@color/text"
-                                android:enabled="false"
                                 tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
                             <TextView
@@ -329,7 +327,6 @@
                                 android:inputType="number"
                                 android:maxLength="3"
                                 android:padding="10dp"
-                                android:enabled="false"
                                 android:textColor="@color/text"
                                 tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -342,7 +339,6 @@
                                 android:layout_marginTop="16dp"
                                 android:background="@drawable/button_background1"
                                 android:padding="10dp"
-                                android:enabled="false"
                                 android:text="Available Merchandise"
                                 android:textColor="@color/black" />
 
@@ -356,7 +352,6 @@
                                 android:background="@drawable/button_background1"
                                 android:padding="10dp"
                                 android:text="Choose Size"
-                                android:enabled="false"
                                 android:textColor="@color/black" />
 
                             <!--                        <androidx.appcompat.widget.AppCompatButton-->
@@ -404,7 +399,6 @@
                                 android:backgroundTint="@color/primary"
                                 android:padding="10dp"
                                 android:text="Pay"
-                                android:enabled="false"
                                 android:textColor="@color/black" />
 
                             <ImageView
@@ -421,12 +415,7 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:backgroundTint="@color/bgLight"
-                        app:cardCornerRadius="15dp"/>
+
                 </FrameLayout>
 
             </LinearLayout>

@@ -26,6 +26,7 @@ import com.google.zxing.WriterException
 import com.iitism.srijan24.R
 import com.iitism.srijan24.adapter.ProfileAccommodationAdapter
 import com.iitism.srijan24.adapter.ProfileRVAdapter
+import com.iitism.srijan24.adapter.ProfileRVEventsAdapter
 import com.iitism.srijan24.data.GetUserAccommodationResponseItem
 import com.iitism.srijan24.data.GetUserEventsResponseItem
 import com.iitism.srijan24.data.GetUserResponse
@@ -47,7 +48,7 @@ class ProfileFragment : Fragment() {
     private lateinit var token: String
 
     private lateinit var dialog: Dialog
-
+    private lateinit var userEmailEvents: String
     private lateinit var call1: Call<GetUserResponse>
     private lateinit var call2: Call<ArrayList<GetUserEventsResponseItem>>
     private lateinit var call3: Call<ArrayList<GetUserAccommodationResponseItem>>
@@ -113,7 +114,7 @@ class ProfileFragment : Fragment() {
                         binding.tvUserName.text = body.name
                         binding.tvEmail.text = body.email
                         binding.tvContact.text = body.phoneNumber
-
+                        userEmailEvents = body.email
                         val mWriter = MultiFormatWriter()
                         try {
                             //BitMatrix class to encode entered text and set Width & Height
@@ -154,50 +155,50 @@ class ProfileFragment : Fragment() {
             })
 
 
-//            call2.enqueue(object : retrofit2.Callback<ArrayList<GetUserEventsResponseItem>> {
-//                override fun onResponse(
-//                    call: Call<ArrayList<GetUserEventsResponseItem>>,
-//                    response: Response<ArrayList<GetUserEventsResponseItem>>,
-//                ) {
-//                    val body = response.body()
-//
-//                    //Toast.makeText(requireContext(), response.isSuccessful.toString(), Toast.LENGTH_SHORT).show()
-//                    if (response.isSuccessful && body != null) {
-//                        binding.tvNoEvents.visibility=View.GONE
-//
-//                        if (body.isEmpty()) {
-//                            binding.rvEvents.visibility = View.GONE
-//                        } else {
-//                            binding.rvEvents.visibility = View.VISIBLE
-//                        }
-//                        binding.rvEvents.adapter=ProfileRVEventsAdapter(body)
-//                        Log.d("eventsbody",body.toString())
-//                        counter++
-//                        checkCompletion(counter)
-//
-//                    }else if (response.isSuccessful && body == null){
-//
-//                        binding.rvEvents.visibility = View.GONE
-//                        binding.tvNoEvents.visibility=View.VISIBLE
-//
-//                    } else {
-//                        dialog.dismiss()
-//                        cancelAllCalls()
-////                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-////                        findNavController().popBackStack()
-//                    }
-//                }
-//
-//                override fun onFailure(
-//                    call: Call<ArrayList<GetUserEventsResponseItem>>,
-//                    t: Throwable,
-//                ) {
-//                    dialog.dismiss()
-//                    cancelAllCalls()
-////                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
-////                    findNavController().popBackStack()
-//                }
-//            })
+            call2.enqueue(object : retrofit2.Callback<ArrayList<GetUserEventsResponseItem>> {
+                override fun onResponse(
+                    call: Call<ArrayList<GetUserEventsResponseItem>>,
+                    response: Response<ArrayList<GetUserEventsResponseItem>>,
+                ) {
+                    val body = response.body()
+
+                    //Toast.makeText(requireContext(), response.isSuccessful.toString(), Toast.LENGTH_SHORT).show()
+                    if (response.isSuccessful && body != null) {
+                        binding.tvNoEvents.visibility = View.GONE
+
+                        if (body.isEmpty()) {
+                            binding.rvEvents.visibility = View.GONE
+                        } else {
+                            binding.rvEvents.visibility = View.VISIBLE
+                        }
+                        binding.rvEvents.adapter = ProfileRVEventsAdapter(body, userEmailEvents)
+                        Log.d("eventsbody", body.toString())
+                        counter++
+                        checkCompletion(counter)
+
+                    } else if (response.isSuccessful && body == null) {
+
+                        binding.rvEvents.visibility = View.GONE
+                        binding.tvNoEvents.visibility = View.VISIBLE
+
+                    } else {
+                        dialog.dismiss()
+                        cancelAllCalls()
+//                        Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//                        findNavController().popBackStack()
+                    }
+                }
+
+                override fun onFailure(
+                    call: Call<ArrayList<GetUserEventsResponseItem>>,
+                    t: Throwable,
+                ) {
+                    dialog.dismiss()
+                    cancelAllCalls()
+//                    Toast.makeText(context, "Failed to load data", Toast.LENGTH_SHORT).show()
+//                    findNavController().popBackStack()
+                }
+            })
 
 
             call3.enqueue(object : retrofit2.Callback<ArrayList<GetUserAccommodationResponseItem>> {

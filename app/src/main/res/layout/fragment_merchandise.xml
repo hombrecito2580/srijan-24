@@ -75,7 +75,7 @@
                     android:layout_marginBottom="-15dp"
                     android:padding="8dp"
                     android:text="Enter Your Information"
-                    android:textColor="#E1FFFFFF"
+                    android:textColor="@color/text"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -414,8 +414,7 @@
 
 
                     </com.google.android.material.card.MaterialCardView>
-
-
+                  
                 </FrameLayout>
 
             </LinearLayout>

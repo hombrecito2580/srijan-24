@@ -83,15 +83,23 @@
 
                 <ImageView
                     android:id="@+id/qrImg"
-                    android:layout_marginTop="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    />
-            </LinearLayout>
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp" />
+
+                </LinearLayout>
 
 
         </com.google.android.material.card.MaterialCardView>
+        <TextView
+            style="@style/h4"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:text="*Purchases or Events registered though google forms won't appear here" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"

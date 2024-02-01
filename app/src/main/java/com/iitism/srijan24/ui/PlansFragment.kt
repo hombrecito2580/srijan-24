@@ -42,7 +42,8 @@ class PlansFragment : Fragment() {
 
     private var isSizeSelected = 0
     private var isMerchSelected = 0
-    val url = "https://forms.gle/VUK1fWcdLyXqNyxa9"
+//    val url = "https://forms.gle/VUK1fWcdLyXqNyxa9"
+    val url = "https://srijan-iitism.com/#/packages"
     val intent = Intent(Intent.ACTION_VIEW)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

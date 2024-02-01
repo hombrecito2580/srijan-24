@@ -42,8 +42,9 @@ class PlansFragment : Fragment() {
 
     private var isSizeSelected = 0
     private var isMerchSelected = 0
-//    val url = "https://forms.gle/VUK1fWcdLyXqNyxa9"
-    val url = "https://srijan-iitism.com/#/packages"
+
+    //    val url = "https://forms.gle/VUK1fWcdLyXqNyxa9"
+    private val url = "https://forms.gle/Sbg9zvQ19tuwiYKz7"
     val intent = Intent(Intent.ACTION_VIEW)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +57,7 @@ class PlansFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         val preferences =
             requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         token = preferences.getString("token", "") ?: ""
@@ -85,7 +86,8 @@ class PlansFragment : Fragment() {
                         binding.editEmail.setText(email)
 
                     } else {
-                        Toast.makeText(context, "Failed to load data....", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Failed to load data....", Toast.LENGTH_SHORT)
+                            .show()
                         findNavController().popBackStack()
                     }
                 }
@@ -251,21 +253,29 @@ class PlansFragment : Fragment() {
         }
 
         binding.chooseSize.setOnClickListener {
-            if(isMerchSelected == 1) showSizeMenu()
-            else Toast.makeText(context, "Please select merchandise first", Toast.LENGTH_SHORT).show()
+            if (isMerchSelected == 1) showSizeMenu()
+            else Toast.makeText(context, "Please select merchandise first", Toast.LENGTH_SHORT)
+                .show()
         }
 
         binding.payButton.setOnClickListener {
-            if((amount == 1999 || amount == 1799 || amount==799) && binding.editAddress.text.toString().trim().isEmpty()) {
+            if ((amount == 1999 || amount == 1799 || amount == 799) && binding.editAddress.text.toString()
+                    .trim().isEmpty()
+            ) {
                 binding.editAddress.error = "Please enter the address"
-            } else if(binding.editProof.text.toString().trim().isEmpty()) {
+            } else if (binding.editProof.text.toString().trim().isEmpty()) {
                 binding.editProof.error = "Please enter your ID Proof"
-            } else if(binding.editGender.text.toString().trim().isEmpty()) {
+            } else if (binding.editGender.text.toString().trim().isEmpty()) {
                 binding.editGender.error = "Please enter your gender"
-            } else if((amount == 1999 || amount == 1799 || amount==799) && isMerchSelected == 0) {
-                Toast.makeText(context, "Please choose from available merchandise", Toast.LENGTH_SHORT).show()
-            } else if((amount == 1999 || amount == 1799 || amount==799) && isSizeSelected == 0) {
-                Toast.makeText(context, "Please choose from available sizes", Toast.LENGTH_SHORT).show()
+            } else if ((amount == 1999 || amount == 1799 || amount == 799) && isMerchSelected == 0) {
+                Toast.makeText(
+                    context,
+                    "Please choose from available merchandise",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if ((amount == 1999 || amount == 1799 || amount == 799) && isSizeSelected == 0) {
+                Toast.makeText(context, "Please choose from available sizes", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 val intent = Intent(requireContext(), PlansActivity::class.java)
                 intent.putExtra("address", binding.editAddress.text.toString().trim())

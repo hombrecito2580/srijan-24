@@ -195,13 +195,13 @@ class MerchandiseFragment : Fragment(), PaymentResultListener {
             }
         })
 
-        binding.btnOrder.setOnClickListener {
-            val url = "https://forms.gle/VUK1fWcdLyXqNyxa9"
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(url)
-            intent.setPackage("com.android.chrome")
-            startActivity(intent)
-        }
+//        binding.btnOrder.setOnClickListener {
+//            val url = "https://forms.gle/VUK1fWcdLyXqNyxa9"
+//            val intent = Intent(Intent.ACTION_VIEW)
+//            intent.data = Uri.parse(url)
+//            intent.setPackage("com.android.chrome")
+//            startActivity(intent)
+//        }
         // Price Calculation
         binding.editQuantity.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
